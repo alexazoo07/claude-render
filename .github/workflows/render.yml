@@ -1,0 +1,89 @@
+# Render en la nube por tramos: hasta 20 máquinas a la vez, cada una un trozo del vídeo.
+# Se lanza desde el PC con tools/cloud-render.ps1 (o a mano en la pestaña Actions → render → Run workflow).
+name: render
+run-name: render ${{ inputs.comp }} (${{ inputs.frames }} frames, ${{ inputs.machines }} máquinas)
+
+on:
+  workflow_dispatch:
+    inputs:
+      comp: { description: 'Composición (p. ej. V-pasaportes)', required: true }
+      frames: { description: 'Total de frames (segundos × 60)', required: true }
+      machines: { description: 'Máquinas en paralelo (máx. 20; para un Short de 30 s basta con 4)', default: '20' }
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - id: m
+        env: { TOTAL: '${{ inputs.frames }}', N: '${{ inputs.machines }}' }
+        run: |
+          python3 - <<'EOF'
+          import json, math, os
+          total = int(os.environ['TOTAL']); n = max(1, min(20, int(os.environ['N'])))
+          size = math.ceil(total / n)
+          inc = [{'i': f'{k:02d}', 's': s, 'e': min(total - 1, s + size - 1)} for k, s in enumerate(range(0, total, size))]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('matrix=' + json.dumps({'include': inc}) + '\n')
+          EOF
+
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: npx remotion bundle src/index.ts --out-dir build --log=error
+      - name: Render tramo ${{ matrix.s }}-${{ matrix.e }}
+        run: |
+          for t in 1 2 3; do
+            npx remotion render build "${{ inputs.comp }}" part.mp4 --frames=${{ matrix.s }}-${{ matrix.e }} \
+              --codec=h264 --crf=16 --pixel-format=yuv420p --color-space=bt709 --x264-preset=medium \
+              --muted --concurrency=$(nproc) --timeout=120000 --log=error && exit 0
+            echo "intento $t fallido"; rm -f part.mp4
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part_${{ matrix.i }}', path: part.mp4, retention-days: 1, compression-level: 0 }
+
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: npx remotion bundle src/index.ts --out-dir build --log=error
+      - run: npx remotion render build "${{ inputs.comp }}" audio.wav --codec=wav --props='{"audioOnly":true}' --timeout=120000 --log=error
+      - uses: actions/upload-artifact@v4
+        with: { name: audio, path: audio.wav, retention-days: 1 }
+
+  merge:
+    needs: [render, audio]
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'part_*', path: parts }
+      - uses: actions/download-artifact@v4
+        with: { name: audio, path: . }
+      - name: Unir y masterizar (−14 LUFS)
+        run: |
+          for d in $(ls -d parts/part_* | sort); do echo "file '$PWD/$d/part.mp4'"; done > list.txt
+          cat list.txt
+          ffmpeg -v error -y -f concat -safe 0 -i list.txt -c copy video.mp4
+          ffmpeg -v error -y -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy \
+            -af "alimiter=limit=0.8:level=false,loudnorm=I=-14:TP=-1.5:LRA=11" \
+            -c:a aac -b:a 256k -ar 48000 -movflags +faststart -shortest final.mp4
+          ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of compact final.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: final, path: final.mp4, retention-days: 3, compression-level: 0 }

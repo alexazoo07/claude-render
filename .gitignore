@@ -1,0 +1,8 @@
+node_modules/
+build/
+build_thumbs/
+out/
+*.tmp.mp4
+# música: al repositorio solo van los MP3 de la librería (los WAV pesan 500 MB)
+public/music/*.wav
+public/music/lib/*.wav

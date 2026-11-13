@@ -1,0 +1,26 @@
+{
+  "name": "mapamundi-engine",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.363",
+    "@remotion/fonts": "^4.0.363",
+    "@remotion/google-fonts": "4.0.363",
+    "@types/d3-geo": "3.1.0",
+    "@types/react": "19.1.2",
+    "@types/topojson-client": "3.1.5",
+    "d3-geo": "3.1.1",
+    "flag-icons": "7.5.0",
+    "i18n-iso-countries": "7.14.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.363",
+    "topojson-client": "3.1.0",
+    "typescript": "5.8.3",
+    "world-atlas": "2.0.2"
+  }
+}
