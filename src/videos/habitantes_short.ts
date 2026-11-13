@@ -16,7 +16,7 @@ let hi = 0, lo = 0;
 // ---------- gancho (0–3 s) ----------
 v.hero(0.1, DUR, 'earth', { obj: 'earth', x: 200, y: 520, size: 270, label: 'LA TIERRA', mood: 'shocked' });
 v.cam(0, geoBox(-150, -45, 160, 72), { dur: 0, ...FR, pad: 0 });
-['400.000.000', '2.900.000.000', '6.300.000.000'].forEach((s, i) => { v.big(0.1 + i * 0.2, 0.3 + i * 0.2, s, 'personas…', C.gold); v.s2(0.1 + i * 0.2, 'tick', 0.4); });
+v.title2(0.05, 0.7, ['¿Cuántas personas', 'hay en el *MUNDO*?'], [C.gold, C.gold]);
 v.title2(0.7, 1.65, ['¡*8.140*', 'MILLONES*!*'], [C.yes, C.gold]);
 v.s2(0.7, 'boom', 0.35); v.shake(0.72, 12);
 v.title2(1.65, 3.0, ['¿Qué país tiene', '*MÁS* habitantes?'], [C.gold, C.yes], [{ text: 'Banco Mundial · 2024', color: C.teal }]);
