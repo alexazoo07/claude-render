@@ -29,6 +29,8 @@ export type Stop = {
   len?: number; ids: string[]; at?: Record<string, [number, number]>; cam?: string[] | [number, number, number, number]; pad?: number;
   name: string; tag: string; title: string; texts: string[]; pills?: string[]; far?: boolean;
   ribbon: [string, string]; bubble?: [string, string]; moods?: Mood[]; climax?: boolean;
+  /** caso fuera de categorías (p. ej. "sin ejército"): color y chip propios, no cuenta en marcadores ni en el resultado */
+  special?: { color: string; chip: string };
 };
 type Opt = Partial<Stop> & { extra?: string };
 
@@ -51,11 +53,12 @@ export function tour(v: Video, cfg: TourCfg) {
 
   const stop = (o: Stop) => {
     const len = o.len ?? 10, t = blk(len), e = t + len, tc = o.climax ? t + 6.5 : e - 3.2;
-    const cats = o.ids.map(cid), k = K[cats[cats.length - 1]];
+    const cats = o.ids.map(cid), sp = o.special;
+    const k: CatDef = sp ? { ...K[cats[0]], color: sp.color, chip: sp.chip, mood: 'cool', hero: 'wow' } : K[cats[cats.length - 1]];
     const far = !!o.far;
     v.cam(t - (far ? 0.6 : 0.35), o.cam ?? o.ids, { dur: far ? 2.1 : 1.6, ...FR, pad: o.pad ?? 0.25 });
     o.ids.forEach((id, i) => {
-      const d = i * 0.35, kc = K[cats[i]], at = o.at?.[id];
+      const d = i * 0.35, kc = sp ? k : K[cats[i]], at = o.at?.[id];
       v.rope(t + 0.2 + d, e - 0.15, id, '#FFFFFF', at);
       v.flag(t + 0.5 + d, [id], 0.3);
       v.fx(t + 0.55 + d, 'pulse', { id, at, color: '#FFFFFF' });
@@ -66,7 +69,7 @@ export function tour(v: Video, cfg: TourCfg) {
       v.fill(e, [id], kc.color, 0.35);
       v.face(e + 0.1, DUR, id, 'dots', { scale: 0.55, at });
       rows.push({ t: tc + 0.15 + i * 0.25, flag: id, name: nameOf(id), pill: o.pills?.[i] ?? cfg.pill(id), color: kc.color });
-      count(tc, cats[i], 1); seen[cats[i]].push(id);
+      if (!sp) { count(tc, cats[i], 1); seen[cats[i]].push(id); }
     });
     v.info(t + 0.6, e - 0.2, { flag: o.ids[0], name: o.name, tag: o.tag, chip: k.chip, chipColor: k.color, chipAt: tc, hideTitle: true, label: cfg.label, labelColor: k.color, title: o.title, texts: o.texts });
     v.heroMood(t + 0.9, 'wow');
