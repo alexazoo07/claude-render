@@ -4,7 +4,7 @@ import React from 'react';
 import { C, DISPLAY } from './theme';
 
 const INK = '#141320';
-export type ObjName = 'trophy' | 'ball' | 'thermo' | 'ban' | 'fire' | 'snow' | 'crown' | 'money' | 'question' | 'gum' | 'phone' | 'bill' | 'passport';
+export type ObjName = 'trophy' | 'ball' | 'thermo' | 'ban' | 'fire' | 'snow' | 'crown' | 'money' | 'question' | 'gum' | 'phone' | 'bill' | 'passport' | 'earth' | 'brain' | 'tank';
 export const OBJ: Record<ObjName, React.ReactNode> = {
   trophy: (<g stroke={INK} strokeWidth={7} strokeLinejoin="round"><path d="M-60,-80 H60 V-20 C60,30 25,50 0,52 C-25,50 -60,30 -60,-20 Z" fill="#FFC83D" /><path d="M-60,-62 H-88 V-36 C-88,-10 -70,4 -52,6 M60,-62 H88 V-36 C88,-10 70,4 52,6" fill="none" /><rect x={-14} y={50} width={28} height={26} fill="#E0A21C" /><rect x={-46} y={74} width={92} height={22} rx={6} fill="#7A4B12" /><path d="M-40,-66 V-20 C-40,10 -24,26 -10,32" stroke="#FFF2B5" strokeWidth={9} fill="none" /></g>),
   ball: (<g stroke={INK} strokeWidth={7}><circle r={88} fill="#fff" /><path d="M0,-30 L28,-10 L18,24 L-18,24 L-28,-10 Z" fill={INK} /><path d="M0,-30 V-86 M28,-10 L80,-30 M18,24 L50,70 M-18,24 L-50,70 M-28,-10 L-80,-30" fill="none" /></g>),
@@ -62,6 +62,37 @@ export const OBJ: Record<ObjName, React.ReactNode> = {
       <path d="M-36,-60 L-6,-90" stroke="#FFFFFF" strokeOpacity={0.55} strokeWidth={10} strokeLinecap="round" />
       <path d="M-40,-30 L-22,-48" stroke="#FFFFFF" strokeOpacity={0.4} strokeWidth={7} strokeLinecap="round" />
       <rect x={-20} y={80} width={40} height={6} rx={3} fill="#FFFFFF" fillOpacity={0.8} stroke="none" />
+    </g>
+  ),
+  // planeta Tierra (población): océano azul con continentes verdes y brillo (centro libre para la cara)
+  earth: (
+    <g stroke={INK} strokeWidth={7} strokeLinejoin="round">
+      <circle r={96} fill="#3FA9F5" />
+      <path d="M-78,-48 C-60,-70 -30,-72 -20,-58 C-10,-44 -34,-36 -40,-20 C-46,-4 -66,-8 -80,-18 Z" fill="#5DCB6A" strokeWidth={5} />
+      <path d="M20,-84 C44,-80 70,-60 80,-36 C66,-30 50,-40 38,-30 C26,-22 6,-40 8,-60 Z" fill="#5DCB6A" strokeWidth={5} />
+      <path d="M-62,40 C-44,30 -26,44 -30,62 C-34,80 -50,86 -60,74 Z" fill="#5DCB6A" strokeWidth={5} />
+      <path d="M58,30 C76,26 88,40 82,58 C72,74 52,72 50,56 Z" fill="#5DCB6A" strokeWidth={5} />
+      <path d="M-56,-74 C-40,-88 -16,-94 4,-92" stroke="#FFFFFF" strokeOpacity={0.5} strokeWidth={10} strokeLinecap="round" fill="none" />
+    </g>
+  ),
+  // cerebro (coeficiente intelectual): dos lóbulos rosas con pliegues y brillo
+  brain: (
+    <g stroke={INK} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round">
+      <path d="M0,-84 C-20,-100 -56,-96 -70,-74 C-96,-70 -104,-40 -94,-20 C-108,0 -100,34 -78,44 C-76,70 -46,86 -22,76 C-12,90 12,90 22,76 C46,86 76,70 78,44 C100,34 108,0 94,-20 C104,-40 96,-70 70,-74 C56,-96 20,-100 0,-84 Z" fill="#FF9EC4" />
+      <path d="M0,-84 V76" fill="none" stroke="#D9578E" strokeWidth={6} />
+      <path d="M-70,-74 C-60,-58 -40,-58 -34,-70 M-94,-20 C-80,-14 -70,-24 -72,-36 M-78,44 C-66,34 -66,20 -76,12 M70,-74 C60,-58 40,-58 34,-70 M94,-20 C80,-14 70,-24 72,-36 M78,44 C66,34 66,20 76,12" fill="none" stroke="#D9578E" strokeWidth={6} />
+      <path d="M-50,-84 C-36,-92 -20,-92 -10,-86" stroke="#FFE0EC" strokeWidth={9} fill="none" />
+    </g>
+  ),
+  // tanque militar genérico: orugas, casco verde oliva, torreta y cañón (cara en el casco)
+  tank: (
+    <g stroke={INK} strokeWidth={7} strokeLinejoin="round">
+      <rect x={20} y={-76} width={90} height={14} rx={7} fill="#56602F" />
+      <path d="M-40,-80 C-40,-100 40,-100 40,-80 L46,-40 H-46 Z" fill="#7C8A3E" />
+      <rect x={-100} y={-44} width={200} height={84} rx={20} fill="#8E9C48" />
+      <rect x={-108} y={36} width={216} height={50} rx={25} fill="#3B3D35" />
+      {[-80, -40, 0, 40, 80].map((x) => <circle key={x} cx={x} cy={61} r={14} fill="#9A9C90" strokeWidth={5} />)}
+      <path d="M-84,-32 C-70,-40 -50,-40 -36,-36" stroke="#C8D27A" strokeWidth={9} strokeLinecap="round" fill="none" />
     </g>
   ),
 };
