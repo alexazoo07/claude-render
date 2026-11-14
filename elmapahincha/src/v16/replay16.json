@@ -1,0 +1,452 @@
+{
+"WC2006": {
+"id": "WC2006",
+"boost": 50,
+"elo": 1966,
+"elo_m": 2016,
+"k0": 0,
+"path": [
+{
+"opp": "France",
+"p": 0.55,
+"p0": 0.479,
+"real": [
+"Spain",
+1,
+3,
+"France",
+"France"
+],
+"dr": 36
+},
+{
+"opp": "Brazil",
+"p": 0.447,
+"p0": 0.378,
+"real": [
+"Brazil",
+0,
+1,
+"France",
+"France"
+],
+"dr": -45
+},
+{
+"opp": "Portugal",
+"p": 0.626,
+"p0": 0.56,
+"real": [
+"Portugal",
+0,
+1,
+"France",
+"France"
+],
+"dr": 97
+},
+{
+"opp": "Italy",
+"p": 0.587,
+"p0": 0.533,
+"real": [
+"Italy",
+1,
+1,
+"France",
+"Italy"
+],
+"dr": 71
+}
+],
+"champ": 0.0897,
+"reach": {
+"FINAL": 0.0624,
+"CUARTOS": 0.2941,
+"OCTAVOS": 0.4621,
+"SEMIFINAL": 0.0917
+},
+"before": []
+},
+"WC2014": {
+"id": "WC2014",
+"boost": 130,
+"elo": 2148,
+"elo_m": 2278,
+"group": [
+{
+"opp": "Netherlands",
+"p": [
+0.657,
+0.205,
+0.138
+],
+"real": [
+"Spain",
+1,
+5,
+"Netherlands"
+]
+},
+{
+"opp": "Chile",
+"p": [
+0.723,
+0.171,
+0.106
+],
+"real": [
+"Spain",
+0,
+2,
+"Chile"
+]
+},
+{
+"opp": "Australia",
+"p": [
+0.864,
+0.096,
+0.039
+],
+"real": [
+"Australia",
+0,
+3,
+"Spain"
+]
+}
+],
+"slots": {
+"1": [
+"Mexico",
+"Costa Rica",
+"Argentina",
+"Germany"
+],
+"2": [
+"Brazil",
+"Colombia",
+"Germany",
+"Argentina"
+]
+},
+"pos": {
+"1": 0.7274,
+"2": 0.2051,
+"3": 0.0627,
+"4": 0.0048
+},
+"champ": 0.4457,
+"reach": {
+"FINAL": 0.1621,
+"SEMIFINAL": 0.0963,
+"OCTAVOS": 0.1829,
+"CUARTOS": 0.0455,
+"GRUPOS": 0.0675
+},
+"path": [
+{
+"opp": "Mexico",
+"real": [
+"Netherlands",
+2,
+1,
+"Mexico",
+"Netherlands"
+]
+},
+{
+"opp": "Costa Rica",
+"real": [
+"Netherlands",
+0,
+0,
+"Costa Rica",
+"Netherlands"
+]
+},
+{
+"opp": "Argentina",
+"real": [
+"Netherlands",
+0,
+0,
+"Argentina",
+"Argentina"
+]
+},
+{
+"opp": "Germany",
+"real": [
+"Germany",
+1,
+0,
+"Argentina",
+"Germany"
+]
+}
+]
+},
+"EU2016": {
+"id": "EU2016",
+"boost": 120,
+"elo": 2035,
+"elo_m": 2155,
+"k0": 0,
+"path": [
+{
+"opp": "Italy",
+"p": 0.778,
+"p0": 0.651,
+"real": [
+"Italy",
+2,
+0,
+"Spain",
+"Italy"
+],
+"dr": 240
+},
+{
+"opp": "Germany",
+"p": 0.598,
+"p0": 0.441,
+"real": [
+"Germany",
+1,
+1,
+"Italy",
+"Germany"
+],
+"dr": 77
+},
+{
+"opp": "France",
+"p": 0.551,
+"p0": 0.395,
+"real": [
+"France",
+2,
+0,
+"Germany",
+"France"
+],
+"dr": 40
+},
+{
+"opp": "Portugal",
+"p": 0.84,
+"p0": 0.736,
+"real": [
+"France",
+0,
+1,
+"Portugal",
+"Portugal"
+],
+"dr": 311
+}
+],
+"champ": 0.2123,
+"reach": {
+"CUARTOS": 0.311,
+"SEMIFINAL": 0.2105,
+"FINAL": 0.0398,
+"OCTAVOS": 0.2264
+},
+"before": []
+},
+"WC2018": {
+"id": "WC2018",
+"boost": 100,
+"elo": 2089,
+"elo_m": 2189,
+"k0": 0,
+"path": [
+{
+"opp": "Russia",
+"p": 0.869,
+"p0": 0.8,
+"real": [
+"Russia",
+1,
+1,
+"Spain",
+"Russia"
+],
+"dr": 355
+},
+{
+"opp": "Croatia",
+"p": 0.892,
+"p0": 0.82,
+"real": [
+"Russia",
+2,
+2,
+"Croatia",
+"Croatia"
+],
+"dr": 386
+},
+{
+"opp": "England",
+"p": 0.741,
+"p0": 0.623,
+"real": [
+"Croatia",
+2,
+1,
+"England",
+"Croatia"
+],
+"dr": 201
+},
+{
+"opp": "France",
+"p": 0.699,
+"p0": 0.578,
+"real": [
+"France",
+4,
+2,
+"Croatia",
+"France"
+],
+"dr": 161
+}
+],
+"champ": 0.3948,
+"reach": {
+"SEMIFINAL": 0.201,
+"FINAL": 0.1763,
+"OCTAVOS": 0.1324,
+"CUARTOS": 0.0955
+},
+"before": []
+},
+"EU2020": {
+"id": "EU2020",
+"boost": 90,
+"elo": 2087,
+"elo_m": 2177,
+"k0": 2,
+"path": [
+{
+"opp": "Italy",
+"p": 0.631,
+"p0": 0.523,
+"real": [
+"Italy",
+1,
+1,
+"Spain",
+"Italy"
+],
+"dr": 107
+},
+{
+"opp": "England",
+"p": 0.553,
+"p0": 0.438,
+"real": [
+"England",
+1,
+1,
+"Italy",
+"Italy"
+],
+"dr": 42
+}
+],
+"champ": 0.3545,
+"reach": {
+"FINAL": 0.2801,
+"SEMIFINAL": 0.3654
+},
+"before": [
+[
+"Croatia",
+3,
+5,
+"Spain"
+],
+[
+"Switzerland",
+1,
+1,
+"Spain"
+]
+]
+},
+"WC2022": {
+"id": "WC2022",
+"boost": 110,
+"elo": 2107,
+"elo_m": 2217,
+"k0": 0,
+"path": [
+{
+"opp": "Morocco",
+"p": 0.875,
+"p0": 0.786,
+"real": [
+"Morocco",
+0,
+0,
+"Spain",
+"Morocco"
+],
+"dr": 358
+},
+{
+"opp": "Portugal",
+"p": 0.691,
+"p0": 0.556,
+"real": [
+"Morocco",
+1,
+0,
+"Portugal",
+"Morocco"
+],
+"dr": 151
+},
+{
+"opp": "France",
+"p": 0.723,
+"p0": 0.583,
+"real": [
+"France",
+2,
+0,
+"Morocco",
+"France"
+],
+"dr": 180
+},
+{
+"opp": "Argentina",
+"p": 0.668,
+"p0": 0.525,
+"real": [
+"Argentina",
+3,
+3,
+"France",
+"Argentina"
+],
+"dr": 130
+}
+],
+"champ": 0.2858,
+"reach": {
+"FINAL": 0.1412,
+"SEMIFINAL": 0.17,
+"CUARTOS": 0.2716,
+"OCTAVOS": 0.1314
+},
+"before": []
+}
+}

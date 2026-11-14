@@ -1,0 +1,802 @@
+{
+ "seed": 535,
+ "rounds": [
+  [
+   {
+    "a": "BRA",
+    "b": "MAR",
+    "ga": 2,
+    "gb": 1,
+    "goals": [
+     {
+      "t": "MAR",
+      "m": 30,
+      "who": "Boufal"
+     },
+     {
+      "t": "BRA",
+      "m": 89,
+      "who": "Gérson"
+     },
+     {
+      "t": "BRA",
+      "m": 108,
+      "who": "Tostão"
+     }
+    ],
+    "et": true,
+    "pens": null,
+    "win": "BRA",
+    "pos": 62,
+    "sha": 17,
+    "shb": 6,
+    "p": [
+     76,
+     16,
+     8
+    ]
+   },
+   {
+    "a": "ENG",
+    "b": "ITA",
+    "ga": 3,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "ENG",
+      "m": 18,
+      "who": "Hurst"
+     },
+     {
+      "t": "ENG",
+      "m": 28,
+      "who": "Hunt"
+     },
+     {
+      "t": "ENG",
+      "m": 65,
+      "who": "Hunt"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "ENG",
+    "pos": 46,
+    "sha": 5,
+    "shb": 6,
+    "p": [
+     27,
+     33,
+     40
+    ]
+   },
+   {
+    "a": "HUN",
+    "b": "BEL",
+    "ga": 2,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "HUN",
+      "m": 24,
+      "who": "Puskás"
+     },
+     {
+      "t": "HUN",
+      "m": 72,
+      "who": "Bozsik"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "HUN",
+    "pos": 52,
+    "sha": 17,
+    "shb": 10,
+    "p": [
+     60,
+     19,
+     21
+    ]
+   },
+   {
+    "a": "DEU",
+    "b": "URY",
+    "ga": 3,
+    "gb": 2,
+    "goals": [
+     {
+      "t": "DEU",
+      "m": 1,
+      "who": "Götze"
+     },
+     {
+      "t": "URY",
+      "m": 20,
+      "who": "Ghiggia"
+     },
+     {
+      "t": "DEU",
+      "m": 41,
+      "who": "Kroos"
+     },
+     {
+      "t": "URY",
+      "m": 55,
+      "who": "Ghiggia"
+     },
+     {
+      "t": "DEU",
+      "m": 73,
+      "who": "Müller"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "DEU",
+    "pos": 62,
+    "sha": 9,
+    "shb": 4,
+    "p": [
+     57,
+     25,
+     18
+    ]
+   },
+   {
+    "a": "ESP",
+    "b": "MEX",
+    "ga": 3,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "ESP",
+      "m": 12,
+      "who": "Fàbregas"
+     },
+     {
+      "t": "ESP",
+      "m": 30,
+      "who": "Puyol"
+     },
+     {
+      "t": "ESP",
+      "m": 82,
+      "who": "Fàbregas"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "ESP",
+    "pos": 66,
+    "sha": 17,
+    "shb": 3,
+    "p": [
+     83,
+     12,
+     5
+    ]
+   },
+   {
+    "a": "NLD",
+    "b": "ARG",
+    "ga": 4,
+    "gb": 4,
+    "goals": [
+     {
+      "t": "NLD",
+      "m": 2,
+      "who": "Cruyff"
+     },
+     {
+      "t": "NLD",
+      "m": 22,
+      "who": "Cruyff"
+     },
+     {
+      "t": "ARG",
+      "m": 26,
+      "who": "Julián Álvarez"
+     },
+     {
+      "t": "ARG",
+      "m": 50,
+      "who": "Messi"
+     },
+     {
+      "t": "ARG",
+      "m": 69,
+      "who": "Messi"
+     },
+     {
+      "t": "NLD",
+      "m": 71,
+      "who": "Cruyff"
+     },
+     {
+      "t": "NLD",
+      "m": 75,
+      "who": "Cruyff"
+     },
+     {
+      "t": "ARG",
+      "m": 76,
+      "who": "Julián Álvarez"
+     }
+    ],
+    "et": true,
+    "pens": {
+     "a": 3,
+     "b": 4,
+     "seq": [
+      {
+       "t": "NLD",
+       "ok": true,
+       "who": "Neeskens"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Messi"
+      },
+      {
+       "t": "NLD",
+       "ok": true,
+       "who": "Rep"
+      },
+      {
+       "t": "ARG",
+       "ok": false,
+       "who": "Lautaro"
+      },
+      {
+       "t": "NLD",
+       "ok": true,
+       "who": "Rensenbrink"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Di María"
+      },
+      {
+       "t": "NLD",
+       "ok": false,
+       "who": "Cruyff"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Julián Álvarez"
+      },
+      {
+       "t": "NLD",
+       "ok": false,
+       "who": "Krol"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Montiel"
+      }
+     ]
+    },
+    "win": "ARG",
+    "pos": 59,
+    "sha": 10,
+    "shb": 8,
+    "p": [
+     43,
+     24,
+     33
+    ]
+   },
+   {
+    "a": "FRA",
+    "b": "HRV",
+    "ga": 3,
+    "gb": 2,
+    "goals": [
+     {
+      "t": "HRV",
+      "m": 52,
+      "who": "Modrić"
+     },
+     {
+      "t": "HRV",
+      "m": 53,
+      "who": "Kramarić"
+     },
+     {
+      "t": "FRA",
+      "m": 54,
+      "who": "Mbappé"
+     },
+     {
+      "t": "FRA",
+      "m": 75,
+      "who": "Mbappé"
+     },
+     {
+      "t": "FRA",
+      "m": 94,
+      "who": "Griezmann"
+     }
+    ],
+    "et": true,
+    "pens": null,
+    "win": "FRA",
+    "pos": 51,
+    "sha": 9,
+    "shb": 5,
+    "p": [
+     53,
+     24,
+     23
+    ]
+   },
+   {
+    "a": "PRT",
+    "b": "CHL",
+    "ga": 2,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "PRT",
+      "m": 100,
+      "who": "Nani"
+     },
+     {
+      "t": "PRT",
+      "m": 102,
+      "who": "Cristiano"
+     }
+    ],
+    "et": true,
+    "pens": null,
+    "win": "PRT",
+    "pos": 50,
+    "sha": 9,
+    "shb": 7,
+    "p": [
+     49,
+     26,
+     25
+    ]
+   }
+  ],
+  [
+   {
+    "a": "BRA",
+    "b": "ENG",
+    "ga": 2,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "BRA",
+      "m": 23,
+      "who": "Tostão"
+     },
+     {
+      "t": "BRA",
+      "m": 35,
+      "who": "Tostão"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "BRA",
+    "pos": 60,
+    "sha": 14,
+    "shb": 6,
+    "p": [
+     70,
+     17,
+     13
+    ]
+   },
+   {
+    "a": "HUN",
+    "b": "DEU",
+    "ga": 1,
+    "gb": 0,
+    "goals": [
+     {
+      "t": "HUN",
+      "m": 47,
+      "who": "Hidegkuti"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "HUN",
+    "pos": 52,
+    "sha": 11,
+    "shb": 8,
+    "p": [
+     39,
+     23,
+     38
+    ]
+   },
+   {
+    "a": "ESP",
+    "b": "ARG",
+    "ga": 0,
+    "gb": 1,
+    "goals": [
+     {
+      "t": "ARG",
+      "m": 34,
+      "who": "Lautaro"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "ARG",
+    "pos": 60,
+    "sha": 10,
+    "shb": 5,
+    "p": [
+     43,
+     28,
+     29
+    ]
+   },
+   {
+    "a": "FRA",
+    "b": "PRT",
+    "ga": 0,
+    "gb": 1,
+    "goals": [
+     {
+      "t": "PRT",
+      "m": 58,
+      "who": "Quaresma"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "PRT",
+    "pos": 56,
+    "sha": 12,
+    "shb": 7,
+    "p": [
+     55,
+     24,
+     21
+    ]
+   }
+  ],
+  [
+   {
+    "a": "BRA",
+    "b": "HUN",
+    "ga": 3,
+    "gb": 2,
+    "goals": [
+     {
+      "t": "HUN",
+      "m": 8,
+      "who": "Kocsis"
+     },
+     {
+      "t": "BRA",
+      "m": 30,
+      "who": "Tostão"
+     },
+     {
+      "t": "BRA",
+      "m": 50,
+      "who": "Pelé"
+     },
+     {
+      "t": "HUN",
+      "m": 51,
+      "who": "Hidegkuti"
+     },
+     {
+      "t": "BRA",
+      "m": 86,
+      "who": "Rivelino"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "BRA",
+    "pos": 54,
+    "sha": 18,
+    "shb": 12,
+    "p": [
+     57,
+     19,
+     24
+    ]
+   },
+   {
+    "a": "ARG",
+    "b": "PRT",
+    "ga": 2,
+    "gb": 2,
+    "goals": [
+     {
+      "t": "ARG",
+      "m": 9,
+      "who": "Messi"
+     },
+     {
+      "t": "PRT",
+      "m": 65,
+      "who": "Nani"
+     },
+     {
+      "t": "PRT",
+      "m": 99,
+      "who": "Nani"
+     },
+     {
+      "t": "ARG",
+      "m": 118,
+      "who": "Julián Álvarez"
+     }
+    ],
+    "et": true,
+    "pens": {
+     "a": 6,
+     "b": 5,
+     "seq": [
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Messi"
+      },
+      {
+       "t": "PRT",
+       "ok": true,
+       "who": "Cristiano"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Julián Álvarez"
+      },
+      {
+       "t": "PRT",
+       "ok": true,
+       "who": "Nani"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Enzo Fernández"
+      },
+      {
+       "t": "PRT",
+       "ok": true,
+       "who": "Éder"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Mac Allister"
+      },
+      {
+       "t": "PRT",
+       "ok": true,
+       "who": "Quaresma"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Di María"
+      },
+      {
+       "t": "PRT",
+       "ok": true,
+       "who": "Renato Sanches"
+      },
+      {
+       "t": "ARG",
+       "ok": true,
+       "who": "Montiel"
+      },
+      {
+       "t": "PRT",
+       "ok": false,
+       "who": "Moutinho"
+      }
+     ]
+    },
+    "win": "ARG",
+    "pos": 54,
+    "sha": 12,
+    "shb": 5,
+    "p": [
+     55,
+     24,
+     21
+    ]
+   }
+  ],
+  [
+   {
+    "a": "BRA",
+    "b": "ARG",
+    "ga": 2,
+    "gb": 3,
+    "goals": [
+     {
+      "t": "ARG",
+      "m": 4,
+      "who": "Enzo Fernández"
+     },
+     {
+      "t": "ARG",
+      "m": 31,
+      "who": "Di María"
+     },
+     {
+      "t": "ARG",
+      "m": 38,
+      "who": "Messi"
+     },
+     {
+      "t": "BRA",
+      "m": 49,
+      "who": "Gérson"
+     },
+     {
+      "t": "BRA",
+      "m": 80,
+      "who": "Carlos Alberto"
+     }
+    ],
+    "et": false,
+    "pens": null,
+    "win": "ARG",
+    "pos": 55,
+    "sha": 15,
+    "shb": 10,
+    "p": [
+     54,
+     21,
+     25
+    ]
+   }
+  ]
+ ],
+ "T": {
+  "BRA": [
+   99,
+   95,
+   84,
+   97
+  ],
+  "ESP": [
+   86,
+   99,
+   92,
+   90
+  ],
+  "HUN": [
+   97,
+   92,
+   80,
+   92
+  ],
+  "NLD": [
+   92,
+   95,
+   84,
+   95
+  ],
+  "ARG": [
+   92,
+   88,
+   87,
+   97
+  ],
+  "DEU": [
+   90,
+   92,
+   90,
+   86
+  ],
+  "FRA": [
+   93,
+   90,
+   88,
+   89
+  ],
+  "ITA": [
+   82,
+   88,
+   96,
+   85
+  ],
+  "URY": [
+   85,
+   84,
+   86,
+   84
+  ],
+  "ENG": [
+   85,
+   86,
+   87,
+   86
+  ],
+  "PRT": [
+   84,
+   84,
+   86,
+   92
+  ],
+  "HRV": [
+   82,
+   93,
+   82,
+   88
+  ],
+  "BEL": [
+   89,
+   88,
+   81,
+   85
+  ],
+  "MAR": [
+   76,
+   82,
+   92,
+   80
+  ],
+  "CHL": [
+   82,
+   86,
+   80,
+   80
+  ],
+  "MEX": [
+   80,
+   80,
+   78,
+   78
+  ]
+ },
+ "GK": {
+  "BRA": "Félix",
+  "ESP": "Casillas",
+  "HUN": "Grosics",
+  "NLD": "Jongbloed",
+  "ARG": "Dibu Martínez",
+  "DEU": "Neuer",
+  "FRA": "Lloris",
+  "ITA": "Buffon",
+  "URY": "Máspoli",
+  "ENG": "Banks",
+  "PRT": "Rui Patrício",
+  "HRV": "Subašić",
+  "BEL": "Courtois",
+  "MAR": "Bounou",
+  "CHL": "Bravo",
+  "MEX": "Jorge Campos"
+ },
+ "ovr": {
+  "BRA": 93.75,
+  "ESP": 91.75,
+  "HUN": 90.25,
+  "NLD": 91.5,
+  "ARG": 91.0,
+  "DEU": 89.5,
+  "FRA": 90.0,
+  "ITA": 87.75,
+  "URY": 84.75,
+  "ENG": 86.0,
+  "PRT": 86.5,
+  "HRV": 86.25,
+  "BEL": 85.75,
+  "MAR": 82.5,
+  "CHL": 82.0,
+  "MEX": 79.0
+ }
+}

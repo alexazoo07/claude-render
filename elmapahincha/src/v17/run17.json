@@ -1,0 +1,515 @@
+{
+"arg": [
+{
+"tag": "R16",
+"o": "NOR",
+"ga": 2,
+"gb": 1,
+"et": false,
+"pens": null,
+"goals": [
+{
+"t": "BRA",
+"m": 5,
+"who": "Raphinha"
+},
+{
+"t": "NOR",
+"m": 18,
+"who": "Erling Haaland"
+},
+{
+"t": "BRA",
+"m": 75,
+"who": "Gabriel Martinelli"
+}
+],
+"pos": 53,
+"sha": 14,
+"shb": 8,
+"p": [
+49,
+25,
+26
+],
+"city": "Nueva York / Nueva Jersey",
+"stadium": "Estadio Nueva York / Nueva Jersey",
+"elo": [
+2119,
+2011
+]
+},
+{
+"tag": "QF",
+"o": "ENG",
+"ga": 3,
+"gb": 2,
+"et": false,
+"pens": null,
+"goals": [
+{
+"t": "ENG",
+"m": 9,
+"who": "Harry Kane"
+},
+{
+"t": "BRA",
+"m": 32,
+"who": "Raphinha"
+},
+{
+"t": "ENG",
+"m": 33,
+"who": "Declan Rice"
+},
+{
+"t": "BRA",
+"m": 43,
+"who": "Endrick"
+},
+{
+"t": "BRA",
+"m": 46,
+"who": "Vinícius Júnior"
+}
+],
+"pos": 52,
+"sha": 7,
+"shb": 9,
+"p": [
+36,
+26,
+38
+],
+"city": "Miami",
+"stadium": "Estadio de Miami",
+"elo": [
+2119,
+2122
+]
+},
+{
+"tag": "SF",
+"o": "ARG",
+"ga": 2,
+"gb": 1,
+"et": false,
+"pens": null,
+"goals": [
+{
+"t": "ARG",
+"m": 30,
+"who": "Lionel Messi"
+},
+{
+"t": "BRA",
+"m": 40,
+"who": "Matheus Cunha"
+},
+{
+"t": "BRA",
+"m": 49,
+"who": "Endrick"
+}
+],
+"pos": 36,
+"sha": 12,
+"shb": 9,
+"p": [
+26,
+25,
+49
+],
+"city": "Atlanta",
+"stadium": "Estadio de Atlanta",
+"elo": [
+2119,
+2229
+]
+},
+{
+"tag": "F",
+"o": "ESP",
+"ga": 2,
+"gb": 1,
+"et": true,
+"pens": null,
+"goals": [
+{
+"t": "BRA",
+"m": 50,
+"who": "Vinícius Júnior"
+},
+{
+"t": "ESP",
+"m": 78,
+"who": "Dani Olmo"
+},
+{
+"t": "BRA",
+"m": 100,
+"who": "Neymar"
+}
+],
+"pos": 49,
+"sha": 6,
+"shb": 16,
+"p": [
+26,
+25,
+49
+],
+"city": "Nueva York / Nueva Jersey",
+"stadium": "Estadio Nueva York / Nueva Jersey",
+"elo": [
+2119,
+2230
+]
+}
+],
+"ko": [
+[
+{
+"a": "CAN",
+"b": "MAR",
+"ga": 0,
+"gb": 3,
+"et": false,
+"pens": null,
+"win": "MAR"
+},
+{
+"a": "PRY",
+"b": "FRA",
+"ga": 0,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "FRA"
+},
+{
+"a": "PRT",
+"b": "ESP",
+"ga": 0,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "ESP"
+},
+{
+"a": "USA",
+"b": "BEL",
+"ga": 1,
+"gb": 4,
+"et": false,
+"pens": null,
+"win": "BEL"
+},
+{
+"a": "BRA",
+"b": "NOR",
+"ga": 2,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "BRA"
+},
+{
+"a": "MEX",
+"b": "ENG",
+"ga": 2,
+"gb": 3,
+"et": false,
+"pens": null,
+"win": "ENG"
+},
+{
+"a": "ARG",
+"b": "EGY",
+"ga": 3,
+"gb": 2,
+"et": false,
+"pens": null,
+"win": "ARG"
+},
+{
+"a": "CHE",
+"b": "COL",
+"ga": 0,
+"gb": 0,
+"et": true,
+"pens": [
+4,
+3
+],
+"win": "CHE"
+}
+],
+[
+{
+"a": "FRA",
+"b": "MAR",
+"ga": 2,
+"gb": 0,
+"et": false,
+"pens": null,
+"win": "FRA"
+},
+{
+"a": "ESP",
+"b": "BEL",
+"ga": 2,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "ESP"
+},
+{
+"a": "BRA",
+"b": "ENG",
+"ga": 3,
+"gb": 2,
+"et": false,
+"pens": null,
+"win": "BRA"
+},
+{
+"a": "ARG",
+"b": "CHE",
+"ga": 3,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "ARG"
+}
+],
+[
+{
+"a": "FRA",
+"b": "ESP",
+"ga": 0,
+"gb": 2,
+"et": false,
+"pens": null,
+"win": "ESP"
+},
+{
+"a": "BRA",
+"b": "ARG",
+"ga": 2,
+"gb": 1,
+"et": false,
+"pens": null,
+"win": "BRA"
+}
+],
+[
+{
+"a": "BRA",
+"b": "ESP",
+"ga": 2,
+"gb": 1,
+"et": true,
+"pens": null,
+"win": "BRA"
+}
+]
+],
+"h2h": {
+"MAR": {
+"p": 4,
+"w": 2,
+"d": 1,
+"l": 1,
+"gf": 7,
+"ga": 3
+},
+"HTI": {
+"p": 4,
+"w": 4,
+"d": 0,
+"l": 0,
+"gf": 20,
+"ga": 1
+},
+"SCT": {
+"p": 11,
+"w": 9,
+"d": 2,
+"l": 0,
+"gf": 19,
+"ga": 3
+},
+"JPN": {
+"p": 15,
+"w": 12,
+"d": 2,
+"l": 1,
+"gf": 39,
+"ga": 9
+},
+"NOR": {
+"p": 5,
+"w": 0,
+"d": 2,
+"l": 3,
+"gf": 6,
+"ga": 10
+},
+"ENG": {
+"p": 27,
+"w": 12,
+"d": 11,
+"l": 4,
+"gf": 35,
+"ga": 23
+},
+"ARG": {
+"p": 111,
+"w": 42,
+"d": 26,
+"l": 43,
+"gf": 166,
+"ga": 164
+},
+"ESP": {
+"p": 10,
+"w": 5,
+"d": 3,
+"l": 2,
+"gf": 17,
+"ga": 11
+}
+},
+"tot": {
+"p": 187,
+"w": 86,
+"d": 47,
+"l": 54
+},
+"wc": {
+"p": 119,
+"w": 79,
+"d": 20,
+"l": 20
+},
+"elo": {
+"BRA": 2119,
+"NOR": 2011,
+"ENG": 2122,
+"ARG": 2229,
+"ESP": 2230,
+"MEX": 2051,
+"CAN": 1846,
+"MAR": 2058,
+"PRY": 1902,
+"FRA": 2211,
+"PRT": 2089,
+"USA": 1894,
+"BEL": 1980,
+"EGY": 1863,
+"CHE": 2015,
+"COL": 2095,
+"JPN": 1973,
+"HTI": 1674,
+"SCT": 1829
+},
+"sims": {
+"N": 10000,
+"champ": {
+"FRA": 2099,
+"ESP": 2102,
+"ARG": 2405,
+"COL": 462,
+"MAR": 457,
+"ENG": 505,
+"MEX": 329,
+"BRA": 689,
+"CHE": 148,
+"PRT": 443,
+"PRY": 34,
+"NOR": 147,
+"BEL": 118,
+"CAN": 13,
+"USA": 39,
+"EGY": 10
+},
+"reach": {
+"R16": 10000,
+"QF": 6361,
+"SF": 3535,
+"F": 1568,
+"CH": 689
+},
+"elim": {
+"ENG": 1405,
+"MEX": 1421,
+"ARG": 1407,
+"NOR": 3639,
+"CHE": 151,
+"ESP": 365,
+"FRA": 344,
+"MAR": 73,
+"COL": 382,
+"EGY": 27,
+"PRY": 4,
+"PRT": 60,
+"BEL": 25,
+"USA": 5,
+"CAN": 3
+},
+"finals": {}
+},
+"groups": {
+"C": [
+"BRA",
+"MAR",
+"SCT",
+"HTI"
+]
+},
+"tables": {
+"C": [
+{
+"t": "BRA",
+"pts": 7,
+"w": 2,
+"d": 1,
+"l": 0,
+"gf": 7,
+"ga": 1
+},
+{
+"t": "MAR",
+"pts": 7,
+"w": 2,
+"d": 1,
+"l": 0,
+"gf": 6,
+"ga": 3
+},
+{
+"t": "SCT",
+"pts": 3,
+"w": 1,
+"d": 0,
+"l": 2,
+"gf": 1,
+"ga": 4
+},
+{
+"t": "HTI",
+"pts": 0,
+"w": 0,
+"d": 0,
+"l": 3,
+"gf": 2,
+"ga": 8
+}
+]
+},
+"thirds": [],
+"gm": {},
+"es": {},
+"flag": {}
+}

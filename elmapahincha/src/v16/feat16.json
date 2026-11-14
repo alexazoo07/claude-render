@@ -1,0 +1,453 @@
+{
+"esp": {
+"WC2006": {
+"champ_p": 0.0897,
+"boost": 50,
+"elo": 1966,
+"elo_m": 2016,
+"matches": [
+{
+"round": "OCTAVOS",
+"opp": "FRA",
+"sc": [
+2,
+2
+],
+"pens": [
+4,
+2
+],
+"et": true,
+"p": 0.55,
+"p0": 0.479,
+"win": true,
+"messi": 1,
+"real": [
+1,
+3
+]
+},
+{
+"round": "CUARTOS",
+"opp": "BRA",
+"sc": [
+1,
+2
+],
+"pens": null,
+"et": false,
+"p": 0.447,
+"p0": 0.378,
+"win": false,
+"messi": 0,
+"real": null
+}
+],
+"champ": false,
+"before": []
+},
+"WC2014": {
+"champ_p": 0.4457,
+"boost": 130,
+"elo": 2148,
+"elo_m": 2278,
+"matches": [
+{
+"round": "GRUPO B",
+"opp": "NLD",
+"sc": [
+4,
+3
+],
+"pens": null,
+"et": false,
+"p": 0.657,
+"win": true,
+"messi": 3,
+"real": [
+1,
+5
+]
+},
+{
+"round": "GRUPO B",
+"opp": "CHL",
+"sc": [
+2,
+0
+],
+"pens": null,
+"et": false,
+"p": 0.723,
+"win": true,
+"messi": 1,
+"real": [
+0,
+2
+]
+},
+{
+"round": "GRUPO B",
+"opp": "AUS",
+"sc": [
+4,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.864,
+"win": true,
+"messi": 1,
+"real": [
+3,
+0
+]
+},
+{
+"round": "OCTAVOS",
+"opp": "MEX",
+"sc": [
+2,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.885,
+"win": true,
+"messi": 0,
+"real": null
+},
+{
+"round": "CUARTOS",
+"opp": "CRI",
+"sc": [
+4,
+0
+],
+"pens": null,
+"et": false,
+"p": 0.944,
+"win": true,
+"messi": 1,
+"real": null
+},
+{
+"round": "SEMIFINAL",
+"opp": "ARG",
+"sc": [
+1,
+0
+],
+"pens": null,
+"et": true,
+"p": 0.867,
+"win": true,
+"messi": 1,
+"real": null
+},
+{
+"round": "FINAL",
+"opp": "DEU",
+"sc": [
+3,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.714,
+"win": true,
+"messi": 1,
+"real": null
+}
+],
+"champ": true,
+"before": []
+},
+"EU2016": {
+"champ_p": 0.2123,
+"boost": 120,
+"elo": 2035,
+"elo_m": 2155,
+"matches": [
+{
+"round": "OCTAVOS",
+"opp": "ITA",
+"sc": [
+1,
+0
+],
+"pens": null,
+"et": false,
+"p": 0.778,
+"p0": 0.651,
+"win": true,
+"messi": 0,
+"real": [
+0,
+2
+]
+},
+{
+"round": "CUARTOS",
+"opp": "DEU",
+"sc": [
+2,
+2
+],
+"pens": [
+3,
+4
+],
+"et": true,
+"p": 0.598,
+"p0": 0.441,
+"win": false,
+"messi": 2,
+"real": null
+}
+],
+"champ": false,
+"before": []
+},
+"WC2018": {
+"champ_p": 0.3948,
+"boost": 100,
+"elo": 2089,
+"elo_m": 2189,
+"matches": [
+{
+"round": "OCTAVOS",
+"opp": "RUS",
+"sc": [
+2,
+0
+],
+"pens": null,
+"et": false,
+"p": 0.869,
+"p0": 0.8,
+"win": true,
+"messi": 2,
+"real": [
+1,
+1
+]
+},
+{
+"round": "CUARTOS",
+"opp": "HRV",
+"sc": [
+5,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.892,
+"p0": 0.82,
+"win": true,
+"messi": 3,
+"real": null
+},
+{
+"round": "SEMIFINAL",
+"opp": "ENG",
+"sc": [
+2,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.741,
+"p0": 0.623,
+"win": true,
+"messi": 2,
+"real": null
+},
+{
+"round": "FINAL",
+"opp": "FRA",
+"sc": [
+2,
+0
+],
+"pens": null,
+"et": false,
+"p": 0.699,
+"p0": 0.578,
+"win": true,
+"messi": 1,
+"real": null
+}
+],
+"champ": true,
+"before": []
+},
+"EU2020": {
+"champ_p": 0.3545,
+"boost": 90,
+"elo": 2087,
+"elo_m": 2177,
+"matches": [
+{
+"round": "SEMIFINAL",
+"opp": "ITA",
+"sc": [
+2,
+2
+],
+"pens": [
+5,
+4
+],
+"et": true,
+"p": 0.631,
+"p0": 0.523,
+"win": true,
+"messi": 0,
+"real": [
+1,
+1
+]
+},
+{
+"round": "FINAL",
+"opp": "ENG",
+"sc": [
+1,
+1
+],
+"pens": [
+3,
+4
+],
+"et": true,
+"p": 0.553,
+"p0": 0.438,
+"win": false,
+"messi": 0,
+"real": null
+}
+],
+"champ": false,
+"before": [
+[
+"Croatia",
+3,
+5,
+"Spain"
+],
+[
+"Switzerland",
+1,
+1,
+"Spain"
+]
+]
+},
+"WC2022": {
+"champ_p": 0.2858,
+"boost": 110,
+"elo": 2107,
+"elo_m": 2217,
+"matches": [
+{
+"round": "OCTAVOS",
+"opp": "MAR",
+"sc": [
+3,
+1
+],
+"pens": null,
+"et": false,
+"p": 0.875,
+"p0": 0.786,
+"win": true,
+"messi": 1,
+"real": [
+0,
+0
+]
+},
+{
+"round": "CUARTOS",
+"opp": "PRT",
+"sc": [
+1,
+3
+],
+"pens": null,
+"et": false,
+"p": 0.691,
+"p0": 0.556,
+"win": false,
+"messi": 1,
+"real": null
+}
+],
+"champ": false,
+"before": []
+}
+},
+"arg": {
+"CA2021": {
+"with": 0.0884,
+"without": 0.0417,
+"stages": {
+"K1": 0.5137,
+"K2": 0.2854,
+"K3": 0.1315,
+"CH": 0.0417,
+"GS": 0.0277
+},
+"base_stages": {
+"K1": 0.3713,
+"K2": 0.3006,
+"K3": 0.2307,
+"CH": 0.0884,
+"GS": 0.009
+}
+},
+"WC2022": {
+"with": 0.2845,
+"without": 0.1273,
+"stages": {
+"CH": 0.1273,
+"GS": 0.1781,
+"K4": 0.0805,
+"K2": 0.2918,
+"K3": 0.1018,
+"K1": 0.2205
+},
+"base_stages": {
+"K4": 0.0972,
+"CH": 0.2845,
+"K1": 0.1419,
+"K3": 0.1114,
+"K2": 0.2886,
+"GS": 0.0764
+}
+},
+"CA2024": {
+"with": 0.4564,
+"without": 0.351,
+"stages": {
+"K2": 0.1141,
+"K1": 0.2362,
+"CH": 0.351,
+"K3": 0.2483,
+"GS": 0.0504
+},
+"base_stages": {
+"GS": 0.0289,
+"CH": 0.4564,
+"K3": 0.2367,
+"K1": 0.1896,
+"K2": 0.0884
+}
+},
+"FIN2022": {
+"with": 0.649,
+"without": 0.505
+}
+}
+}
