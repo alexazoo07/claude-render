@@ -62,6 +62,7 @@ jobs:
   merge:
     needs: render
     runs-on: ubuntu-latest
+    permissions: { contents: write }
     steps:
       - uses: actions/checkout@v4
         with: { sparse-checkout: elmapahincha/audio }
@@ -75,3 +76,11 @@ jobs:
           ffprobe -v error -count_packets -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_read_packets -show_entries format=duration,size -of compact final.mp4
       - uses: actions/upload-artifact@v4
         with: { name: final, path: elmapahincha/final.mp4, retention-days: 3, compression-level: 0 }
+      - name: Subir a la rama out-<comp> en trozos de 90 MB (para descargarlo con git)
+        run: |
+          B="out-${{ inputs.comp }}"
+          mkdir -p /tmp/o && cd /tmp/o && git init -q && git checkout -q -b "$B"
+          split -b 90M -d -a 3 "$GITHUB_WORKSPACE/elmapahincha/final.mp4" part_
+          md5sum "$GITHUB_WORKSPACE/elmapahincha/final.mp4" | cut -d' ' -f1 > md5
+          git add . && git -c user.name=render -c user.email=render@users.noreply.github.com commit -q -m "$B"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "$B"
