@@ -35,6 +35,7 @@ import {Video15, V15_TOTAL} from './v15/Video15';
 import {Video16, V16_TOTAL} from './v16/Video16';
 import {Video17, V17_TOTAL} from './v17/Video17';
 import {Video18, V18_TOTAL} from './v18/Video18';
+import {Video25, V25_TOTAL} from './v25/Video25';
 import {Video24, V24_TOTAL} from './v24/Video24';
 import {Video28, V28_TOTAL} from './v28/Video28';
 import {Video27, V27_TOTAL} from './v27/Video27';
@@ -61,6 +62,7 @@ import {T15a, T15b, T15c, T15d, T15e} from './v15/Thumbs15';
 import {T16a, T16b, T16c, T16d, T16e} from './v16/Thumbs16';
 import {T17a, T17b, T17c, T17d, T17e} from './v17/Thumbs17';
 import {T18a, T18b, T18c, T18d, T18e} from './v18/Thumbs18';
+import {T25a, T25b, T25c, T25d, T25e} from './v25/Thumbs25';
 import {T24a, T24b, T24c, T24d, T24e} from './v24/Thumbs24';
 import {T28a, T28b, T28c, T28d, T28e} from './v28/Thumbs28';
 import {T27a, T27b, T27c, T27d, T27e} from './v27/Thumbs27';
@@ -105,6 +107,7 @@ export const Root: React.FC = () => (
 		<Composition id="V16" component={Video16} durationInFrames={V16_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V17" component={Video17} durationInFrames={V17_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V18" component={Video18} durationInFrames={V18_TOTAL} fps={60} width={1920} height={1080} />
+		<Composition id="V25" component={Video25} durationInFrames={V25_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V24" component={Video24} durationInFrames={V24_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V28" component={Video28} durationInFrames={V28_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V27" component={Video27} durationInFrames={V27_TOTAL} fps={60} width={1920} height={1080} />
@@ -138,6 +141,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 		{[T16a, T16b, T16c, T16d, T16e].map((C, i) => <Still key={'t16' + i} id={`T16-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T17a, T17b, T17c, T17d, T17e].map((C, i) => <Still key={'t17' + i} id={`T17-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T18a, T18b, T18c, T18d, T18e].map((C, i) => <Still key={'t18' + i} id={`T18-${i + 1}`} component={C} width={1920} height={1080} />)}
+		{[T25a, T25b, T25c, T25d, T25e].map((C, i) => <Still key={'t25' + i} id={`T25-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T24a, T24b, T24c, T24d, T24e].map((C, i) => <Still key={'t24' + i} id={`T24-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T28a, T28b, T28c, T28d, T28e].map((C, i) => <Still key={'t28' + i} id={`T28-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T27a, T27b, T27c, T27d, T27e].map((C, i) => <Still key={'t27' + i} id={`T27-${i + 1}`} component={C} width={1920} height={1080} />)}
