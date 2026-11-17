@@ -34,7 +34,7 @@ export const mainBox = (k: string) => {
 	return bs.reduce((a, b) => ((b[2] - b[0]) * (b[3] - b[1]) > (a[2] - a[0]) * (a[3] - a[1]) ? b : a));
 };
 // a single country cut out as a thick white-edged sticker with a big face
-const Sticker: React.FC<{k: string; w: number; x: number; y: number; mood: FaceMood; rot?: number; grey?: boolean; face?: number; fdx?: number; fdy?: number; look?: [number, number]}> = ({k, w, x, y, mood, rot = 0, grey, face = 0.62, fdx = 0, fdy = 0, look}) => {
+export const Sticker: React.FC<{k: string; w: number; x: number; y: number; mood: FaceMood; rot?: number; grey?: boolean; face?: number; fdx?: number; fdy?: number; look?: [number, number]}> = ({k, w, x, y, mood, rot = 0, grey, face = 0.62, fdx = 0, fdy = 0, look}) => {
 	const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
 	const [x0, y0, x1, y1] = mainBox(k);
 	const bw = x1 - x0, bh = y1 - y0, pad = Math.max(bw, bh) * 0.08;

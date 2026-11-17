@@ -13,10 +13,10 @@ const BLUE = '#5EC8FF', PINK = '#FF5FA2', GOLD = '#FFC93C';
 
 // ------------------------------------------------------------------ text
 type P = [string, string?];
-export const TT: React.FC<{parts: P[]; size: number; style?: React.CSSProperties; rot?: number}> = ({parts, size, style, rot = 0}) => (
+export const TT: React.FC<{parts: P[]; size: number; style?: React.CSSProperties; rot?: number; sw?: number}> = ({parts, size, style, rot = 0, sw = 0.14}) => (
 	<div style={{position: 'absolute', left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: size * 0.2, transform: `rotate(${rot}deg)`, ...style}}>
 		{parts.map(([t, c], i) => (
-			<span key={i} style={{fontFamily: LILITA, fontSize: size, lineHeight: 1, color: c ?? '#fff', WebkitTextStroke: `${size * 0.14}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${size * 0.045}px 0 ${INK}, 0 ${size * 0.09}px 0 ${INK}, 0 ${size * 0.13}px ${size * 0.12}px rgba(0,0,0,0.55)`, whiteSpace: 'nowrap'}}>{t}</span>
+			<span key={i} style={{fontFamily: LILITA, fontSize: size, lineHeight: 1, color: c ?? '#fff', WebkitTextStroke: `${size * sw}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${size * 0.045}px 0 ${INK}, 0 ${size * 0.09}px 0 ${INK}, 0 ${size * 0.13}px ${size * 0.12}px rgba(0,0,0,0.55)`, whiteSpace: 'nowrap'}}>{t}</span>
 		))}
 	</div>
 );
@@ -28,18 +28,18 @@ const fit = (cx: number, cy: number, h: number): WCam => {
 	const z = h / (y1 - y0);
 	return {x: (x0 + x1) / 2 + (960 - cx) / z, y: (y0 + y1) / 2 + (540 - cy) / z, z};
 };
-const Bg: React.FC<{cam: {x: number; y: number; z: number}; blur?: number; mood?: FaceMood; dark?: number; latGrey?: boolean}> = ({cam, blur = 0, mood = 'scared', dark = 0.22, latGrey}) => (
+export const Bg: React.FC<{cam: {x: number; y: number; z: number}; blur?: number; mood?: FaceMood; dark?: number; latGrey?: boolean}> = ({cam, blur = 0, mood = 'scared', dark = 0.22, latGrey}) => (
 	<div style={{position: 'absolute', inset: 0, filter: blur ? `blur(${blur}px) saturate(1.15)` : 'saturate(1.15)'}}>
 		<Map cam={cam} mood={mood} dark={dark} grey={latGrey ? (k) => L.includes(k) : undefined} />
 	</div>
 );
-const Vig: React.FC<{o?: number}> = ({o = 0.55}) => <div style={{position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,${o}) 100%)`}} />;
-const Rays: React.FC<{c1?: string; c2?: string; cx?: string; cy?: string; n?: number}> = ({c1 = '#FFB800', c2 = '#FF7A00', cx = '50%', cy = '50%', n = 24}) => (
+export const Vig: React.FC<{o?: number}> = ({o = 0.55}) => <div style={{position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,${o}) 100%)`}} />;
+export const Rays: React.FC<{c1?: string; c2?: string; cx?: string; cy?: string; n?: number}> = ({c1 = '#FFB800', c2 = '#FF7A00', cx = '50%', cy = '50%', n = 24}) => (
 	<div style={{position: 'absolute', inset: 0, background: `repeating-conic-gradient(from 0deg at ${cx} ${cy}, ${c1} 0deg ${180 / n}deg, ${c2} ${180 / n}deg ${360 / n}deg)`}}>
 		<div style={{position: 'absolute', inset: 0, background: `radial-gradient(circle at ${cx} ${cy}, rgba(255,250,210,0.85) 0%, rgba(255,220,120,0.25) 30%, rgba(0,0,0,0.45) 100%)`}} />
 	</div>
 );
-const Sparkles: React.FC<{seed?: number; n?: number; box?: [number, number, number, number]; col?: string}> = ({seed = 1, n = 18, box = [0, 0, 1920, 1080], col = '#FFF4B0'}) => {
+export const Sparkles: React.FC<{seed?: number; n?: number; box?: [number, number, number, number]; col?: string}> = ({seed = 1, n = 18, box = [0, 0, 1920, 1080], col = '#FFF4B0'}) => {
 	let s = seed * 9301;
 	const r = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
 	return (
@@ -51,7 +51,7 @@ const Sparkles: React.FC<{seed?: number; n?: number; box?: [number, number, numb
 		</svg>
 	);
 };
-const Confetti: React.FC<{seed?: number; n?: number}> = ({seed = 3, n = 70}) => {
+export const Confetti: React.FC<{seed?: number; n?: number}> = ({seed = 3, n = 70}) => {
 	let s = seed * 7919;
 	const r = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
 	const cols = ['#FF3B3B', '#FFD23F', '#3BA3FF', '#2ECC71', '#FF5FA2', '#fff'];
@@ -117,12 +117,12 @@ export const UnionX: React.FC<{h: number; x: number; y: number; m?: XM; f12?: Fa
 };
 
 // ------------------------------------------------------------------ props
-const QBadge: React.FC<{x: number; y: number; d: number; c?: string}> = ({x, y, d, c = '#E3262E'}) => (
+export const QBadge: React.FC<{x: number; y: number; d: number; c?: string}> = ({x, y, d, c = '#E3262E'}) => (
 	<div style={{position: 'absolute', left: x - d / 2, top: y - d / 2, width: d, height: d, borderRadius: '50%', background: `radial-gradient(circle at 35% 30%, #FF7A7A, ${c} 55%, #7A0A10)`, border: `${d * 0.06}px solid ${INK}`, boxShadow: `0 0 ${d * 0.15}px ${d * 0.05}px ${c}, 0 0 ${d * 0.4}px ${c}, 0 ${d * 0.06}px 0 ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
 		<span style={{fontFamily: LILITA, fontSize: d * 0.68, color: '#fff', WebkitTextStroke: `${d * 0.07}px ${INK}`, paintOrder: 'stroke fill', lineHeight: 1, marginTop: d * 0.04}}>?</span>
 	</div>
 );
-const Tile: React.FC<{k: string; w: number; x: number; y: number; rot?: number}> = ({k, w, x, y, rot = 0}) => {
+export const Tile: React.FC<{k: string; w: number; x: number; y: number; rot?: number}> = ({k, w, x, y, rot = 0}) => {
 	const h = w * 0.66;
 	return (
 		<div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w, height: h, transform: `rotate(${rot}deg)`}}>
@@ -134,7 +134,7 @@ const Tile: React.FC<{k: string; w: number; x: number; y: number; rot?: number}>
 		</div>
 	);
 };
-const BallX: React.FC<{k: string; d: number; x: number; y: number; m: XM; look?: [number, number]; f12?: FaceMood}> = ({k, d, x, y, m, look, f12}) => {
+export const BallX: React.FC<{k: string; d: number; x: number; y: number; m: XM; look?: [number, number]; f12?: FaceMood}> = ({k, d, x, y, m, look, f12}) => {
 	const u = uid();
 	return (
 		<svg width={d} height={d} viewBox="-115 -115 230 230" style={{position: 'absolute', left: x - d / 2, top: y - d / 2, overflow: 'visible'}}>
@@ -148,22 +148,22 @@ const BallX: React.FC<{k: string; d: number; x: number; y: number; m: XM; look?:
 		</svg>
 	);
 };
-const Plus: React.FC<{x: number; y: number; s: number; t?: string; c?: string}> = ({x, y, s, t = '+', c = YEL}) => (
+export const Plus: React.FC<{x: number; y: number; s: number; t?: string; c?: string}> = ({x, y, s, t = '+', c = YEL}) => (
 	<div style={{position: 'absolute', left: x, top: y, transform: 'translate(-50%,-50%)', fontFamily: LILITA, fontSize: s, lineHeight: 1, color: c, WebkitTextStroke: `${s * 0.14}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${s * 0.07}px 0 ${INK}`}}>{t}</div>
 );
-const Arrow: React.FC<{x: number; y: number; w: number; rot?: number; flip?: boolean; c?: string}> = ({x, y, w, rot = 0, flip, c = '#fff'}) => (
+export const Arrow: React.FC<{x: number; y: number; w: number; rot?: number; flip?: boolean; c?: string}> = ({x, y, w, rot = 0, flip, c = '#fff'}) => (
 	<svg width={w} height={w * 0.55} viewBox="0 0 300 165" style={{position: 'absolute', left: x - w / 2, top: y - w * 0.275, transform: `rotate(${rot}deg) scaleX(${flip ? -1 : 1})`, overflow: 'visible'}}>
 		<path d="M14 150 Q90 30 214 56 L206 22 L292 88 L196 132 L206 100 Q110 84 54 160 Z" fill="#000" opacity={0.4} transform="translate(4 10)" />
 		<path d="M14 150 Q90 30 214 56 L206 22 L292 88 L196 132 L206 100 Q110 84 54 160 Z" fill={c} stroke={INK} strokeWidth={9} strokeLinejoin="round" />
 		<path d="M40 128 Q100 52 200 70" fill="none" stroke="#fff" strokeOpacity={0.6} strokeWidth={6} strokeLinecap="round" />
 	</svg>
 );
-const VsX: React.FC<{x: number; y: number; d: number}> = ({x, y, d}) => (
+export const VsX: React.FC<{x: number; y: number; d: number}> = ({x, y, d}) => (
 	<div style={{position: 'absolute', left: x - d / 2, top: y - d / 2, width: d, height: d, borderRadius: '50%', background: 'radial-gradient(circle at 35% 30%, #FF6B6B, #D7192A 60%, #7A0A10)', border: `${d * 0.06}px solid #fff`, boxShadow: `0 0 0 ${d * 0.035}px ${INK}, 0 0 ${d * 0.25}px #FF2A2A, 0 ${d * 0.07}px 0 ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
 		<span style={{fontFamily: LILITA, fontSize: d * 0.46, color: '#fff', WebkitTextStroke: `${d * 0.06}px ${INK}`, paintOrder: 'stroke fill', lineHeight: 1}}>VS</span>
 	</div>
 );
-const Cup: React.FC<{x: number; y: number; h: number; rot?: number}> = ({x, y, h, rot = 0}) => (
+export const Cup: React.FC<{x: number; y: number; h: number; rot?: number}> = ({x, y, h, rot = 0}) => (
 	<svg width={h * 0.8} height={h} viewBox="0 0 160 200" style={{position: 'absolute', left: x - h * 0.4, top: y - h / 2, transform: `rotate(${rot}deg)`, overflow: 'visible', filter: `drop-shadow(0 0 ${h * 0.06}px #FFD54A)`}}>
 		<defs><linearGradient id="cupg" x1="0" x2="1"><stop offset="0" stopColor="#B07A08" /><stop offset="0.35" stopColor="#FFE680" /><stop offset="0.6" stopColor="#F2B705" /><stop offset="1" stopColor="#8A5A00" /></linearGradient></defs>
 		<path d="M38 22 C10 22 6 64 44 82 M122 22 C150 22 154 64 116 82" fill="none" stroke={INK} strokeWidth={20} strokeLinecap="round" />
@@ -173,7 +173,7 @@ const Cup: React.FC<{x: number; y: number; h: number; rot?: number}> = ({x, y, h
 		<path d="M50 24 Q48 70 70 96" fill="none" stroke="#fff" strokeOpacity={0.7} strokeWidth={7} strokeLinecap="round" />
 	</svg>
 );
-const Crown: React.FC<{x: number; y: number; w: number; rot?: number}> = ({x, y, w, rot = 0}) => (
+export const Crown: React.FC<{x: number; y: number; w: number; rot?: number}> = ({x, y, w, rot = 0}) => (
 	<svg width={w} height={w * 0.7} viewBox="0 0 200 140" style={{position: 'absolute', left: x - w / 2, top: y - w * 0.35, transform: `rotate(${rot}deg)`, overflow: 'visible', filter: `drop-shadow(0 0 ${w * 0.05}px #FFD54A)`}}>
 		<defs><linearGradient id="crg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#FFF1A0" /><stop offset="0.5" stopColor="#F5B800" /><stop offset="1" stopColor="#A86E00" /></linearGradient></defs>
 		<path d="M14 122 L6 34 L56 74 L100 12 L144 74 L194 34 L186 122 Z" fill="url(#crg)" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
@@ -182,28 +182,28 @@ const Crown: React.FC<{x: number; y: number; w: number; rot?: number}> = ({x, y,
 		<circle cx={100} cy={84} r={14} fill="#E3262E" stroke={INK} strokeWidth={5} /><circle cx={56} cy={96} r={9} fill="#2E8BFF" stroke={INK} strokeWidth={4} /><circle cx={144} cy={96} r={9} fill="#2ECC71" stroke={INK} strokeWidth={4} />
 	</svg>
 );
-const StarX: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
+export const StarX: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
 	<svg width={s} height={s} viewBox="-13 -13 26 26" style={{position: 'absolute', left: x - s / 2, top: y - s / 2, transform: `rotate(${rot}deg)`, overflow: 'visible', filter: `drop-shadow(0 0 ${s * 0.12}px #FFD54A)`}}>
 		<path d="M0 -11 L3.2 -3.6 L11 -3.4 L5 1.8 L7 9.6 L0 5.2 L-7 9.6 L-5 1.8 L-11 -3.4 L-3.2 -3.6 Z" fill="#FFD23F" stroke={INK} strokeWidth={2.2} strokeLinejoin="round" />
 		<path d="M-3 -4 L0 -9 L1.6 -4" fill="none" stroke="#fff" strokeWidth={1.2} strokeLinecap="round" />
 	</svg>
 );
-const Heart: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
+export const Heart: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
 	<svg width={s} height={s} viewBox="0 0 100 92" style={{position: 'absolute', left: x - s / 2, top: y - s / 2, transform: `rotate(${rot}deg)`, overflow: 'visible', filter: `drop-shadow(0 0 ${s * 0.12}px ${PINK})`}}>
 		<path d="M50 88 C20 66 4 48 4 28 C4 12 16 4 28 4 C40 4 47 12 50 20 C53 12 60 4 72 4 C84 4 96 12 96 28 C96 48 80 66 50 88 Z" fill={PINK} stroke={INK} strokeWidth={6} />
 		<path d="M20 24 Q22 14 32 13" fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" />
 	</svg>
 );
-const Zap: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
+export const Zap: React.FC<{x: number; y: number; s: number; rot?: number}> = ({x, y, s, rot = 0}) => (
 	<svg width={s * 0.7} height={s} viewBox="0 0 70 100" style={{position: 'absolute', left: x - s * 0.35, top: y - s / 2, transform: `rotate(${rot}deg)`, overflow: 'visible', filter: `drop-shadow(0 0 ${s * 0.1}px #FFD23F)`}}>
 		<path d="M40 2 L6 56 L32 56 L22 98 L64 38 L38 38 Z" fill="#FFD23F" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
 	</svg>
 );
-const SplitBolt: React.FC<{x: number}> = ({x}) => {
+export const SplitBolt: React.FC<{x: number}> = ({x}) => {
 	const p = `M${x + 70} 0 L${x - 10} 420 L${x + 60} 430 L${x - 60} 1080 L${x - 120} 1080 L${x - 30} 520 L${x - 100} 510 L${x - 10} 0 Z`;
 	return <svg width={1920} height={1080} style={{position: 'absolute', inset: 0, filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.7))'}}><path d={p} fill="#fff" stroke={INK} strokeWidth={10} strokeLinejoin="round" /></svg>;
 };
-const RightClip: React.FC<{children: React.ReactNode}> = ({children}) => (
+export const RightClip: React.FC<{children: React.ReactNode}> = ({children}) => (
 	<div style={{position: 'absolute', inset: 0, overflow: 'hidden', clipPath: 'polygon(1020px 0, 100% 0, 100% 100%, 890px 100%, 1012px 431px, 944px 421px)'}}>{children}</div>
 );
 
