@@ -1,0 +1,125 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "00_narrador",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¿Qué pasaría si Latinoamérica entera desapareciera? Quédate hasta el final, porque esto se pone muy loco.",
+   "language": "es"
+  },
+  {
+   "id": "01_ESP",
+   "voice": "ca526927-b7c8-4a64-95d7-235d30b7771f",
+   "text": "¡Hola! Soy España. Sin Latinoamérica, mi idioma pasaría de quinientos millones de hablantes a casi nada. ¡Vaya tela!",
+   "language": "es"
+  },
+  {
+   "id": "02_MEX",
+   "voice": "b0689631-eee7-4a6c-bb86-195f1d267c2e",
+   "text": "¡Órale! Soy México. Y si yo desaparezco, ¿quién le manda aguacates a los gringos, eh?",
+   "language": "es"
+  },
+  {
+   "id": "03_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Che, boludo! Soy Argentina, campeona del mundo. Sin mí, el fútbol no tendría ni a Messi ni a Maradona.",
+   "language": "es"
+  },
+  {
+   "id": "04_URY",
+   "voice": "06cce9d4-865f-4ebc-ae1d-c72b0ab7f646",
+   "text": "Soy Uruguay. Pequeño, sí, pero con dos Mundiales. ¡Respetame, bo!",
+   "language": "es"
+  },
+  {
+   "id": "05_COL",
+   "voice": "7c1ecd2d-1c83-4d5d-a25c-b3820a274a2e",
+   "text": "¡Quiubo, parce! Soy Colombia. Sin mí, el mundo se quedaría sin café ni reguetón, ¿sí o qué?",
+   "language": "es"
+  },
+  {
+   "id": "06_VEN",
+   "voice": "46d7f6db-4541-482d-96d9-34a1f87561be",
+   "text": "¡Épale, chamo! Soy Venezuela. Aquí tenemos las reservas de petróleo más grandes del planeta.",
+   "language": "es"
+  },
+  {
+   "id": "07_CUB",
+   "voice": "c9251f0b-3097-4771-bfe9-b77a9bbdb5d1",
+   "text": "¡Asere, qué bolá! Soy Cuba. Sin mí, ¿adónde se van de vacaciones los canadienses?",
+   "language": "es"
+  },
+  {
+   "id": "08_PAN",
+   "voice": "3c1c7da2-8f3f-4966-a76d-1f5e484865b5",
+   "text": "¡Hola, mi gente! Soy Panamá. Por mi canal pasan miles de barcos cada año.",
+   "language": "es"
+  },
+  {
+   "id": "09_BOL",
+   "voice": "e9f0368b-3662-4a01-b037-e13ca5203c74",
+   "text": "Soy Bolivia. Tengo el salar más grande del mundo y la mitad del litio del planeta.",
+   "language": "es"
+  },
+  {
+   "id": "10_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "Olá! Eu sou o Brasil. Cinco Mundiales, amigo. Cinco. ¡Más que nadie!",
+   "language": "es"
+  },
+  {
+   "id": "11_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "Olá! Sou Portugal. Si Brasil desaparece, tres de cada cuatro personas que hablan portugués desaparecen también.",
+   "language": "es"
+  },
+  {
+   "id": "12_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "Mamma mia! Soy Italia. ¡Más de la mitad de los argentinos tienen sangre italiana!",
+   "language": "es"
+  },
+  {
+   "id": "13_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "Bonjour! Soy Francia. Haití es el único país de América que habla francés como yo.",
+   "language": "es"
+  },
+  {
+   "id": "14_USA",
+   "voice": "6cb8801d-259a-4bdc-978f-b45808d58cd3",
+   "text": "Hey! Soy Estados Unidos. ¿Sin México? ¡Casi nueve de cada diez aguacates vienen de allí!",
+   "language": "es"
+  },
+  {
+   "id": "15_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "Hello! Soy Inglaterra. Nosotros inventamos el fútbol… aunque ellos lo juegan mejor.",
+   "language": "es"
+  },
+  {
+   "id": "16_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "Hallo! Soy Alemania. Cuatro Mundiales, y siempre con mucha eficiencia.",
+   "language": "es"
+  },
+  {
+   "id": "17_CHN",
+   "voice": "16212f18-4955-4be9-a6cd-2196ce2c11d1",
+   "text": "Ni hao! Soy China. Siete de cada diez barcos de soja que compro vienen de Brasil.",
+   "language": "es"
+  },
+  {
+   "id": "18_JPN",
+   "voice": "9436e723-612d-4114-aeb0-fa00d4d639bf",
+   "text": "Konnichiwa! Soy Japón. ¡Me encanta el fútbol sudamericano!",
+   "language": "es"
+  },
+  {
+   "id": "19_CAN",
+   "voice": "18f8d87b-0da9-4efa-b504-4580e303f7db",
+   "text": "Hi! Soy Canadá. Sin el Caribe… ¿adónde me voy yo cuando hace frío?",
+   "language": "es"
+  }
+ ]
+}
