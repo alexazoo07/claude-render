@@ -7,7 +7,7 @@ job.json = {"model": "sonic-3", "lines": [{"id": "l01", "voice": "<voice_id>", "
 """
 import json, os, sys, base64, wave, urllib.request, urllib.error
 
-KEY = os.environ.get('CARTESIA_API_KEY', '')
+KEY = os.environ.get('CARTESIA_API_KEY', '').strip()
 VER = '2025-04-16'
 BASE = 'https://api.cartesia.ai'
 OUT = 'out'
@@ -15,7 +15,7 @@ os.makedirs(OUT, exist_ok=True)
 
 def req(method, path, body=None, stream=False):
     data = json.dumps(body).encode() if body is not None else None
-    r = urllib.request.Request(BASE + path, data=data, method=method, headers={'X-API-Key': KEY, 'Cartesia-Version': VER, 'Content-Type': 'application/json'})
+    r = urllib.request.Request(BASE + path, data=data, method=method, headers={'Authorization': 'Bearer ' + KEY, 'X-API-Key': KEY, 'Cartesia-Version': VER, 'Content-Type': 'application/json'})
     try:
         return urllib.request.urlopen(r, timeout=180)
     except urllib.error.HTTPError as e:
@@ -77,5 +77,6 @@ def tts(job_path):
 
 if __name__ == '__main__':
     if not KEY: sys.exit('CARTESIA_API_KEY secret missing')
+    print('key length', len(KEY), 'prefix', KEY[:3])
     if sys.argv[1] == 'list': list_voices()
     else: tts(sys.argv[2])
