@@ -1,4 +1,5 @@
 import React from 'react';
+import './fonts';
 import {Composition} from 'remotion';
 import {Full, FPS} from './Full';
 import J from './beats.json';

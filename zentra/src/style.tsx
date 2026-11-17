@@ -90,18 +90,26 @@ export const Shout: React.FC<{text: string; dur: number; delay?: number; x?: num
   return <div style={{position: 'absolute', left: x, top: y, transform: `translate(-50%,-50%) ${e.transform}`, opacity: e.opacity, filter: e.filter, fontFamily: HEAD, fontWeight: 900, fontSize: size, letterSpacing: '-0.045em', color, whiteSpace: 'nowrap', textShadow: '0 6px 30px rgba(0,0,0,0.5)'}}>{text}</div>;
 };
 
-/* source pill: ★ OFICIAL / 👁 PREVIEWS / ▢ FANS / ● TEORÍA */
+/* source pill: icons are drawn as SVG so they render the same everywhere */
+const Ico: React.FC<{k: string; c: string; s: number}> = ({k, c, s}) => {
+  const p = {width: s, height: s, viewBox: '0 0 24 24', fill: 'none', stroke: c, strokeWidth: 2.4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
+  if (k === 'oficial') return <svg {...p}><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17l-5.6 3 1.1-6.2L2.9 9.4l6.3-.9z" fill={c} stroke="none" /></svg>;
+  if (k === 'previews') return <svg {...p}><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" /><circle cx="12" cy="12" r="3" fill={c} stroke="none" /></svg>;
+  if (k === 'fans') return <svg {...p}><circle cx="9" cy="8" r="3.4" /><path d="M2.5 20c.6-3.8 3.2-5.8 6.5-5.8s5.9 2 6.5 5.8" /><circle cx="17.2" cy="9.2" r="2.6" /><path d="M16.8 14.3c2.6.2 4.3 2 4.8 4.9" /></svg>;
+  if (k === 'prensa') return <svg {...p}><rect x="3" y="4.5" width="15" height="15" rx="2" /><path d="M18 8.5h2.5V18a1.5 1.5 0 01-3 0V8.5" /><path d="M6.5 8.5h8M6.5 12h8M6.5 15.5h5" /></svg>;
+  return <svg {...p}><circle cx="12" cy="12" r="5.5" fill={c} stroke="none" /></svg>;
+};
 export const Pill: React.FC<{kind: 'oficial' | 'previews' | 'fans' | 'teoria' | 'prensa'; dark?: boolean; scale?: number}> = ({kind, dark = true, scale = 1}) => {
   const map = {
-    oficial: {icon: '★', label: 'OFICIAL', color: '#fff'},
-    previews: {icon: '◉', label: 'PREVIEWS', color: '#5ee7ff'},
-    fans: {icon: '▯', label: 'FANS', color: '#fff'},
-    teoria: {icon: '●', label: 'TEORÍA', color: PINK},
-    prensa: {icon: '◆', label: 'PRENSA', color: '#fff'},
+    oficial: {label: 'OFICIAL', color: '#fff'},
+    previews: {label: 'PREVIEWS', color: '#5ee7ff'},
+    fans: {label: 'FANS', color: '#ffd166'},
+    teoria: {label: 'TEORÍA', color: PINK},
+    prensa: {label: 'PRENSA', color: '#fff'},
   }[kind];
   return (
     <span style={{display: 'inline-flex', alignItems: 'center', gap: 8 * scale, background: dark ? NAVY : 'rgba(255,255,255,0.9)', color: map.color, borderRadius: 999, padding: `${5 * scale}px ${14 * scale}px`, fontFamily: BODY, fontWeight: 800, fontSize: 17 * scale, letterSpacing: '0.14em'}}>
-      <span style={{fontSize: 15 * scale, color: map.color}}>{map.icon}</span>{map.label}
+      <Ico k={kind} c={map.color} s={18 * scale} />{map.label}
     </span>
   );
 };

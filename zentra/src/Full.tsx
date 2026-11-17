@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Sequence, Audio, staticFile, interpolate, useCurrentFrame, Img, spring, Easing, OffthreadVideo} from 'remotion';
 import J from './beats.json';
 import {MapScene} from './MapScene';
+import {Kinetic, Stamp, Dossier, NameTag, Board, Chapter, Timeline, Split, ColdWords} from './Extras';
 import {BigTitle, Label, Badge, Shout, QuoteCard, Credit, RecOverlay, GlassCard, Checklist, Pill, PINK, HEAD, BODY, NAVY_DEEP, INK, useF} from './style';
 
 export const FPS = 60;
@@ -23,9 +24,10 @@ const Shot: React.FC<{v: any; len: number; xf: number}> = ({v, len, xf}) => {
   const blur = (v.blur || 0) + (1 - p) * 14;
   const bright = 1 - (v.dim || 0) + (1 - p) * 0.35;
   if (v.map) return <AbsoluteFill style={{opacity: fade}}><MapScene m={v.map} /></AbsoluteFill>;
+  if (v.split) return <AbsoluteFill style={{opacity: fade}}><Split v={v} len={len} /></AbsoluteFill>;
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#000', opacity: fade}}>
-      <OffthreadVideo src={staticFile(`clips/${v.clip}`)} muted
+      <OffthreadVideo src={staticFile(`clips/${v.clip}`)} muted playbackRate={v.rate || 1}
         style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${s * punch})`, transformOrigin: v.origin || '50% 50%', filter: `blur(${blur}px) brightness(${bright})`}} />
     </AbsoluteFill>
   );
@@ -246,19 +248,28 @@ const Overlay: React.FC<{o: any}> = ({o}) => {
     case 'titlecard': return <TitleCard />;
     case 'subscribe': return <Subscribe len={len} />;
     case 'endcard': return <EndCard len={len} />;
+    case 'kinetic': return <Kinetic o={o} len={len} />;
+    case 'stamp': return <Stamp o={o} len={len} />;
+    case 'dossier': return <Dossier o={o} len={len} />;
+    case 'nametag': return <NameTag o={o} len={len} />;
+    case 'board': return <Board o={o} len={len} />;
+    case 'chapter': return <Chapter o={o} len={len} />;
+    case 'timeline': return <Timeline o={o} len={len} />;
+    case 'coldwords': return <ColdWords o={o} len={len} />;
   }
   return null;
 };
 
-const FULLSCREEN = new Set(['titlecard', 'subscribe', 'endcard']);
+const FULLSCREEN = new Set(['titlecard', 'subscribe', 'endcard', 'board']);
 
 /* music: each bed fades in/out over 3 s; everything ducks under the voice and swells on the title / ending */
 const bedVol = (m: any) => (f: number) => {
   const t = m.t0 + f / FPS;
   const fade = Math.min(interpolate(t, [m.t0, m.t0 + 0.05], [0, 1], clamp), interpolate(t, [m.t1 - 3, m.t1], [1, 0], clamp));
-  const DUCK = 0.3, UP = 0.62;
+  // voice sits ~13 dB above the bed: music is full only in the cold open, swells and the ending
+  const DUCK = 0.11, UP = 0.5, COLD = (J as any).cold || 4.25;
   let lvl = DUCK;
-  if (t < 1.2) lvl = interpolate(t, [0, 0.4, 1.2], [0, UP, DUCK], clamp);
+  if (t < COLD + 0.6) lvl = interpolate(t, [0, 0.3, COLD - 0.35, COLD + 0.5], [0, UP, UP, DUCK], {...clamp, easing: Easing.inOut(Easing.sin)});
   for (const [a, b] of (J as any).swells) { if (t >= a - 1 && t <= b + 1) lvl = Math.max(lvl, Math.min(interpolate(t, [a - 1, a + 0.6], [DUCK, UP], {...clamp, easing: Easing.inOut(Easing.sin)}), interpolate(t, [b, b + 1], [UP, DUCK], {...clamp, easing: Easing.inOut(Easing.sin)}))); }
   return lvl * fade;
 };
