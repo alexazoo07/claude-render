@@ -1,0 +1,25 @@
+name: fetch
+on:
+  workflow_dispatch:
+    inputs:
+      urls: {description: 'space separated URLs', required: true}
+      tag: {description: 'output folder', required: true, default: 'music'}
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        run: |
+          mkdir -p /tmp/res/${{ inputs.tag }} && cd /tmp/res/${{ inputs.tag }}
+          for u in ${{ inputs.urls }}; do curl -sSL -A "Mozilla/5.0" -o "$(basename "${u%%\?*}")" "$u" -w "%{http_code} %{size_download} $u\n" || true; done
+          ls -la
+      - name: Push to branch cartesia-out
+        run: |
+          git config user.name render-bot && git config user.email render-bot@users.noreply.github.com
+          git fetch origin cartesia-out
+          git checkout -B cartesia-out origin/cartesia-out
+          rm -rf ${{ inputs.tag }} && cp -r /tmp/res/${{ inputs.tag }} ./${{ inputs.tag }}
+          git add ${{ inputs.tag }} && git commit -qm "fetch ${{ inputs.tag }}" && git push -q origin cartesia-out
