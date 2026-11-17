@@ -138,19 +138,26 @@ const Hearts: React.FC<{f: number; keys: string[]}> = ({f, keys}) => {
 export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const f = useCurrentFrame();
 	const L = tl.lines;
-	let i = L.findIndex((l, j) => f < (L[j + 1]?.start ?? 1e9));
+	const LEAD = 28; // the camera starts flying a bit before the next line is spoken
+	const st = (j: number) => L[j].start - (j > 0 ? LEAD : 0);
+	let i = L.findIndex((l, j) => f < (j + 1 < L.length ? st(j + 1) : 1e9));
 	if (i < 0) i = L.length - 1;
 	const sc = def.scenes[i];
+	const tc = f - st(i);
 	const t = f - L[i].start, len = L[i].end - L[i].start;
 	// whip-zoom camera between scenes
 	const c1 = camFor(sc), c0 = camFor(def.scenes[Math.max(0, i - 1)]);
-	const TR = 26;
-	const e = i === 0 ? 1 : interpolate(t, [0, TR], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
-	const dip = i === 0 ? 0 : Math.sin(Math.PI * e) * 1.25;
+	// camera flight across the map: pan from one place to the next, pulling back just enough to travel
+	const TR = 44;
+	const e = i === 0 ? 1 : interpolate(tc, [0, TR], [0, 1], {...clamp, easing: Easing.inOut(Easing.sin)});
+	const dist = Math.hypot(c1.x - c0.x, c1.y - c0.y);
+	const lzMid = Math.min(Math.log(c0.z), Math.log(c1.z), Math.log(900 / (dist + 1)));
+	const lzLin = (Math.log(c0.z) + Math.log(c1.z)) / 2;
+	const dip = i === 0 ? 0 : Math.sin(Math.PI * e) * Math.max(0, lzLin - lzMid);
 	const lz = Math.log(c0.z) + (Math.log(c1.z) - Math.log(c0.z)) * e - dip;
 	let cam: Cam = {x: c0.x + (c1.x - c0.x) * e, y: c0.y + (c1.y - c0.y) * e, z: Math.exp(lz)};
 	// slow push-in while a scene is on screen
-	cam.z *= 1 + 0.0009 * Math.max(0, t - TR);
+	cam.z *= 1 + 0.0009 * Math.max(0, tc - TR);
 	// hook: zoom out after the explosions
 	const booms = def.booms ?? [];
 	const lastBoom = booms.length ? Math.max(...booms.map((b) => b.at)) : -1;
@@ -159,7 +166,7 @@ export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	let shake = 0;
 	for (const b of booms) shake += interpolate(f - b.at, [0, 4, 22], [0, 14, 0], clamp);
 	cam = {...cam, x: cam.x + (Math.sin(f * 1.7) * shake) / cam.z, y: cam.y + (Math.cos(f * 2.3) * shake) / cam.z};
-	const blur = i === 0 ? 0 : Math.sin(Math.PI * e) * 6;
+	const blur = 0;
 	// fills: flags everywhere (no faces), exploded countries grey
 	const fills: Record<string, Fill> = {};
 	for (const c of ALL) {
@@ -191,7 +198,7 @@ export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 				const isMain = j === 0;
 				const x = isMain && !s.dx && !(sc.spk!.length > 1) ? 540 : p.x + (s.dx ?? 0);
 				const y = isMain && !(sc.spk!.length > 1) ? BALL_Y + (p.y - BALL_Y) * 0.15 : p.y + (s.dy ?? 0);
-				const pin = spring({frame: t - (i === 0 ? 0 : TR - 6) - j * 4, fps: FPS, config: {damping: 8, stiffness: 220, mass: 0.6}});
+				const pin = spring({frame: tc - (i === 0 ? 0 : TR - 4) - j * 4, fps: FPS, config: {damping: 8, stiffness: 220, mass: 0.6}});
 				const preBoom = boom && !s.ghost ? interpolate(f, [boom.at - 4, boom.at + 3], [1, 1.35], clamp) : 1;
 				const mood = s.endMood && t > len * 0.5 ? s.endMood : s.mood;
 				const tk = (s.talker ?? isMain) && talking ? 0.5 + 0.5 * Math.abs(Math.sin(f / 3)) : 0;
