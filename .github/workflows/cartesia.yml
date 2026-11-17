@@ -1,0 +1,26 @@
+name: cartesia
+on:
+  workflow_dispatch:
+    inputs:
+      mode: {description: 'list | tts', required: true, default: 'list'}
+      job: {description: 'path of job json (tts mode)', required: false, default: ''}
+      tag: {description: 'output folder name', required: true, default: 'voices'}
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cartesia
+        env:
+          CARTESIA_API_KEY: ${{ secrets.CARTESIA_API_KEY }}
+        run: python3 cartesia/cartesia.py ${{ inputs.mode }} ${{ inputs.job }}
+      - name: Push result to branch cartesia-out
+        run: |
+          mkdir -p /tmp/res && cp -r out /tmp/res/${{ inputs.tag }}
+          git config user.name render-bot && git config user.email render-bot@users.noreply.github.com
+          git fetch origin cartesia-out || true
+          if git rev-parse --verify origin/cartesia-out >/dev/null 2>&1; then git checkout -B cartesia-out origin/cartesia-out; else git checkout --orphan cartesia-out && git rm -rf . -q; fi
+          rm -rf ${{ inputs.tag }} && cp -r /tmp/res/${{ inputs.tag }} ./${{ inputs.tag }}
+          git add ${{ inputs.tag }} && git commit -qm "cartesia ${{ inputs.tag }}" && git push -q origin cartesia-out
