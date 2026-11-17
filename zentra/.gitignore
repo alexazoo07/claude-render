@@ -2,4 +2,3 @@ node_modules/
 build/
 out/
 *.tmp.mp4
-public/clips/
