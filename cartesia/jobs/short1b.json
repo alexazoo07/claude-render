@@ -1,0 +1,53 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s1b_00_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¿Qué pasaría si todos nosotros… desapareciéramos del fútbol?",
+   "language": "es"
+  },
+  {
+   "id": "s1b_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Diez de los veintitrés Mundiales se quedarían sin campeón!",
+   "language": "es"
+  },
+  {
+   "id": "s1b_02_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "¡Bonjour! Sin Argentina, la final de Catar sería mía. ¡Tendría tres estrellas!",
+   "language": "es"
+  },
+  {
+   "id": "s1b_03_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Mamma mia! Brasil me ganó las finales del setenta y del noventa y cuatro. ¡Podría tener seis!",
+   "language": "es"
+  },
+  {
+   "id": "s1b_04_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "Yo jugué tres finales contra Argentina. ¡La final más repetida de la historia!",
+   "language": "es"
+  },
+  {
+   "id": "s1b_05_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¿Y la mano de Dios? Sin Maradona, en el ochenta y seis igual nos iba mejor.",
+   "language": "es"
+  },
+  {
+   "id": "s1b_06_ESP",
+   "voice": "ca526927-b7c8-4a64-95d7-235d30b7771f",
+   "text": "Pues yo le gané la final del Mundial a Argentina. ¿Y ahora contra quién la juego?",
+   "language": "es"
+  },
+  {
+   "id": "s1b_07_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres sudamericano, deja tu bandera en los comentarios.",
+   "language": "es"
+  }
+ ]
+}
