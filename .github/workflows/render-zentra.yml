@@ -1,0 +1,10 @@
+# Zentra (canal de GTA 6): render en la nube por tramos. Se lanza con un push a la rama zentra-go.
+name: render-zentra
+on:
+  push:
+    branches: [zentra-go]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
