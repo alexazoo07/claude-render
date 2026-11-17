@@ -1,0 +1,1549 @@
+{
+ "p1": {
+  "dur": 44.88,
+  "start": 0.12,
+  "end": 44.76,
+  "sents": [
+   {
+    "t": 0.12,
+    "text": "Estamos a solo unos días de conocer de verdad a Jason y Lucía."
+   },
+   {
+    "t": 3.64,
+    "text": "Ella acaba de salir de la cárcel.",
+    "gap": 0.4
+   },
+   {
+    "t": 5.37,
+    "text": "Él hace trabajitos para narcos en los Keys.",
+    "gap": 0.34
+   },
+   {
+    "t": 7.7,
+    "text": "Y Lucía es la primera mujer protagonista de una historia principal de GTA.",
+    "gap": 0.31
+   },
+   {
+    "t": 11.77,
+    "text": "Un momento histórico.",
+    "gap": 0.43
+   },
+   {
+    "t": 13.01,
+    "text": "Los comparan con Bonnie y Clyde... pero, ¿qué sabemos realmente de ellos?",
+    "gap": 0.33
+   },
+   {
+    "t": 17.41,
+    "text": "Te voy a contar quién es Jason de verdad, por qué Lucía acabó en la penitenciaría de Leonida, el golpe que sale mal y los mete en una conspiración, y por qué compartir cuenta bancaria con tu pareja criminal... puede salir fatal.",
+    "gap": 0.37
+   },
+   {
+    "t": 30.8,
+    "text": "He juntado todo lo que ha dicho Rockstar, lo que cuentan los que ya lo han jugado y lo que se ve en los tráilers.",
+    "gap": 0.78
+   },
+   {
+    "t": 36.39,
+    "text": "Quédate hasta el final, porque te dejo mis teorías sobre cómo puede terminar su historia.",
+    "gap": 0.37
+   },
+   {
+    "t": 41.15,
+    "text": "Trece años esperando una nueva historia en Vice City.",
+    "gap": 0.59
+   },
+   {
+    "t": 44.36,
+    "text": "Es hora.",
+    "gap": 0.44
+   }
+  ],
+  "pauses": [
+   [
+    3.27,
+    3.67
+   ],
+   [
+    5.06,
+    5.4
+   ],
+   [
+    7.42,
+    7.73
+   ],
+   [
+    11.37,
+    11.8
+   ],
+   [
+    12.71,
+    13.04
+   ],
+   [
+    14.59,
+    14.92
+   ],
+   [
+    15.3,
+    15.69
+   ],
+   [
+    17.07,
+    17.44
+   ],
+   [
+    19.2,
+    19.53
+   ],
+   [
+    22.17,
+    22.66
+   ],
+   [
+    25.2,
+    25.73
+   ],
+   [
+    28.91,
+    29.2
+   ],
+   [
+    30.05,
+    30.83
+   ],
+   [
+    34.57,
+    34.89
+   ],
+   [
+    36.05,
+    36.42
+   ],
+   [
+    37.23,
+    37.5
+   ],
+   [
+    40.59,
+    41.18
+   ],
+   [
+    43.95,
+    44.39
+   ]
+  ]
+ },
+ "p2": {
+  "dur": 15.52,
+  "start": 0.12,
+  "end": 15.48,
+  "sents": [
+   {
+    "t": 0.12,
+    "text": "Antes de arrancar, una regla."
+   },
+   {
+    "t": 1.97,
+    "text": "Si algo lo ha dicho Rockstar, vas a ver este icono en pantalla.",
+    "gap": 0.36
+   },
+   {
+    "t": 5.37,
+    "text": "Si lo cuentan los que ya lo han jugado, este otro.",
+    "gap": 0.31
+   },
+   {
+    "t": 8.19,
+    "text": "Si sale de la comunidad de fans, este.",
+    "gap": 0.43
+   },
+   {
+    "t": 10.74,
+    "text": "Y si es teoría mía, te lo voy a decir bien claro: es solo mi teoría.",
+    "gap": 0.37
+   },
+   {
+    "t": 14.75,
+    "text": "Vamos con ellos.",
+    "gap": 0.34
+   }
+  ],
+  "pauses": [
+   [
+    1.64,
+    2.0
+   ],
+   [
+    5.09,
+    5.4
+   ],
+   [
+    7.79,
+    8.22
+   ],
+   [
+    10.4,
+    10.77
+   ],
+   [
+    13.11,
+    13.41
+   ],
+   [
+    14.44,
+    14.78
+   ]
+  ]
+ },
+ "p3": {
+  "dur": 73.36,
+  "start": 0.11,
+  "end": 73.19,
+  "sents": [
+   {
+    "t": 0.11,
+    "text": "Empecemos por él."
+   },
+   {
+    "t": 1.21,
+    "text": "Jason Duval.",
+    "gap": 0.43
+   },
+   {
+    "t": 2.7,
+    "text": "Rockstar lo resume en una frase: Jason quiere una vida fácil, pero las cosas no paran de complicarse.",
+    "gap": 0.78
+   },
+   {
+    "t": 8.82,
+    "text": "Creció rodeado de estafadores y delincuentes.",
+    "gap": 0.58
+   },
+   {
+    "t": 11.63,
+    "text": "Se metió en el ejército para enderezarse... y no, no salió bien.",
+    "gap": 0.37
+   },
+   {
+    "t": 15.55,
+    "text": "En el tráiler de lanzamiento lo dice él mismo: se metió en problemas en el ejército.",
+    "gap": 0.62
+   },
+   {
+    "t": 20.1,
+    "text": "Y a la gente como él, no le dan préstamos ni nada.",
+    "gap": 0.45
+   },
+   {
+    "t": 23.05,
+    "text": "Así que acabó en los Keys, haciendo lo que mejor sabe hacer: trabajar para los narcos de la zona.",
+    "gap": 0.43
+   },
+   {
+    "t": 28.4,
+    "text": "¿Y dónde vive?",
+    "gap": 0.53
+   },
+   {
+    "t": 29.47,
+    "text": "En una casa que ni siquiera es suya.",
+    "gap": 0.49
+   },
+   {
+    "t": 31.54,
+    "text": "Es de Brian Heder, un narco de la vieja escuela que todavía mueve mercancía desde su astillero, junto a su tercera esposa, Lori.",
+    "gap": 0.41
+   },
+   {
+    "t": 38.74,
+    "text": "Brian le deja vivir sin pagar alquiler, siempre que le eche una mano con algún que otro asunto... y que se pase de vez en cuando a tomarse la sangría de Lori.",
+    "gap": 0.65
+   },
+   {
+    "t": 46.75,
+    "text": "Un trato justo, ¿no?",
+    "gap": 0.5
+   },
+   {
+    "t": 47.98,
+    "text": "En su círculo también está Cal Hampton, su mejor amigo.",
+    "gap": 0.35
+   },
+   {
+    "t": 51.16,
+    "text": "A Cal le encanta quedarse en casa, espiando las comunicaciones de la Guardia Costera con unas cervezas y unas pestañas privadas abiertas.",
+    "gap": 0.41
+   },
+   {
+    "t": 58.66,
+    "text": "Sí.",
+    "gap": 0.25
+   },
+   {
+    "t": 59.31,
+    "text": "Esas pestañas.",
+    "gap": 0.5
+   },
+   {
+    "t": 60.9,
+    "text": "Rockstar dice que Cal está feliz en la marea baja de América.",
+    "gap": 0.79
+   },
+   {
+    "t": 64.55,
+    "text": "Pero Jason tiene planes más grandes.",
+    "gap": 0.55
+   },
+   {
+    "t": 66.58,
+    "text": "Y aquí viene lo importante.",
+    "gap": 0.3
+   },
+   {
+    "t": 68.29,
+    "text": "Según Rockstar, conocer a Lucía puede ser lo mejor... o lo peor que le ha pasado en la vida.",
+    "gap": 0.48
+   }
+  ],
+  "pauses": [
+   [
+    0.81,
+    1.24
+   ],
+   [
+    1.95,
+    2.73
+   ],
+   [
+    4.23,
+    4.6
+   ],
+   [
+    6.11,
+    6.45
+   ],
+   [
+    8.27,
+    8.85
+   ],
+   [
+    11.29,
+    11.66
+   ],
+   [
+    13.44,
+    13.73
+   ],
+   [
+    13.95,
+    14.19
+   ],
+   [
+    14.96,
+    15.58
+   ],
+   [
+    17.62,
+    17.97
+   ],
+   [
+    19.68,
+    20.13
+   ],
+   [
+    22.65,
+    23.08
+   ],
+   [
+    24.31,
+    24.51
+   ],
+   [
+    25.91,
+    26.22
+   ],
+   [
+    27.9,
+    28.43
+   ],
+   [
+    29.01,
+    29.5
+   ],
+   [
+    31.16,
+    31.57
+   ],
+   [
+    32.5,
+    32.73
+   ],
+   [
+    36.26,
+    36.51
+   ],
+   [
+    38.12,
+    38.77
+   ],
+   [
+    40.65,
+    40.85
+   ],
+   [
+    43.32,
+    43.69
+   ],
+   [
+    46.28,
+    46.78
+   ],
+   [
+    47.66,
+    48.01
+   ],
+   [
+    50.78,
+    51.19
+   ],
+   [
+    53.09,
+    53.3
+   ],
+   [
+    58.44,
+    58.69
+   ],
+   [
+    58.84,
+    59.34
+   ],
+   [
+    60.14,
+    60.93
+   ],
+   [
+    64.03,
+    64.58
+   ],
+   [
+    66.31,
+    66.61
+   ],
+   [
+    67.84,
+    68.32
+   ],
+   [
+    71.25,
+    71.51
+   ]
+  ]
+ },
+ "p4": {
+  "dur": 72.24,
+  "start": 0.14,
+  "end": 72.02,
+  "sents": [
+   {
+    "t": 0.14,
+    "text": "Ahora, ella."
+   },
+   {
+    "t": 1.62,
+    "text": "Lucía Caminos.",
+    "gap": 0.59
+   },
+   {
+    "t": 3.1,
+    "text": "Y esta frase me encanta: su padre le enseñó a pelear en cuanto aprendió a caminar.",
+    "gap": 0.59
+   },
+   {
+    "t": 7.65,
+    "text": "Y desde entonces, la vida no ha dejado de lanzarle golpes.",
+    "gap": 0.43
+   },
+   {
+    "t": 11.54,
+    "text": "Lucía viene de Liberty City, el Nueva York de GTA.",
+    "gap": 0.78
+   },
+   {
+    "t": 14.59,
+    "text": "Y según Rockstar, quiere la buena vida con la que su madre soñaba desde aquellos días.",
+    "gap": 0.45
+   },
+   {
+    "t": 19.33,
+    "text": "¿Por qué acabó en la cárcel?",
+    "gap": 0.53
+   },
+   {
+    "t": 20.81,
+    "text": "Rockstar solo dice esto: luchar por su familia la llevó a la penitenciaría de Leonida.",
+    "gap": 0.48
+   },
+   {
+    "t": 26.03,
+    "text": "¿Qué hizo exactamente?",
+    "gap": 0.39
+   },
+   {
+    "t": 28.27,
+    "text": "No lo sabemos.",
+    "gap": 0.3
+   },
+   {
+    "t": 29.16,
+    "text": "¿Y cómo salió?",
+    "gap": 0.26
+   },
+   {
+    "t": 31.71,
+    "text": "Según su descripción... por pura suerte.",
+    "gap": 0.4
+   },
+   {
+    "t": 33.44,
+    "text": "Eso es todo lo que suelta Rockstar.",
+    "gap": 0.29
+   },
+   {
+    "t": 34.42,
+    "text": "Sospechoso, ¿no?",
+    "gap": 0.23
+   },
+   {
+    "t": 37.17,
+    "text": "En el primer tráiler la vemos con el uniforme de presa, hablando con una trabajadora social.",
+    "gap": 0.24
+   },
+   {
+    "t": 39.31,
+    "text": "Y ahí ya entendimos que esta historia iba a ser distinta.",
+    "gap": 0.62
+   },
+   {
+    "t": 42.75,
+    "text": "Porque Lucía es la primera protagonista de GTA con voz propia, pasado propio y peso real en los diálogos.",
+    "gap": 0.5
+   },
+   {
+    "t": 49.07,
+    "text": "Y en cuanto a personalidad, Rockstar le contó a la revista LOVE algo clave: Lucía va a por lo que quiere y empuja hasta conseguirlo.",
+    "gap": 0.56
+   },
+   {
+    "t": 56.63,
+    "text": "Jason, en cambio, suele reaccionar a lo que le pasa.",
+    "gap": 0.52
+   },
+   {
+    "t": 60.83,
+    "text": "Ella decide.",
+    "gap": 0.37
+   },
+   {
+    "t": 62.24,
+    "text": "Él se deja llevar.",
+    "gap": 0.61
+   },
+   {
+    "t": 63.79,
+    "text": "Los guionistas lo dijeron así: querían que los dos fueran vulnerables, duros, imperfectos... que acertaran a veces, se equivocaran otras, y aprendieran el uno del otro.",
+    "gap": 0.3
+   }
+  ],
+  "pauses": [
+   [
+    0.53,
+    0.74
+   ],
+   [
+    1.06,
+    1.65
+   ],
+   [
+    2.54,
+    3.13
+   ],
+   [
+    4.14,
+    4.5
+   ],
+   [
+    7.25,
+    7.68
+   ],
+   [
+    10.79,
+    11.57
+   ],
+   [
+    12.89,
+    13.11
+   ],
+   [
+    14.17,
+    14.62
+   ],
+   [
+    15.43,
+    15.78
+   ],
+   [
+    18.83,
+    19.36
+   ],
+   [
+    20.36,
+    20.84
+   ],
+   [
+    22.16,
+    22.59
+   ],
+   [
+    25.67,
+    26.06
+   ],
+   [
+    27.03,
+    27.25
+   ],
+   [
+    28.0,
+    28.3
+   ],
+   [
+    28.93,
+    29.19
+   ],
+   [
+    30.27,
+    30.53
+   ],
+   [
+    31.34,
+    31.74
+   ],
+   [
+    33.18,
+    33.47
+   ],
+   [
+    34.22,
+    34.45
+   ],
+   [
+    36.96,
+    37.2
+   ],
+   [
+    38.72,
+    39.34
+   ],
+   [
+    42.28,
+    42.78
+   ],
+   [
+    48.54,
+    49.1
+   ],
+   [
+    52.76,
+    53.25
+   ],
+   [
+    56.14,
+    56.66
+   ],
+   [
+    57.76,
+    58.06
+   ],
+   [
+    59.59,
+    59.87
+   ],
+   [
+    60.49,
+    60.86
+   ],
+   [
+    61.66,
+    62.27
+   ],
+   [
+    63.52,
+    63.82
+   ],
+   [
+    67.28,
+    67.82
+   ],
+   [
+    70.33,
+    70.73
+   ]
+  ]
+ },
+ "p5": {
+  "dur": 60.88,
+  "start": 0.1,
+  "end": 60.7,
+  "sents": [
+   {
+    "t": 0.1,
+    "text": "¿Y qué son exactamente?"
+   },
+   {
+    "t": 1.53,
+    "text": "Pareja, sí.",
+    "gap": 0.36
+   },
+   {
+    "t": 2.74,
+    "text": "Pero con historia.",
+    "gap": 0.39
+   },
+   {
+    "t": 3.84,
+    "text": "Rob Nelson, de Rockstar North, le dijo a la revista Edge que el juego empieza con ellos queriendo estar juntos, y dándole otra oportunidad a lo suyo.",
+    "gap": 0.43
+   },
+   {
+    "t": 12.03,
+    "text": "Otra oportunidad.",
+    "gap": 0.43
+   },
+   {
+    "t": 13.45,
+    "text": "O sea, que ya lo intentaron antes.",
+    "gap": 0.42
+   },
+   {
+    "t": 15.67,
+    "text": "Por eso muchos fans creen que son ex que vuelven a intentarlo... pero ojo, eso Rockstar no lo ha dicho.",
+    "gap": 0.44
+   },
+   {
+    "t": 21.48,
+    "text": "Y la relación no es solo historia, es una mecánica.",
+    "gap": 0.3
+   },
+   {
+    "t": 24.81,
+    "text": "Hay una escala de cercanía que sube cuando pasan tiempo juntos: paseos por la playa, la bici, el gimnasio, conducir.",
+    "gap": 0.54
+   },
+   {
+    "t": 33.18,
+    "text": "Puedes cambiar entre Jason y Lucía cuando la historia lo permite.",
+    "gap": 0.74
+   },
+   {
+    "t": 36.49,
+    "text": "Y lo más loco: según los previews, pueden romper como pareja... pero siguen siendo socios en el crimen.",
+    "gap": 0.42
+   },
+   {
+    "t": 40.36,
+    "text": "Ella te deja, pero el atraco del jueves sigue en pie.",
+    "gap": 0.26
+   },
+   {
+    "t": 42.71,
+    "text": "También comparten las finanzas.",
+    "gap": 0.6
+   },
+   {
+    "t": 47.48,
+    "text": "Una cuenta con tu pareja criminal.",
+    "gap": 0.48
+   },
+   {
+    "t": 49.42,
+    "text": "¿Qué podría salir mal?",
+    "gap": 0.36
+   },
+   {
+    "t": 51.05,
+    "text": "Y hasta para escapar de la policía funcionan en equipo: si los buscan como un hombre y una mujer, pueden separarse para despistar.",
+    "gap": 0.65
+   },
+   {
+    "t": 56.07,
+    "text": "¿Romántico?",
+    "gap": 0.32
+   },
+   {
+    "t": 57.83,
+    "text": "No.",
+    "gap": 0.28
+   },
+   {
+    "t": 58.65,
+    "text": "¿Efectivo?",
+    "gap": 0.2
+   },
+   {
+    "t": 59.29,
+    "text": "Muchísimo.",
+    "gap": 0.34
+   }
+  ],
+  "pauses": [
+   [
+    1.2,
+    1.56
+   ],
+   [
+    1.95,
+    2.16
+   ],
+   [
+    2.38,
+    2.77
+   ],
+   [
+    3.44,
+    3.87
+   ],
+   [
+    5.63,
+    5.96
+   ],
+   [
+    9.59,
+    9.86
+   ],
+   [
+    11.63,
+    12.06
+   ],
+   [
+    13.06,
+    13.48
+   ],
+   [
+    13.88,
+    14.11
+   ],
+   [
+    15.26,
+    15.7
+   ],
+   [
+    18.58,
+    19.18
+   ],
+   [
+    19.59,
+    19.92
+   ],
+   [
+    21.21,
+    21.51
+   ],
+   [
+    23.19,
+    23.4
+   ],
+   [
+    24.3,
+    24.84
+   ],
+   [
+    28.0,
+    28.45
+   ],
+   [
+    32.47,
+    33.21
+   ],
+   [
+    36.1,
+    36.52
+   ],
+   [
+    37.2,
+    37.71
+   ],
+   [
+    38.61,
+    38.86
+   ],
+   [
+    40.13,
+    40.39
+   ],
+   [
+    42.14,
+    42.74
+   ],
+   [
+    43.43,
+    43.67
+   ],
+   [
+    45.39,
+    45.73
+   ],
+   [
+    47.03,
+    47.51
+   ],
+   [
+    49.09,
+    49.45
+   ],
+   [
+    50.43,
+    51.08
+   ],
+   [
+    53.6,
+    53.96
+   ],
+   [
+    55.78,
+    56.1
+   ],
+   [
+    57.58,
+    57.86
+   ],
+   [
+    58.48,
+    58.68
+   ],
+   [
+    58.98,
+    59.32
+   ]
+  ]
+ },
+ "p6": {
+  "dur": 118.24,
+  "start": 0.1,
+  "end": 118.02,
+  "sents": [
+   {
+    "t": 0.1,
+    "text": "Vamos con la historia."
+   },
+   {
+    "t": 1.23,
+    "text": "La premisa oficial dice así: Jason y Lucía siempre han sabido que la baraja está trucada en su contra.",
+    "gap": 0.34
+   },
+   {
+    "t": 7.23,
+    "text": "Pero cuando un golpe fácil sale mal, acaban en el lado más oscuro del lugar más soleado de América.",
+    "gap": 0.44
+   },
+   {
+    "t": 13.09,
+    "text": "En medio de una conspiración criminal que se extiende por todo Leonida.",
+    "gap": 0.37
+   },
+   {
+    "t": 16.8,
+    "text": "Y para sobrevivir, van a tener que confiar el uno en el otro más que nunca.",
+    "gap": 0.38
+   },
+   {
+    "t": 21.1,
+    "text": "Pero no empiezan a lo grande.",
+    "gap": 0.5
+   },
+   {
+    "t": 22.61,
+    "text": "Según el preview de The Guardian, al principio solo pueden hacer el puente a coches baratos y forzar cerraduras básicas.",
+    "gap": 0.39
+   },
+   {
+    "t": 28.89,
+    "text": "Tiendas, gasolineras.",
+    "gap": 0.3
+   },
+   {
+    "t": 31.07,
+    "text": "Los coches caros y los bancos hay que ganárselos.",
+    "gap": 0.58
+   },
+   {
+    "t": 33.73,
+    "text": "Como dijo Rob Nelson: son una pareja joven con la espalda contra la pared.",
+    "gap": 0.31
+   },
+   {
+    "t": 38.06,
+    "text": "Y en el Extended Look de Rockstar vimos cómo podría torcerse todo.",
+    "gap": 0.62
+   },
+   {
+    "t": 42.27,
+    "text": "Eso sí, no tiene por qué estar en orden.",
+    "gap": 0.5
+   },
+   {
+    "t": 44.56,
+    "text": "Trabajan para Boobie Ike, una leyenda de Vice City con club de striptease, inmuebles y un estudio de grabación junto a Dre'Quan Priest.",
+    "gap": 0.49
+   },
+   {
+    "t": 52.22,
+    "text": "Van a recoger algo a un edificio ruinoso, alguien les avisa de que viene un grupo especial... y la policía entra disparando.",
+    "gap": 0.64
+   },
+   {
+    "t": 58.81,
+    "text": "No arrestando.",
+    "gap": 0.43
+   },
+   {
+    "t": 60.04,
+    "text": "Disparando.",
+    "gap": 0.45
+   },
+   {
+    "t": 61.28,
+    "text": "Y en medio del caos, Lucía pregunta si uno de los agentes era Méndez.",
+    "gap": 0.56
+   },
+   {
+    "t": 65.15,
+    "text": "Como si lo conociera de antes.",
+    "gap": 0.45
+   },
+   {
+    "t": 66.61,
+    "text": "Guárdate ese nombre.",
+    "gap": 0.24
+   },
+   {
+    "t": 68.23,
+    "text": "Después, una cena en una azotea con Brian y Lori, que parece que les van a presentar a alguien que puede ayudarles.",
+    "gap": 0.67
+   },
+   {
+    "t": 74.08,
+    "text": "Un golpe con Raúl Bautista, un atracador de bancos veterano siempre buscando talento, que termina en una persecución por todo Vice City.",
+    "gap": 0.43
+   },
+   {
+    "t": 82.01,
+    "text": "Y un trabajo de seguridad en la inauguración de la primera sede americana de Megamundo... donde unos enmascarados atacan la fiesta y los separan.",
+    "gap": 0.72
+   },
+   {
+    "t": 89.71,
+    "text": "Un golpe que sale mal.",
+    "gap": 0.8
+   },
+   {
+    "t": 91.2,
+    "text": "Policías que disparan primero.",
+    "gap": 0.52
+   },
+   {
+    "t": 92.87,
+    "text": "Un agente que quizá conoce a Lucía.",
+    "gap": 0.31
+   },
+   {
+    "t": 95.62,
+    "text": "Y una empresa gigante en medio.",
+    "gap": 0.56
+   },
+   {
+    "t": 97.62,
+    "text": "Tiene toda la pinta de conspiración.",
+    "gap": 0.68
+   },
+   {
+    "t": 99.89,
+    "text": "Y ojo con el perfil criminal: Rockstar dice que influye en cómo se desarrolla la historia.",
+    "gap": 0.58
+   },
+   {
+    "t": 107.07,
+    "text": "Pero, como lo resumió Edge: puedes elegir qué tipo de criminal eres... no si lo eres.",
+    "gap": 0.56
+   },
+   {
+    "t": 112.02,
+    "text": "Y un detalle que me encantó: dejar el crimen es uno de los temas centrales de la historia.",
+    "gap": 0.31
+   },
+   {
+    "t": 115.4,
+    "text": "Más Red Dead Redemption 2 que GTA 5.",
+    "gap": 0.51
+   }
+  ],
+  "pauses": [
+   [
+    0.92,
+    1.26
+   ],
+   [
+    2.65,
+    3.24
+   ],
+   [
+    6.82,
+    7.26
+   ],
+   [
+    8.92,
+    9.31
+   ],
+   [
+    12.75,
+    13.12
+   ],
+   [
+    16.45,
+    16.83
+   ],
+   [
+    17.7,
+    17.97
+   ],
+   [
+    20.63,
+    21.13
+   ],
+   [
+    22.25,
+    22.64
+   ],
+   [
+    24.06,
+    24.26
+   ],
+   [
+    28.62,
+    28.92
+   ],
+   [
+    30.52,
+    31.1
+   ],
+   [
+    33.45,
+    33.76
+   ],
+   [
+    34.77,
+    35.17
+   ],
+   [
+    37.47,
+    38.09
+   ],
+   [
+    40.14,
+    40.36
+   ],
+   [
+    41.8,
+    42.3
+   ],
+   [
+    44.1,
+    44.59
+   ],
+   [
+    45.79,
+    45.99
+   ],
+   [
+    48.46,
+    48.72
+   ],
+   [
+    51.61,
+    52.25
+   ],
+   [
+    56.5,
+    57.03
+   ],
+   [
+    58.41,
+    58.84
+   ],
+   [
+    59.62,
+    60.07
+   ],
+   [
+    60.75,
+    61.31
+   ],
+   [
+    64.73,
+    65.18
+   ],
+   [
+    66.4,
+    66.64
+   ],
+   [
+    67.59,
+    68.26
+   ],
+   [
+    70.89,
+    71.3
+   ],
+   [
+    73.68,
+    74.11
+   ],
+   [
+    78.67,
+    79.05
+   ],
+   [
+    81.32,
+    82.04
+   ],
+   [
+    86.04,
+    86.3
+   ],
+   [
+    88.94,
+    89.74
+   ],
+   [
+    90.71,
+    91.23
+   ],
+   [
+    92.59,
+    92.9
+   ],
+   [
+    95.09,
+    95.65
+   ],
+   [
+    96.97,
+    97.65
+   ],
+   [
+    99.34,
+    99.92
+   ],
+   [
+    101.21,
+    101.44
+   ],
+   [
+    104.31,
+    105.0
+   ],
+   [
+    106.54,
+    107.1
+   ],
+   [
+    109.0,
+    109.32
+   ],
+   [
+    110.15,
+    110.54
+   ],
+   [
+    111.74,
+    112.05
+   ],
+   [
+    114.92,
+    115.43
+   ]
+  ]
+ },
+ "p7": {
+  "dur": 53.04,
+  "start": 0.11,
+  "end": 52.91,
+  "sents": [
+   {
+    "t": 0.11,
+    "text": "Y como te prometí, mis teorías."
+   },
+   {
+    "t": 2.17,
+    "text": "Ojo, que son solo eso: teorías mías.",
+    "gap": 0.37
+   },
+   {
+    "t": 5.06,
+    "text": "Teoría número uno: Méndez es el gran villano, y la clave del pasado de Lucía.",
+    "gap": 0.53
+   },
+   {
+    "t": 9.6,
+    "text": "Si ese agente ya la conocía, puede que su condena no fuera tan limpia como parece... y que eso de salir por pura suerte, tampoco.",
+    "gap": 0.28
+   },
+   {
+    "t": 16.49,
+    "text": "Teoría número dos: Megamundo está detrás de la conspiración.",
+    "gap": 0.34
+   },
+   {
+    "t": 19.99,
+    "text": "Una empresa gigante que aterriza en Vice City, un ataque justo en su inauguración... demasiada casualidad.",
+    "gap": 0.44
+   },
+   {
+    "t": 25.14,
+    "text": "Teoría número tres: el final Bonnie y Clyde.",
+    "gap": 0.34
+   },
+   {
+    "t": 26.59,
+    "text": "La pareja original acabó fatal.",
+    "gap": 0.46
+   },
+   {
+    "t": 29.45,
+    "text": "Y Rockstar ya nos rompió el corazón con Arthur Morgan.",
+    "gap": 0.42
+   },
+   {
+    "t": 34.5,
+    "text": "Yo no descarto que uno de los dos no llegue al final.",
+    "gap": 0.6
+   },
+   {
+    "t": 36.98,
+    "text": "Y la teoría número cuatro, la que más me gusta: el final depende de ti.",
+    "gap": 0.41
+   },
+   {
+    "t": 39.56,
+    "text": "Rob Nelson dijo que la relación es tuya para mantenerla... o para perderla.",
+    "gap": 0.4
+   },
+   {
+    "t": 45.89,
+    "text": "Rockstar no ha confirmado varios finales, pero tampoco lo ha negado.",
+    "gap": 0.58
+   },
+   {
+    "t": 48.05,
+    "text": "¿Y tú qué crees?",
+    "gap": 0.22
+   },
+   {
+    "t": 49.69,
+    "text": "¿Sobreviven los dos?",
+    "gap": 0.56
+   },
+   {
+    "t": 51.71,
+    "text": "Déjamelo en los comentarios.",
+    "gap": 0.36
+   }
+  ],
+  "pauses": [
+   [
+    1.83,
+    2.2
+   ],
+   [
+    2.51,
+    2.71
+   ],
+   [
+    3.59,
+    3.81
+   ],
+   [
+    4.56,
+    5.09
+   ],
+   [
+    5.86,
+    6.22
+   ],
+   [
+    7.51,
+    7.75
+   ],
+   [
+    9.35,
+    9.63
+   ],
+   [
+    13.55,
+    13.8
+   ],
+   [
+    16.18,
+    16.52
+   ],
+   [
+    17.34,
+    17.76
+   ],
+   [
+    19.58,
+    20.02
+   ],
+   [
+    22.26,
+    22.51
+   ],
+   [
+    24.83,
+    25.17
+   ],
+   [
+    26.16,
+    26.62
+   ],
+   [
+    27.49,
+    27.84
+   ],
+   [
+    29.06,
+    29.48
+   ],
+   [
+    30.98,
+    31.48
+   ],
+   [
+    33.93,
+    34.53
+   ],
+   [
+    36.6,
+    37.01
+   ],
+   [
+    38.14,
+    38.34
+   ],
+   [
+    39.19,
+    39.59
+   ],
+   [
+    41.1,
+    41.56
+   ],
+   [
+    44.3,
+    44.54
+   ],
+   [
+    45.34,
+    45.92
+   ],
+   [
+    47.86,
+    48.08
+   ],
+   [
+    49.16,
+    49.72
+   ],
+   [
+    51.38,
+    51.74
+   ]
+  ]
+ },
+ "p8": {
+  "dur": 21.6,
+  "start": 0.12,
+  "end": 21.53,
+  "sents": [
+   {
+    "t": 0.12,
+    "text": "Y esto es todo lo que sabemos de Jason y Lucía antes del lanzamiento."
+   },
+   {
+    "t": 4.11,
+    "text": "Un ex militar que solo quiere una vida tranquila.",
+    "gap": 0.53
+   },
+   {
+    "t": 6.8,
+    "text": "Una luchadora recién salida de la cárcel.",
+    "gap": 0.47
+   },
+   {
+    "t": 9.53,
+    "text": "Y una conspiración que lo va a poner todo patas arriba.",
+    "gap": 0.65
+   },
+   {
+    "t": 12.67,
+    "text": "El diecinueve de noviembre por fin los conocemos de verdad.",
+    "gap": 0.45
+   },
+   {
+    "t": 16.1,
+    "text": "Y yo voy a comprobar cada cosa que te he contado aquí.",
+    "gap": 0.64
+   },
+   {
+    "t": 18.89,
+    "text": "Si quieres verlo, suscríbete.",
+    "gap": 0.4
+   },
+   {
+    "t": 20.65,
+    "text": "Nos vemos en Leonida.",
+    "gap": 0.3
+   }
+  ],
+  "pauses": [
+   [
+    3.61,
+    4.14
+   ],
+   [
+    6.36,
+    6.83
+   ],
+   [
+    8.91,
+    9.56
+   ],
+   [
+    12.25,
+    12.7
+   ],
+   [
+    15.49,
+    16.13
+   ],
+   [
+    18.52,
+    18.92
+   ],
+   [
+    20.38,
+    20.68
+   ]
+  ]
+ }
+}

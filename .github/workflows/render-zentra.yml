@@ -1,10 +1,112 @@
-# Zentra (canal de GTA 6): render en la nube por tramos. Se lanza con un push a la rama zentra-go.
+# Zentra (canal de GTA 6): render en la nube por tramos (hasta 20 máquinas a la vez).
+# Proyecto en zentra/. Se lanza haciendo push a la rama zentra-go; los ajustes van en zentra/render.json.
+# Resultado: artefacto "final" y rama out-zentra-<comp> con el MP4 partido en trozos de 90 MB.
 name: render-zentra
+run-name: zentra ${{ github.sha }}
+
 on:
   push:
     branches: [zentra-go]
+
+defaults:
+  run: { working-directory: zentra }
+
 jobs:
-  ping:
+  plan:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+      comp: ${{ steps.m.outputs.comp }}
+      scale: ${{ steps.m.outputs.scale }}
     steps:
-      - run: echo ok
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: zentra/render.json }
+      - id: m
+        run: |
+          python3 - <<'PY'
+          import json, math, os
+          c = json.load(open('render.json'))
+          total, n, s0 = int(c['frames']), max(1, min(20, int(c.get('machines', 20)))), int(c.get('start', 0))
+          size = math.ceil((total - s0) / n)
+          inc = [{'i': f'{k:02d}', 's': s, 'e': min(total - 1, s + size - 1)} for k, s in enumerate(range(s0, total, size))]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('matrix=' + json.dumps({'include': inc}) + '\n')
+              f.write('comp=' + c['comp'] + '\n')
+              f.write('scale=' + str(c.get('scale', 1)) + '\n')
+          PY
+
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: zentra }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: zentra/package-lock.json }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: npx remotion bundle src/index.ts --out-dir build --public-dir public --log=error
+      - name: Tramo ${{ matrix.s }}-${{ matrix.e }}
+        run: |
+          for t in 1 2 3; do
+            npx remotion render build "${{ needs.plan.outputs.comp }}" part.mp4 --frames=${{ matrix.s }}-${{ matrix.e }} \
+              --codec=h264 --crf=14 --x264-preset=slow --pixel-format=yuv420p --color-space=bt709 \
+              --scale=${{ needs.plan.outputs.scale }} --jpeg-quality=95 --muted --concurrency=$(nproc) \
+              --offthreadvideo-cache-size-in-bytes=1500000000 --timeout=180000 --log=error && exit 0
+            echo "intento $t fallido"; rm -f part.mp4
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part_${{ matrix.i }}', path: zentra/part.mp4, retention-days: 1, compression-level: 0 }
+
+  audio:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: zentra }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: zentra/package-lock.json }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: npx remotion bundle src/index.ts --out-dir build --public-dir public --log=error
+      - run: npx remotion render build "${{ needs.plan.outputs.comp }}" audio.wav --codec=wav --concurrency=$(nproc) --timeout=180000 --log=error
+      - uses: actions/upload-artifact@v4
+        with: { name: audio, path: zentra/audio.wav, retention-days: 1 }
+
+  merge:
+    needs: [plan, render, audio]
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+        working-directory: .
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'part_*', path: parts }
+      - uses: actions/download-artifact@v4
+        with: { name: audio, path: . }
+      - name: Unir tramos + audio masterizado (−14 LUFS)
+        working-directory: .
+        run: |
+          for d in $(ls -d parts/part_* | sort); do echo "file '$PWD/$d/part.mp4'"; done > list.txt
+          ffmpeg -v error -y -f concat -safe 0 -i list.txt -c copy video.mp4
+          ffmpeg -v error -y -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy \
+            -af "alimiter=limit=0.89:level=false,loudnorm=I=-14:TP=-1.5:LRA=11" \
+            -c:a aac -b:a 320k -ar 48000 -movflags +faststart -shortest final.mp4
+          ffprobe -v error -count_packets -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_read_packets -show_entries format=duration,size -of compact final.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: final, path: final.mp4, retention-days: 3, compression-level: 0 }
+      - name: Subir a la rama out-zentra-<comp> en trozos de 90 MB
+        working-directory: .
+        run: |
+          B="out-zentra-${{ needs.plan.outputs.comp }}"
+          mkdir -p /tmp/o && cd /tmp/o && git init -q && git checkout -q -b "$B"
+          split -b 90M -d -a 3 "$GITHUB_WORKSPACE/final.mp4" part_
+          md5sum "$GITHUB_WORKSPACE/final.mp4" | cut -d' ' -f1 > md5
+          git add . && git -c user.name=render -c user.email=render@users.noreply.github.com commit -q -m "$B"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "$B"
