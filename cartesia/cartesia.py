@@ -77,6 +77,6 @@ def tts(job_path):
 
 if __name__ == '__main__':
     if not KEY: sys.exit('CARTESIA_API_KEY secret missing')
-    print('key length', len(KEY), 'prefix', KEY[:3])
+    print('key length', len(KEY))
     if sys.argv[1] == 'list': list_voices()
     else: tts(sys.argv[2])
