@@ -34,6 +34,7 @@ export const PAL: Record<string, string[]> = {
 	BRA: ['#009C3B', '#FFDF00', '#002776', '#FFFFFF'], ARG: ['#74ACDF', '#FFFFFF', '#F6B40E'], URY: ['#0038A8', '#FFFFFF', '#FCD116'], COL: ['#FCD116', '#003893', '#CE1126'],
 	CHL: ['#D52B1E', '#FFFFFF', '#0039A6'], PER: ['#D91023', '#FFFFFF'], ECU: ['#FFDD00', '#034EA2', '#ED1C24'], PRY: ['#D52B1E', '#FFFFFF', '#0038A8'],
 	VEN: ['#FFCC00', '#00247D', '#CF142B', '#FFFFFF'], BOL: ['#D52B1E', '#F9E300', '#007934'], GUY: ['#009E49', '#FCD116', '#CE1126'], SUR: ['#377E3F', '#FFFFFF', '#B40A2D', '#ECC81D'], GUF: ['#0055A4', '#FFFFFF', '#EF4135'],
+	ESP: ['#AA151B', '#F1BF00', '#AA151B', '#F1BF00', '#FFFFFF'],
 };
 export const center = (k: string) => { const b = mainBox(k); return {x: (b[0] + b[2]) / 2, y: (b[1] + b[3]) / 2, w: b[2] - b[0], h: b[3] - b[1]}; };
 export const toScr = (c: Cam, x: number, y: number) => ({x: W / 2 + (x - c.x) * c.z, y: H / 2 + (y - c.y) * c.z});
@@ -77,7 +78,7 @@ const Captions: React.FC<{lines: TLine[]; f: number}> = ({lines, f}) => {
 	const chars = grp.reduce((a, w) => a + w.w.length, 0) + grp.length;
 	const size = Math.min(92, 1700 / chars);
 	return (
-		<div style={{position: 'absolute', top: 1170, left: 30, right: 30, display: 'flex', justifyContent: 'center', gap: 20, transform: `scale(${0.7 + 0.3 * p})`}}>
+		<div style={{position: 'absolute', top: 1250, left: 30, right: 30, display: 'flex', justifyContent: 'center', gap: 20, transform: `scale(${0.7 + 0.3 * p})`}}>
 			{grp.map((w, i) => <T key={i} size={size} c={g0 + i === cur && f >= w.s ? YEL : '#fff'} sh={g0 + i === cur ? '#7A2E00' : INK}>{w.w}</T>)}
 		</div>
 	);

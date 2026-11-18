@@ -58,6 +58,7 @@ import {TS1, TS2, TS3, TS4, TS5, TS6, TS7, TS8, TS9, TS10, TS11, TS12, TS13, TS1
 import {FortressShort, FORT_TOTAL} from './shorts/Fortress';
 import {VS1, VS1_TOTAL} from './s2/short1';
 import {VS1B, VS1B_TOTAL} from './s2/short1b';
+import {VS2, VS2_TOTAL} from './s2/short2';
 import {NEVER_TOTAL} from './shorts/Never';
 import {T13a, T13b, T13c, T13d, T13e} from './v13/Thumbs13';
 import {T15a, T15b, T15c, T15d, T15e} from './v15/Thumbs15';
@@ -123,6 +124,7 @@ export const Root: React.FC = () => (
 t	<Composition id="V22" component={Video22} durationInFrames={V22_TOTAL} fps={60} width={1920} height={1080} />
 t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60} width={1920} height={1080} />
 		<Composition id="V20" component={Video20} durationInFrames={V20_TOTAL} fps={60} width={1920} height={1080} />
+			<Composition id="VS2" component={VS2} durationInFrames={VS2_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS1B" component={VS1B} durationInFrames={VS1B_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS1" component={VS1} durationInFrames={VS1_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="S1" component={Short1} durationInFrames={NEVER_TOTAL} fps={60} width={1080} height={1920} />
