@@ -1,0 +1,65 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s2_00_ESP",
+   "voice": "ca526927-b7c8-4a64-95d7-235d30b7771f",
+   "text": "¿Qué pasaría si yo… desapareciera del fútbol?",
+   "language": "es"
+  },
+  {
+   "id": "s2_01_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "¡Olá! Pues me quedo con toda la península para mí solito.",
+   "language": "es"
+  },
+  {
+   "id": "s2_02_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Dos Mundiales y cuatro Eurocopas se quedarían sin campeón!",
+   "language": "es"
+  },
+  {
+   "id": "s2_03_NLD",
+   "voice": "95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+   "text": "¡Sin España, la final de 2010 sería mía! ¡Por fin mi primer Mundial!",
+   "language": "es"
+  },
+  {
+   "id": "s2_04_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Che! Y la final de 2026 sería nuestra. ¡Cuatro estrellas, boludo!",
+   "language": "es"
+  },
+  {
+   "id": "s2_05_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "La final de la Euro 2024… ¡Por fin el fútbol volvería a casa!",
+   "language": "es"
+  },
+  {
+   "id": "s2_06_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Mamma mia! Aquel cuatro a cero de 2012… ¡Mejor ni recordarlo!",
+   "language": "es"
+  },
+  {
+   "id": "s2_07_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "Y yo pasaría a ser el rey de las Eurocopas.",
+   "language": "es"
+  },
+  {
+   "id": "s2_08_MAR",
+   "voice": "e3087ad8-7018-4154-9a87-11577f916cd4",
+   "text": "¡Oye! ¿Y ahora a quién le gano yo en los penaltis?",
+   "language": "es"
+  },
+  {
+   "id": "s2_09_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres español, deja tu bandera en los comentarios.",
+   "language": "es"
+  }
+ ]
+}
