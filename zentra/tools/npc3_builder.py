@@ -1,20 +1,48 @@
 """Builds src/npc.json + tools/npc_cuts.json for the video 'Los NPC de GTA 6 te juzgan por tu ropa'."""
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
-SLOW = 0.93
+SLOW = 1.0
+import numpy as np, soundfile as sf
 AL = json.load(open('/home/claude/npc/align3.json'))
-SEGS = sorted(x[0] for x in json.load(open('/home/claude/npc/g_segs.json')))
+SEGL = sorted((x[0], x[1]) for x in json.load(open('/home/claude/npc/g_segs.json')))
+SEGS = [x[0] for x in SEGL]
+VOX, VSR = sf.read('/home/claude/npc/gonzalo.wav', dtype='float32')
+if VOX.ndim > 1: VOX = VOX.mean(1)
+_win = int(0.02 * VSR); _rms = np.sqrt(np.convolve(VOX ** 2, np.ones(_win) / _win, mode='same'))
+SPEECH = float(np.percentile(_rms[_rms > 0.01], 50))
 LINES = []
 for p in sorted(AL, key=lambda k: int(k[1:])):
     for i in sorted(AL[p], key=int): LINES.append((p, int(i)))
+def snap(t):
+    return min(SEGS, key=lambda x: abs(x - t)) if min(abs(x - t) for x in SEGS) < 0.35 else t
+def quiet_cut(t_next):
+    """cut inside the real silence before the next line: the last quiet run (>=60 ms) that ends at the next onset."""
+    st = snap(t_next)
+    loud = SPEECH * 0.25
+    i0, i1 = int((st - 0.9) * VSR), int((st + 0.25) * VSR)
+    q = _rms[i0:i1] < loud
+    runs, cur = [], None
+    for k, v in enumerate(q):
+        if v and cur is None: cur = k
+        if not v and cur is not None: runs.append((cur, k)); cur = None
+    if cur is not None: runs.append((cur, len(q)))
+    runs = [r for r in runs if r[1] - r[0] >= int(0.06 * VSR)]
+    if not runs: return st - 0.03
+    # the run whose end is closest to the snapped start (that's where the next line begins)
+    a, b = min(runs, key=lambda r: abs((i0 + r[1]) / VSR - st))
+    m = int(0.03 * VSR); m2 = int(0.05 * VSR)
+    a2, b2 = a + m, max(a + m + 1, b - m2)
+    return (i0 + a2 + int(np.argmin(_rms[i0 + a2:i0 + b2]))) / VSR
+
+CUT = {}
+for k, (p, i) in enumerate(LINES):
+    CUT[(p, i)] = 0.0 if k == 0 else quiet_cut(AL[p][str(i)]['start'])
 def bounds(p, i):
-    L = AL[p][str(i)]
-    snap = lambda t: min(SEGS, key=lambda x: abs(x - t)) if min(abs(x - t) for x in SEGS) < 0.35 else t
-    st = snap(L['start'])
     k = LINES.index((p, i))
-    nxt = AL[LINES[k + 1][0]][str(LINES[k + 1][1])]['start'] if k + 1 < len(LINES) else L['end'] + 0.4
-    nxt = snap(nxt)
-    return st - 0.05, min(nxt - 0.04, L['end'] + 0.7)
+    a = CUT[(p, i)]
+    e = CUT[LINES[k + 1]] if k + 1 < len(LINES) else len(VOX) / VSR
+    return a, e
+PIECES = []
 GAP_PART = 0.55
 TITLE_LEN = 3.6
 NPC_PAD = 0.25  # silence around an NPC insert
@@ -62,11 +90,11 @@ def wt(part, idx, word, occ=0):
     if not hits: raise SystemExit(f'word {word!r} not in {part}/{idx}: {L["text"]}')
     return max(0.0, (L['t'][hits[min(occ, len(hits) - 1)]] - a) / SLOW - 0.04)
 
-def say(part, idx, shots, ovs=(), cuts=None, extra=0.18):
+def say(part, idx, shots, ovs=(), cuts=None, extra=0.4):
     """voice line idx of part; shots cover the line plus the pause after it. ov 'at' may be a word."""
     a, e = bounds(part, idx)
     t0 = T[0]; dur = (e - a) / SLOW; t1 = t0 + dur + extra
-    voice.append({'src': 'vo/g/gonzalo_slow.wav', 'at': round(t0, 3), 'from': round(a / SLOW, 3), 'to': round(e / SLOW, 3)})
+    PIECES.append((t0, a, e))
     W = lambda c: wt(part, idx, c) if isinstance(c, str) else (wt(part, idx, *c) if isinstance(c, tuple) else c)
     cr = [W(c) for c in cuts] if cuts else None
     put_shots(shots, t0, t1, cr)
@@ -126,6 +154,16 @@ for v in video:
     else:
         v['clip'], v['off'] = need(v['src'], v['s'], L + 0.3, v.get('rate', 1))
 
+TR = np.zeros(int((END + 1) * VSR), dtype=np.float32)
+fade = int(0.012 * VSR)
+for t0, a, e in PIECES:
+    seg = VOX[int(a * VSR):int(e * VSR)].copy()
+    seg[:fade] *= np.linspace(0, 1, fade); seg[-fade:] *= np.linspace(1, 0, fade)
+    o = int(round(t0 * VSR)); TR[o:o + len(seg)] += seg
+sf.write('/tmp/voice_track.wav', TR, VSR)
+for (t0, a, e), (t1, a1, e1) in zip(PIECES, PIECES[1:]):
+    assert t0 + (e - a) <= t1 + 1e-6, ('overlap', t0, t1)
+voice = [{'src': 'vo/g/voice_track.wav', 'at': 0, 'from': 0, 'to': round(END, 3)}]
 J = {'video': video, 'overlays': overlays, 'sfx': sorted(sfx, key=lambda x: x['t']), 'voice': voice, 'duck': music_duck,
      'swells': [[0, COLD_END], SW1, SW2], 'music': [{'src': 'music/bed.mp3', 't0': 0, 't1': END, 'off': 22.24}], 'end': round(END, 3), 'cold': COLD_END}
 json.dump(J, open(os.path.join(HERE, '..', 'src', 'npc.json'), 'w'), ensure_ascii=False, indent=0)

@@ -1,6 +1,6 @@
 # body of v3: Jordi's Cartesia voice, word-synced cuts/texts, cinematic hook, map scenes
 
-PART_GAP = 0.9   # extra breath between topics
+PART_GAP = 1.3   # extra breath between topics
 
 def hook_npc(src, a, b, es, en, who, ring, lead=0.0):
     """NPC line inside the hook: clip with its own audio, pink ring on the speaker, subtitle."""
@@ -12,21 +12,9 @@ def hook_npc(src, a, b, es, en, who, ring, lead=0.0):
     music_duck.append([round(t0 + lead, 3), round(t0 + d, 3)])
     T[0] = t0 + d
 
-# ================= HOOK: beautiful slow-motion Leonida + NPCs turning on you + title =================
-video.append(dict(shot('T01', 484.05, rate=0.6, zoom=[1.0, 1.08], hard=True), t0=0.0, t1=3.0, credit=cred('T01')))
-add_ov(dict(type='label', text='LEONIDA', sub='19 DE NOVIEMBRE · YA SE PUEDE JUGAR', mute=True), 0.5, 2.9)
-video.append(dict(shot('T01', 486.1, rate=0.72, zoom=[1.02, 1.1]), t0=3.0, t1=5.4, credit=cred('T01')))
-T[0] = 5.4
-hook_npc('v4_00', 8.3, 12.8, 'Yo era igualito a ti, ¿sabes? Hace 50 años.', 'I used to look just like you, you know? 50 years ago.', 'NPC · CHIRINGUITO', (1120, 600, 210), lead=1.2)
-hook_npc('v2_01', 421.8, 424.3, 'Eh… ¿te conozco?', 'Do I know you?', 'NPC · HAMBURGUESERÍA', (990, 430, 230), lead=0.3)
-tt = T[0]
-video.append(dict(shot('v2_02', 148.5, rate=0.7, zoom=[1.0, 1.08], flash=True), t0=round(tt, 3), t1=round(tt + 3.6, 3), credit=cred('v2_02')))
-add_ov(KW([['LOS', 0.0], ['NPC', 0.12], ['TE', 0.3], ['JUZGAN', 0.42]], size=138, top=300, dim=1, mute=True), tt + 0.15, tt + 3.5)
-add_ov(KW([['POR', 0.0, True], ['TU', 0.12, True], ['ROPA', 0.24, True]], size=150, top=470, mute=True), tt + 0.75, tt + 3.5)
-sfx.append({'t': tt - 0.05, 'src': 's_section', 'vol': .5})
-COLD_END = tt + 3.6
-T[0] = COLD_END + 0.1
-SW1 = [COLD_END - 0.1, COLD_END]
+COLD_END = 0.0
+T[0] = 0.0
+SW1 = [0.0, 0.0]
 
 # ================= P1 =================
 P = 'p1'
