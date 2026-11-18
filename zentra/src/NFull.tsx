@@ -26,7 +26,7 @@ const Shot: React.FC<{v: any; len: number; xf: number}> = ({v, len, xf}) => {
   const vol = v.audio ? (fr: number) => v.audio * interpolate(fr, [0, 6, len - 8, len], [0, 1, 1, 0], clamp) : 0;
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#000', opacity: fade}}>
-      <OffthreadVideo src={staticFile(`clips/${v.clip}`)} muted={!v.audio} volume={vol as any} startFrom={Math.max(0, F(v.off) - xf)}
+      <OffthreadVideo src={staticFile(`clips/${v.clip}`)} muted={!v.audio} volume={vol as any} playbackRate={v.rate || 1} startFrom={Math.max(0, F(v.off) - xf)}
         style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${s * punch})`, transformOrigin: v.origin || '50% 50%', filter: `blur(${blur}px) brightness(${bright})`}} />
     </AbsoluteFill>
   );
@@ -210,6 +210,87 @@ const EndCard: React.FC<{len: number}> = ({len}) => {
   );
 };
 
+
+/* ---------- HOOK: typewriter on black ---------- */
+const TypeOn: React.FC<{o: any; len: number}> = ({o, len}) => {
+  const f = useF();
+  const n = Math.floor(interpolate(f, [2, 2 + o.text.length * 1.3], [0, o.text.length], clamp));
+  const out = outF(f, len, 4);
+  const glitch = f % 9 < 2 ? 6 : 0;
+  return (
+    <AbsoluteFill style={{background: '#05060b', alignItems: 'center', justifyContent: 'center', opacity: out}}>
+      <div style={{fontFamily: 'ui-monospace, Menlo, monospace', fontWeight: 800, fontSize: 84, letterSpacing: '0.04em', color: '#fff', textShadow: `${glitch}px 0 0 ${PINK}, ${-glitch}px 0 0 #3ee8ff`}}>
+        {o.text.slice(0, n)}<span style={{opacity: f % 16 < 8 ? 1 : 0, color: PINK}}>█</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/* ---------- HOOK: "NPC VISION" scanner over the player ---------- */
+const lerpK = (k: number[][], t: number, i: number) => interpolate(t, k.map((x) => x[0]), k.map((x) => x[i]), clamp);
+const NpcVision: React.FC<{o: any; len: number}> = ({o, len}) => {
+  const f = useF();
+  const t = f / fps;
+  const cx = lerpK(o.box, t, 1), cy = lerpK(o.box, t, 2), w = o.w, h = o.h;
+  const bIn = spring({frame: f - 4, fps, config: {damping: 13, stiffness: 200}});
+  const scanY = ((f * 14) % 1200) - 60;
+  const out = outF(f, len, 4);
+  const corner = (r: number) => ({position: 'absolute' as const, width: 70, height: 70, borderColor: PINK, borderStyle: 'solid', borderWidth: 0, ...(r === 0 ? {left: 0, top: 0, borderLeftWidth: 8, borderTopWidth: 8} : r === 1 ? {right: 0, top: 0, borderRightWidth: 8, borderTopWidth: 8} : r === 2 ? {left: 0, bottom: 0, borderLeftWidth: 8, borderBottomWidth: 8} : {right: 0, bottom: 0, borderRightWidth: 8, borderBottomWidth: 8})});
+  return (
+    <AbsoluteFill style={{opacity: out}}>
+      <AbsoluteFill style={{background: 'rgba(40,0,30,0.28)', mixBlendMode: 'multiply'}} />
+      <AbsoluteFill style={{backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 6px)'}} />
+      <div style={{position: 'absolute', left: 0, right: 0, top: scanY, height: 60, background: 'linear-gradient(180deg, transparent, rgba(255,61,134,0.22), transparent)'}} />
+      <div style={{position: 'absolute', left: 60, top: 50, fontFamily: 'ui-monospace, Menlo, monospace', fontWeight: 800, fontSize: 32, color: '#fff', letterSpacing: '0.12em', display: 'flex', alignItems: 'center', gap: 14}}>
+        <span style={{width: 18, height: 18, borderRadius: 18, background: f % 20 < 10 ? PINK : 'transparent', border: `3px solid ${PINK}`}} />NPC VISION · ESCANEANDO SUJETO
+      </div>
+      <div style={{position: 'absolute', left: cx - w / 2, top: cy - h / 2, width: w, height: h, transform: `scale(${1.25 - 0.25 * bIn})`, opacity: Math.min(1, bIn * 1.5)}}>
+        {[0, 1, 2, 3].map((r) => <div key={r} style={corner(r)} />)}
+        <div style={{position: 'absolute', left: 0, top: -54, background: PINK, color: '#fff', fontFamily: 'ui-monospace, Menlo, monospace', fontWeight: 800, fontSize: 26, padding: '6px 14px', letterSpacing: '0.1em'}}>SUJETO #0001</div>
+      </div>
+      <div style={{position: 'absolute', left: cx + w / 2 + 40, top: cy - h / 2 + 10}}>
+        {o.tags.map((g: any, i: number) => {
+          const a = f - g[2] * fps;
+          const tt = enter(a, 5);
+          const pct = g[1] ? Math.round(interpolate(a, [0, 14], [0, g[1]], clamp)) : null;
+          return (
+            <div key={i} style={{opacity: tt, transform: `translateX(${(1 - tt) * 30}px)`, marginBottom: 18, background: 'rgba(8,10,20,0.78)', borderLeft: `6px solid ${PINK}`, padding: '12px 22px', width: 560}}>
+              <div style={{fontFamily: 'ui-monospace, Menlo, monospace', fontWeight: 800, fontSize: 30, color: '#fff', letterSpacing: '0.05em'}}>{g[0]}{pct !== null ? <span style={{color: PINK}}> {pct}%</span> : null}</div>
+              {pct !== null ? <div style={{height: 8, background: 'rgba(255,255,255,0.15)', marginTop: 10}}><div style={{width: `${pct}%`, height: 8, background: PINK}} /></div> : null}
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/* ---------- HOOK: NPC line, big and centred ---------- */
+const HookSub: React.FC<{o: any; len: number}> = ({o, len}) => {
+  const f = useF();
+  const s = spring({frame: f, fps, config: {damping: 9, stiffness: 300}});
+  return (
+    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 120}}>
+      <div style={{fontFamily: BODY, fontWeight: 800, fontSize: 26, letterSpacing: '0.2em', color: '#fff', background: PINK, padding: '6px 16px', borderRadius: 8, marginBottom: 16, opacity: Math.min(1, s * 2)}}>NPC {o.n}/4</div>
+      <div style={{fontFamily: HEAD, fontWeight: 900, fontSize: 110, letterSpacing: '-0.04em', lineHeight: 1, color: '#fff', textAlign: 'center', maxWidth: 1650, transform: `scale(${1.3 - 0.3 * s})`, opacity: Math.min(1, s * 2), textShadow: '0 10px 40px rgba(0,0,0,0.7), 0 0 2px #000'}}>{o.text}</div>
+    </AbsoluteFill>
+  );
+};
+
+/* ---------- HOOK: giant verdict stamp over a frozen frame ---------- */
+const Verdict: React.FC<{o: any; len: number}> = ({o, len}) => {
+  const f = useF();
+  const s = spring({frame: f, fps, config: {damping: 11, stiffness: 320}});
+  const shake = f < 10 ? Math.sin(f * 2.6) * (10 - f) * 1.4 : 0;
+  const t2 = enter(f - 8, 6);
+  return (
+    <AbsoluteFill style={{background: 'rgba(5,6,12,0.55)', alignItems: 'center', justifyContent: 'center', transform: `translate(${shake}px, ${shake * 0.5}px)`}}>
+      <div style={{border: `16px solid ${PINK}`, borderRadius: 26, padding: '20px 70px 12px', color: PINK, fontFamily: HEAD, fontWeight: 900, fontSize: 260, letterSpacing: '0.02em', lineHeight: 1, transform: `rotate(-7deg) scale(${2.4 - 1.4 * s})`, opacity: Math.min(1, s * 3), background: 'rgba(10,12,22,0.35)'}}>{o.text}</div>
+      <div style={{fontFamily: BODY, fontWeight: 800, fontSize: 40, letterSpacing: '0.2em', color: '#fff', marginTop: 50, opacity: t2}}>{o.sub}</div>
+    </AbsoluteFill>
+  );
+};
+
 const Overlay: React.FC<{o: any}> = ({o}) => {
   const len = (F(o.t1) - F(o.t0)) * fps / FPS;
   switch (o.type) {
@@ -222,13 +303,17 @@ const Overlay: React.FC<{o: any}> = ({o}) => {
     case 'hud': return <Hud o={o} len={len} />;
     case 'tip': return <Tip o={o} len={len} />;
     case 'versus': return <Versus o={o} len={len} />;
+    case 'typeon': return <TypeOn o={o} len={len} />;
+    case 'vision': return <NpcVision o={o} len={len} />;
+    case 'hooksub': return <HookSub o={o} len={len} />;
+    case 'verdict': return <Verdict o={o} len={len} />;
     case 'titlecard': return <TitleCard />;
     case 'subscribe': return <Subscribe len={len} />;
     case 'endcard': return <EndCard len={len} />;
   }
   return null;
 };
-const FULLSCREEN = new Set(['titlecard', 'subscribe', 'endcard']);
+const FULLSCREEN = new Set(['titlecard', 'subscribe', 'endcard', 'typeon', 'verdict']);
 
 /* music: low under the voice, lower under NPC lines, up in the cold open / title / ending */
 const bedVol = (m: any) => (f: number) => {
