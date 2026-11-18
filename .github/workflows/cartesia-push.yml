@@ -1,0 +1,23 @@
+name: cartesia-push
+on:
+  push:
+    branches: [zentra-voice]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cartesia
+        env:
+          CARTESIA_API_KEY: ${{ secrets.CARTESIA_API_KEY }}
+        run: python3 cartesia/cartesia.py tts cartesia/jobs/npc2.json
+      - name: Push result to branch cartesia-out
+        run: |
+          mkdir -p /tmp/res && cp -r out /tmp/res/npc2
+          git config user.name render-bot && git config user.email render-bot@users.noreply.github.com
+          git fetch origin cartesia-out
+          git checkout -B cartesia-out origin/cartesia-out
+          rm -rf npc2 && cp -r /tmp/res/npc2 ./npc2
+          git add npc2 && git commit -qm "cartesia npc2" && git push -q origin cartesia-out

@@ -1,0 +1,407 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "n2_p1_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "GTA 6 lleva unas horas fuera, y ya tenemos la primera gran sorpresa.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "No son los coches. No es el mapa. Son los NPC.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Porque en Leonida, la gente te mira. Te habla. Y sobre todo, te juzga.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Te pones una camiseta de tirantes, y alguien te lo echa en cara.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Llevas tres días sin ducharte, y la gente te lo dice.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Robas una tienda con una chaqueta llamativa, y diez minutos después, la policía está buscando esa chaqueta.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_06",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Durante trece años, la ropa en GTA ha sido puro decorado. En GTA 6, es información. Y todo el mundo la está leyendo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p1_07",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Hoy te cuento cómo los NPC de Leonida te juzgan por lo que llevas puesto: lo que te dicen por la calle, lo que hablan entre ellos, cómo tu ropa le chiva a la policía quién eres, y qué parte de todo esto sigue siendo un misterio.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Primero, recuerda GTA 5.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Podías ir en calzoncillos y con casco de moto por Rockford Hills, y nadie movía una ceja.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Los peatones tenían cuatro frases, y casi ninguna tenía que ver contigo. Eras un fantasma con pistola.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En GTA 6 eso cambia por completo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Casi todos los análisis que han salido coinciden en lo mismo: la gente de Leonida reacciona a tu ropa, a tu coche, y a lo que llevas en las manos.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y ojo, porque aquí hay mucho bulo circulando.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_06",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "No, los NPC no llevan una inteligencia artificial tipo chat dentro. Rockstar y Take Two han dejado claro que el juego se hizo sin inteligencia artificial generativa.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_07",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Lo que hay es algo más clásico, pero muchísimo más trabajado: miles de frases grabadas por actores, y un sistema que decide cuál toca, según quién eres, qué llevas, dónde estás, y a qué hora.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p2_08",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y eso, en la práctica, da para momentos como estos.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Empecemos por lo más gracioso: los comentarios.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Esto ya no es teoría. El juego lleva unas horas fuera, y los primeros gameplays lo demuestran.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Un señor mayor, en un chiringuito de la playa, se queda mirando a Jason, y le suelta que hace cincuenta años él era igualito.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En un bar, otro le dice que, si los aliens le abdujeran, sacarían unos híbridos guapísimos.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y en un banco del paseo, una pareja de abuelos le pregunta, sin cortarse un pelo, si anda buscando más gente a la que robar.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Fíjate en ese último detalle. No es una frase genérica. El juego sabe a qué te dedicas, y la gente lo comenta.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_06",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Según los análisis, hay peatones que te comentan el outfit al cruzarse contigo. Y no siempre es para bien.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_07",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Uno cuenta que, en plena misión, un personaje vio a Jason en tirantes, y le dijo que eso de no llevar mangas era un poco agresivo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p3_08",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y si Jason o Lucía llevan días sin dormir ni ducharse, la gente se da cuenta. Y te lo dice a la cara.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p4_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Luego está el contexto, que es donde el sistema se pone serio.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p4_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Los propios NPC visten según la zona: ropa de gimnasio en la playa, traje en el centro financiero, chanclas en los Keys.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p4_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y eso hace que tú también destaques. Un tipo en chándal en un barrio pijo llama la atención. Uno con traje en la playa, también.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p4_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Uno de los análisis cuenta que, paseando por una urbanización de lujo, una vecina se le acercó a preguntarle qué hacía mirando su entrada. Y acabó a puñetazos.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p4_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "O sea: no eres invisible ni siquiera cuando no haces nada.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Ahora, ¿qué pasa cuando sí haces algo?",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Pues que Leonida no se queda callada.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Robas el buggy de un socorrista, y el tío sale corriendo detrás de ti, casi pidiéndote perdón.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Te acercas demasiado a una pareja, y ella salta a defender a su chico como si le fuera la vida en ello.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y a veces, ni siquiera hace falta provocar. Pasas con una ambulancia por la playa, y alguien te saluda a su manera.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p5_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Lo interesante es que cada reacción depende de la persona. Hay NPC que huyen, otros que se encaran, y otros que directamente intentan quitarte el arma.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y aquí viene algo que casi nadie está comentando: los NPC también hablan entre ellos. Y lo que dicen retrata Leonida mejor que cualquier tráiler.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En el gimnasio de la playa, dos tíos discuten muy en serio sobre qué harían si les abdujeran unos aliens.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En una terraza de Ocean Drive, alguien presume de ganar siete cifras, como si fuera lo más normal del mundo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y en el barrio rico, la conversación va de comprar casas para tirarlas y construir otras.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Hasta los propios NPC hablan de la fama que tiene la gente de Leonida.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p6_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Es la sátira de siempre de Rockstar, pero ahora la escuchas por la calle mientras caminas. No en la radio.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p7_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y luego están los que trabajan.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p7_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Los recepcionistas, los dependientes, los camareros. Te atienden, te recomiendan cosas, y te dan las gracias por tu visita.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p7_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Puede parecer una tontería, pero cambia muchísimo la sensación de estar en una ciudad real. Entras en un hotel, y alguien te ofrece ayuda. Entras en un gimnasio, y te venden la membresía.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y ahora, lo importante. Porque esto ya no es solo postureo: tu ropa es una pista.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En GTA 6, la policía solo viene si alguien ve el crimen, o salta una alarma.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y cuando eso pasa, los testigos y las cámaras describen lo que han visto: tu cara, tu ropa, tu coche, y si ibas con tu pareja.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "El juego lo marca con iconos. El de la persona significa que tienen tu descripción. El de la percha, que saben qué ropa llevas.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y la clave está aquí: según las guías que ya han salido, una gorra, unas gafas, o un corte de pelo nuevo, borran tu descripción. Pero la policía sigue sabiendo tu outfit, hasta que te cambias de arriba abajo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "En GTA 5, cambiarte de ropa con la policía detrás no servía de nada. En GTA 6, puede ser lo que te salve.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_06",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Así que, si vas a hacer algo gordo, apúntate esto.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_07",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Uno. Ten un outfit de repuesto en el maletero. Atracas, sales, te cambias, y para los testigos ya eres otra persona.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_08",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Dos. Las máscaras y los gorros sirven para la cara, no para la ropa. Úsalos juntos.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_09",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Tres. Ojo con las cámaras: graban aunque no haya nadie mirando.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p8_10",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y cuatro, un detalle que me encanta: si en una pelea a alguien se le caen el sombrero o las gafas, puedes cogerlos y ponértelos. Literalmente, disfrazarte con la ropa del que acabas de tumbar.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Ahora, lo que todavía está en el aire.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Lleva mucho tiempo circulando el rumor de que los NPC tienen memoria: que si le haces algo a alguien, te reconocerá días después.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Hay patentes de Rockstar que van por ahí, pero a día de hoy, nadie lo ha confirmado jugando.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_03",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Eso sí: en uno de los primeros gameplays, la cajera de una hamburguesería mira al jugador, y le pregunta.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_04",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "¿Casualidad… o memoria?",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_05",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Tampoco está claro hasta dónde llega lo de la reputación: si la gente te trata distinto con Jason que con Lucía, o si tu perfil criminal cambia cómo te miran en cada barrio.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p9_06",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Eso lo vamos a probar nosotros. Diez outfits, los mismos sitios, Jason y Lucía. Y vemos qué pasa.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p10_00",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "GTA siempre ha sido un juego de hacer el loco. GTA 6 lo sigue siendo. Pero ahora, el mundo se entera. Y te juzga.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p10_01",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Cuéntame en comentarios qué outfit quieres que probemos primero. El más votado sale en el próximo vídeo.",
+   "language": "es"
+  },
+  {
+   "id": "n2_p10_02",
+   "voice": "58e531e3-b212-49df-adee-c335a19c2429",
+   "text": "Y si no quieres perderte nada de Leonida, suscríbete a Zentra. Nos vemos en el siguiente.",
+   "language": "es"
+  }
+ ]
+}
