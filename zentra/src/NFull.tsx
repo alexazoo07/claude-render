@@ -2,7 +2,8 @@ import React from 'react';
 import {AbsoluteFill, Sequence, Audio, staticFile, interpolate, useCurrentFrame, Img, spring, Easing, OffthreadVideo} from 'remotion';
 import J from './npc.json';
 import {Kinetic, Stamp, Chapter, Split} from './Extras';
-import {QuoteCard, Credit, PINK, HEAD, BODY, NAVY_DEEP, INK, useF} from './style';
+import {MapScene} from './MapScene';
+import {QuoteCard, Credit, Label, BigTitle, PINK, HEAD, BODY, NAVY_DEEP, INK, useF} from './style';
 
 export const FPS = 60;
 const fps = 30;
@@ -22,6 +23,7 @@ const Shot: React.FC<{v: any; len: number; xf: number}> = ({v, len, xf}) => {
   const punch = 1 + (1 - p) * 0.1;
   const blur = (v.blur || 0) + (1 - p) * 14;
   const bright = 1 - (v.dim || 0) + (1 - p) * 0.35;
+  if (v.map) return <AbsoluteFill style={{opacity: fade}}><MapScene m={v.map} /></AbsoluteFill>;
   if (v.split) return <AbsoluteFill style={{opacity: fade}}><Split v={v} len={len} /></AbsoluteFill>;
   const vol = v.audio ? (fr: number) => v.audio * interpolate(fr, [0, 6, len - 8, len], [0, 1, 1, 0], clamp) : 0;
   return (
@@ -291,10 +293,31 @@ const Verdict: React.FC<{o: any; len: number}> = ({o, len}) => {
   );
 };
 
+
+/* ---------- pink ring on the NPC who is talking (hook) ---------- */
+const Ring: React.FC<{o: any; len: number}> = ({o, len}) => {
+  const f = useF();
+  const draw = interpolate(f, [0, 12], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
+  const pulse = 1 + 0.03 * Math.sin(f / 4);
+  const out = outF(f, len, 6);
+  const C = 2 * Math.PI * o.r;
+  const t = enter(f - 8, 6);
+  return (
+    <AbsoluteFill style={{opacity: out}}>
+      <svg width="1920" height="1080" style={{position: 'absolute', left: 0, top: 0}}>
+        <circle cx={o.x} cy={o.y} r={o.r * pulse} fill="none" stroke={PINK} strokeWidth={9} strokeDasharray={C} strokeDashoffset={C * (1 - draw)} strokeLinecap="round" transform={`rotate(-90 ${o.x} ${o.y})`} style={{filter: 'drop-shadow(0 0 14px rgba(255,61,134,0.7))'}} />
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
 const Overlay: React.FC<{o: any}> = ({o}) => {
   const len = (F(o.t1) - F(o.t0)) * fps / FPS;
   switch (o.type) {
     case 'kinetic': return <Kinetic o={o} len={len} />;
+    case 'ring': return <Ring o={o} len={len} />;
+    case 'label': return <Label text={o.text} sub={o.sub || undefined} dur={len} size={o.size} />;
+    case 'big': return <BigTitle text={o.text} sub={o.sub || undefined} dur={len} size={o.size} color={o.color} />;
     case 'stamp': return <Stamp o={o} len={len} />;
     case 'chapter': return <Chapter o={o} len={len} />;
     case 'quote': return <QuoteCard kind={o.kind} lines={o.lines} source={o.source} x={o.x} y={o.y} dur={len} tilt={o.tilt} highlight={o.highlight} />;
