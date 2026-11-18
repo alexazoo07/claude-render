@@ -14,9 +14,9 @@ export const W = 1080, H = 1920, FPS = 60;
 export const YEL = '#FFD23F', RED = '#FF3B3B', ORG = '#FF8A00';
 export type Cam = {x: number; y: number; z: number};
 export type Word = {w: string; s: number; e: number};
-export type TLine = {k: string; start: number; end: number; words: Word[]};
+export type TLine = {k: string; start: number; end: number; words: Word[]; amp?: number[]};
 export type Timeline = {total: number; audio: string; lines: TLine[]};
-export type Spk = {k: string; mood: FaceMood; endMood?: FaceMood; ghost?: boolean; d?: number; dx?: number; dy?: number; talker?: boolean};
+export type Spk = {k: string; mood: FaceMood; endMood?: FaceMood; moods?: [string, FaceMood][]; ghost?: boolean; d?: number; dx?: number; dy?: number; talker?: boolean; at?: string; map?: boolean};
 export type Scene = {
 	focus?: string; z?: number; cam?: Cam;        // camera: frame a country (ball sits on it) or explicit cam
 	spk?: Spk[];
@@ -135,81 +135,112 @@ const Hearts: React.FC<{f: number; keys: string[]}> = ({f, keys}) => {
 	})}</>;
 };
 
+// little emotion bubbles next to a ball (pop when the mood changes)
+const Emote: React.FC<{mood: FaceMood; t: number; d: number; f: number}> = ({mood, t, d, f}) => {
+	const p = pop(t, 0, 260);
+	const fade = interpolate(t, [70, 90], [1, 0], clamp);
+	if (t > 90 || t < 0) return null;
+	const wob = Math.sin(f / 5) * 6;
+	const at = (x: number, y: number, ch: React.ReactNode) => <div style={{position: 'absolute', left: d * x, top: d * y, transform: `scale(${p}) rotate(${wob}deg)`, opacity: fade}}>{ch}</div>;
+	const txt = (c: string, s: string, size = d * 0.32) => <span style={{fontFamily: LILITA, fontSize: size, color: c, WebkitTextStroke: `${size * 0.12}px ${INK}`, paintOrder: 'stroke fill'}}>{s}</span>;
+	if (mood === 'angry') return at(0.78, -0.12, <svg width={d * 0.32} height={d * 0.32} viewBox="-50 -50 100 100"><g stroke={INK} strokeWidth={22} strokeLinecap="round"><path d="M-30 -10 Q-12 -12 -10 -30 M30 -10 Q12 -12 10 -30 M-30 10 Q-12 12 -10 30 M30 10 Q12 12 10 30" /></g><g stroke="#FF2D2D" strokeWidth={12} strokeLinecap="round" fill="none"><path d="M-30 -10 Q-12 -12 -10 -30 M30 -10 Q12 -12 10 -30 M-30 10 Q-12 12 -10 30 M30 10 Q12 12 10 30" /></g></svg>);
+	if (mood === 'shock' || mood === 'scared' || mood === 'panic') return at(0.8, -0.18, txt(YEL, '!!'));
+	if (mood === 'love' || mood === 'happy') return <>{[0, 1, 2].map((j) => <div key={j} style={{position: 'absolute', left: d * (0.75 + j * 0.08), top: d * (0.05 - ((t * 1.2 + j * 25) % 70) / 100), opacity: fade * (1 - ((t * 1.2 + j * 25) % 70) / 70)}}><svg width={d * 0.16} height={d * 0.16} viewBox="0 0 100 100"><path d="M50 88 C10 60 0 38 14 22 C28 6 46 14 50 28 C54 14 72 6 86 22 C100 38 90 60 50 88 Z" fill="#FF4D6D" stroke={INK} strokeWidth={8} /></svg></div>)}</>;
+	if (mood === 'sad' || mood === 'worried') return at(0.82, -0.1, <svg width={d * 0.16} height={d * 0.22} viewBox="0 0 60 80"><path d="M30 4 C44 30 54 44 54 56 A24 24 0 0 1 6 56 C6 44 16 30 30 4 Z" fill="#7FD3FF" stroke={INK} strokeWidth={6} /></svg>);
+	if (mood === 'smug' || mood === 'cool') return at(0.8, -0.14, txt('#fff', '¬¬', d * 0.22));
+	return null;
+};
+
 export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const f = useCurrentFrame();
-	const L = tl.lines;
-	const LEAD = 28; // the camera starts flying a bit before the next line is spoken
-	const st = (j: number) => L[j].start - (j > 0 ? LEAD : 0);
-	let i = L.findIndex((l, j) => f < (j + 1 < L.length ? st(j + 1) : 1e9));
-	if (i < 0) i = L.length - 1;
-	const sc = def.scenes[i];
-	const tc = f - st(i);
-	const t = f - L[i].start, len = L[i].end - L[i].start;
-	// whip-zoom camera between scenes
-	const c1 = camFor(sc), c0 = camFor(def.scenes[Math.max(0, i - 1)]);
-	// camera flight across the map: pan from one place to the next, pulling back just enough to travel
-	const TR = 44;
-	const e = i === 0 ? 1 : interpolate(tc, [0, TR], [0, 1], {...clamp, easing: Easing.inOut(Easing.sin)});
-	const dist = Math.hypot(c1.x - c0.x, c1.y - c0.y);
-	const lzMid = Math.min(Math.log(c0.z), Math.log(c1.z), Math.log(900 / (dist + 1)));
-	const lzLin = (Math.log(c0.z) + Math.log(c1.z)) / 2;
-	const dip = i === 0 ? 0 : Math.sin(Math.PI * e) * Math.max(0, lzLin - lzMid);
-	const lz = Math.log(c0.z) + (Math.log(c1.z) - Math.log(c0.z)) * e - dip;
-	let cam: Cam = {x: c0.x + (c1.x - c0.x) * e, y: c0.y + (c1.y - c0.y) * e, z: Math.exp(lz)};
-	// slow push-in while a scene is on screen
-	cam.z *= 1 + 0.0009 * Math.max(0, tc - TR);
-	// hook: zoom out after the explosions
+	const L = tl.lines, N = L.length;
 	const booms = def.booms ?? [];
 	const lastBoom = booms.length ? Math.max(...booms.map((b) => b.at)) : -1;
-	if (i === 0 && booms.length) cam.z *= interpolate(f, [lastBoom + 10, lastBoom + 50], [1, 0.62], {...clamp, easing: Easing.inOut(Easing.cubic)});
-	// camera shake after explosions + flashes
+	// ---- continuous smooth camera: hold (with gentle drift) on each scene, glide between them
+	// travel happens in the pause between lines: leave when a line ends, arrive as the next one starts
+	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 8);
+	const leave = (j: number) => (j === N - 1 ? 1e9 : Math.min(L[j].end - 4, arrive(j + 1) - 50));
+	const hold = (j: number, fr: number): Cam => {
+		const c = camFor(def.scenes[j]);
+		const dt = Math.max(0, fr - arrive(j));
+		let z = c.z * (1 + 0.00055 * dt);
+		if (j === 0 && booms.length) z *= interpolate(fr, [lastBoom + 6, lastBoom + 80], [1, 0.66], {...clamp, easing: Easing.inOut(Easing.sin)});
+		return {x: c.x + Math.sin(dt / 160) * 6 / c.z, y: c.y + Math.cos(dt / 190) * 5 / c.z, z};
+	};
+	let j = 0;
+	while (j + 1 < N && f >= leave(j)) j++;
+	let cam: Cam;
+	if (j > 0 && f < arrive(j)) {
+		const a = hold(j - 1, leave(j - 1)), b = hold(j, arrive(j));
+		const e = Easing.inOut(Easing.sin)(interpolate(f, [leave(j - 1), arrive(j)], [0, 1], clamp));
+		const dist = Math.hypot(b.x - a.x, b.y - a.y);
+		const lzMid = Math.min(Math.log(a.z), Math.log(b.z), Math.log(1100 / (dist + 1)));
+		const lzLin = (Math.log(a.z) + Math.log(b.z)) / 2;
+		const dip = Math.sin(Math.PI * e) * Math.max(0, lzLin - lzMid);
+		cam = {x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e, z: Math.exp(Math.log(a.z) + (Math.log(b.z) - Math.log(a.z)) * e - dip)};
+	} else cam = hold(j, f);
+	// soft shake on explosions
 	let shake = 0;
-	for (const b of booms) shake += interpolate(f - b.at, [0, 4, 22], [0, 14, 0], clamp);
-	cam = {...cam, x: cam.x + (Math.sin(f * 1.7) * shake) / cam.z, y: cam.y + (Math.cos(f * 2.3) * shake) / cam.z};
-	const blur = 0;
-	// fills: flags everywhere (no faces), exploded countries grey
+	for (const b of booms) shake += interpolate(f - b.at, [0, 3, 30], [0, 7, 0], clamp);
+	cam = {...cam, x: cam.x + (Math.sin(f * 0.9) * shake) / cam.z, y: cam.y + (Math.cos(f * 1.1) * shake) / cam.z};
+	// ---- which scene's content is on screen (switches while the camera is travelling)
+	let i = 0;
+	while (i + 1 < N && f >= leave(i) + 16) i++;
+	const sc = def.scenes[i];
+	const t = f - L[i].start, len = L[i].end - L[i].start;
+	const outK = i === N - 1 ? 1 : interpolate(f, [leave(i) - 6, leave(i) + 14], [1, 0], {...clamp, easing: Easing.in(Easing.back(1.6))});
+	const inAt = i === 0 ? 0 : arrive(i) - 16;
+	// ---- map fills
 	const fills: Record<string, Fill> = {};
 	for (const c of ALL) {
 		if (!WORLD[c]) continue;
 		const b = booms.find((x) => x.k === c);
 		if (b && f >= b.at) { fills[c] = {color: f < b.at + 5 ? '#F4F6FA' : '#4E535C'}; continue; }
-		fills[c] = {flag: FL[c], lift: (sc.lift ?? []).includes(c) ? 1 : 0};
+		fills[c] = {flag: FL[c], lift: (sc.lift ?? []).includes(c) && f >= inAt ? 1 : 0};
 	}
-	// flash overlay
 	const flash = Math.max(0, ...(def.flashAt ?? []).map((a) => interpolate(f - a, [0, 2, 16], [0, 0.85, 0], clamp)));
-	// speakers
-	const talking = L[i].words.some((w) => f >= w.s && f < w.e);
+	// ---- lip sync from the real audio envelope
+	const ln = L[i];
+	const ai = f - ln.start;
+	const amp = ln.amp && ai >= 0 && ai < ln.amp.length ? ln.amp[ai] : 0;
+	const ampS = ln.amp ? [0, 1, 2].reduce((a, k) => a + (ln.amp![Math.max(0, Math.min(ln.amp!.length - 1, ai - k))] ?? 0), 0) / 3 : 0;
+	const wordIdx = (pre: string) => ln.words.find((w) => w.w.toLowerCase().replace(/[¡!¿?,.…]/g, '').startsWith(pre));
 	return (
 		<AbsoluteFill style={{background: '#2A72BA', overflow: 'hidden'}}>
 			<Fonts />
 			<FlagPreload flags={ALL.map((c) => FL[c]).filter(Boolean)} />
-			<div style={{position: 'absolute', inset: 0, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>
-				<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} />
-			</div>
-			{/* explosions */}
-			{booms.map((b, j) => { const c = center(b.k); const s = toScr(cam, c.x, c.y); return <React.Fragment key={b.k}><Ring x={s.x} y={s.y} t={f - b.at} r1={Math.max(260, c.w * cam.z * 1.2)} /><Confetti x={s.x} y={s.y} w={c.w * cam.z * 0.8} h={c.h * cam.z * 0.8} t={f - b.at} cols={PAL[b.k] ?? ['#fff', '#ccc']} seed={j + 3} n={Math.min(140, 50 + c.w * 0.5)} /></React.Fragment>; })}
-			{sc.qmarks && booms.filter((b) => f > b.at + 30).slice(0, 8).map((b, j) => { const c = center(b.k); const s = toScr(cam, c.x, c.y); return <QMark key={b.k} x={s.x} y={s.y} t={f - b.at - 30} i={j} />; })}
-			{/* speaker balls (sit on their country) */}
-			{(sc.spk ?? []).map((s, j) => {
+			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} />
+			{booms.map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <React.Fragment key={b.k}><Ring x={p.x} y={p.y} t={f - b.at} r1={Math.max(260, c.w * cam.z * 1.2)} /><Confetti x={p.x} y={p.y} w={c.w * cam.z * 0.8} h={c.h * cam.z * 0.8} t={f - b.at} cols={PAL[b.k] ?? ['#fff', '#ccc']} seed={k + 3} n={Math.min(140, 50 + c.w * 0.5)} /></React.Fragment>; })}
+			{sc.qmarks && booms.filter((b) => f > b.at + 30).slice(0, 8).map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <div key={b.k} style={{opacity: outK}}><QMark x={p.x} y={p.y} t={f - b.at - 30} i={k} /></div>; })}
+			{(sc.spk ?? []).map((s, k) => {
 				const boom = booms.find((b) => b.k === s.k);
 				if (boom && !s.ghost && f >= boom.at + 3) return null;
 				const c = center(s.k), p = toScr(cam, c.x, c.y);
 				const d = s.d ?? 300;
-				const isMain = j === 0;
-				const x = isMain && !s.dx && !(sc.spk!.length > 1) ? 540 : p.x + (s.dx ?? 0);
-				const y = isMain && !(sc.spk!.length > 1) ? BALL_Y + (p.y - BALL_Y) * 0.15 : p.y + (s.dy ?? 0);
-				const pin = spring({frame: tc - (i === 0 ? 0 : TR - 4) - j * 4, fps: FPS, config: {damping: 8, stiffness: 220, mass: 0.6}});
-				const preBoom = boom && !s.ghost ? interpolate(f, [boom.at - 4, boom.at + 3], [1, 1.35], clamp) : 1;
-				const mood = s.endMood && t > len * 0.5 ? s.endMood : s.mood;
-				const tk = (s.talker ?? isMain) && talking ? 0.5 + 0.5 * Math.abs(Math.sin(f / 3)) : 0;
-				const shk = mood === 'panic' || mood === 'scared' || mood === 'shock' ? Math.sin(f * 2.1) * 3 : 0;
-				const bob = s.ghost ? Math.sin(f / 12) * 12 : Math.sin(f / 18 + j) * 5;
-				return <div key={s.k} style={{position: 'absolute', left: x - d / 2 + shk, top: y - d / 2 + bob, transform: `scale(${pin * preBoom})`, opacity: boom && !s.ghost ? interpolate(f, [boom.at, boom.at + 3], [1, 0], clamp) : 1}}>
-					<Ball k={s.k} d={d} mood={mood} talk={tk} ghost={s.ghost} f={f + j * 30} look={[0, 0.1]} />
+				const x = s.map ? p.x + (s.dx ?? 0) : 540 + (s.dx ?? 0);
+				const y = s.map ? p.y + (s.dy ?? 0) : BALL_Y + (s.dy ?? 0);
+				const appear = s.at ? (wordIdx(s.at)?.s ?? ln.start) - 8 : inAt + k * 6;
+				const pin = spring({frame: f - appear, fps: FPS, config: {damping: 11, stiffness: 140, mass: 0.8}});
+				const preBoom = boom && !s.ghost ? interpolate(f, [boom.at - 6, boom.at + 3], [1, 1.3], clamp) : 1;
+				// expression follows the words
+				let mood = s.endMood && t > len * 0.5 ? s.endMood : s.mood;
+				let moodAt = s.endMood && t > len * 0.5 ? ln.start + len * 0.5 : appear;
+				for (const [pre, m] of s.moods ?? []) { const w = wordIdx(pre); if (w && f >= w.s - 4) { mood = m; moodAt = w.s - 4; } }
+				const isTalker = s.talker ?? k === 0;
+				const talk = isTalker ? Math.min(1, ampS * 1.6) : 0;
+				const sq = isTalker ? amp * 0.08 : 0; // squash & stretch with the voice
+				const shk = mood === 'panic' || mood === 'scared' ? Math.sin(f * 1.3) * 3 : mood === 'angry' ? Math.sin(f * 1.7) * 2 : 0;
+				const bob = s.ghost ? Math.sin(f / 16 + k) * 12 : Math.sin(f / 20 + k) * 6;
+				const tilt = isTalker ? Math.sin(f / 23) * 4 + amp * 5 * Math.sin(f / 7) : Math.sin(f / 30 + k) * 3;
+				const react = spring({frame: f - moodAt, fps: FPS, config: {damping: 7, stiffness: 300}});
+				const jump = mood !== s.mood ? (1 - react) * -40 : 0;
+				return <div key={s.k} style={{position: 'absolute', left: x - d / 2 + shk, top: y - d / 2 + bob + jump, transform: `scale(${pin * preBoom * outK}) scaleX(${1 - sq * 0.5}) scaleY(${1 + sq}) rotate(${tilt}deg)`, transformOrigin: '50% 90%', opacity: boom && !s.ghost ? interpolate(f, [boom.at, boom.at + 3], [1, 0], clamp) : 1}}>
+					<Ball k={s.k} d={d} mood={mood} talk={talk} ghost={s.ghost} f={f + k * 37} look={[Math.sin(f / 70 + k) * 0.25, 0.1]} />
+					{f - moodAt >= 0 && f >= appear && <Emote mood={mood} t={f - Math.max(moodAt, appear)} d={d} f={f} />}
 				</div>;
 			})}
-			{sc.props && sc.props(t, len)}
-			{def.cta && i === L.length - 1 && <Hearts f={f} keys={def.cta} />}
+			{sc.props && <div style={{position: 'absolute', inset: 0, opacity: outK, transform: `scale(${0.85 + 0.15 * outK})`, transformOrigin: '50% 55%'}}>{sc.props(t, len)}</div>}
+			{def.cta && i === N - 1 && <Hearts f={f - L[N - 1].start} keys={def.cta} />}
 			<div style={{position: 'absolute', inset: 0, background: '#fff', opacity: flash}} />
 			<Title rows={def.title} />
 			<Captions lines={L} f={f} />

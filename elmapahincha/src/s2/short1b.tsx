@@ -41,12 +41,12 @@ export const DEF1B: ShortDef = {
 	scenes: [
 		// 0 · gancho: Brasil, Argentina y Uruguay sobre el mapa… y explotan
 		{cam: {x: 1300, y: 1290, z: 1.75}, qmarks: true, spk: [
-			{k: 'BRA', mood: 'scared', endMood: 'panic', d: 250, dx: 30, dy: -60, talker: true},
-			{k: 'ARG', mood: 'worried', endMood: 'panic', d: 190, dx: 20, dy: -330, talker: false},
-			{k: 'URY', mood: 'scared', endMood: 'panic', d: 140, dx: 120, dy: -170, talker: false},
+			{k: 'BRA', mood: 'worried', moods: [['todos', 'scared'], ['desapare', 'panic']], d: 250, dx: 30, dy: -60, talker: true, map: true},
+			{k: 'ARG', mood: 'worried', moods: [['nosotros', 'scared']], d: 190, dx: 20, dy: -330, talker: false, map: true},
+			{k: 'URY', mood: 'worried', moods: [['todos', 'scared']], d: 140, dx: 120, dy: -170, talker: false, map: true},
 		]},
 		// 1 · Brasil fantasma protesta
-		{cam: {x: 1330, y: 1150, z: 2.2}, spk: [{k: 'BRA', mood: 'shock', endMood: 'angry', ghost: true}], props: (t) => {
+		{cam: {x: 1330, y: 1150, z: 2.2}, spk: [{k: 'BRA', mood: 'shock', moods: [['cinco', 'angry'], ['soy', 'smug']], ghost: true}], props: (t) => {
 			const cw = wordAt(1, 'cinco');
 			return <Row y={900} gap={8}>{[0, 1, 2, 3, 4].map((j) => <PopIn key={j} t={t} d={cw + j * 5}><Star s={120} /></PopIn>)}</Row>;
 		}},
@@ -61,12 +61,12 @@ export const DEF1B: ShortDef = {
 			</>;
 		}},
 		// 2 · Francia
-		{focus: 'FRA', spk: [{k: 'FRA', mood: 'smug', endMood: 'love'}], props: (t) => {
+		{focus: 'FRA', spk: [{k: 'FRA', mood: 'happy', moods: [['sin', 'smug'], ['sería', 'cool'], ['tendría', 'love']]}, {k: 'ARG', mood: 'angry', ghost: true, d: 150, dx: 300, dy: -30, talker: false, at: 'argentina'}], props: (t) => {
 			const sw = wordAt(3, 'estrellas');
 			return <Row y={890} gap={22}><PopIn t={t} d={30}><Star s={130} /></PopIn><PopIn t={t} d={38}><Star s={130} /></PopIn><PopIn t={t} d={sw}><div style={{transform: `rotate(${interpolate(t, [sw, sw + 30], [-180, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}deg)`}}><Star s={170} c="#FFE680" /></div></PopIn></Row>;
 		}},
 		// 3 · Italia
-		{focus: 'ITA', z: 4.6, spk: [{k: 'ITA', mood: 'sad', endMood: 'happy'}], props: (t, len) => {
+		{focus: 'ITA', z: 4.6, spk: [{k: 'ITA', mood: 'shock', moods: [['brasil', 'angry'], ['finales', 'sad'], ['podría', 'love']]}, {k: 'BRA', mood: 'smug', ghost: true, d: 150, dx: -300, dy: -30, talker: false, at: 'brasil'}], props: (t, len) => {
 			const sw = wordAt(4, 'seis');
 			return <>
 				<Row y={880}>{['1970', '1994'].map((y, j) => <PopIn key={y} t={t} d={wordAt(4, j ? 'noventa' : 'setenta')} out={sw - 4}><Chip><Mini k="BRA" s={60} /><T size={64} c={RED}>{y}</T><Mini k="ITA" s={60} /></Chip></PopIn>)}</Row>
@@ -74,7 +74,7 @@ export const DEF1B: ShortDef = {
 			</>;
 		}},
 		// 4 · Alemania
-		{focus: 'DEU', spk: [{k: 'DEU', mood: 'cool', endMood: 'shock'}], props: (t) => {
+		{focus: 'DEU', spk: [{k: 'DEU', mood: 'cool', moods: [['tres', 'smug'], ['repetida', 'shock']]}, {k: 'ARG', mood: 'cool', ghost: true, d: 150, dx: 300, dy: -30, talker: false, at: 'argentina'}], props: (t) => {
 			const fw = wordAt(5, 'finales');
 			return <>
 				<Row y={880} gap={12}>{['1986', '1990', '2014'].map((y, j) => <PopIn key={y} t={t} d={fw + j * 8}><Chip><Mini k="DEU" s={52} /><T size={50} c={INK} sw={0} sh="transparent">{y}</T><Mini k="ARG" s={52} /></Chip></PopIn>)}</Row>
@@ -82,7 +82,7 @@ export const DEF1B: ShortDef = {
 			</>;
 		}},
 		// 5 · Inglaterra
-		{focus: 'ENG', z: 6.5, spk: [{k: 'ENG', mood: 'angry', endMood: 'smug'}], props: (t) => {
+		{focus: 'ENG', z: 6.5, spk: [{k: 'ENG', mood: 'angry', moods: [['sin', 'sad'], ['mejor', 'smug']]}, {k: 'ARG', mood: 'smug', ghost: true, d: 150, dx: -300, dy: -30, talker: false, at: 'mano'}], props: (t) => {
 			const mw = wordAt(6, 'mano');
 			return <>
 				<Row y={880}><PopIn t={t} d={mw - 10}><Chip><Mini k="ARG" s={80} /><T size={84} c={INK} sw={0} sh="transparent">2-1</T><Mini k="ENG" s={80} /></Chip></PopIn></Row>
@@ -90,7 +90,7 @@ export const DEF1B: ShortDef = {
 			</>;
 		}},
 		// 6 · España
-		{focus: 'ESP', z: 5.2, spk: [{k: 'ESP', mood: 'happy', endMood: 'worried'}], props: (t) => {
+		{focus: 'ESP', z: 5.2, spk: [{k: 'ESP', mood: 'happy', moods: [['gané', 'cool'], ['ahora', 'worried']]}, {k: 'ARG', mood: 'sad', ghost: true, d: 150, dx: 300, dy: -30, talker: false, at: 'argentina'}], props: (t) => {
 			const fw = wordAt(7, 'final');
 			const aw = wordAt(7, 'ahora');
 			return <>
@@ -100,9 +100,9 @@ export const DEF1B: ShortDef = {
 		}},
 		// 7 · CTA
 		{cam: {x: 1300, y: 1220, z: 1.55}, spk: [
-			{k: 'BRA', mood: 'love', ghost: true, d: 220, dx: 20, dy: -40, talker: false},
-			{k: 'ARG', mood: 'love', ghost: true, d: 190, dy: -30, talker: false},
-			{k: 'COL', mood: 'love', ghost: true, d: 160, dy: -20, talker: false},
+			{k: 'BRA', mood: 'love', ghost: true, d: 220, dx: 20, dy: -40, talker: false, map: true},
+			{k: 'ARG', mood: 'love', ghost: true, d: 190, dy: -30, talker: false, map: true},
+			{k: 'COL', mood: 'love', ghost: true, d: 160, dy: -20, talker: false, map: true},
 		], props: (t) => <div style={{position: 'absolute', top: 900, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 			<PopIn t={t} d={30}><svg width={150} height={160} viewBox="0 0 100 110" style={{transform: `translateY(${Math.sin(t / 7) * 16}px)`}}><path d="M30 0 H70 V55 H95 L50 105 L5 55 H30 Z" fill={YEL} stroke={INK} strokeWidth={7} strokeLinejoin="round" /></svg></PopIn>
 		</div>},
