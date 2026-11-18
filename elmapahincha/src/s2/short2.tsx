@@ -30,7 +30,7 @@ export const DEF2: ShortDef = {
 			return <div style={{position: 'absolute', top: 480, left: 0, right: 0, display: 'flex', justifyContent: 'center'}}><PopIn t={t} d={pw}><div style={{transform: `rotate(${Math.sin(t / 10) * 6}deg)`}}><Crown s={190} /></div></PopIn></div>;
 		}},
 		// 2 · narrador: 2 Mundiales y 4 Eurocopas sin campeón
-		{cam: {x: 1950, y: 610, z: 1.35}, props: (t) => {
+		{cam: {x: 1960, y: 560, z: 1.8}, props: (t) => {
 			const dw = wordAt(2, 'dos'), cw = wordAt(2, 'cuatro'), sw = wordAt(2, 'quedarían');
 			const W = [['2010', 'c'], ['2026', 'c'], ['1964', 'e'], ['2008', 'e'], ['2012', 'e'], ['2024', 'e']];
 			return <>

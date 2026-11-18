@@ -157,29 +157,33 @@ export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const L = tl.lines, N = L.length;
 	const booms = def.booms ?? [];
 	const lastBoom = booms.length ? Math.max(...booms.map((b) => b.at)) : -1;
-	// ---- continuous smooth camera: hold (with gentle drift) on each scene, glide between them
-	// travel happens in the pause between lines: leave when a line ends, arrive as the next one starts
+	// ---- very smooth camera: a stepwise target path (one place per scene, plus a pulled-back "travel" view
+	// for long jumps) filtered with a wide gaussian -> no stops, no overshoot, no bounces
 	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 8);
 	const leave = (j: number) => (j === N - 1 ? 1e9 : Math.min(L[j].end - 4, arrive(j + 1) - 50));
-	const hold = (j: number, fr: number): Cam => {
+	const target = (fr: number): [number, number, number] => {
+		let j = 0;
+		while (j + 1 < N && fr >= arrive(j + 1) - 26) j++;
 		const c = camFor(def.scenes[j]);
-		const dt = Math.max(0, fr - arrive(j));
-		let z = c.z * (1 + 0.00055 * dt);
-		if (j === 0 && booms.length) z *= interpolate(fr, [lastBoom + 6, lastBoom + 80], [1, 0.66], {...clamp, easing: Easing.inOut(Easing.sin)});
-		return {x: c.x + Math.sin(dt / 160) * 6 / c.z, y: c.y + Math.cos(dt / 190) * 5 / c.z, z};
+		let lz = Math.log(c.z) + 0.0004 * Math.max(0, fr - arrive(j));
+		if (j === 0 && booms.length && fr > lastBoom + 20) lz += Math.log(0.68);
+		// mid-travel: if the next place is far, pull back a bit while travelling
+		if (j + 1 < N && fr >= leave(j)) {
+			const n = camFor(def.scenes[j + 1]);
+			const dist = Math.hypot(n.x - c.x, n.y - c.y);
+			const lzMid = Math.log(1300 / (dist + 1));
+			if (fr < arrive(j + 1) - 26) return [(c.x + n.x) / 2, (c.y + n.y) / 2, Math.min(lz, Math.log(n.z), lzMid + 0.0 * lz)];
+		}
+		return [c.x, c.y, lz];
 	};
-	let j = 0;
-	while (j + 1 < N && f >= leave(j)) j++;
-	let cam: Cam;
-	if (j > 0 && f < arrive(j)) {
-		const a = hold(j - 1, leave(j - 1)), b = hold(j, arrive(j));
-		const e = Easing.inOut(Easing.sin)(interpolate(f, [leave(j - 1), arrive(j)], [0, 1], clamp));
-		const dist = Math.hypot(b.x - a.x, b.y - a.y);
-		const lzMid = Math.min(Math.log(a.z), Math.log(b.z), Math.log(1100 / (dist + 1)));
-		const lzLin = (Math.log(a.z) + Math.log(b.z)) / 2;
-		const dip = Math.sin(Math.PI * e) * Math.max(0, lzLin - lzMid);
-		cam = {x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e, z: Math.exp(Math.log(a.z) + (Math.log(b.z) - Math.log(a.z)) * e - dip)};
-	} else cam = hold(j, f);
+	const SIG = 24, R = 72;
+	let sx = 0, sy = 0, sz = 0, sw = 0;
+	for (let k = -R; k <= R; k += 2) {
+		const w = Math.exp(-(k * k) / (2 * SIG * SIG));
+		const [x, y, lz] = target(Math.max(0, f + k));
+		sx += w * x; sy += w * y; sz += w * lz; sw += w;
+	}
+	let cam: Cam = {x: sx / sw, y: sy / sw, z: Math.exp(sz / sw)};
 	// soft shake on explosions
 	let shake = 0;
 	for (const b of booms) shake += interpolate(f - b.at, [0, 3, 30], [0, 7, 0], clamp);
@@ -210,7 +214,7 @@ export const VShort2: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 		<AbsoluteFill style={{background: '#2A72BA', overflow: 'hidden'}}>
 			<Fonts />
 			<FlagPreload flags={ALL.map((c) => FL[c]).filter(Boolean)} />
-			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} />
+			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} cullPad={5000} />
 			{booms.map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <React.Fragment key={b.k}><Ring x={p.x} y={p.y} t={f - b.at} r1={Math.max(260, c.w * cam.z * 1.2)} /><Confetti x={p.x} y={p.y} w={c.w * cam.z * 0.8} h={c.h * cam.z * 0.8} t={f - b.at} cols={PAL[b.k] ?? ['#fff', '#ccc']} seed={k + 3} n={Math.min(140, 50 + c.w * 0.5)} /></React.Fragment>; })}
 			{sc.qmarks && booms.filter((b) => f > b.at + 30).slice(0, 8).map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <div key={b.k} style={{opacity: outK}}><QMark x={p.x} y={p.y} t={f - b.at - 30} i={k} /></div>; })}
 			{(sc.spk ?? []).map((s, k) => {

@@ -29,8 +29,8 @@ export const FlagFill: React.FC<{k: string; flag: string; clip: string}> = ({k, 
 	);
 };
 
-export const Atlas21: React.FC<{cam: WCam; fills: Record<string, Fill>; faces?: Record<string, FaceSpec>; children?: React.ReactNode; top?: React.ReactNode; dark?: number; W?: number; H?: number; flagImg?: boolean; grey?: string[]; greyCol?: string}> = ({cam, fills, faces = {}, children, top, dark = 0, W = 1920, H = 1080, flagImg, grey = [], greyCol = '#5B616D'}) => {
-	const vx0 = cam.x - W / 2 / cam.z - 20, vx1 = cam.x + W / 2 / cam.z + 20, vy0 = cam.y - H / 2 / cam.z - 20, vy1 = cam.y + H / 2 / cam.z + 20;
+export const Atlas21: React.FC<{cam: WCam; fills: Record<string, Fill>; faces?: Record<string, FaceSpec>; children?: React.ReactNode; top?: React.ReactNode; dark?: number; W?: number; H?: number; flagImg?: boolean; grey?: string[]; greyCol?: string; cullPad?: number}> = ({cullPad = 20, cam, fills, faces = {}, children, top, dark = 0, W = 1920, H = 1080, flagImg, grey = [], greyCol = '#5B616D'}) => {
+	const vx0 = cam.x - W / 2 / cam.z - cullPad, vx1 = cam.x + W / 2 / cam.z + cullPad, vy0 = cam.y - H / 2 / cam.z - cullPad, vy1 = cam.y + H / 2 / cam.z + cullPad;
 	const inView = (k: string) => { const b = WORLD[k].b; return b[1][0] >= vx0 && b[0][0] <= vx1 && b[1][1] >= vy0 && b[0][1] <= vy1; };
 	const f = useCurrentFrame();
 	const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
