@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s3_00_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¿Y si yo, el pentacampeón… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s3_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Cinco Mundiales sin campeón! ¡Y el único país que ha jugado todos los Mundiales… fuera!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.05
+  },
+  {
+   "id": "s3_02_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Che, qué alegría! ¡Por fin seríamos los reyes de Sudamérica, boludo!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.05
+  },
+  {
+   "id": "s3_03_URY",
+   "voice": "06cce9d4-865f-4ebc-ae1d-c72b0ab7f646",
+   "text": "¿Y el Maracanazo? ¡Mi victoria más grande desaparecería!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s3_04_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "Y yo me quedaría sin mi partido favorito… ¡el siete a uno!",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s3_05_SWE",
+   "voice": "8c889eba-5b31-4179-8fb2-37bbee22db64",
+   "text": "¡Hej! Sin Brasil, la final de 1958 en mi casa sería mía. ¡Mi primer Mundial!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s3_06_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "¡Oye! ¡Ocho de cada diez personas que hablan portugués son brasileñas!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.05
+  },
+  {
+   "id": "s3_07_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "Yo gané mi primer Mundial en la final contra Brasil… ¿Y ahora contra quién?",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s3_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres brasileño, deja tu bandera en los comentarios.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.0
+  }
+ ]
+}
