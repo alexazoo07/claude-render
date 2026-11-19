@@ -51,7 +51,7 @@ const camFor = (s: Scene): Cam => {
 export const T: React.FC<{size: number; c?: string; sw?: number; children: React.ReactNode; style?: React.CSSProperties; sh?: string}> = ({size, c = '#fff', sw = 0.12, children, style, sh = INK}) => (
 	<span style={{fontFamily: LILITA, fontSize: size, lineHeight: 1.0, color: c, WebkitTextStroke: `${size * sw}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${size * 0.07}px 0 ${sh}`, whiteSpace: 'nowrap', ...style}}>{children}</span>
 );
-export const pop = (t: number, d = 0, st = 150) => spring({frame: t - d, fps: FPS, config: {damping: 15, stiffness: st, mass: 0.9}});
+export const pop = (t: number, d = 0, st = 170) => spring({frame: t - d, fps: FPS, config: {damping: 20, stiffness: st, mass: 0.8}});
 export const PopIn: React.FC<{t: number; d?: number; children: React.ReactNode; style?: React.CSSProperties; out?: number}> = ({t, d = 0, children, style, out}) => {
 	const p = pop(t, d);
 	const fi = interpolate(t, [d, d + 10], [0, 1], clamp);
@@ -69,19 +69,41 @@ const Title: React.FC<{rows: [string, string?][][]}> = ({rows}) => (
 		{rows.map((r, i) => <div key={i} style={{display: 'flex', gap: 14}}>{r.map(([t, c], j) => <T key={j} size={c ? 74 : 60} c={c} sh={c ? '#7A2E00' : INK}>{t}</T>)}</div>)}
 	</div>
 );
+// chunks of 1-3 words; each chunk stays on screen until the first word of the NEXT chunk starts
+type Chunk = {words: Word[]; s: number};
+const chunkCache = new WeakMap<TLine[], Chunk[]>();
+const chunksOf = (lines: TLine[]): Chunk[] => {
+	const hit = chunkCache.get(lines); if (hit) return hit;
+	const out: Chunk[] = [];
+	for (const l of lines) {
+		let cur: Word[] = [];
+		const flush = () => { if (cur.length) out.push({words: cur, s: cur[0].s}); cur = []; };
+		for (const w of l.words) {
+			const len = cur.reduce((a, x) => a + x.w.length + 1, 0) + w.w.length;
+			if (cur.length && (cur.length >= 3 || len > 15 || /[.!?…,;:]$/.test(cur[cur.length - 1].w))) flush();
+			cur.push(w);
+		}
+		flush();
+	}
+	chunkCache.set(lines, out);
+	return out;
+};
 const Captions: React.FC<{lines: TLine[]; f: number}> = ({lines, f}) => {
-	const ln = lines.find((l) => f >= l.start && f < l.end + 8);
-	if (!ln || !ln.words.length) return null;
-	const ws = ln.words;
-	let cur = ws.findIndex((w) => f < w.e);
-	if (cur < 0) cur = ws.length - 1;
-	const g0 = Math.floor(cur / 2) * 2, grp = ws.slice(g0, g0 + 2);
-	const p = spring({frame: f - ws[g0].s, fps: FPS, config: {damping: 14, stiffness: 220}});
-	const chars = grp.reduce((a, w) => a + w.w.length, 0) + grp.length;
-	const size = Math.min(92, 1700 / chars);
+	const ch = chunksOf(lines);
+	let ci = -1;
+	for (let q = 0; q < ch.length; q++) if (f >= ch[q].s - 1) ci = q;
+	if (ci < 0) return null;
+	const c = ch[ci];
+	const lastEnd = lines[lines.length - 1].end + 30;
+	if (ci === ch.length - 1 && f > lastEnd) return null;
+	const p = spring({frame: f - c.s + 1, fps: FPS, config: {damping: 18, stiffness: 260, mass: 0.6}});
+	const chars = c.words.reduce((a, w) => a + w.w.length, 0) + c.words.length;
+	const size = Math.min(96, 1600 / chars);
+	let cur = 0;
+	c.words.forEach((w, k) => { if (f >= w.s - 1) cur = k; });
 	return (
-		<div style={{position: 'absolute', top: 1250, left: 30, right: 30, display: 'flex', justifyContent: 'center', gap: 20, transform: `translateY(${(1 - p) * 26}px) scale(${0.82 + 0.18 * p})`, opacity: Math.min(1, 0.3 + p)}}>
-			{grp.map((w, i) => <T key={i} size={size} c={g0 + i === cur && f >= w.s ? YEL : '#fff'} sh={g0 + i === cur ? '#7A2E00' : INK}>{w.w}</T>)}
+		<div style={{position: 'absolute', top: 1250, left: 30, right: 30, display: 'flex', justifyContent: 'center', gap: 20, transform: `scale(${0.88 + 0.12 * p})`, opacity: Math.min(1, p * 1.6)}}>
+			{c.words.map((w, k) => <T key={k} size={size} c={k === cur ? YEL : '#fff'} sh={k === cur ? '#7A2E00' : INK}>{w.w}</T>)}
 		</div>
 	);
 };
@@ -159,39 +181,39 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const L = tl.lines, N = L.length;
 	const booms = def.booms ?? [];
 	const lastBoom = booms.length ? Math.max(...booms.map((b) => b.at)) : -1;
-	// ---- ultra smooth camera: one keyframe per scene; travel = smootherstep in x/y and log-zoom,
-	// plus a zoom-out arc for long jumps; C2-continuous, no overshoot, no bounce
-	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 10);
+	// ---- camera like the reference: straight moves in x/y + zoom, one easing curve for all three
+	// (no arcs, no overshoot). Every scene has its own slow zoom drift; a transition blends the two
+	// drifting states with smootherstep so velocity is continuous at both ends.
+	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 6);
 	const ss = (u: number) => { const x = Math.max(0, Math.min(1, u)); return x * x * x * (x * (x * 6 - 15) + 10); };
 	const keys = def.scenes.slice(0, N).map((sc0) => camFor(sc0));
-	const boomZ = (fr: number) => (booms.length ? Math.log(0.72) * ss((fr - lastBoom - 20) / 80) : 0);
-	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.min(A.z, B.z); return Math.round(Math.min(110, Math.max(64, 54 + px * 0.03))); };
+	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.sqrt(A.z * B.z) + Math.abs(Math.log(B.z / A.z)) * 500; return Math.round(Math.min(84, Math.max(48, 40 + px * 0.025))); };
+	const DRIFT = 0.00045; // log-zoom per frame (~2.7%/s)
+	const state = (j: number, fr: number): [number, number, number] => {
+		const K = keys[j];
+		let lz = Math.log(K.z) + (j % 2 === 0 ? 1 : -1) * DRIFT * (fr - arrive(j));
+		if (j === 0 && booms.length) lz += Math.log(0.75) * ss((fr - lastBoom - 10) / 90);
+		return [K.x, K.y, lz];
+	};
 	const camAt = (fr: number): [number, number, number] => {
 		let j = 0;
 		while (j + 1 < N && fr >= arrive(j + 1) - trav(j + 1)) j++;
-		const B = keys[j];
-		const lzB = Math.log(B.z) + (j === 0 ? boomZ(fr) : 0);
+		const B = state(j, fr);
 		if (j > 0) {
 			const T0 = arrive(j) - trav(j), u = (fr - T0) / trav(j);
 			if (u < 1) {
-				const A = keys[j - 1];
-				const lzA = Math.log(A.z) + (j === 1 ? boomZ(T0) : 0);
-				const e = ss(u);
-				const lzFit = Math.log(950 / (Math.hypot(B.x - A.x, B.y - A.y) + 1));
-				const dip = Math.max(0, Math.min(lzA, lzB) - lzFit) * 0.85;
-				const lz = lzA + (lzB - lzA) * e - dip * Math.sin(Math.PI * e) ** 2;
-				return [A.x + (B.x - A.x) * e, A.y + (B.y - A.y) * e, lz];
+				const A = state(j - 1, fr), e = ss(u);
+				return [A[0] + (B[0] - A[0]) * e, A[1] + (B[1] - A[1]) * e, A[2] + (B[2] - A[2]) * e];
 			}
 		}
-		return [B.x, B.y, lzB];
+		return B;
 	};
 	const [cx0, cy0, lz0] = camAt(f);
-	// gentle always-on drift so the picture never freezes
-	let cam: Cam = {x: cx0 + Math.sin(f / 190) * 5, y: cy0 + Math.cos(f / 230) * 5, z: Math.exp(lz0 + 0.03 * Math.sin(f / 260))};
-	const leave = (j: number) => (j === N - 1 ? 1e9 : arrive(j + 1) - Math.round(trav(j + 1) * 0.55));
+	let cam: Cam = {x: cx0, y: cy0, z: Math.exp(lz0)};
+	const leave = (j: number) => (j === N - 1 ? 1e9 : arrive(j + 1) - Math.round(trav(j + 1) * 0.6));
 	// soft shake on explosions
 	let shake = 0;
-	for (const b of booms) shake += interpolate(f - b.at, [0, 3, 30], [0, 7, 0], clamp);
+	for (const b of booms) shake += interpolate(f - b.at, [0, 3, 24], [0, 3, 0], clamp);
 	cam = {...cam, x: cam.x + (Math.sin(f * 0.9) * shake) / cam.z, y: cam.y + (Math.cos(f * 1.1) * shake) / cam.z};
 	// ---- which scene's content is on screen (switches while the camera is travelling)
 	let i = 0;
@@ -230,7 +252,7 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 				const x = s.map ? p.x + (s.dx ?? 0) : 540 + (s.dx ?? 0);
 				const y = s.map ? p.y + (s.dy ?? 0) : BALL_Y + (s.dy ?? 0);
 				const appear = s.at ? (wordIdx(s.at)?.s ?? ln.start) - 8 : inAt + k * 6;
-				const pin = spring({frame: f - appear, fps: FPS, config: {damping: 15, stiffness: 120, mass: 0.9}});
+				const pin = spring({frame: f - appear, fps: FPS, config: {damping: 20, stiffness: 170, mass: 0.8}});
 				const preBoom = boom && !s.ghost ? interpolate(f, [boom.at - 6, boom.at + 3], [1, 1.3], clamp) : 1;
 				// expression follows the words
 				let mood = s.endMood && t > len * 0.5 ? s.endMood : s.mood;
@@ -238,12 +260,13 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 				for (const [pre, m] of s.moods ?? []) { const w = wordIdx(pre); if (w && f >= w.s - 4) { mood = m; moodAt = w.s - 4; } }
 				const isTalker = s.talker ?? k === 0;
 				const talk = isTalker ? Math.min(1, ampS * 1.6) : 0;
-				const sq = isTalker ? amp * 0.08 : 0; // squash & stretch with the voice
-				const shk = mood === 'panic' || mood === 'scared' ? Math.sin(f * 0.9) * 2 : mood === 'angry' ? Math.sin(f * 1.1) * 1.5 : 0;
-				const bob = s.ghost ? Math.sin(f / 16 + k) * 12 : Math.sin(f / 20 + k) * 6;
-				const tilt = isTalker ? Math.sin(f / 23) * 4 + amp * 5 * Math.sin(f / 7) : Math.sin(f / 30 + k) * 3;
-				const jump = mood !== s.mood && f >= moodAt ? Math.sin(Math.min(1, (f - moodAt) / 24) * Math.PI) * -24 : 0;
-				return <div key={s.k} style={{position: 'absolute', left: x - d / 2 + shk, top: y - d / 2 + bob + jump, transform: `scale(${Math.max(0, 0.3 + 0.7 * pin) * preBoom * (0.6 + 0.4 * outK)}) scaleX(${1 - sq * 0.5}) scaleY(${1 + sq}) rotate(${tilt}deg)`, transformOrigin: '50% 90%', opacity: (boom && !s.ghost ? interpolate(f, [boom.at, boom.at + 3], [1, 0], clamp) : 1) * Math.min(1, pin * 1.5)}}>
+				const sq = isTalker ? ampS * 0.025 : 0; // tiny breathing with the voice
+				const shk = 0;
+				const bob = s.ghost ? Math.sin(f / 40 + k) * 6 : Math.sin(f / 45 + k) * 3;
+				const tilt = Math.sin(f / 70 + k) * 1.2;
+				const jump = 0;
+				const moodPulse = mood !== s.mood && f >= moodAt ? 1 + 0.06 * Math.sin(Math.min(1, (f - moodAt) / 20) * Math.PI) : 1;
+				return <div key={s.k} style={{position: 'absolute', left: x - d / 2 + shk, top: y - d / 2 + bob + jump, transform: `scale(${Math.max(0, pin) * preBoom * outK * moodPulse}) scaleX(${1 - sq * 0.5}) scaleY(${1 + sq}) rotate(${tilt}deg)`, transformOrigin: '50% 90%', opacity: (boom && !s.ghost ? interpolate(f, [boom.at, boom.at + 3], [1, 0], clamp) : 1) * Math.min(1, pin * 2)}}>
 					<Ball k={s.k} d={d} mood={mood} talk={talk} ghost={s.ghost} f={f + k * 37} look={[Math.sin(f / 70 + k) * 0.25, 0.1]} />
 					{f - moodAt >= 0 && f >= appear && <Emote mood={mood} t={f - Math.max(moodAt, appear)} d={d} f={f} />}
 				</div>;

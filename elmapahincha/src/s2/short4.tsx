@@ -101,3 +101,27 @@ export const DEF4: ShortDef = {
 export const VS4: React.FC = () => <VShort3 tl={tl} def={DEF4} />;
 export const VS4_TOTAL = tl.total;
 void RED; void T;
+
+// miniatura del short (sin texto)
+import {AbsoluteFill} from 'remotion';
+import {Atlas21} from '../v21/Atlas21';
+import {ALL, FL} from '../v21/data21';
+import {WORLD} from '../v5/WorldLayer5';
+import {Fonts} from '../fonts';
+import {Ball} from './VShort3';
+export const TS4I: React.FC = () => {
+	const fills: Record<string, any> = {};
+	for (const c of ALL) if (WORLD[c]) fills[c] = c === 'ITA' ? {color: '#4E535C'} : {flag: FL[c]};
+	return (
+		<AbsoluteFill style={{background: '#2A72BA'}}>
+			<Fonts />
+			<Atlas21 cam={{x: ci.x, y: ci.y - 40, z: 3.4}} fills={fills} faces={{}} W={1080} H={1920} dark={0.15} cullPad={2000} />
+			<div style={{position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)'}} />
+			<div style={{position: 'absolute', left: 540 - 300, top: 640, transform: 'rotate(-4deg)'}}><Ball k="ITA" d={600} mood="sad" ghost name={false} f={10} /></div>
+			<div style={{position: 'absolute', top: 170, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 22}}>{['2018', '2022', '2026'].map((y, j) => <div key={y} style={{transform: `rotate(${(j - 1) * 6}deg) translateY(${j === 1 ? -20 : 10}px)`}}><Calendar s={280} year={y} x={1} top="" /></div>)}</div>
+			<div style={{position: 'absolute', top: 1360, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 14}}>{[0, 1, 2, 3].map((j) => <GoldStar key={j} s={170} f={0} grey />)}</div>
+			<div style={{position: 'absolute', left: 90, top: 1600, transform: 'rotate(-12deg)'}}><Pizza s={220} f={0} /></div>
+			<div style={{position: 'absolute', right: 80, top: 1590, transform: 'rotate(10deg)'}}><TV s={260} f={4} text="" /></div>
+		</AbsoluteFill>
+	);
+};

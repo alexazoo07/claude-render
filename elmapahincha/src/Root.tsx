@@ -67,7 +67,7 @@ import {VS1, VS1_TOTAL} from './s2/short1';
 import {VS1B, VS1B_TOTAL} from './s2/short1b';
 import {VS2, VS2_TOTAL} from './s2/short2';
 import {VS3, VS3_TOTAL} from './s2/short3';
-import {VS4, VS4_TOTAL} from './s2/short4';
+import {VS4, VS4_TOTAL, TS4I} from './s2/short4';
 import {NEVER_TOTAL} from './shorts/Never';
 import {T13a, T13b, T13c, T13d, T13e} from './v13/Thumbs13';
 import {T15a, T15b, T15c, T15d, T15e} from './v15/Thumbs15';
@@ -136,6 +136,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 		<Composition id="V20" component={Video20} durationInFrames={V20_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="VS3" component={VS3} durationInFrames={VS3_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS4" component={VS4} durationInFrames={VS4_TOTAL} fps={60} width={1080} height={1920} />
+			<Still id="TS4I" component={TS4I} width={1080} height={1920} />
 			<Composition id="VS2" component={VS2} durationInFrames={VS2_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS1B" component={VS1B} durationInFrames={VS1B_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS1" component={VS1} durationInFrames={VS1_TOTAL} fps={60} width={1080} height={1920} />
