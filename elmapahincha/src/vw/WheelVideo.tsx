@@ -413,13 +413,13 @@ const HookOverlay: React.FC<{f: number}> = ({f}) => {
 						<div style={{transform: `scale(${backOut((f - 36) / 14)}) rotate(-2deg)`}}><T size={110} color="#E63946">{C.hookTitle[1]}</T></div>
 						<div style={{transform: `scale(${backOut((f - 52) / 14)}) rotate(-2deg)`}}><T size={80}>{C.hookTitle[2]}</T></div>
 					</div>
-					<div style={{position: 'absolute', left: 820, top: 70, width: 1060, display: 'grid', gridTemplateColumns: `repeat(${C.hookCols}, 1fr)`, gap: 10}}>
+					<div style={{position: 'absolute', left: 780, top: 140, width: 880, display: 'grid', gridTemplateColumns: `repeat(${C.hookCols}, 1fr)`, gap: 10}}>
 						{JORDER.map((k, i) => {
 							const d = 30 + i * 5;
 							const p = easeOut((f - d) / 18);
 							return (
 								<div key={k} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: f >= d ? 1 : 0, transform: `translateY(${(1 - p) * -500}px) rotate(${(1 - p) * ((i % 2) * 2 - 1) * 30}deg)`}}>
-									<Art k={k} w={Math.min(150, 1000 / C.hookCols)} mood="worried" />
+									<Art k={k} w={Math.min(150, 760 / C.hookCols)} mood="worried" />
 								</div>
 							);
 						})}
