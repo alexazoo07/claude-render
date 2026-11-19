@@ -28,6 +28,7 @@ import {Video11, V11_TOTAL} from './v11/Video11';
 import {Video12, V12_TOTAL} from './v12/Video12';
 import {Video13, V13_TOTAL} from './v13/Video13';
 import {Video29, V29_TOTAL} from './v29/Video29';
+import {Video33, V33_TOTAL} from './v33/Video33';
 import {Video32, V32_TOTAL} from './v32/Video32';
 import {Video31, V31_TOTAL} from './v31/Video31';
 import {Video30, V30_TOTAL} from './v30/Video30';
@@ -153,6 +154,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 			<Composition id="V30" component={Video30} durationInFrames={V30_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V31" component={Video31} durationInFrames={V31_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V32" component={Video32} durationInFrames={V32_TOTAL} fps={60} width={1920} height={1080} />
+			<Composition id="V33" component={Video33} durationInFrames={V33_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V12" component={Video12} durationInFrames={V12_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V11" component={Video11} durationInFrames={V11_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V10" component={Video10} durationInFrames={V10_TOTAL} fps={60} width={1920} height={1080} />
