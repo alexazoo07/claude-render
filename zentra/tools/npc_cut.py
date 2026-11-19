@@ -11,7 +11,7 @@ def job(c):
     if os.path.exists(out): return
     tmp = out[:-4] + '.tmp.mp4'
     r = subprocess.run(['ffmpeg', '-nostdin', '-loglevel', 'error', '-y', '-ss', str(c['a']), '-i', SRC(c['src']), '-t', str(c['d']), '-vf', 'scale=1920:1080:flags=lanczos,fps=60',
-                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-g', '30', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', tmp])
+                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '12', '-g', '30', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', tmp])
     if r.returncode == 0: os.rename(tmp, out)
     else: print('FAIL', c)
 seen = {}

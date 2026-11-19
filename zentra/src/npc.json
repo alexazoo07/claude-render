@@ -1,14 +1,135 @@
 {
 "video": [
 {
+"map": {
+"img": "maps/yanis.jpg",
+"w": 5670,
+"h": 7680,
+"bg": "#2c66a5",
+"source": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG",
+"cam": [
+[
+0,
+0.55,
+0.55,
+1.7
+],
+[
+2.6,
+0.79,
+0.505,
+0.34
+],
+[
+3.6,
+0.8,
+0.5,
+0.27
+]
+],
+"pins": [
+{
+"t": 1.7,
+"x": 0.826,
+"y": 0.5,
+"label": "VICE BEACH",
+"sub": "LEONIDA · AQUÍ EMPIEZA TODO",
+"big": true
+}
+],
+"kind": "oficial",
+"net": null
+},
+"t0": 0.0,
+"t1": 3.6,
+"hard": true,
+"credit": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG"
+},
+{
+"src": "T01",
+"s": 484.05,
+"rate": 0.6,
+"zoom": [
+1.0,
+1.08
+],
+"flash": true,
+"t0": 3.6,
+"t1": 6.6,
+"credit": "GTA VI · TRÁILER OFICIAL · ROCKSTAR GAMES",
+"clip": "n_T01_483800_258.mp4",
+"off": 0.25
+},
+{
+"src": "T01",
+"s": 486.1,
+"rate": 0.72,
+"zoom": [
+1.02,
+1.1
+],
+"t0": 6.6,
+"t1": 9.0,
+"credit": "GTA VI · TRÁILER OFICIAL · ROCKSTAR GAMES",
+"clip": "n_T01_485850_254.mp4",
+"off": 0.25
+},
+{
+"src": "v4_00",
+"s": 7.1000000000000005,
+"audio": 1.0,
+"zoom": [
+1.0,
+1.12
+],
+"origin": "58.3% 55.6%",
+"hard": true,
+"t0": 9.0,
+"t1": 14.7,
+"credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
+"clip": "n_v4_00_6850_660.mp4",
+"off": 0.25
+},
+{
+"src": "v2_01",
+"s": 421.5,
+"audio": 1.0,
+"zoom": [
+1.0,
+1.12
+],
+"origin": "51.6% 39.8%",
+"hard": true,
+"t0": 14.7,
+"t1": 17.5,
+"credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
+"clip": "n_v2_01_421250_370.mp4",
+"off": 0.25
+},
+{
+"src": "v2_02",
+"s": 148.5,
+"rate": 0.7,
+"zoom": [
+1.0,
+1.08
+],
+"flash": true,
+"t0": 17.5,
+"t1": 21.2,
+"credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
+"clip": "n_v2_02_148250_340.mp4",
+"off": 0.25
+},
+{
 "src": "v4_00",
 "s": 300.0,
 "zoom": [
 1.03,
 1.09
 ],
-"t0": 0.0,
-"t1": 4.681,
+"t0": 21.2,
+"t1": 25.881,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_299750_558.mp4",
 "off": 0.25
@@ -18,8 +139,8 @@
 "s": 230.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 4.681,
-"t1": 7.186,
+"t0": 25.881,
+"t1": 28.386,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_229750_340.mp4",
 "off": 0.25
@@ -32,8 +153,8 @@
 1.1
 ],
 "flash": true,
-"t0": 7.186,
-"t1": 8.976,
+"t0": 28.386,
+"t1": 30.176,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_351750_269.mp4",
 "off": 0.25
@@ -45,8 +166,8 @@
 1.04,
 1.1
 ],
-"t0": 8.976,
-"t1": 14.67,
+"t0": 30.176,
+"t1": 35.87,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_9250_659.mp4",
 "off": 0.25
@@ -54,8 +175,8 @@
 {
 "src": "v2_02",
 "s": 50.0,
-"t0": 14.67,
-"t1": 16.871,
+"t0": 35.87,
+"t1": 38.071,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_49750_310.mp4",
 "off": 0.25
@@ -67,8 +188,8 @@
 1.04,
 1.1
 ],
-"t0": 16.871,
-"t1": 18.451,
+"t0": 38.071,
+"t1": 39.651,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_57750_248.mp4",
 "off": 0.25
@@ -80,8 +201,8 @@
 1.02,
 1.08
 ],
-"t0": 18.451,
-"t1": 22.337,
+"t0": 39.651,
+"t1": 43.537,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_61750_479.mp4",
 "off": 0.25
@@ -89,8 +210,8 @@
 {
 "src": "v2_00",
 "s": 128.0,
-"t0": 22.337,
-"t1": 25.958,
+"t0": 43.537,
+"t1": 47.158,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_127750_452.mp4",
 "off": 0.25
@@ -102,8 +223,8 @@
 1.04,
 1.1
 ],
-"t0": 25.958,
-"t1": 28.4,
+"t0": 47.158,
+"t1": 49.6,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_167750_334.mp4",
 "off": 0.25
@@ -113,8 +234,8 @@
 "s": 304.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 28.4,
-"t1": 32.77,
+"t0": 49.6,
+"t1": 53.97,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_303750_527.mp4",
 "off": 0.25
@@ -126,8 +247,8 @@
 1.03,
 1.1
 ],
-"t0": 32.77,
-"t1": 37.08,
+"t0": 53.97,
+"t1": 58.28,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_345750_521.mp4",
 "off": 0.25
@@ -135,8 +256,8 @@
 {
 "src": "v2_02",
 "s": 150.0,
-"t0": 37.08,
-"t1": 42.095,
+"t0": 58.28,
+"t1": 63.295,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_149750_592.mp4",
 "off": 0.25
@@ -145,8 +266,8 @@
 "src": "v4_01",
 "s": 140.0,
 "flash": true,
-"t0": 42.095,
-"t1": 43.503,
+"t0": 63.295,
+"t1": 64.703,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_139750_231.mp4",
 "off": 0.25
@@ -155,8 +276,8 @@
 "src": "v2_00",
 "s": 140.0,
 "flash": true,
-"t0": 43.503,
-"t1": 45.6,
+"t0": 64.703,
+"t1": 66.8,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_139750_300.mp4",
 "off": 0.25
@@ -165,8 +286,8 @@
 "src": "v4_00",
 "s": 430.0,
 "flash": true,
-"t0": 45.6,
-"t1": 51.539,
+"t0": 66.8,
+"t1": 72.739,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_429750_684.mp4",
 "off": 0.25
@@ -176,8 +297,8 @@
 "s": 412.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 51.539,
-"t1": 54.138,
+"t0": 72.739,
+"t1": 75.338,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_411750_350.mp4",
 "off": 0.25
@@ -189,8 +310,8 @@
 1.03,
 1.09
 ],
-"t0": 54.138,
-"t1": 59.877,
+"t0": 75.338,
+"t1": 81.077,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_41750_664.mp4",
 "off": 0.25
@@ -200,8 +321,8 @@
 "s": 470.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 59.877,
-"t1": 66.319,
+"t0": 81.077,
+"t1": 87.519,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_469750_734.mp4",
 "off": 0.25
@@ -213,8 +334,8 @@
 1.04,
 1.1
 ],
-"t0": 66.319,
-"t1": 69.043,
+"t0": 87.519,
+"t1": 90.243,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_59750_362.mp4",
 "off": 0.25
@@ -259,8 +380,8 @@
 "kind": "oficial",
 "net": null
 },
-"t0": 69.043,
-"t1": 73.268,
+"t0": 90.243,
+"t1": 94.468,
 "credit": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG"
 },
 {
@@ -270,8 +391,8 @@
 1.03,
 1.08
 ],
-"t0": 73.268,
-"t1": 76.877,
+"t0": 94.468,
+"t1": 98.077,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_235750_451.mp4",
 "off": 0.25
@@ -281,8 +402,8 @@
 "s": 60.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 76.877,
-"t1": 79.934,
+"t0": 98.077,
+"t1": 101.134,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_59750_396.mp4",
 "off": 0.25
@@ -294,8 +415,8 @@
 1.02,
 1.07
 ],
-"t0": 79.934,
-"t1": 83.902,
+"t0": 101.134,
+"t1": 105.102,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_104250_487.mp4",
 "off": 0.25
@@ -307,8 +428,8 @@
 1.04,
 1.1
 ],
-"t0": 83.902,
-"t1": 89.691,
+"t0": 105.102,
+"t1": 110.891,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_107750_669.mp4",
 "off": 0.25
@@ -316,8 +437,8 @@
 {
 "src": "v4_00",
 "s": 172.0,
-"t0": 89.691,
-"t1": 95.728,
+"t0": 110.891,
+"t1": 116.928,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_171750_694.mp4",
 "off": 0.25
@@ -329,8 +450,8 @@
 1.03,
 1.08
 ],
-"t0": 95.728,
-"t1": 101.224,
+"t0": 116.928,
+"t1": 122.424,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_235750_640.mp4",
 "off": 0.25
@@ -342,8 +463,8 @@
 1.03,
 1.1
 ],
-"t0": 101.224,
-"t1": 105.798,
+"t0": 122.424,
+"t1": 126.998,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_17750_547.mp4",
 "off": 0.25
@@ -351,8 +472,8 @@
 {
 "src": "v3",
 "s": 24.0,
-"t0": 105.798,
-"t1": 108.597,
+"t0": 126.998,
+"t1": 129.797,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_23750_370.mp4",
 "off": 0.25
@@ -364,8 +485,8 @@
 1.02,
 1.07
 ],
-"t0": 108.597,
-"t1": 113.95,
+"t0": 129.797,
+"t1": 135.15,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_504750_625.mp4",
 "off": 0.25
@@ -377,8 +498,8 @@
 1.02,
 1.07
 ],
-"t0": 113.95,
-"t1": 121.154,
+"t0": 135.15,
+"t1": 142.354,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_3750_810.mp4",
 "off": 0.25
@@ -392,8 +513,8 @@
 1.04
 ],
 "hard": false,
-"t0": 121.154,
-"t1": 126.004,
+"t0": 142.354,
+"t1": 147.204,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_7950_575.mp4",
 "off": 0.25
@@ -401,8 +522,8 @@
 {
 "src": "v2_00",
 "s": 20.0,
-"t0": 126.004,
-"t1": 132.185,
+"t0": 147.204,
+"t1": 153.385,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_19750_708.mp4",
 "off": 0.25
@@ -416,8 +537,8 @@
 1.04
 ],
 "hard": false,
-"t0": 132.185,
-"t1": 138.485,
+"t0": 153.385,
+"t1": 159.685,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_26000_720.mp4",
 "off": 0.25
@@ -425,8 +546,8 @@
 {
 "src": "v4_00",
 "s": 318.0,
-"t0": 138.485,
-"t1": 142.976,
+"t0": 159.685,
+"t1": 164.176,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_317750_539.mp4",
 "off": 0.25
@@ -438,8 +559,8 @@
 1.03,
 1.08
 ],
-"t0": 142.976,
-"t1": 144.333,
+"t0": 164.176,
+"t1": 165.533,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_39750_226.mp4",
 "off": 0.25
@@ -453,8 +574,8 @@
 1.04
 ],
 "hard": false,
-"t0": 144.333,
-"t1": 151.683,
+"t0": 165.533,
+"t1": 172.883,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_63650_825.mp4",
 "off": 0.25
@@ -464,8 +585,8 @@
 "s": 200.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 151.683,
-"t1": 159.97,
+"t0": 172.883,
+"t1": 181.17,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_199750_919.mp4",
 "off": 0.25
@@ -477,8 +598,8 @@
 1.02,
 1.08
 ],
-"t0": 159.97,
-"t1": 163.454,
+"t0": 181.17,
+"t1": 184.654,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_119750_438.mp4",
 "off": 0.25
@@ -490,8 +611,8 @@
 1.04,
 1.1
 ],
-"t0": 163.454,
-"t1": 167.095,
+"t0": 184.654,
+"t1": 188.295,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_111750_454.mp4",
 "off": 0.25
@@ -499,8 +620,8 @@
 {
 "src": "v4_00",
 "s": 330.0,
-"t0": 167.095,
-"t1": 170.725,
+"t0": 188.295,
+"t1": 191.925,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_329750_453.mp4",
 "off": 0.25
@@ -515,21 +636,21 @@
 "cam": [
 [
 0,
-0.69,
+0.72,
 0.52,
 0.42
 ],
 [
 3.6820340136054517,
-0.7,
-0.51,
+0.78,
+0.505,
 0.3
 ],
 [
 4.707034013605457,
-0.675,
+0.7,
 0.515,
-0.26
+0.3
 ],
 [
 6.927034013605439,
@@ -547,8 +668,8 @@
 "pins": [
 {
 "t": 3.6820340136054517,
-"x": 0.712,
-"y": 0.505,
+"x": 0.826,
+"y": 0.5,
 "label": "LA PLAYA",
 "sub": "ROPA DE GIMNASIO"
 },
@@ -571,8 +692,8 @@
 "kind": "fans",
 "net": null
 },
-"t0": 170.725,
-"t1": 178.325,
+"t0": 191.925,
+"t1": 199.525,
 "credit": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG"
 },
 {
@@ -584,8 +705,8 @@
 1.04
 ],
 "hard": false,
-"t0": 178.325,
-"t1": 183.675,
+"t0": 199.525,
+"t1": 204.875,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_270950_625.mp4",
 "off": 0.25
@@ -597,8 +718,8 @@
 1.02,
 1.07
 ],
-"t0": 183.675,
-"t1": 188.254,
+"t0": 204.875,
+"t1": 209.454,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_485750_548.mp4",
 "off": 0.25
@@ -610,8 +731,8 @@
 1.03,
 1.08
 ],
-"t0": 188.254,
-"t1": 190.648,
+"t0": 209.454,
+"t1": 211.848,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_1750_329.mp4",
 "off": 0.25
@@ -625,8 +746,8 @@
 1.04
 ],
 "hard": false,
-"t0": 190.648,
-"t1": 196.598,
+"t0": 211.848,
+"t1": 217.798,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_499850_685.mp4",
 "off": 0.25
@@ -634,8 +755,8 @@
 {
 "src": "v2_02",
 "s": 296.0,
-"t0": 196.598,
-"t1": 204.715,
+"t0": 217.798,
+"t1": 225.915,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_295750_902.mp4",
 "off": 0.25
@@ -648,8 +769,8 @@
 1.1
 ],
 "flash": true,
-"t0": 204.715,
-"t1": 206.233,
+"t0": 225.915,
+"t1": 227.433,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_339750_242.mp4",
 "off": 0.25
@@ -661,8 +782,8 @@
 1.04,
 1.1
 ],
-"t0": 206.233,
-"t1": 211.029,
+"t0": 227.433,
+"t1": 232.229,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_355750_570.mp4",
 "off": 0.25
@@ -670,8 +791,8 @@
 {
 "src": "v2_02",
 "s": 330.0,
-"t0": 211.029,
-"t1": 214.386,
+"t0": 232.229,
+"t1": 235.586,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_329750_426.mp4",
 "off": 0.25
@@ -683,8 +804,8 @@
 1.04,
 1.1
 ],
-"t0": 214.386,
-"t1": 216.674,
+"t0": 235.586,
+"t1": 237.874,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_349750_319.mp4",
 "off": 0.25
@@ -696,8 +817,8 @@
 1.02,
 1.07
 ],
-"t0": 216.674,
-"t1": 222.493,
+"t0": 237.874,
+"t1": 243.693,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_325750_672.mp4",
 "off": 0.25
@@ -711,8 +832,8 @@
 1.04
 ],
 "hard": false,
-"t0": 222.493,
-"t1": 225.743,
+"t0": 243.693,
+"t1": 246.943,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_338750_415.mp4",
 "off": 0.25
@@ -724,8 +845,8 @@
 1.02,
 1.07
 ],
-"t0": 225.743,
-"t1": 231.32,
+"t0": 246.943,
+"t1": 252.52,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_275750_648.mp4",
 "off": 0.25
@@ -739,8 +860,8 @@
 1.04
 ],
 "hard": false,
-"t0": 231.32,
-"t1": 234.77,
+"t0": 252.52,
+"t1": 255.97,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_283450_435.mp4",
 "off": 0.25
@@ -752,8 +873,8 @@
 1.02,
 1.07
 ],
-"t0": 234.77,
-"t1": 241.524,
+"t0": 255.97,
+"t1": 262.724,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_295750_765.mp4",
 "off": 0.25
@@ -767,8 +888,8 @@
 1.04
 ],
 "hard": false,
-"t0": 241.524,
-"t1": 244.174,
+"t0": 262.724,
+"t1": 265.374,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_306050_355.mp4",
 "off": 0.25
@@ -776,8 +897,8 @@
 {
 "src": "v2_02",
 "s": 300.0,
-"t0": 244.174,
-"t1": 249.396,
+"t0": 265.374,
+"t1": 270.596,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_299750_612.mp4",
 "off": 0.25
@@ -786,8 +907,8 @@
 "src": "v2_00",
 "s": 150.0,
 "flash": true,
-"t0": 249.396,
-"t1": 254.35,
+"t0": 270.596,
+"t1": 275.55,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_149750_585.mp4",
 "off": 0.25
@@ -795,10 +916,10 @@
 {
 "src": "v4_01",
 "s": 160.0,
-"t0": 254.35,
-"t1": 260.255,
+"t0": 275.55,
+"t1": 281.455,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
-"clip": "n_v4_01_159750_681.mp4",
+"clip": "n_v4_01_159750_680.mp4",
 "off": 0.25
 },
 {
@@ -835,8 +956,8 @@
 "kind": "oficial",
 "net": null
 },
-"t0": 260.255,
-"t1": 263.079,
+"t0": 281.455,
+"t1": 284.279,
 "credit": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG"
 },
 {
@@ -846,8 +967,8 @@
 1.02,
 1.07
 ],
-"t0": 263.079,
-"t1": 269.433,
+"t0": 284.279,
+"t1": 290.633,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_143750_725.mp4",
 "off": 0.25
@@ -861,8 +982,8 @@
 1.04
 ],
 "hard": false,
-"t0": 269.433,
-"t1": 276.883,
+"t0": 290.633,
+"t1": 298.083,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_151150_835.mp4",
 "off": 0.25
@@ -874,8 +995,8 @@
 1.02,
 1.07
 ],
-"t0": 276.883,
-"t1": 282.955,
+"t0": 298.083,
+"t1": 304.155,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_227750_697.mp4",
 "off": 0.25
@@ -889,8 +1010,8 @@
 1.04
 ],
 "hard": false,
-"t0": 282.955,
-"t1": 288.605,
+"t0": 304.155,
+"t1": 309.805,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_234650_655.mp4",
 "off": 0.25
@@ -902,8 +1023,8 @@
 1.02,
 1.07
 ],
-"t0": 288.605,
-"t1": 294.367,
+"t0": 309.805,
+"t1": 315.567,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_475750_666.mp4",
 "off": 0.25
@@ -917,8 +1038,8 @@
 1.04
 ],
 "hard": false,
-"t0": 294.367,
-"t1": 297.417,
+"t0": 315.567,
+"t1": 318.617,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_479350_395.mp4",
 "off": 0.25
@@ -930,8 +1051,8 @@
 1.02,
 1.07
 ],
-"t0": 297.417,
-"t1": 301.413,
+"t0": 318.617,
+"t1": 322.613,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_493750_490.mp4",
 "off": 0.25
@@ -945,8 +1066,8 @@
 1.04
 ],
 "hard": false,
-"t0": 301.413,
-"t1": 307.463,
+"t0": 322.613,
+"t1": 328.663,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_506950_695.mp4",
 "off": 0.25
@@ -954,8 +1075,8 @@
 {
 "src": "v2_00",
 "s": 236.0,
-"t0": 307.463,
-"t1": 309.602,
+"t0": 328.663,
+"t1": 330.802,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_235750_304.mp4",
 "off": 0.25
@@ -967,8 +1088,8 @@
 1.03,
 1.08
 ],
-"t0": 309.602,
-"t1": 314.494,
+"t0": 330.802,
+"t1": 335.694,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_299750_579.mp4",
 "off": 0.25
@@ -976,8 +1097,8 @@
 {
 "src": "v2_00",
 "s": 40.0,
-"t0": 314.494,
-"t1": 316.411,
+"t0": 335.694,
+"t1": 337.611,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_39750_282.mp4",
 "off": 0.25
@@ -989,8 +1110,8 @@
 1.02,
 1.07
 ],
-"t0": 316.411,
-"t1": 325.317,
+"t0": 337.611,
+"t1": 346.517,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_43750_981.mp4",
 "off": 0.25
@@ -1004,8 +1125,8 @@
 1.04
 ],
 "hard": false,
-"t0": 325.317,
-"t1": 327.567,
+"t0": 346.517,
+"t1": 348.767,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_51650_315.mp4",
 "off": 0.25
@@ -1013,8 +1134,8 @@
 {
 "src": "v2_03",
 "s": 100.0,
-"t0": 327.567,
-"t1": 336.751,
+"t0": 348.767,
+"t1": 357.951,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_99750_1008.mp4",
 "off": 0.25
@@ -1026,10 +1147,10 @@
 1.03,
 1.08
 ],
-"t0": 336.751,
-"t1": 339.176,
+"t0": 357.951,
+"t1": 360.376,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
-"clip": "n_v2_03_221750_333.mp4",
+"clip": "n_v2_03_221750_332.mp4",
 "off": 0.25
 },
 {
@@ -1041,8 +1162,8 @@
 1.04
 ],
 "hard": false,
-"t0": 339.176,
-"t1": 344.426,
+"t0": 360.376,
+"t1": 365.626,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_107650_615.mp4",
 "off": 0.25
@@ -1054,8 +1175,8 @@
 1.03,
 1.1
 ],
-"t0": 344.426,
-"t1": 350.215,
+"t0": 365.626,
+"t1": 371.415,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_159750_669.mp4",
 "off": 0.25
@@ -1063,8 +1184,8 @@
 {
 "src": "v2_00",
 "s": 138.0,
-"t0": 350.215,
-"t1": 355.407,
+"t0": 371.415,
+"t1": 376.607,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_137750_609.mp4",
 "off": 0.25
@@ -1078,8 +1199,8 @@
 1.04
 ],
 "hard": false,
-"t0": 355.407,
-"t1": 359.907,
+"t0": 376.607,
+"t1": 381.107,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_154800_540.mp4",
 "off": 0.25
@@ -1089,8 +1210,8 @@
 "s": 171.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 359.907,
-"t1": 368.25,
+"t0": 381.107,
+"t1": 389.45,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_170750_924.mp4",
 "off": 0.25
@@ -1100,8 +1221,8 @@
 "s": 172.5,
 "blur": 10,
 "dim": 0.25,
-"t0": 368.25,
-"t1": 375.504,
+"t0": 389.45,
+"t1": 396.704,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_172250_815.mp4",
 "off": 0.25
@@ -1111,8 +1232,8 @@
 "s": 300.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 375.504,
-"t1": 388.112,
+"t0": 396.704,
+"t1": 409.312,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_299750_1351.mp4",
 "off": 0.25
@@ -1120,8 +1241,8 @@
 {
 "src": "v2_00",
 "s": 320.0,
-"t0": 388.112,
-"t1": 394.422,
+"t0": 409.312,
+"t1": 415.622,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_319750_721.mp4",
 "off": 0.25
@@ -1133,8 +1254,8 @@
 1.03,
 1.08
 ],
-"t0": 394.422,
-"t1": 396.163,
+"t0": 415.622,
+"t1": 417.363,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_379750_264.mp4",
 "off": 0.25
@@ -1146,8 +1267,8 @@
 1.02,
 1.07
 ],
-"t0": 396.163,
-"t1": 400.275,
+"t0": 417.363,
+"t1": 421.475,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_01_335750_501.mp4",
 "off": 0.25
@@ -1155,10 +1276,10 @@
 {
 "src": "v2_01",
 "s": 476.0,
-"t0": 400.275,
-"t1": 403.51,
+"t0": 421.475,
+"t1": 424.71,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
-"clip": "n_v2_01_475750_414.mp4",
+"clip": "n_v2_01_475750_413.mp4",
 "off": 0.25
 },
 {
@@ -1168,8 +1289,8 @@
 1.03,
 1.08
 ],
-"t0": 403.51,
-"t1": 408.894,
+"t0": 424.71,
+"t1": 430.094,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_01_491750_628.mp4",
 "off": 0.25
@@ -1177,8 +1298,8 @@
 {
 "src": "v2_00",
 "s": 400.0,
-"t0": 408.894,
-"t1": 415.066,
+"t0": 430.094,
+"t1": 436.266,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_00_399750_707.mp4",
 "off": 0.25
@@ -1190,8 +1311,8 @@
 1.02,
 1.08
 ],
-"t0": 415.066,
-"t1": 419.443,
+"t0": 436.266,
+"t1": 440.643,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_111750_528.mp4",
 "off": 0.25
@@ -1199,8 +1320,8 @@
 {
 "src": "v2_02",
 "s": 300.0,
-"t0": 419.443,
-"t1": 426.63,
+"t0": 440.643,
+"t1": 447.83,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_299750_809.mp4",
 "off": 0.25
@@ -1212,10 +1333,10 @@
 1.03,
 1.08
 ],
-"t0": 426.63,
-"t1": 431.655,
+"t0": 447.83,
+"t1": 452.855,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
-"clip": "n_v2_02_343750_592.mp4",
+"clip": "n_v2_02_343750_593.mp4",
 "off": 0.25
 },
 {
@@ -1223,17 +1344,17 @@
 "s": 250.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 431.655,
-"t1": 433.87,
+"t0": 452.855,
+"t1": 455.07,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
-"clip": "n_v3_249750_312.mp4",
+"clip": "n_v3_249750_311.mp4",
 "off": 0.25
 },
 {
 "src": "v4_00",
 "s": 440.0,
-"t0": 433.87,
-"t1": 440.142,
+"t0": 455.07,
+"t1": 461.342,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_439750_717.mp4",
 "off": 0.25
@@ -1245,8 +1366,8 @@
 1.03,
 1.09
 ],
-"t0": 440.142,
-"t1": 441.851,
+"t0": 461.342,
+"t1": 463.051,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_445750_261.mp4",
 "off": 0.25
@@ -1254,8 +1375,8 @@
 {
 "src": "v2_03",
 "s": 60.0,
-"t0": 441.851,
-"t1": 447.438,
+"t0": 463.051,
+"t1": 468.638,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_03_59750_649.mp4",
 "off": 0.25
@@ -1263,8 +1384,8 @@
 {
 "src": "v2_01",
 "s": 406.0,
-"t0": 447.438,
-"t1": 450.389,
+"t0": 468.638,
+"t1": 471.589,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_01_405750_385.mp4",
 "off": 0.25
@@ -1276,10 +1397,10 @@
 1.03,
 1.08
 ],
-"t0": 450.389,
-"t1": 454.234,
+"t0": 471.589,
+"t1": 475.434,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
-"clip": "n_v2_01_412750_474.mp4",
+"clip": "n_v2_01_412750_475.mp4",
 "off": 0.25
 },
 {
@@ -1291,8 +1412,8 @@
 1.04
 ],
 "hard": false,
-"t0": 454.234,
-"t1": 459.084,
+"t0": 475.434,
+"t1": 480.284,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_01_419550_575.mp4",
 "off": 0.25
@@ -1302,8 +1423,8 @@
 "s": 425.5,
 "blur": 10,
 "dim": 0.25,
-"t0": 459.084,
-"t1": 461.315,
+"t0": 480.284,
+"t1": 482.515,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_01_425250_313.mp4",
 "off": 0.25
@@ -1342,8 +1463,8 @@
 },
 "src": "T01",
 "s": 236.2,
-"t0": 461.315,
-"t1": 467.752,
+"t0": 482.515,
+"t1": 488.952,
 "credit": "GTA VI · TRÁILER OFICIAL · ROCKSTAR GAMES"
 },
 {
@@ -1381,15 +1502,15 @@
 "kind": "teoria",
 "net": null
 },
-"t0": 467.752,
-"t1": 471.068,
+"t0": 488.952,
+"t1": 492.268,
 "credit": "MAPA BASE: YANIS GTA VI COMMUNITY MAP V17 · GTADB.ORG"
 },
 {
 "src": "v4_00",
 "s": 200.0,
-"t0": 471.068,
-"t1": 476.647,
+"t0": 492.268,
+"t1": 497.847,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_199750_648.mp4",
 "off": 0.25
@@ -1398,8 +1519,8 @@
 "src": "v3",
 "s": 120.0,
 "flash": true,
-"t0": 476.647,
-"t1": 478.892,
+"t0": 497.847,
+"t1": 500.092,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_119750_315.mp4",
 "off": 0.25
@@ -1407,8 +1528,8 @@
 {
 "src": "v3",
 "s": 100.0,
-"t0": 478.892,
-"t1": 481.665,
+"t0": 500.092,
+"t1": 502.865,
 "credit": "GAMEPLAY: \"OCEAN VIEW BEACH RAMPAGE & EXPLORATION\"",
 "clip": "n_v3_99750_367.mp4",
 "off": 0.25
@@ -1417,8 +1538,8 @@
 "src": "v2_02",
 "s": 180.0,
 "flash": true,
-"t0": 481.665,
-"t1": 482.976,
+"t0": 502.865,
+"t1": 504.176,
 "credit": "GAMEPLAY: \"GTA 6 EXPLORANDO EL MASIVO MUNDO ABIERTO\"",
 "clip": "n_v2_02_179750_221.mp4",
 "off": 0.25
@@ -1427,8 +1548,8 @@
 "src": "v4_00",
 "s": 350.0,
 "flash": true,
-"t0": 482.976,
-"t1": 485.898,
+"t0": 504.176,
+"t1": 507.098,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_349750_382.mp4",
 "off": 0.25
@@ -1438,10 +1559,10 @@
 "s": 60.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 485.898,
-"t1": 491.303,
+"t0": 507.098,
+"t1": 512.503,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
-"clip": "n_v4_00_59750_630.mp4",
+"clip": "n_v4_00_59750_631.mp4",
 "off": 0.25
 },
 {
@@ -1449,8 +1570,8 @@
 "s": 70.0,
 "blur": 10,
 "dim": 0.25,
-"t0": 491.303,
-"t1": 496.48995464852584,
+"t0": 512.503,
+"t1": 517.6899546485257,
 "credit": "GAMEPLAY: \"OPEN WORLD FREE ROAM · BEACHES & VICE CITY\"",
 "clip": "n_v4_00_69750_609.mp4",
 "off": 0.25
@@ -1458,14 +1579,110 @@
 ],
 "overlays": [
 {
+"type": "label",
+"text": "LEONIDA",
+"sub": "19 DE NOVIEMBRE · YA SE PUEDE JUGAR",
+"mute": true,
+"t0": 4.1,
+"t1": 6.5
+},
+{
+"type": "ring",
+"x": 1120,
+"y": 600,
+"r": 210,
+"label": "NPC · CHIRINGUITO",
+"t0": 10.25,
+"t1": 14.65
+},
+{
+"type": "npcsub",
+"es": "Yo era igualito a ti, ¿sabes? Hace 50 años.",
+"en": "I used to look just like you, you know? 50 years ago.",
+"who": "NPC · CHIRINGUITO",
+"mute": true,
+"t0": 10.3,
+"t1": 14.65
+},
+{
+"type": "ring",
+"x": 990,
+"y": 430,
+"r": 230,
+"label": "NPC · HAMBURGUESERÍA",
+"t0": 15.05,
+"t1": 17.45
+},
+{
+"type": "npcsub",
+"es": "Eh… ¿te conozco?",
+"en": "Do I know you?",
+"who": "NPC · HAMBURGUESERÍA",
+"mute": true,
+"t0": 15.1,
+"t1": 17.45
+},
+{
+"type": "kinetic",
+"words": [
+[
+"LOS",
+0.0
+],
+[
+"NPC",
+0.12
+],
+[
+"TE",
+0.3
+],
+[
+"JUZGAN",
+0.42
+]
+],
+"size": 138,
+"top": 300,
+"dim": 1,
+"mute": true,
+"t0": 17.65,
+"t1": 21.0
+},
+{
+"type": "kinetic",
+"words": [
+[
+"POR",
+0.0,
+true
+],
+[
+"TU",
+0.12,
+true
+],
+[
+"ROPA",
+0.24,
+true
+]
+],
+"size": 150,
+"top": 470,
+"mute": true,
+"t0": 18.25,
+"t1": 21.0
+},
+{
 "type": "stamp",
 "text": "YA HA SALIDO",
 "sub": null,
 "x": 1420,
 "y": 300,
 "size": 96,
-"t0": 1.206,
-"t1": 4.621
+"t0": 22.406,
+"t1": 25.821
 },
 {
 "type": "kinetic",
@@ -1480,8 +1697,8 @@
 ]
 ],
 "size": 150,
-"t0": 5.374,
-"t1": 6.352
+"t0": 26.574,
+"t1": 27.552
 },
 {
 "type": "kinetic",
@@ -1496,8 +1713,8 @@
 ]
 ],
 "size": 150,
-"t0": 6.412,
-"t1": 7.126
+"t0": 27.612,
+"t1": 28.326
 },
 {
 "type": "kinetic",
@@ -1517,8 +1734,8 @@ true
 ]
 ],
 "size": 190,
-"t0": 7.186,
-"t1": 8.916
+"t0": 28.386,
+"t1": 30.116
 },
 {
 "type": "kinetic",
@@ -1534,8 +1751,8 @@ true
 ],
 "size": 140,
 "top": 110,
-"t0": 10.998,
-"t1": 11.783
+"t0": 32.198,
+"t1": 32.983
 },
 {
 "type": "kinetic",
@@ -1551,8 +1768,8 @@ true
 ],
 "size": 140,
 "top": 110,
-"t0": 11.843,
-"t1": 13.974
+"t0": 33.043,
+"t1": 35.174
 },
 {
 "type": "kinetic",
@@ -1569,8 +1786,8 @@ true
 ],
 "size": 170,
 "top": 110,
-"t0": 14.034,
-"t1": 14.634
+"t0": 35.234,
+"t1": 35.834
 },
 {
 "type": "stamp",
@@ -1579,8 +1796,8 @@ true
 "x": 1440,
 "y": 330,
 "size": 96,
-"t0": 16.307,
-"t1": 18.391
+"t0": 37.507,
+"t1": 39.591
 },
 {
 "type": "stamp",
@@ -1590,8 +1807,8 @@ true
 "y": 300,
 "size": 90,
 "rot": -6,
-"t0": 19.214,
-"t1": 22.277
+"t0": 40.414,
+"t1": 43.477
 },
 {
 "type": "kinetic",
@@ -1607,8 +1824,8 @@ true
 ]
 ],
 "size": 160,
-"t0": 27.093,
-"t1": 28.34
+"t0": 48.293,
+"t1": 49.54
 },
 {
 "type": "kinetic",
@@ -1636,8 +1853,8 @@ true
 ]
 ],
 "size": 150,
-"t0": 29.299,
-"t1": 32.71
+"t0": 50.499,
+"t1": 53.91
 },
 {
 "type": "kinetic",
@@ -1654,43 +1871,43 @@ true
 ],
 "size": 150,
 "top": 120,
-"t0": 34.012,
-"t1": 37.02
+"t0": 55.212,
+"t1": 58.22
 },
 {
 "type": "chapter",
 "n": "01",
 "text": "LO QUE TE DICEN",
-"t0": 42.095,
-"t1": 43.443
+"t0": 63.295,
+"t1": 64.643
 },
 {
 "type": "chapter",
 "n": "02",
 "text": "LO QUE HABLAN ENTRE ELLOS",
-"t0": 43.503,
-"t1": 45.54
+"t0": 64.703,
+"t1": 66.74
 },
 {
 "type": "chapter",
 "n": "03",
 "text": "TU ROPA Y LA POLICÍA",
-"t0": 45.6,
-"t1": 49.325
+"t0": 66.8,
+"t1": 70.525
 },
 {
 "type": "chapter",
 "n": "04",
 "text": "EL MISTERIO",
-"t0": 49.385,
-"t1": 51.479
+"t0": 70.585,
+"t1": 72.679
 },
 {
 "type": "section",
 "text": "ANTES",
 "sub": "GTA V · 2013",
-"t0": 51.539,
-"t1": 54.078
+"t0": 72.739,
+"t1": 75.278
 },
 {
 "type": "kinetic",
@@ -1706,8 +1923,8 @@ true
 ],
 "size": 120,
 "top": 90,
-"t0": 55.082,
-"t1": 57.938
+"t0": 76.282,
+"t1": 79.138
 },
 {
 "type": "stamp",
@@ -1716,13 +1933,13 @@ true
 "x": 1300,
 "y": 780,
 "size": 80,
-"t0": 57.998,
-"t1": 59.817
+"t0": 79.198,
+"t1": 81.017
 },
 {
 "type": "versus",
-"t0": 60.281,
-"t1": 66.259
+"t0": 81.481,
+"t1": 87.459
 },
 {
 "type": "stamp",
@@ -1732,8 +1949,8 @@ true
 "y": 540,
 "size": 170,
 "rot": -6,
-"t0": 67.261,
-"t1": 68.983
+"t0": 88.461,
+"t1": 90.183
 },
 {
 "type": "quote",
@@ -1747,8 +1964,8 @@ true
 "x": 110,
 "y": 300,
 "highlight": true,
-"t0": 73.268,
-"t1": 76.817
+"t0": 94.468,
+"t1": 98.017
 },
 {
 "type": "stamp",
@@ -1758,8 +1975,8 @@ true
 "y": 520,
 "size": 150,
 "color": "#ffd166",
-"t0": 78.733,
-"t1": 79.874
+"t0": 99.933,
+"t1": 101.074
 },
 {
 "type": "stamp",
@@ -1768,8 +1985,8 @@ true
 "x": 1300,
 "y": 330,
 "size": 90,
-"t0": 83.246,
-"t1": 83.846
+"t0": 104.446,
+"t1": 105.046
 },
 {
 "type": "stamp",
@@ -1778,8 +1995,8 @@ true
 "x": 1240,
 "y": 330,
 "size": 84,
-"t0": 88.495,
-"t1": 89.631
+"t0": 109.695,
+"t1": 110.831
 },
 {
 "type": "kinetic",
@@ -1800,8 +2017,8 @@ true
 ],
 "size": 130,
 "top": 110,
-"t0": 93.302,
-"t1": 95.668
+"t0": 114.502,
+"t1": 116.868
 },
 {
 "type": "kinetic",
@@ -1817,8 +2034,8 @@ true
 ],
 "size": 110,
 "top": 700,
-"t0": 97.707,
-"t1": 98.581
+"t0": 118.907,
+"t1": 119.781
 },
 {
 "type": "kinetic",
@@ -1835,8 +2052,8 @@ true
 ],
 "size": 110,
 "top": 700,
-"t0": 98.641,
-"t1": 99.241
+"t0": 119.841,
+"t1": 120.441
 },
 {
 "type": "kinetic",
@@ -1852,8 +2069,8 @@ true
 ],
 "size": 110,
 "top": 700,
-"t0": 99.076,
-"t1": 100.261
+"t0": 120.276,
+"t1": 121.461
 },
 {
 "type": "kinetic",
@@ -1874,15 +2091,15 @@ true
 ],
 "size": 110,
 "top": 700,
-"t0": 100.321,
-"t1": 101.164
+"t0": 121.521,
+"t1": 122.364
 },
 {
 "type": "section",
 "text": "LOS COMENTARIOS",
 "sub": "LO QUE DICEN DE TI POR LA CALLE",
-"t0": 107.531,
-"t1": 108.537
+"t0": 128.731,
+"t1": 129.737
 },
 {
 "type": "stamp",
@@ -1891,38 +2108,38 @@ true
 "x": 1360,
 "y": 320,
 "size": 96,
-"t0": 112.395,
-"t1": 113.89
+"t0": 133.595,
+"t1": 135.09
 },
 {
 "type": "chapter",
 "n": "01",
 "text": "EL SEÑOR DEL CHIRINGUITO",
-"t0": 114.26,
-"t1": 121.094
+"t0": 135.46,
+"t1": 142.294
 },
 {
 "type": "npcsub",
 "es": "Yo era igualito a ti, ¿sabes? Hace 50 años.",
 "en": "I used to look just like you, you know? 50 years ago.",
 "who": "NPC · CHIRINGUITO DE LA PLAYA",
-"t0": 121.354,
-"t1": 125.704
+"t0": 142.554,
+"t1": 146.904
 },
 {
 "type": "chapter",
 "n": "02",
 "text": "EL DEL BAR",
-"t0": 126.5,
-"t1": 132.125
+"t0": 147.7,
+"t1": 153.325
 },
 {
 "type": "npcsub",
 "es": "Tío, si los aliens te ordeñaran, sacarían unos híbridos guapísimos.",
 "en": "Damn dude, if the aliens milked you, they'd get some damn good-looking hybrids.",
 "who": "NPC · BAR",
-"t0": 132.385,
-"t1": 138.185
+"t0": 153.585,
+"t1": 159.385
 },
 {
 "type": "kinetic",
@@ -1955,16 +2172,16 @@ true
 ],
 "size": 140,
 "top": 110,
-"t0": 142.976,
-"t1": 144.273
+"t0": 164.176,
+"t1": 165.473
 },
 {
 "type": "npcsub",
 "es": "Si vas a ser un borde, al menos sé divertido.",
 "en": "If you're gonna be a b*tch, at least be fun about it.",
 "who": "NPC · PLAYA",
-"t0": 144.533,
-"t1": 151.383
+"t0": 165.733,
+"t1": 172.583
 },
 {
 "type": "quote",
@@ -1977,8 +2194,8 @@ true
 "x": 520,
 "y": 330,
 "highlight": true,
-"t0": 158.014,
-"t1": 159.91
+"t0": 179.214,
+"t1": 181.11
 },
 {
 "type": "stamp",
@@ -1987,23 +2204,23 @@ true
 "x": 1380,
 "y": 320,
 "size": 110,
-"t0": 164.106,
-"t1": 167.035
+"t0": 185.306,
+"t1": 188.235
 },
 {
 "type": "section",
 "text": "EL CONTEXTO",
 "sub": "CADA ZONA TIENE SU CÓDIGO",
-"t0": 167.9,
-"t1": 170.665
+"t0": 189.1,
+"t1": 191.865
 },
 {
 "type": "npcsub",
 "es": "A diferencia de estos, yo entreno para la vida real. No lo entenderías.",
 "en": "Unlike these other guys, I'm training for some real life sh*t. You wouldn't get it.",
 "who": "NPC · GIMNASIO",
-"t0": 178.525,
-"t1": 183.375
+"t0": 199.725,
+"t1": 204.575
 },
 {
 "type": "stamp",
@@ -2012,16 +2229,16 @@ true
 "x": 1400,
 "y": 320,
 "size": 100,
-"t0": 186.951,
-"t1": 190.588
+"t0": 208.151,
+"t1": 211.788
 },
 {
 "type": "npcsub",
 "es": "En diez años, en ese barrio solo vas a oír acento de niña rica.",
 "en": "Ten years' time, walk through that neighborhood, all you're gonna hear is a rich girl accent.",
 "who": "NPC · BARRIO RICO",
-"t0": 190.848,
-"t1": 196.298
+"t0": 212.048,
+"t1": 217.498
 },
 {
 "type": "quote",
@@ -2034,8 +2251,8 @@ true
 "x": 110,
 "y": 290,
 "highlight": true,
-"t0": 201.135,
-"t1": 204.655
+"t0": 222.335,
+"t1": 225.855
 },
 {
 "type": "stamp",
@@ -2044,8 +2261,8 @@ true
 "x": 1300,
 "y": 360,
 "size": 110,
-"t0": 205.644,
-"t1": 206.244
+"t0": 226.844,
+"t1": 227.444
 },
 {
 "type": "kinetic",
@@ -2066,15 +2283,15 @@ true
 ],
 "size": 160,
 "top": 110,
-"t0": 207.634,
-"t1": 210.969
+"t0": 228.834,
+"t1": 232.169
 },
 {
 "type": "section",
 "text": "CUANDO TE PASAS",
 "sub": "LAS REACCIONES",
-"t0": 213.054,
-"t1": 214.326
+"t0": 234.254,
+"t1": 235.526
 },
 {
 "type": "kinetic",
@@ -2098,53 +2315,53 @@ true
 ]
 ],
 "size": 150,
-"t0": 214.861,
-"t1": 216.614
+"t0": 236.061,
+"t1": 237.814
 },
 {
 "type": "chapter",
 "n": "01",
 "text": "EL SOCORRISTA",
-"t0": 218.43,
-"t1": 222.433
+"t0": 239.63,
+"t1": 243.633
 },
 {
 "type": "npcsub",
 "es": "¡Eh, tío, espera! ¡Ya me voy, venga!",
 "en": "Hey man, wait! I'll leave, come on!",
 "who": "NPC · SOCORRISTA",
-"t0": 222.693,
-"t1": 225.443
+"t0": 243.893,
+"t1": 246.643
 },
 {
 "type": "chapter",
 "n": "02",
 "text": "LA NOVIA PROTECTORA",
-"t0": 227.186,
-"t1": 231.26
+"t0": 248.386,
+"t1": 252.46
 },
 {
 "type": "npcsub",
 "es": "¡Quita esas manos! ¡No te metas con mi chico!",
 "en": "Get those hands off, b*tch! Don't f*ck with my fella!",
 "who": "NPC · OCEAN DRIVE",
-"t0": 231.52,
-"t1": 234.47
+"t0": 252.72,
+"t1": 255.67
 },
 {
 "type": "chapter",
 "n": "03",
 "text": "EL SALUDO",
-"t0": 238.236,
-"t1": 241.464
+"t0": 259.436,
+"t1": 262.664
 },
 {
 "type": "npcsub",
 "es": "¿Qué pasa, capullo?",
 "en": "Sup, a**hole.",
 "who": "NPC · PLAYA",
-"t0": 241.724,
-"t1": 243.874
+"t0": 262.924,
+"t1": 265.074
 },
 {
 "type": "kinetic",
@@ -2156,8 +2373,8 @@ true
 ],
 "size": 130,
 "top": 700,
-"t0": 248.328,
-"t1": 249.336
+"t0": 269.528,
+"t1": 270.536
 },
 {
 "type": "kinetic",
@@ -2173,8 +2390,8 @@ true
 ],
 "size": 130,
 "top": 700,
-"t0": 249.396,
-"t1": 251.697
+"t0": 270.596,
+"t1": 272.897
 },
 {
 "type": "kinetic",
@@ -2191,15 +2408,15 @@ true
 ],
 "size": 130,
 "top": 700,
-"t0": 251.757,
-"t1": 254.29
+"t0": 272.957,
+"t1": 275.49
 },
 {
 "type": "section",
 "text": "HABLAN ENTRE ELLOS",
 "sub": "LA SÁTIRA ESTÁ EN LA CALLE",
-"t0": 258.055,
-"t1": 260.195
+"t0": 279.255,
+"t1": 281.395
 },
 {
 "type": "kinetic",
@@ -2212,16 +2429,16 @@ true
 ],
 "size": 150,
 "top": 110,
-"t0": 268.516,
-"t1": 269.373
+"t0": 289.716,
+"t1": 290.573
 },
 {
 "type": "npcsub",
 "es": "…Si me eligieran a mí, yo me dejaba. Podrían haber elegido a cualquiera.",
 "en": "If they pick me out, I'd make love to them. They could have had anyone alive.",
 "who": "NPC · CHARLA EN EL GIMNASIO",
-"t0": 269.633,
-"t1": 276.583
+"t0": 290.833,
+"t1": 297.783
 },
 {
 "type": "kinetic",
@@ -2238,32 +2455,32 @@ true
 ],
 "size": 150,
 "top": 110,
-"t0": 279.913,
-"t1": 282.895
+"t0": 301.113,
+"t1": 304.095
 },
 {
 "type": "npcsub",
 "es": "¿Así que ganas siete cifras? Otro día en el paraíso, ¿eh?",
 "en": "So you make like seven figures. Another day in paradise, right?",
 "who": "NPC · TERRAZA DE OCEAN DRIVE",
-"t0": 283.155,
-"t1": 288.305
+"t0": 304.355,
+"t1": 309.505
 },
 {
 "type": "npcsub",
 "es": "Con cinco millones y medio, la tiro abajo y construyo otra.",
 "en": "You gave me five and a half mil, I could do a tear down.",
 "who": "NPC · BARRIO RICO",
-"t0": 294.567,
-"t1": 297.117
+"t0": 315.767,
+"t1": 318.317
 },
 {
 "type": "npcsub",
 "es": "La gente de aquí, de Leonida, tiene su reputación.",
 "en": "People down here in Leonida have a reputation.",
 "who": "NPC · BARRIO RICO",
-"t0": 301.613,
-"t1": 307.163
+"t0": 322.813,
+"t1": 328.363
 },
 {
 "type": "kinetic",
@@ -2283,8 +2500,8 @@ true
 ]
 ],
 "size": 140,
-"t0": 310.925,
-"t1": 312.545
+"t0": 332.125,
+"t1": 333.745
 },
 {
 "type": "kinetic",
@@ -2307,23 +2524,23 @@ true
 ]
 ],
 "size": 140,
-"t0": 312.605,
-"t1": 314.434
+"t0": 333.805,
+"t1": 335.634
 },
 {
 "type": "section",
 "text": "LOS QUE TE ATIENDEN",
 "sub": "DEPENDIENTES · RECEPCIONISTAS · CAMAREROS",
-"t0": 315.478,
-"t1": 316.351
+"t0": 336.678,
+"t1": 337.551
 },
 {
 "type": "npcsub",
 "es": "Gracias por su visita.",
 "en": "We appreciate your patronage.",
 "who": "NPC · CAMARERO",
-"t0": 325.517,
-"t1": 327.267
+"t0": 346.717,
+"t1": 348.467
 },
 {
 "type": "stamp",
@@ -2332,23 +2549,23 @@ true
 "x": 1350,
 "y": 320,
 "size": 100,
-"t0": 332.13,
-"t1": 333.866
+"t0": 353.33,
+"t1": 355.066
 },
 {
 "type": "npcsub",
 "es": "¿Le puedo recomendar algún producto en concreto?",
 "en": "Can I direct you to any product in particular?",
 "who": "NPC · RECEPCIÓN DEL HOTEL",
-"t0": 339.376,
-"t1": 342.826
+"t0": 360.576,
+"t1": 364.026
 },
 {
 "type": "section",
 "text": "TU ROPA ES UNA PISTA",
 "sub": "POLICÍA · TESTIGOS · CÁMARAS",
-"t0": 349.354,
-"t1": 350.155
+"t0": 370.554,
+"t1": 371.355
 },
 {
 "type": "stamp",
@@ -2358,16 +2575,16 @@ true
 "y": 830,
 "size": 72,
 "rot": -4,
-"t0": 353.312,
-"t1": 355.347
+"t0": 374.512,
+"t1": 376.547
 },
 {
 "type": "npcsub",
 "es": "¡Idiota! ¡Quedas detenido, hijo de…!",
 "en": "You f*cking idiot, you're under arrest, you son of a…",
 "who": "POLICÍA DE LEONIDA",
-"t0": 355.607,
-"t1": 359.607
+"t0": 376.807,
+"t1": 380.807
 },
 {
 "type": "hud",
@@ -2377,8 +2594,8 @@ true
 "car",
 "pair"
 ],
-"t0": 364.528,
-"t1": 368.19
+"t0": 385.728,
+"t1": 389.39
 },
 {
 "type": "hud",
@@ -2387,8 +2604,8 @@ true
 "clothes"
 ],
 "focus": true,
-"t0": 369.74,
-"t1": 375.444
+"t0": 390.94,
+"t1": 396.644
 },
 {
 "type": "hud",
@@ -2400,8 +2617,8 @@ true
 "face"
 ],
 "clear_at": 2.6889999999999645,
-"t0": 379.398,
-"t1": 388.052
+"t0": 400.598,
+"t1": 409.252
 },
 {
 "type": "stamp",
@@ -2410,8 +2627,8 @@ true
 "x": 1400,
 "y": 330,
 "size": 100,
-"t0": 395.653,
-"t1": 396.253
+"t0": 416.853,
+"t1": 417.453
 },
 {
 "type": "kinetic",
@@ -2427,40 +2644,40 @@ true
 ]
 ],
 "size": 170,
-"t0": 398.486,
-"t1": 400.215
+"t0": 419.686,
+"t1": 421.415
 },
 {
 "type": "tip",
 "n": "1",
 "text": "OUTFIT DE REPUESTO",
 "sub": "EN EL MALETERO",
-"t0": 400.367,
-"t1": 408.834
+"t0": 421.567,
+"t1": 430.034
 },
 {
 "type": "tip",
 "n": "2",
 "text": "MÁSCARA Y GORRO",
 "sub": "SIRVEN PARA LA CARA, NO PARA LA ROPA",
-"t0": 409.254,
-"t1": 415.006
+"t0": 430.454,
+"t1": 436.206
 },
 {
 "type": "tip",
 "n": "3",
 "text": "OJO CON LAS CÁMARAS",
 "sub": "GRABAN AUNQUE NADIE MIRE",
-"t0": 415.126,
-"t1": 419.383
+"t0": 436.326,
+"t1": 440.583
 },
 {
 "type": "tip",
 "n": "4",
 "text": "ROBA SU SOMBRERO",
 "sub": "Y DISFRÁZATE CON ÉL",
-"t0": 419.75,
-"t1": 431.595
+"t0": 440.95,
+"t1": 452.795
 },
 {
 "type": "stamp",
@@ -2470,8 +2687,8 @@ true
 "y": 540,
 "size": 140,
 "color": "#ffd166",
-"t0": 433.207,
-"t1": 433.81
+"t0": 454.407,
+"t1": 455.01
 },
 {
 "type": "kinetic",
@@ -2488,8 +2705,8 @@ true
 ],
 "size": 150,
 "top": 110,
-"t0": 437.548,
-"t1": 441.791
+"t0": 458.748,
+"t1": 462.991
 },
 {
 "type": "quote",
@@ -2502,16 +2719,16 @@ true
 "source": "RUMOR · SIN CONFIRMAR",
 "x": 110,
 "y": 300,
-"t0": 442.511,
-"t1": 447.378
+"t0": 463.711,
+"t1": 468.578
 },
 {
 "type": "npcsub",
 "es": "Eh… ¿te conozco?",
 "en": "Um, do I know you?",
 "who": "NPC · HAMBURGUESERÍA",
-"t0": 454.434,
-"t1": 458.784
+"t0": 475.634,
+"t1": 479.984
 },
 {
 "type": "kinetic",
@@ -2522,8 +2739,8 @@ true
 ]
 ],
 "size": 150,
-"t0": 459.116,
-"t1": 460.106
+"t0": 480.316,
+"t1": 481.306
 },
 {
 "type": "kinetic",
@@ -2539,8 +2756,8 @@ true
 ]
 ],
 "size": 150,
-"t0": 460.166,
-"t1": 461.255
+"t0": 481.366,
+"t1": 482.455
 },
 {
 "type": "kinetic",
@@ -2557,8 +2774,8 @@ true
 ],
 "size": 120,
 "top": 700,
-"t0": 473.196,
-"t1": 474.186
+"t0": 494.396,
+"t1": 495.386
 },
 {
 "type": "kinetic",
@@ -2574,8 +2791,8 @@ true
 ],
 "size": 120,
 "top": 700,
-"t0": 474.246,
-"t1": 475.166
+"t0": 495.446,
+"t1": 496.366
 },
 {
 "type": "kinetic",
@@ -2596,8 +2813,8 @@ true
 ],
 "size": 120,
 "top": 700,
-"t0": 475.226,
-"t1": 478.832
+"t0": 496.426,
+"t1": 500.032
 },
 {
 "type": "kinetic",
@@ -2622,8 +2839,8 @@ true
 ],
 "size": 150,
 "top": 110,
-"t0": 483.804,
-"t1": 485.838
+"t0": 505.004,
+"t1": 507.038
 },
 {
 "type": "stamp",
@@ -2632,8 +2849,8 @@ true
 "x": 960,
 "y": 760,
 "size": 110,
-"t0": 485.557,
-"t1": 486.157
+"t0": 506.757,
+"t1": 507.357
 },
 {
 "type": "kinetic",
@@ -2653,8 +2870,8 @@ true
 ]
 ],
 "size": 160,
-"t0": 487.413,
-"t1": 491.243
+"t0": 508.613,
+"t1": 512.443
 },
 {
 "type": "stamp",
@@ -2663,543 +2880,553 @@ true
 "x": 1500,
 "y": 830,
 "size": 80,
-"t0": 489.394,
-"t1": 491.243
+"t0": 510.594,
+"t1": 512.443
 },
 {
 "type": "subscribe",
-"t0": 493.504,
-"t1": 496.49
+"t0": 514.704,
+"t1": 517.69
 },
 {
 "type": "endcard",
-"t0": 496.49,
-"t1": 499.49
+"t0": 517.69,
+"t1": 520.69
 }
 ],
 "sfx": [
 {
-"t": 1.146,
+"t": 1.6,
+"src": "s_pop",
+"vol": 0.35
+},
+{
+"t": 17.45,
+"src": "s_section",
+"vol": 0.5
+},
+{
+"t": 22.346000000000004,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 5.324000000000001,
+"t": 26.524,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 6.362,
+"t": 27.562,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 7.006,
+"t": 28.206,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 7.136,
+"t": 28.336000000000002,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 10.948,
+"t": 32.148,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 11.793,
+"t": 32.993,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 13.983999999999998,
+"t": 35.184000000000005,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 16.247000000000003,
+"t": 37.446999999999996,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 19.154,
+"t": 40.354,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 27.042999999999996,
+"t": 48.243,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 29.248999999999995,
+"t": 50.449,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 33.961999999999996,
+"t": 55.162,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 41.915,
+"t": 63.115,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 42.035,
+"t": 63.235,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 43.323,
+"t": 64.523,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 43.443,
+"t": 64.643,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 45.42,
+"t": 66.61999999999999,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 45.54,
+"t": 66.74000000000001,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 49.324999999999996,
+"t": 70.525,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 51.47911564625849,
+"t": 72.6791156462585,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 55.032,
+"t": 76.23200000000001,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 57.93799999999999,
+"t": 79.138,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 60.22099999999999,
+"t": 81.421,
 "src": "s_card",
 "vol": 0.4
 },
 {
-"t": 67.20099999999998,
+"t": 88.40100000000001,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 73.208,
-"src": "s_card",
-"vol": 0.42
-},
-{
-"t": 78.67299999999999,
-"src": "s_pop",
-"vol": 0.4
-},
-{
-"t": 83.18599999999999,
-"src": "s_pop",
-"vol": 0.4
-},
-{
-"t": 88.435,
-"src": "s_pop",
-"vol": 0.4
-},
-{
-"t": 93.252,
-"src": "s_text2",
-"vol": 0.33
-},
-{
-"t": 97.657,
-"src": "s_text3",
-"vol": 0.33
-},
-{
-"t": 98.59100000000002,
-"src": "s_text1",
-"vol": 0.33
-},
-{
-"t": 99.026,
-"src": "s_text2",
-"vol": 0.33
-},
-{
-"t": 100.271,
-"src": "s_text3",
-"vol": 0.33
-},
-{
-"t": 107.471,
-"src": "s_section",
-"vol": 0.45
-},
-{
-"t": 112.33500000000001,
-"src": "s_pop",
-"vol": 0.4
-},
-{
-"t": 114.20000000000002,
-"src": "s_tick",
-"vol": 0.35
-},
-{
-"t": 121.29417233560092,
-"src": "s_sub",
-"vol": 0.3
-},
-{
-"t": 126.44000000000001,
-"src": "s_tick",
-"vol": 0.35
-},
-{
-"t": 132.32503401360546,
-"src": "s_sub",
-"vol": 0.3
-},
-{
-"t": 142.92595464852607,
-"src": "s_text1",
-"vol": 0.33
-},
-{
-"t": 144.4733106575964,
-"src": "s_sub",
-"vol": 0.3
-},
-{
-"t": 157.9539546485261,
+"t": 94.40800000000003,
 "src": "s_card",
 "vol": 0.42
 },
 {
-"t": 164.0459546485261,
+"t": 99.87300000000003,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 167.83995464852612,
+"t": 104.38600000000004,
+"src": "s_pop",
+"vol": 0.4
+},
+{
+"t": 109.63500000000005,
+"src": "s_pop",
+"vol": 0.4
+},
+{
+"t": 114.45200000000004,
+"src": "s_text2",
+"vol": 0.33
+},
+{
+"t": 118.85700000000004,
+"src": "s_text3",
+"vol": 0.33
+},
+{
+"t": 119.79100000000007,
+"src": "s_text1",
+"vol": 0.33
+},
+{
+"t": 120.22600000000004,
+"src": "s_text2",
+"vol": 0.33
+},
+{
+"t": 121.47100000000005,
+"src": "s_text3",
+"vol": 0.33
+},
+{
+"t": 128.67100000000005,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 178.46498866213156,
-"src": "s_sub",
-"vol": 0.3
-},
-{
-"t": 186.8909546485261,
+"t": 133.53500000000005,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 190.78786848072565,
+"t": 135.40000000000006,
+"src": "s_tick",
+"vol": 0.35
+},
+{
+"t": 142.49417233560095,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 201.07495464852613,
+"t": 147.64000000000004,
+"src": "s_tick",
+"vol": 0.35
+},
+{
+"t": 153.5250340136055,
+"src": "s_sub",
+"vol": 0.3
+},
+{
+"t": 164.12595464852612,
+"src": "s_text1",
+"vol": 0.33
+},
+{
+"t": 165.67331065759643,
+"src": "s_sub",
+"vol": 0.3
+},
+{
+"t": 179.15395464852614,
 "src": "s_card",
 "vol": 0.42
 },
 {
-"t": 204.535,
+"t": 185.24595464852615,
+"src": "s_pop",
+"vol": 0.4
+},
+{
+"t": 189.03995464852616,
+"src": "s_section",
+"vol": 0.45
+},
+{
+"t": 199.6649886621316,
+"src": "s_sub",
+"vol": 0.3
+},
+{
+"t": 208.09095464852615,
+"src": "s_pop",
+"vol": 0.4
+},
+{
+"t": 211.9878684807257,
+"src": "s_sub",
+"vol": 0.3
+},
+{
+"t": 222.27495464852618,
+"src": "s_card",
+"vol": 0.42
+},
+{
+"t": 225.73499999999999,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 205.58395464852615,
+"t": 226.7839546485262,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 207.58395464852615,
+"t": 228.7839546485262,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 212.99395464852617,
+"t": 234.19395464852622,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 214.81095464852615,
+"t": 236.0109546485262,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 218.36995464852617,
+"t": 239.56995464852622,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 222.6326303854876,
+"t": 243.83263038548765,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 227.12595464852615,
+"t": 248.3259546485262,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 231.4599773242631,
+"t": 252.65997732426314,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 238.1759546485261,
+"t": 259.37595464852615,
 "src": "s_tick",
 "vol": 0.35
 },
 {
-"t": 241.664126984127,
+"t": 262.86412698412704,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 248.2779546485261,
+"t": 269.4779546485261,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 249.21599999999998,
+"t": 270.416,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 249.34595464852612,
+"t": 270.5459546485261,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 251.7069546485261,
+"t": 272.9069546485261,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 257.9949546485261,
+"t": 279.19495464852616,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 268.46595464852606,
+"t": 289.6659546485261,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 269.5734467120182,
+"t": 290.77344671201826,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 279.8629546485261,
+"t": 301.06295464852616,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 283.0950340136056,
+"t": 304.29503401360563,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 294.50734693877564,
+"t": 315.7073469387757,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 301.5527437641725,
+"t": 322.7527437641725,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 310.87495464852617,
+"t": 332.0749546485262,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 312.5549546485262,
+"t": 333.7549546485262,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 315.4179546485262,
+"t": 336.6179546485262,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 325.4569160997733,
+"t": 346.65691609977335,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 332.0699546485261,
+"t": 353.26995464852615,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 339.3155102040817,
+"t": 360.51551020408175,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 349.29395464852615,
+"t": 370.4939546485262,
 "src": "s_section",
 "vol": 0.45
 },
 {
-"t": 353.2519546485261,
+"t": 374.45195464852617,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 355.54668934240374,
+"t": 376.7466893424038,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 364.4679546485262,
+"t": 385.66795464852623,
 "src": "s_card2",
 "vol": 0.38
 },
 {
-"t": 369.6799546485261,
+"t": 390.87995464852617,
 "src": "s_card2",
 "vol": 0.38
 },
 {
-"t": 379.33795464852614,
+"t": 400.5379546485262,
 "src": "s_card2",
 "vol": 0.38
 },
 {
-"t": 395.5929546485261,
+"t": 416.7929546485261,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 398.43595464852604,
+"t": 419.6359546485261,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 400.3069546485261,
+"t": 421.5069546485261,
 "src": "s_card2",
 "vol": 0.4
 },
 {
-"t": 409.193954648526,
+"t": 430.39395464852606,
 "src": "s_card2",
 "vol": 0.4
 },
 {
-"t": 415.06595464852603,
+"t": 436.2659546485261,
 "src": "s_card2",
 "vol": 0.4
 },
 {
-"t": 419.689954648526,
+"t": 440.88995464852604,
 "src": "s_card2",
 "vol": 0.4
 },
 {
-"t": 433.146954648526,
+"t": 454.34695464852604,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 437.49795464852593,
+"t": 458.697954648526,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 442.45095464852596,
+"t": 463.650954648526,
 "src": "s_card",
 "vol": 0.42
 },
 {
-"t": 454.3736507936507,
+"t": 475.57365079365076,
 "src": "s_sub",
 "vol": 0.3
 },
 {
-"t": 459.0659546485259,
+"t": 480.26595464852596,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 460.1159546485259,
+"t": 481.315954648526,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 473.14595464852584,
+"t": 494.3459546485259,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 474.19595464852586,
+"t": 495.3959546485259,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 475.1759546485259,
+"t": 496.3759546485259,
 "src": "s_text2",
 "vol": 0.33
 },
 {
-"t": 476.467,
+"t": 497.667,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 481.485,
+"t": 502.685,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 482.796,
+"t": 503.996,
 "src": "s_cut",
 "vol": 0.34
 },
 {
-"t": 483.7539546485259,
+"t": 504.95395464852595,
 "src": "s_text3",
 "vol": 0.33
 },
 {
-"t": 485.4969546485259,
+"t": 506.69695464852595,
 "src": "s_pop",
 "vol": 0.4
 },
 {
-"t": 487.3629546485259,
+"t": 508.56295464852593,
 "src": "s_text1",
 "vol": 0.33
 },
 {
-"t": 489.3339546485259,
+"t": 510.53395464852593,
 "src": "s_pop",
 "vol": 0.4
 }
@@ -3209,97 +3436,105 @@ true
 "src": "vo/g/voice_track.wav",
 "at": 0,
 "from": 0,
-"to": 499.49
+"to": 520.69
 }
 ],
 "duck": [
 [
-121.154,
-126.004
+10.2,
+14.7
 ],
 [
-132.185,
-138.485
+15.0,
+17.5
 ],
 [
-144.333,
-151.683
+142.354,
+147.204
 ],
 [
-178.325,
-183.675
+153.385,
+159.685
 ],
 [
-190.648,
-196.598
+165.533,
+172.883
 ],
 [
-222.493,
-225.743
+199.525,
+204.875
 ],
 [
-231.32,
-234.77
+211.848,
+217.798
 ],
 [
-241.524,
-244.174
+243.693,
+246.943
 ],
 [
-269.433,
-276.883
+252.52,
+255.97
 ],
 [
-282.955,
-288.605
+262.724,
+265.374
 ],
 [
-294.367,
-297.417
+290.633,
+298.083
 ],
 [
-301.413,
-307.463
+304.155,
+309.805
 ],
 [
-325.317,
-327.567
+315.567,
+318.617
 ],
 [
-339.176,
-343.126
+322.613,
+328.663
 ],
 [
-355.407,
-359.907
+346.517,
+348.767
 ],
 [
-454.234,
-459.084
+360.376,
+364.326
+],
+[
+376.607,
+381.107
+],
+[
+475.434,
+480.284
 ]
 ],
 "swells": [
 [
 0,
-0.0
+21.1
 ],
 [
-0.0,
-0.0
+21.0,
+21.1
 ],
 [
-496.1899546485258,
-499.48995464852584
+517.3899546485258,
+520.6899546485257
 ]
 ],
 "music": [
 {
 "src": "music/bed.mp3",
 "t0": 0,
-"t1": 499.48995464852584,
+"t1": 520.6899546485257,
 "off": 22.24
 }
 ],
-"end": 499.49,
-"cold": 0.0
+"end": 520.69,
+"cold": 21.1
 }

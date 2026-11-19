@@ -12,9 +12,24 @@ def hook_npc(src, a, b, es, en, who, ring, lead=0.0):
     music_duck.append([round(t0 + lead, 3), round(t0 + d, 3)])
     T[0] = t0 + d
 
-COLD_END = 0.0
-T[0] = 0.0
-SW1 = [0.0, 0.0]
+# ================= HOOK: beautiful slow-motion Leonida + NPCs turning on you + title =================
+OPEN = 3.6
+video.append(dict(MAP(cam=[[0, 0.55, 0.55, 1.7], [2.6, 0.79, 0.505, 0.34], [OPEN, 0.80, 0.50, 0.27]], pins=[dict(t=1.7, x=0.826, y=0.50, label='VICE BEACH', sub='LEONIDA · AQUÍ EMPIEZA TODO', big=True)], kind='oficial'), t0=0.0, t1=OPEN, hard=True, credit=YAN['source']))
+sfx.append({'t': 1.6, 'src': 's_pop', 'vol': .35})
+video.append(dict(shot('T01', 484.05, rate=0.6, zoom=[1.0, 1.08], flash=True), t0=OPEN, t1=OPEN + 3.0, credit=cred('T01')))
+add_ov(dict(type='label', text='LEONIDA', sub='19 DE NOVIEMBRE · YA SE PUEDE JUGAR', mute=True), OPEN + 0.5, OPEN + 2.9)
+video.append(dict(shot('T01', 486.1, rate=0.72, zoom=[1.02, 1.1]), t0=OPEN + 3.0, t1=OPEN + 5.4, credit=cred('T01')))
+T[0] = OPEN + 5.4
+hook_npc('v4_00', 8.3, 12.8, 'Yo era igualito a ti, ¿sabes? Hace 50 años.', 'I used to look just like you, you know? 50 years ago.', 'NPC · CHIRINGUITO', (1120, 600, 210), lead=1.2)
+hook_npc('v2_01', 421.8, 424.3, 'Eh… ¿te conozco?', 'Do I know you?', 'NPC · HAMBURGUESERÍA', (990, 430, 230), lead=0.3)
+tt = T[0]
+video.append(dict(shot('v2_02', 148.5, rate=0.7, zoom=[1.0, 1.08], flash=True), t0=round(tt, 3), t1=round(tt + 3.6, 3), credit=cred('v2_02')))
+add_ov(KW([['LOS', 0.0], ['NPC', 0.12], ['TE', 0.3], ['JUZGAN', 0.42]], size=138, top=300, dim=1, mute=True), tt + 0.15, tt + 3.5)
+add_ov(KW([['POR', 0.0, True], ['TU', 0.12, True], ['ROPA', 0.24, True]], size=150, top=470, mute=True), tt + 0.75, tt + 3.5)
+sfx.append({'t': tt - 0.05, 'src': 's_section', 'vol': .5})
+COLD_END = tt + 3.6
+T[0] = COLD_END + 0.1
+SW1 = [COLD_END - 0.1, COLD_END]
 
 # ================= P1 =================
 P = 'p1'
@@ -59,8 +74,8 @@ say(P, 8, [shot('v4_01', 120.0, zoom=[1.02, 1.08]), shot('v4_01', 112.0, zoom=[1
 P = 'p4'
 say(P, 0, [shot('v4_00', 330.0)], [SEC('EL CONTEXTO', 'CADA ZONA TIENE SU CÓDIGO', at='contexto')])
 z0 = wt(P, 1, 'playa'); z1 = wt(P, 1, 'centro'); z2 = wt(P, 1, 'keys')
-say(P, 1, [MAP(cam=[[0, 0.69, 0.52, 0.42], [z0, 0.70, 0.51, 0.3], [z1, 0.675, 0.515, 0.26], [z2 + 0.2, 0.52, 0.8, 0.75], [z2 + 3, 0.49, 0.84, 0.6]],
-              pins=[dict(t=z0, x=0.712, y=0.505, label='LA PLAYA', sub='ROPA DE GIMNASIO'), dict(t=z1, x=0.675, y=0.518, label='EL CENTRO', sub='TRAJE'), dict(t=z2, x=0.47, y=0.865, label='LOS KEYS', sub='CHANCLAS', big=True)], kind='fans')], [])
+say(P, 1, [MAP(cam=[[0, 0.72, 0.52, 0.42], [z0, 0.78, 0.505, 0.3], [z1, 0.70, 0.515, 0.3], [z2 + 0.2, 0.52, 0.8, 0.75], [z2 + 3, 0.49, 0.84, 0.6]],
+              pins=[dict(t=z0, x=0.826, y=0.50, label='LA PLAYA', sub='ROPA DE GIMNASIO'), dict(t=z1, x=0.675, y=0.518, label='EL CENTRO', sub='TRAJE'), dict(t=z2, x=0.47, y=0.865, label='LOS KEYS', sub='CHANCLAS', big=True)], kind='fans')], [])
 npc('v2_03', 271.3, 276.3, 'A diferencia de estos, yo entreno para la vida real. No lo entenderías.', "Unlike these other guys, I'm training for some real life sh*t. You wouldn't get it.", 'NPC · GIMNASIO')
 say(P, 2, [shot('v2_02', 486.0, zoom=[1.02, 1.07]), shot('v2_03', 2.0, zoom=[1.03, 1.08])], [ST('BARRIO PIJO', x=1400, y=320, size=100, at='pijo')], cuts=['uno'])
 npc('v2_02', 500.2, 505.8, 'En diez años, en ese barrio solo vas a oír acento de niña rica.', "Ten years' time, walk through that neighborhood, all you're gonna hear is a rich girl accent.", 'NPC · BARRIO RICO')
