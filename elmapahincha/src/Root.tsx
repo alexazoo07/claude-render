@@ -27,6 +27,7 @@ import {T10a, T10b, T10c, T10d, T10e} from './v10/Thumbs10';
 import {Video11, V11_TOTAL} from './v11/Video11';
 import {Video12, V12_TOTAL} from './v12/Video12';
 import {Video13, V13_TOTAL} from './v13/Video13';
+import {Video29, V29_TOTAL} from './v29/Video29';
 import {Short1, Short2, Short4, Short5, Short6, Short8, Short9, Short10, Short11, Short12, Short13, Short14, Short15} from './shorts/configs';
 import {DUEL_TOTAL} from './shorts/Duel';
 import {SimShort, SIM_TOTAL} from './shorts/Sim';
@@ -145,6 +146,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 			<Composition id="S14" component={Short14} durationInFrames={DUEL_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="S15" component={Short15} durationInFrames={DUEL_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="V13" component={Video13} durationInFrames={V13_TOTAL} fps={60} width={1920} height={1080} />
+			<Composition id="V29" component={Video29} durationInFrames={V29_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V12" component={Video12} durationInFrames={V12_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V11" component={Video11} durationInFrames={V11_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V10" component={Video10} durationInFrames={V10_TOTAL} fps={60} width={1920} height={1080} />
