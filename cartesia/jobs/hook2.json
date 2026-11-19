@@ -1,0 +1,125 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "h5_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Alemania acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h5_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y deja cuatro Mundiales y tres Eurocopas sin dueño! ¿Quién se los queda?",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h6_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Francia acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h6_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y deja dos Mundiales y dos Eurocopas sin dueño! ¿Quién se los queda?",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h7_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡México acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h7_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y se lleva el Estadio Azteca y sus dos finales del Mundial! ¿Y ahora qué?",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h8_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Inglaterra acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h8_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y era la que lo inventó! ¡Adiós a las reglas de mil ochocientos sesenta y tres!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h9_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Uruguay acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h9_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y deja dos Mundiales y quince Copas América sin dueño! ¿Quién se los queda?",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h10_00_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Portugal acaba de desaparecer del fútbol!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  },
+  {
+   "id": "h10_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y deja una Eurocopa y dos Ligas de Naciones sin dueño! ¿Quién se las queda?",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.15
+  }
+ ]
+}
