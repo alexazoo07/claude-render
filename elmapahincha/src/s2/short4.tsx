@@ -125,3 +125,28 @@ export const TS4I: React.FC = () => {
 		</AbsoluteFill>
 	);
 };
+
+// miniaturas estilo El Mapa Animado (2 versiones)
+import {TBase, Big, Hero, Side, Tag, Tomb} from './thumbs';
+const tcam = {x: ci.x - 10, y: ci.y - 60, z: 3.0};
+export const TS4A: React.FC = () => (
+	<TBase cam={tcam} grey={['ITA']}>
+		<Big text="¿¡ADIÓS," size={150} top={90} />
+		<Big text="ITALIA?!" size={210} top={250} c="#FFD23F" />
+		<Hero k="ITA" d={560} x={560} y={1120} mood="sad" tears rot={-6} />
+		<div style={{position: 'absolute', left: 60, top: 1430, transform: 'rotate(-8deg)'}}><Tomb s={250} name="ITALIA" years="2014-2026" /></div>
+		<Side k="SWE" d={200} x={880} y={720} mood="smug" look={[-0.5, 0.2]} />
+		<Side k="ESP" d={220} x={880} y={1560} mood="happy" look={[-0.6, -0.3]} rot={6} />
+		<div style={{position: 'absolute', left: 90, top: 690}}><Tag text="¡SIN MUNDIAL!" size={64} bg="#FF4D5E" c="#fff" rot={-8} /></div>
+	</TBase>
+);
+export const TS4B: React.FC = () => (
+	<TBase cam={{...tcam, y: tcam.y + 40}} grey={['ITA']}>
+		<Big text="¿3 MUNDIALES" size={140} top={90} />
+		<Big text="SIN IR?!" size={220} top={240} c="#FF3B3B" />
+		<div style={{position: 'absolute', top: 560, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 18}}>{['2018', '2022', '2026'].map((y, j) => <div key={y} style={{transform: `rotate(${(j - 1) * 7}deg) translateY(${j === 1 ? -14 : 8}px)`}}><Calendar s={230} year={y} x={1} /></div>)}</div>
+		<Hero k="ITA" d={580} x={540} y={1250} mood="panic" sweat rot={4} />
+		<Side k="URY" d={200} x={150} y={1620} mood="smug" look={[0.6, -0.3]} />
+		<Side k="FRA" d={210} x={930} y={1620} mood="happy" look={[-0.6, -0.3]} />
+	</TBase>
+);

@@ -352,3 +352,24 @@ export const T27g: React.FC = () => <PanicV w={840} m="rage" glow="#B46BFF" cx={
 export const T27h: React.FC = () => <PanicV w={780} m="evil" glow="#FF3B3B" />;
 export const T27i: React.FC = () => <PanicV w={780} m="rage" glow="#FF3B3B" />;
 export const T27j: React.FC = () => <PanicV w={800} m="evil" glow="#B46BFF" />;
+
+// ---- serie "¿A quién nunca ha ganado X?" (idéntica a Perú / España / México)
+const NuncaV: React.FC<{k: string; up: string; w: number; m: XM; glow: string; cam?: {x: number; y: number; z: number}; mood?: any; cy?: number; look?: [number, number]; alt?: boolean}> = ({k, up, w, m, glow, cam = WORLD_CAM, mood = 'smug', cy = 560, look = [0, 0.1], alt}) => (
+	<Base>
+		<Bg cam={cam} mood={mood} />
+		<Vig />
+		<div style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080}}><Glow c={glow}><StickerX k={k} w={w} x={960} y={cy} m={m} look={look} /></Glow></div>
+		{alt ? <>
+			<TT parts={[[`PAÍSES QUE ${up}`]]} size={112} sw={0.1} style={{top: 20}} />
+			<TT parts={[['NUNCA HA GANADO', RED]]} size={130} sw={0.1} style={{top: 910}} />
+		</> : <>
+			<TT parts={[['¿A QUIÉN NUNCA'], ['HA GANADO', RED]]} size={112} sw={0.1} style={{top: 20}} />
+			<TT parts={[[`${up}?`, YEL]]} size={150} sw={0.1} style={{top: 900}} />
+		</>}
+	</Base>
+);
+export const T29f: React.FC = () => <NuncaV k="COL" up="COLOMBIA" w={560} m="rage" glow="#FF3B3B" />;
+export const T29g: React.FC = () => <NuncaV k="COL" up="COLOMBIA" w={620} m="rage" glow="#FF3B3B" cy={545} />;
+export const T29h: React.FC = () => <NuncaV k="COL" up="COLOMBIA" w={560} m="evil" glow="#FFD23F" />;
+export const T29i: React.FC = () => <NuncaV k="COL" up="COLOMBIA" w={580} m="rage" glow="#FF3B3B" alt cy={555} />;
+export const T29j: React.FC = () => <NuncaV k="COL" up="COLOMBIA" w={560} m="terror" glow="#FF3B3B" mood="panic" />;

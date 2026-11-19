@@ -26,11 +26,11 @@ export type Scene = {
 	qmarks?: boolean;
 };
 export type Boom = {k: string; at: number}; // country explodes at absolute frame
-export type ShortDef = {title: [string, string?][][]; scenes: Scene[]; booms?: Boom[]; flashAt?: number[]; cta?: string[]};
+export type ShortDef = {title: [string, string?][][]; scenes: Scene[]; booms?: Boom[]; flashAt?: number[]; cta?: string[]; pace?: 'fast'};
 
 const rnd = (s: number) => () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-export const NAMES: Record<string, string> = {BRA: 'BRASIL', ARG: 'ARGENTINA', URY: 'URUGUAY', FRA: 'FRANCIA', ITA: 'ITALIA', DEU: 'ALEMANIA', ENG: 'INGLATERRA', ESP: 'ESPAÑA', MEX: 'MÉXICO', COL: 'COLOMBIA', USA: 'EE. UU.', PRT: 'PORTUGAL', CHN: 'CHINA', JPN: 'JAPÓN', CAN: 'CANADÁ', CHL: 'CHILE', PER: 'PERÚ', VEN: 'VENEZUELA', BOL: 'BOLIVIA', PRY: 'PARAGUAY', ECU: 'ECUADOR', CUB: 'CUBA', PAN: 'PANAMÁ', NLD: 'PAÍSES BAJOS', HRV: 'CROACIA', MAR: 'MARRUECOS', SWE: 'SUECIA', BIH: 'BOSNIA'};
+export const NAMES: Record<string, string> = {BRA: 'BRASIL', ARG: 'ARGENTINA', URY: 'URUGUAY', FRA: 'FRANCIA', ITA: 'ITALIA', DEU: 'ALEMANIA', ENG: 'INGLATERRA', ESP: 'ESPAÑA', MEX: 'MÉXICO', COL: 'COLOMBIA', USA: 'EE. UU.', PRT: 'PORTUGAL', CHN: 'CHINA', JPN: 'JAPÓN', CAN: 'CANADÁ', CHL: 'CHILE', PER: 'PERÚ', VEN: 'VENEZUELA', BOL: 'BOLIVIA', PRY: 'PARAGUAY', ECU: 'ECUADOR', CUB: 'CUBA', PAN: 'PANAMÁ', NLD: 'PAÍSES BAJOS', HRV: 'CROACIA', MAR: 'MARRUECOS', SWE: 'SUECIA', BIH: 'BOSNIA', GHA: 'GHANA', GRC: 'GRECIA', SCT: 'ESCOCIA', HUN: 'HUNGRÍA', POL: 'POLONIA'};
 export const PAL: Record<string, string[]> = {
 	BRA: ['#009C3B', '#FFDF00', '#002776', '#FFFFFF'], ARG: ['#74ACDF', '#FFFFFF', '#F6B40E'], URY: ['#0038A8', '#FFFFFF', '#FCD116'], COL: ['#FCD116', '#003893', '#CE1126'],
 	CHL: ['#D52B1E', '#FFFFFF', '#0039A6'], PER: ['#D91023', '#FFFFFF'], ECU: ['#FFDD00', '#034EA2', '#ED1C24'], PRY: ['#D52B1E', '#FFFFFF', '#0038A8'],
@@ -187,13 +187,15 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 6);
 	const ss = (u: number) => { const x = Math.max(0, Math.min(1, u)); return x * x * x * (x * (x * 6 - 15) + 10); };
 	const keys = def.scenes.slice(0, N).map((sc0) => camFor(sc0));
-	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.sqrt(A.z * B.z) + Math.abs(Math.log(B.z / A.z)) * 500; return Math.round(Math.min(84, Math.max(48, 40 + px * 0.025))); };
-	const DRIFT = 0.00045; // log-zoom per frame (~2.7%/s)
+	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.sqrt(A.z * B.z) + Math.abs(Math.log(B.z / A.z)) * 500; return def.pace === 'fast' ? Math.round(Math.min(60, Math.max(36, 30 + px * 0.02))) : Math.round(Math.min(84, Math.max(48, 40 + px * 0.025))); };
+	const DRIFT = def.pace === 'fast' ? 0.0009 : 0.00045; // log-zoom per frame
+	const PAN = def.pace === 'fast' ? 0.45 : 0; // screen px per frame of slow sideways drift
 	const state = (j: number, fr: number): [number, number, number] => {
 		const K = keys[j];
 		let lz = Math.log(K.z) + (j % 2 === 0 ? 1 : -1) * DRIFT * (fr - arrive(j));
 		if (j === 0 && booms.length) lz += Math.log(0.75) * ss((fr - lastBoom - 10) / 90);
-		return [K.x, K.y, lz];
+		const dt = fr - arrive(j), sgn = j % 2 === 0 ? 1 : -1;
+		return [K.x + (sgn * PAN * dt) / K.z, K.y + (-sgn * PAN * 0.4 * dt) / K.z, lz];
 	};
 	const camAt = (fr: number): [number, number, number] => {
 		let j = 0;
