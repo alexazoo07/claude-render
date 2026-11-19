@@ -3,25 +3,21 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn} from './VShort3';
 import {Row, Euro} from './kit';
 import {Goal, Bubble, Nata, Medal} from './kit2';
-import {mkW, ghostOf, hookScene, Sc, Big, Chip, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Fly, Sc, Big, Chip, wob} from './fastkit';
 import TL from './short10.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('PRT');
 const C0 = center('PRT');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF10: ShortDef = {
-	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['PORTUGAL', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['PORTUGAL', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'PRT', at: at0 + 4}], flashAt: [at0 + 4], cta: ['PRT'],
 	scenes: [
 		hookScene('PRT', 5.5, [['ESP', -40, 0]], 40),
 		{cam: {x: C0.x, y: C0.y - 120 / 5, z: 5}, props: (t) => <>
-			<Row y={600}><PopIn t={t} d={W(1, 'eurocopa') - 6}><div style={{transform: `rotate(${wob(t, 6)}deg)`}}><Euro s={170} /></div></PopIn></Row>
-			<Big t={t} d={W(1, 'dieciséis') - 4} y={800} size={100}>EURO 2016</Big>
-			<Row y={980} gap={24}>
-				<PopIn t={t} d={W(1, 'ligas') - 6}><Chip size={64}>LIGA DE NACIONES 2019</Chip></PopIn>
-			</Row>
-			<Row y={1090} gap={24}>
-				<PopIn t={t} d={W(1, 'naciones') - 2}><Chip size={64}>LIGA DE NACIONES 2025</Chip></PopIn>
-			</Row>
+			<Fly t={t} d={W(1, 'eurocopa') + 0} x={540} y={620} from={[540, 1080]}><Euro s={180} /></Fly>
+			<Row y={790} gap={24}><PopIn t={t} d={W(1, 'ligas') - 6}><Chip size={60}>LIGA DE NACIONES 2019</Chip></PopIn></Row>
+			<Row y={880} gap={24}><PopIn t={t} d={W(1, 'naciones') - 2}><Chip size={60}>LIGA DE NACIONES 2025</Chip></PopIn></Row>
+			<Big t={t} d={W(1, 'quién') - 2} y={1010} size={92} c="#FF5A5A">¿QUIÉN SE LAS QUEDA?</Big>
 		</>},
 		{focus: 'FRA', z: 2.4, spk: [{k: 'FRA', mood: 'happy', moods: [['perdí', 'sad']]}, g(300, 'smug', 'final')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'euro') - 4}><div style={{transform: `rotate(${wob(t, 6)}deg)`}}><Euro s={160} /></div></PopIn></Row>

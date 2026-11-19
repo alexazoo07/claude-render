@@ -74,6 +74,7 @@ import {VS7, VS7_TOTAL} from './s2/short7';
 import {VS8, VS8_TOTAL} from './s2/short8';
 import {VS9, VS9_TOTAL} from './s2/short9';
 import {VS10, VS10_TOTAL} from './s2/short10';
+import {TQ} from './s2/thumbsFast';
 import {VS4, VS4_TOTAL, TS4I, TS4A, TS4B} from './s2/short4';
 import {NEVER_TOTAL} from './shorts/Never';
 import {T13a, T13b, T13c, T13d, T13e} from './v13/Thumbs13';
@@ -149,6 +150,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 			<Composition id="VS8" component={VS8} durationInFrames={VS8_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS9" component={VS9} durationInFrames={VS9_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="VS10" component={VS10} durationInFrames={VS10_TOTAL} fps={60} width={1080} height={1920} />
+			{Object.entries(TQ).map(([id, C]) => <Still key={id} id={id} component={C} width={1080} height={1920} />)}
 			<Still id="TS4I" component={TS4I} width={1080} height={1920} />
 			<Still id="TS4A" component={TS4A} width={1080} height={1920} />
 			<Still id="TS4B" component={TS4B} width={1080} height={1920} />

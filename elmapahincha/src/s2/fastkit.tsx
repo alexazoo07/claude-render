@@ -14,8 +14,8 @@ export const ghostOf = (k: string) => (dx: number, mood: FaceMood, at?: string, 
 export const hookScene = (k: string, z: number, others: [string, number, number][], dy = 0): Scene => {
 	const c = center(k);
 	return {cam: {x: c.x, y: c.y + dy, z}, spk: [
-		{k, mood: 'smug', moods: [['desapare', 'panic']], d: 280, dx: 0, dy: -30, talker: true, map: true},
-		...others.map(([o, dx, dy2]): Spk => ({k: o, mood: 'worried', moods: [['desapare', 'shock']], d: 160, dx, dy: dy2, talker: false, map: true})),
+		{k, mood: 'smug', moods: [['acaba', 'shock'], ['desapare', 'panic']], d: 300, dx: 0, dy: -30, talker: false, map: true},
+		...others.map(([o, dx, dy2]): Spk => ({k: o, mood: 'worried', moods: [['desapare', 'shock']], d: 150, dx, dy: dy2, talker: false, map: true})),
 	]};
 };
 // marcador con etiqueta, en una fila
@@ -29,3 +29,12 @@ export const Chip: React.FC<{children: React.ReactNode; bg?: string; c?: string;
 	<div style={{background: bg, border: `6px solid ${INK}`, borderRadius: 16, padding: '2px 18px', boxShadow: `0 6px 0 ${INK}`}}><T size={size} c={c} sw={0} sh="transparent">{children}</T></div>
 );
 export const wob = (t: number, a = 5, p = 14) => Math.sin(t / p) * a;
+
+// iconos que salen disparados desde el país borrado (centro de pantalla) hasta su sitio
+export const Fly: React.FC<{t: number; d: number; x: number; y: number; from?: [number, number]; children: React.ReactNode}> = ({t, d, x, y, from = [540, 820], children}) => {
+	if (t < d) return null;
+	const u = Math.min(1, (t - d) / 22), e = 1 - Math.pow(1 - u, 4);
+	const px = from[0] + (x - from[0]) * e, py = from[1] + (y - from[1]) * e - Math.sin(Math.PI * u) * 160;
+	const sc = 0.3 + 0.7 * e + (u >= 1 ? 0.06 * Math.max(0, 1 - (t - d - 22) / 12) : 0);
+	return <div style={{position: 'absolute', left: px, top: py, transform: `translate(-50%, -50%) scale(${sc}) rotate(${(1 - e) * 360 + Math.sin(t / 14) * 5}deg)`}}>{children}</div>;
+};
