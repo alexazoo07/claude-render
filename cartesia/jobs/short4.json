@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s4_00_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¿Y si yo, la tetracampeona del mundo… no volviera nunca más a un Mundial?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Cuatro estrellas… y tres Mundiales seguidos sin ir: dos mil dieciocho, dos mil veintidós y dos mil veintiséis!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.08
+  },
+  {
+   "id": "s4_02_SWE",
+   "voice": "8c889eba-5b31-4179-8fb2-37bbee22db64",
+   "text": "¡Todo empezó conmigo! En dos mil diecisiete la dejé fuera en San Siro.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_03_URY",
+   "voice": "06cce9d4-865f-4ebc-ae1d-c72b0ab7f646",
+   "text": "¡Su último partido en un Mundial fue contra mí, en Brasil! El del mordisco de Suárez.",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_04_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡Me ganó la final de la Eurocopa en Wembley! Y ocho meses después… ¡fuera del Mundial!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_05_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "Y nadie me volvería a recordar la final de dos mil seis… ni la roja de Zidane.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_06_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "En dos mil treinta el Mundial se juega en mi casa. Italia, ¿te vienes… de turista?",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.05
+  },
+  {
+   "id": "s4_07_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Basta! ¡Un niño italiano de doce años nunca me ha visto jugar un Mundial!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.0
+  },
+  {
+   "id": "s4_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si quieres que Italia vuelva al Mundial, deja una pizza en los comentarios.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.0
+  }
+ ]
+}
