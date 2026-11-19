@@ -115,3 +115,4 @@ export const Video35 = W.Video;
 export const V35_TOTAL = W.TOTAL;
 export const v35Sfx = W.sfx;
 export const v35Music = W.music;
+export const v35Rnds = W.RNDS; export const v35Fin = W.FIN0;

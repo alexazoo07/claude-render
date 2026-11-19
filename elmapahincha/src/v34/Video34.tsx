@@ -118,3 +118,4 @@ export const Video34 = W.Video;
 export const V34_TOTAL = W.TOTAL;
 export const v34Sfx = W.sfx;
 export const v34Music = W.music;
+export const v34Rnds = W.RNDS; export const v34Fin = W.FIN0;

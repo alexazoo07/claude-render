@@ -86,3 +86,4 @@ export const Video33 = W.Video;
 export const V33_TOTAL = W.TOTAL;
 export const v33Sfx = W.sfx;
 export const v33Music = W.music;
+export const v33Rnds = W.RNDS; export const v33Fin = W.FIN0;
