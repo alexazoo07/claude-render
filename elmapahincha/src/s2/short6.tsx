@@ -3,22 +3,20 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn} from './VShort3';
 import {Row, Euro, Cup} from './kit';
 import {Goal, Stadium, Ball, Baguette, Sign} from './kit2';
-import {mkW, ghostOf, hookScene, Fly, Sc, Big, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Sc, Big, wob} from './fastkit';
 import TL from './short6.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('FRA');
 const C0 = center('FRA');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF6: ShortDef = {
-	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['FRANCIA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['FRANCIA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'FRA', at: at0 + 4}], flashAt: [at0 + 4], cta: ['FRA'],
 	scenes: [
 		hookScene('FRA', 3.0, [['ESP', 0, 0], ['ITA', 0, 0]], 60),
 		{cam: {x: C0.x, y: C0.y - 120 / 1.8, z: 1.8}, props: (t) => <>
-			<Fly t={t} d={W(1, 'mundiales') + 0} x={300} y={620} from={[540, 1080]}><Cup s={150} /></Fly>
-			<Fly t={t} d={W(1, 'mundiales') + 4} x={460} y={620} from={[540, 1080]}><Cup s={150} /></Fly>
-			<Fly t={t} d={W(1, 'eurocopas') + 0} x={620} y={620} from={[540, 1080]}><Euro s={160} /></Fly>
-			<Fly t={t} d={W(1, 'eurocopas') + 4} x={780} y={620} from={[540, 1080]}><Euro s={160} /></Fly>
-			<Big t={t} d={W(1, 'quién') - 2} y={880} size={92} c="#FF5A5A">¿QUIÉN SE LOS QUEDA?</Big>
+			<Row y={560} gap={16}>{[0, 1].map((j) => <PopIn key={j} t={t} d={W(1, 'mundiales') - 6 + j * 6}><div style={{transform: `rotate(${wob(t + j * 9, 6)}deg)`}}><Cup s={150} /></div></PopIn>)}{[0, 1].map((j) => <PopIn key={'e' + j} t={t} d={W(1, 'eurocopas') - 4 + j * 6}><Euro s={160} /></PopIn>)}</Row>
+			<Big t={t} d={W(1, 'cuatro')} y={830}>4 FINALES</Big>
+			<Big t={t} d={W(1, 'siete')} y={970} size={70} c="#fff">EN 7 MUNDIALES</Big>
 		</>},
 		{focus: 'BRA', z: 1.5, spk: [{k: 'BRA', mood: 'happy', moods: [['mía', 'love'], ['tres', 'sad']]}, g(300, 'smug', 'final')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'stade') - 6}><Stadium s={280} label="STADE DE FRANCE" f={t} /></PopIn></Row>

@@ -26,7 +26,7 @@ export type Scene = {
 	qmarks?: boolean;
 };
 export type Boom = {k: string; at: number}; // country explodes at absolute frame
-export type ShortDef = {title: [string, string?][][]; scenes: Scene[]; booms?: Boom[]; flashAt?: number[]; cta?: string[]; pace?: 'fast' | 'hype'};
+export type ShortDef = {title: [string, string?][][]; scenes: Scene[]; booms?: Boom[]; flashAt?: number[]; cta?: string[]; pace?: 'fast'};
 
 const rnd = (s: number) => () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
@@ -187,21 +187,13 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const arrive = (j: number) => (j === 0 ? 0 : L[j].start + 6);
 	const ss = (u: number) => { const x = Math.max(0, Math.min(1, u)); return x * x * x * (x * (x * 6 - 15) + 10); };
 	const keys = def.scenes.slice(0, N).map((sc0) => camFor(sc0));
-	// punch-in beats (hype): stressed words, spaced, max 3 per line
-	const beats: number[][] = L.map((ln, j) => { const out: number[] = []; if (j === 0 || j === N - 1) return out; let last = ln.start + 10; for (const w of ln.words) { const c = w.w.replace(/[¡!¿?,.…:]/g, ''); if (c.length >= 5 && w.s - last >= 50 && out.length < 3) { out.push(w.s - 2); last = w.s; } } return out; });
-	const HY = def.pace === 'hype';
-	const q5 = (u: number) => { const x = Math.max(0, Math.min(1, u)); return x < 0.5 ? 16 * x ** 5 : 1 - (-2 * x + 2) ** 5 / 2; };
-	const eOut = (u: number) => { const x = Math.max(0, Math.min(1, u)); return x >= 1 ? 1 : 1 - Math.pow(2, -10 * x); };
-	const flyPx = (q: number) => { const A = keys[q - 1], B = keys[q]; return Math.hypot(B.x - A.x, B.y - A.y) * Math.min(A.z, B.z); };
-	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.sqrt(A.z * B.z) + Math.abs(Math.log(B.z / A.z)) * 500; if (HY) return Math.round(Math.min(40, Math.max(24, 20 + px * 0.008))); return def.pace === 'fast' ? Math.round(Math.min(60, Math.max(36, 30 + px * 0.02))) : Math.round(Math.min(84, Math.max(48, 40 + px * 0.025))); };
-	const DRIFT = HY ? 0.0007 : def.pace === 'fast' ? 0.0009 : 0.00045; // log-zoom per frame
-	const PAN = HY ? 0.5 : def.pace === 'fast' ? 0.45 : 0; // screen px per frame of slow sideways drift
+	const trav = (q: number) => { const A = keys[q - 1], B = keys[q]; const px = Math.hypot(B.x - A.x, B.y - A.y) * Math.sqrt(A.z * B.z) + Math.abs(Math.log(B.z / A.z)) * 500; return def.pace === 'fast' ? Math.round(Math.min(60, Math.max(36, 30 + px * 0.02))) : Math.round(Math.min(84, Math.max(48, 40 + px * 0.025))); };
+	const DRIFT = def.pace === 'fast' ? 0.0009 : 0.00045; // log-zoom per frame
+	const PAN = def.pace === 'fast' ? 0.45 : 0; // screen px per frame of slow sideways drift
 	const state = (j: number, fr: number): [number, number, number] => {
 		const K = keys[j];
 		let lz = Math.log(K.z) + (j % 2 === 0 ? 1 : -1) * DRIFT * (fr - arrive(j));
-		if (j === 0 && booms.length && !HY) lz += Math.log(0.75) * ss((fr - lastBoom - 10) / 90);
-		if (j === 0 && booms.length && HY) lz += Math.log(1.8) + 0.0015 * Math.min(fr, lastBoom) + (Math.log(0.82 / 1.8) - 0.0015 * lastBoom) * eOut((fr - lastBoom) / 26);
-		if (HY && j > 0) for (const [b, k2] of beats[j].map((b, k2) => [b, k2] as const)) lz += (k2 % 2 === 0 ? 0.07 : 0.05) * eOut((fr - b) / 16);
+		if (j === 0 && booms.length) lz += Math.log(0.75) * ss((fr - lastBoom - 10) / 90);
 		const dt = fr - arrive(j), sgn = j % 2 === 0 ? 1 : -1;
 		return [K.x + (sgn * PAN * dt) / K.z, K.y + (-sgn * PAN * 0.4 * dt) / K.z, lz];
 	};
@@ -212,9 +204,8 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 		if (j > 0) {
 			const T0 = arrive(j) - trav(j), u = (fr - T0) / trav(j);
 			if (u < 1) {
-				const A = state(j - 1, fr), e = HY ? q5(u) : ss(u);
-				const fp = HY ? flyPx(j) : 0, dip = fp > 1300 ? Math.min(1.1, Math.log(fp / 900)) : 0;
-				return [A[0] + (B[0] - A[0]) * e, A[1] + (B[1] - A[1]) * e, A[2] + (B[2] - A[2]) * e - dip * Math.sin(Math.PI * Math.max(0, Math.min(1, u)))];
+				const A = state(j - 1, fr), e = ss(u);
+				return [A[0] + (B[0] - A[0]) * e, A[1] + (B[1] - A[1]) * e, A[2] + (B[2] - A[2]) * e];
 			}
 		}
 		return B;
@@ -224,11 +215,7 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 	const leave = (j: number) => (j === N - 1 ? 1e9 : arrive(j + 1) - Math.round(trav(j + 1) * 0.6));
 	// soft shake on explosions
 	let shake = 0;
-	for (const b of booms) shake += HY ? interpolate(f - b.at, [0, 2, 34], [0, 16, 0], clamp) : interpolate(f - b.at, [0, 3, 24], [0, 3, 0], clamp);
-	// motion blur from camera speed (hype)
-	const [px1, py1, pz1] = camAt(f - 1);
-	const spd = Math.hypot((cx0 - px1) * cam.z, (cy0 - py1) * cam.z) + Math.abs(lz0 - pz1) * 900;
-	const mblur = HY ? Math.min(7, Math.max(0, spd - 6) * 0.12) : 0;
+	for (const b of booms) shake += interpolate(f - b.at, [0, 3, 24], [0, 3, 0], clamp);
 	cam = {...cam, x: cam.x + (Math.sin(f * 0.9) * shake) / cam.z, y: cam.y + (Math.cos(f * 1.1) * shake) / cam.z};
 	// ---- which scene's content is on screen (switches while the camera is travelling)
 	let i = 0;
@@ -256,7 +243,7 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 		<AbsoluteFill style={{background: '#2A72BA', overflow: 'hidden'}}>
 			<Fonts />
 			<FlagPreload flags={ALL.map((c) => FL[c]).filter(Boolean)} />
-			<AbsoluteFill style={{filter: mblur > 0.3 ? `blur(${mblur.toFixed(1)}px)` : undefined}}><Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} cullPad={5000} /></AbsoluteFill>
+			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.05} cullPad={5000} />
 			{booms.map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <React.Fragment key={b.k}><Ring x={p.x} y={p.y} t={f - b.at} r1={Math.max(260, c.w * cam.z * 1.2)} /><Confetti x={p.x} y={p.y} w={c.w * cam.z * 0.8} h={c.h * cam.z * 0.8} t={f - b.at} cols={PAL[b.k] ?? ['#fff', '#ccc']} seed={k + 3} n={Math.min(140, 50 + c.w * 0.5)} /></React.Fragment>; })}
 			{sc.qmarks && booms.filter((b) => f > b.at + 30).slice(0, 8).map((b, k) => { const c = center(b.k); const p = toScr(cam, c.x, c.y); return <div key={b.k} style={{opacity: outK}}><QMark x={p.x} y={p.y} t={f - b.at - 30} i={k} /></div>; })}
 			{(sc.spk ?? []).map((s, k) => {
@@ -266,8 +253,8 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 				const d = s.d ?? 300;
 				const x = s.map ? p.x + (s.dx ?? 0) : 540 + (s.dx ?? 0);
 				const y = s.map ? p.y + (s.dy ?? 0) : BALL_Y + (s.dy ?? 0);
-				const appear = s.at ? (wordIdx(s.at)?.s ?? ln.start) - 8 : HY && i === 0 && k === 0 ? -14 : inAt + k * 6;
-				const pin = spring({frame: f - appear, fps: FPS, config: HY ? {damping: 11, stiffness: 260, mass: 0.7} : {damping: 20, stiffness: 170, mass: 0.8}});
+				const appear = s.at ? (wordIdx(s.at)?.s ?? ln.start) - 8 : inAt + k * 6;
+				const pin = spring({frame: f - appear, fps: FPS, config: {damping: 20, stiffness: 170, mass: 0.8}});
 				const preBoom = boom && !s.ghost ? interpolate(f, [boom.at - 6, boom.at + 3], [1, 1.3], clamp) : 1;
 				// expression follows the words
 				let mood = s.endMood && t > len * 0.5 ? s.endMood : s.mood;
@@ -289,7 +276,6 @@ export const VShort3: React.FC<{tl: Timeline; def: ShortDef}> = ({tl, def}) => {
 			{sc.props && <div style={{position: 'absolute', inset: 0, opacity: outK, transform: `translateY(${(1 - outK) * -30}px) scale(${0.92 + 0.08 * outK})`, transformOrigin: '50% 55%', filter: outK < 1 ? `blur(${(1 - outK) * 6}px)` : undefined}}>{sc.props(t, len)}</div>}
 			{def.cta && i === N - 1 && <Hearts f={f - L[N - 1].start} keys={def.cta} />}
 			<div style={{position: 'absolute', inset: 0, background: '#fff', opacity: flash}} />
-			{HY && lastBoom > 0 && f >= lastBoom && f < L[0].end + 30 && (() => { const u = f - lastBoom; const sl = interpolate(u, [0, 7], [2.6, 1], {...clamp, easing: Easing.in(Easing.cubic)}); const op = interpolate(f, [L[0].end + 14, L[0].end + 30], [1, 0], clamp); return <div style={{position: 'absolute', left: 0, right: 0, top: 1000, display: 'flex', justifyContent: 'center', opacity: op}}><div style={{transform: `scale(${sl}) rotate(-8deg)`, background: RED, border: `10px solid ${INK}`, borderRadius: 26, padding: '6px 40px', boxShadow: `0 12px 0 ${INK}`}}><T size={150} c="#fff" sw={0.06} sh="transparent">¡ADIÓS!</T></div></div>; })()}
 			<Title rows={def.title} />
 			<Captions lines={L} f={f} />
 			<Audio src={staticFile(tl.audio)} />

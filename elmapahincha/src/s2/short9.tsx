@@ -3,21 +3,23 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn} from './VShort3';
 import {Row, Cup} from './kit';
 import {Teeth, Hand, Mate, Medal} from './kit2';
-import {mkW, ghostOf, hookScene, Fly, Sc, Big, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Sc, Big, wob} from './fastkit';
 import TL from './short9.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('URY');
 const C0 = center('URY');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF9: ShortDef = {
-	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['URUGUAY', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['URUGUAY', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'URY', at: at0 + 4}], flashAt: [at0 + 4], cta: ['URY'],
 	scenes: [
 		hookScene('URY', 4.5, [['ARG', 0, -40], ['BRA', -80, 40]], 30),
 		{cam: {x: C0.x, y: C0.y - 120 / 2.2, z: 2.2}, props: (t) => <>
-			<Fly t={t} d={W(1, 'mundiales') + 0} x={420} y={600} from={[540, 1080]}><Cup s={150} /></Fly>
-			<Fly t={t} d={W(1, 'mundiales') + 4} x={660} y={600} from={[540, 1080]}><Cup s={150} /></Fly>
-			<Big t={t} d={W(1, 'quince')} y={760} size={96}>15 COPAS AMÉRICA</Big>
-			<Big t={t} d={W(1, 'quién') - 2} y={920} size={92} c="#FF5A5A">¿QUIÉN SE LOS QUEDA?</Big>
+			<Row y={560} gap={14}>
+				{[0, 1].map((j) => <PopIn key={j} t={t} d={W(1, 'mundiales') - 6 + j * 6}><div style={{transform: `rotate(${wob(t + j * 9, 6)}deg)`}}><Cup s={140} /></div></PopIn>)}
+				{[0, 1].map((j) => <PopIn key={'m' + j} t={t} d={W(1, 'oros') - 4 + j * 6}><Medal s={130} f={t} text={j ? '1928' : '1924'} /></PopIn>)}
+			</Row>
+			<Big t={t} d={W(1, 'quince')} y={790} size={96}>15 COPAS AMÉRICA</Big>
+			<Big t={t} d={W(1, 'tres')} y={960} size={74} c="#fff">CON 3,5 MILLONES</Big>
 		</>},
 		{focus: 'ARG', z: 1.6, spk: [{k: 'ARG', mood: 'happy', moods: [['mía', 'love'], ['perdí', 'sad']]}, g(300, 'smug', 'final')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'mía') - 4}><div style={{transform: `rotate(${wob(t, 7)}deg)`}}><Cup s={150} /></div></PopIn></Row>

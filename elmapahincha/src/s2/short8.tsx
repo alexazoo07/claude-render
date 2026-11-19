@@ -3,20 +3,19 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn, RED} from './VShort3';
 import {Row, Euro} from './kit';
 import {Goal, RuleBook, Ball, TeaCup, Sign} from './kit2';
-import {mkW, ghostOf, hookScene, Fly, Sc, Big, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Sc, Big, wob} from './fastkit';
 import TL from './short8.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('ENG');
 const C0 = center('ENG');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF8: ShortDef = {
-	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['INGLATERRA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['INGLATERRA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'ENG', at: at0 + 4}], flashAt: [at0 + 4], cta: ['ENG'],
 	scenes: [
 		hookScene('ENG', 4.2, [['SCT', 0, 0], ['FRA', 0, 0]], 30),
 		{cam: {x: C0.x, y: C0.y - 120 / 2.4, z: 2.4}, props: (t) => <>
-			<Big t={t} d={W(1, 'inventó') - 2} y={600} size={100} c="#FFD23F">¡LA INVENTORA!</Big>
-			<Fly t={t} d={W(1, 'reglas') - 6} x={540} y={860} from={[540, 1080]}><RuleBook s={230} f={t} /></Fly>
-			<Big t={t} d={W(1, 'mil') - 2} y={1010} size={84} c="#fff">REGLAS DE 1863</Big>
+			<Row y={700}><PopIn t={t} d={W(1, 'reglas') - 6}><RuleBook s={230} f={t} /></PopIn></Row>
+			<Sc t={t} d={W(1, 'primer')} a="SCT" b="ENG" sc="0-0" label="1872 · PRIMER PARTIDO DE LA HISTORIA" y={1020} />
 		</>},
 		{focus: 'DEU', z: 4.2, spk: [{k: 'DEU', mood: 'smug', moods: [['fantasma', 'cool']]}, g(300, 'angry', 'fantasma')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'fantasma') - 6}><Goal s={260} f={t} line /></PopIn></Row>

@@ -3,25 +3,20 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn, RED} from './VShort3';
 import {Row, Euro, Cup} from './kit';
 import {Goal, Sausage} from './kit2';
-import {mkW, ghostOf, hookScene, Fly, Sc, Big, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Sc, Big, wob} from './fastkit';
 import TL from './short5.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('DEU');
 const C0 = center('DEU');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF5: ShortDef = {
-	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['ALEMANIA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['ALEMANIA', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'DEU', at: at0 + 4}], flashAt: [at0 + 4], cta: ['DEU'],
 	scenes: [
 		hookScene('DEU', 3.4, [['FRA', 0, 0], ['NLD', 0, -10]], 40),
 		{cam: {x: C0.x, y: C0.y - 120 / 1.5, z: 1.5}, props: (t) => <>
-			<Fly t={t} d={W(1, 'cuatro') + 0} x={285} y={600} from={[540, 1080]}><Cup s={130} /></Fly>
-			<Fly t={t} d={W(1, 'cuatro') + 4} x={455} y={600} from={[540, 1080]}><Cup s={130} /></Fly>
-			<Fly t={t} d={W(1, 'cuatro') + 8} x={625} y={600} from={[540, 1080]}><Cup s={130} /></Fly>
-			<Fly t={t} d={W(1, 'cuatro') + 12} x={795} y={600} from={[540, 1080]}><Cup s={130} /></Fly>
-			<Fly t={t} d={W(1, 'tres') + 0} x={370} y={790} from={[540, 1080]}><Euro s={140} /></Fly>
-			<Fly t={t} d={W(1, 'tres') + 4} x={540} y={790} from={[540, 1080]}><Euro s={140} /></Fly>
-			<Fly t={t} d={W(1, 'tres') + 8} x={710} y={790} from={[540, 1080]}><Euro s={140} /></Fly>
-			<Big t={t} d={W(1, 'quién') - 2} y={1000} size={92} c="#FF5A5A">¿QUIÉN SE LOS QUEDA?</Big>
+			<Row y={560} gap={8}>{[0, 1, 2, 3].map((j) => <PopIn key={j} t={t} d={W(1, 'cuatro') + j * 5}><div style={{transform: `rotate(${wob(t + j * 9, 6)}deg)`}}><Cup s={130} /></div></PopIn>)}</Row>
+			<Row y={760} gap={16}>{[0, 1, 2].map((j) => <PopIn key={j} t={t} d={W(1, 'tres') + j * 5}><Euro s={150} /></PopIn>)}</Row>
+			<Big t={t} d={W(1, 'ocho')} y={980}>¡8 FINALES!</Big>
 		</>},
 		{focus: 'NLD', z: 7, spk: [{k: 'NLD', mood: 'happy', moods: [['mío', 'love'], ['perdí', 'sad']]}, g(300, 'smug', 'mundial')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'mío') - 4}><div style={{transform: `rotate(${wob(t, 8)}deg)`}}><Cup s={150} /></div></PopIn></Row>

@@ -3,23 +3,23 @@ import React from 'react';
 import {VShort3, ShortDef, Timeline, center, PopIn} from './VShort3';
 import {Row, Cup, Mini} from './kit';
 import {Stadium, Hand, Taco, Sign, Bars} from './kit2';
-import {mkW, ghostOf, hookScene, Fly, Sc, Big, Chip, wob} from './fastkit';
+import {mkW, ghostOf, hookScene, Sc, Big, Chip, wob} from './fastkit';
 import TL from './short7.json';
 const tl = TL as Timeline, W = mkW(tl), g = ghostOf('MEX');
 const C0 = center('MEX');
 const at0 = tl.lines[0].start + W(0, 'desapare');
 export const DEF7: ShortDef = {
-	pace: 'hype', title: [[['¿QUÉ PASARÍA SI']], [['MÉXICO', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
+	pace: 'fast', title: [[['¿QUÉ PASARÍA SI']], [['MÉXICO', '#FFD23F']], [['DESAPARECIERA DEL FÚTBOL?']]],
 	booms: [{k: 'MEX', at: at0 + 4}], flashAt: [at0 + 4], cta: ['MEX'],
 	scenes: [
 		hookScene('MEX', 1.6, [['USA', 0, 60]], 60),
 		{cam: {x: C0.x, y: C0.y - 120 / 1.5, z: 1.5}, props: (t) => <>
-			<Fly t={t} d={W(1, 'azteca') - 6} x={540} y={700} from={[540, 1080]}><Stadium s={380} label="ESTADIO AZTECA" f={t} /></Fly>
-			<Row y={900} gap={14}>
+			<Row y={760}><PopIn t={t} d={W(1, 'azteca') - 8}><Stadium s={380} label="ESTADIO AZTECA" f={t} /></PopIn></Row>
+			<Row y={1040} gap={14}>
 				<PopIn t={t} d={W(1, 'finales') - 6}><Chip>FINAL 1970</Chip></PopIn>
 				<PopIn t={t} d={W(1, 'finales')}><Chip>FINAL 1986</Chip></PopIn>
 			</Row>
-			<Big t={t} d={W(1, 'ahora') - 2} y={1040} size={100} c="#FF5A5A">¿Y AHORA QUÉ?</Big>
+			<Big t={t} d={W(1, 'tres')} y={1130} size={64} c="#fff">+ 3 INAUGURACIONES</Big>
 		</>},
 		{focus: 'BRA', z: 1.5, spk: [{k: 'BRA', mood: 'happy', moods: [['azteca', 'cool'], ['pelé', 'love']]}, g(300, 'sad', 'mundial')], props: (t) => <>
 			<Row y={890}><PopIn t={t} d={W(2, 'mundial') - 4}><div style={{transform: `rotate(${wob(t, 6)}deg)`}}><Cup s={150} /></div></PopIn></Row>
