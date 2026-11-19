@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s5_00_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "¿Y si yo, la tetracampeona del mundo… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Cuatro Mundiales y tres Eurocopas sin dueño! ¡Y ocho finales del Mundial, más que nadie!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_02_NLD",
+   "voice": "95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+   "text": "¡El Mundial del setenta y cuatro sería mío! Perdí la final en Múnich.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_03_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡Y nadie me recordaría nunca más el siete a uno!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_04_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Che! Me ganó dos finales del Mundial: en el noventa y en el dos mil catorce.",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_05_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡Por fin! Me echó en los penaltis del noventa y del noventa y seis.",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_06_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Mamma mia! Yo le gané el partido del siglo: cuatro a tres en México setenta.",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_07_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "Pues yo le gané una final de Eurocopa y una semifinal del Mundial. ¡Con goles de Torres y de Puyol!",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres alemán, ¡deja una salchicha en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s9_00_URY",
+   "voice": "06cce9d4-865f-4ebc-ae1d-c72b0ab7f646",
+   "text": "¿Y si yo, la campeona del primer Mundial… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Dos Mundiales, quince Copas América y dos oros olímpicos… con solo tres millones y medio de habitantes!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_02_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡La final del primer Mundial sería mía! La perdí cuatro a dos en Montevideo.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_03_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡Y yo me libraría del Maracanazo!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_04_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Y Suárez no le habría mordido a Chiellini!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_05_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y Ghana habría podido llegar a semifinales en dos mil diez, sin la mano de Suárez!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_06_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡En dos mil catorce, Suárez me eliminó con dos goles!",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_07_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "¡Y en el dieciocho Cavani me echó del Mundial con un doblete!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres uruguayo, ¡deja un mate en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}

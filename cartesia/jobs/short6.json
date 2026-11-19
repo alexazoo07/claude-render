@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s6_00_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "¿Y si yo, la bicampeona del mundo… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Dos Mundiales y dos Eurocopas sin campeón! ¡Y cuatro finales del Mundial en solo siete ediciones!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_02_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡La final del noventa y ocho sería mía! Aquel tres a cero en el Stade de France…",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_03_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Y yo no habría perdido la final de la Euro dos mil con un gol de oro!",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_04_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "¡Yo le gané la final de la Euro dieciséis… en su casa, con gol de Éder!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_05_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "¡Y en el ochenta y cuatro me ganó la final de la Eurocopa en París!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_06_MAR",
+   "voice": "e3087ad8-7018-4154-9a87-11577f916cd4",
+   "text": "¡Me ganó la semifinal de Catar! Sin Francia, habría jugado la final.",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_07_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Che, tranquilos! Yo le gané la final de Catar en los penaltis.",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres francés, ¡deja una baguette en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}

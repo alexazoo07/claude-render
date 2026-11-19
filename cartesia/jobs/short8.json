@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s8_00_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¿Y si yo, la inventora del fútbol… desapareciera?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Sin las reglas de mil ochocientos sesenta y tres! ¡Y sin el primer partido internacional de la historia!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_02_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "¡Ja! ¡Nadie discutiría el gol fantasma de Wembley del sesenta y seis!",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_03_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Sin Inglaterra, Maradona no habría marcado el gol del siglo!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_04_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Yo le gané la final de la Eurocopa en Wembley, en los penaltis!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_05_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "¡Y yo la de dos mil veinticuatro en Berlín! Gol de Oyarzabal.",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_06_USA",
+   "voice": "6cb8801d-259a-4bdc-978f-b45808d58cd3",
+   "text": "¡Y yo le gané uno a cero en el Mundial del cincuenta!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_07_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "Bah… ¡sin Inglaterra no habría Premier League!",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres inglés, ¡deja una taza de té en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}

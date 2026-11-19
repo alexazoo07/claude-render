@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s10_00_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "¿Y si yo, la selección de Cristiano… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Sin la Eurocopa de dos mil dieciséis y sin sus dos Ligas de Naciones!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_02_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "¡La Euro dieciséis sería mía! Perdí la final en mi casa.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_03_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "¡Y la Liga de Naciones de dos mil veinticinco también! Me ganó en los penaltis.",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_04_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡Ei! Sin Portugal… ¡yo no hablaría portugués!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_05_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡Me echó en los penaltis de dos mil cuatro y de dos mil seis!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_06_MAR",
+   "voice": "e3087ad8-7018-4154-9a87-11577f916cd4",
+   "text": "¡Yo le gané en Catar y fui el primer africano en semifinales!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_07_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Y la final de la Euro dos mil cuatro en Lisboa… la ganó Grecia!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres portugués, ¡deja un pastel de nata en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}

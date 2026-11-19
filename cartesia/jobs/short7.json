@@ -1,0 +1,95 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s7_00_MEX",
+   "voice": "b0689631-eee7-4a6c-bb86-195f1d267c2e",
+   "text": "¿Y si yo, el primer país con tres Mundiales en casa… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_01_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "¡Adiós al Estadio Azteca: dos finales del Mundial y tres partidos inaugurales!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_02_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡Yo gané el Mundial del setenta en el Azteca, con Pelé!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_03_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡Y yo el del ochenta y seis, con Maradona! ¡La Mano de Dios fue allí!",
+   "language": "es",
+   "emotion": [
+    "excited"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_04_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "Pues sin México… ¡no habría Mano de Dios!",
+   "language": "es",
+   "emotion": [
+    "sarcastic"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_05_USA",
+   "voice": "6cb8801d-259a-4bdc-978f-b45808d58cd3",
+   "text": "¡Mi gran rival! Yo tengo siete Copas Oro… y México, diez.",
+   "language": "es",
+   "emotion": [
+    "frustrated"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_06_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "¡Y en dos mil dieciocho me ganó uno a cero en Moscú!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_07_CAN",
+   "voice": "18f8d87b-0da9-4efa-b504-4580e303f7db",
+   "text": "¡Y el Mundial dos mil veintiséis lo habríamos organizado solo Estados Unidos y yo!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_08_NAR",
+   "voice": "399002e9-7f7d-42d4-a6a8-9b91bd809b9d",
+   "text": "Si eres mexicano, ¡deja un taco en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  }
+ ]
+}
