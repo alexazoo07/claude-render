@@ -1,0 +1,145 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s5_01_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "¡Cuatro Mundiales y tres Eurocopas sin dueño! ¡Y ocho finales del Mundial, más que nadie!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s5_08_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "Si me vas a echar de menos… ¡deja una salchicha en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_01_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡Dos Mundiales y dos Eurocopas sin campeón! ¡Y cuatro finales del Mundial en solo siete ediciones!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s6_08_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "Si me vas a echar de menos… ¡deja una baguette en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_01_COL",
+   "voice": "7c1ecd2d-1c83-4d5d-a25c-b3820a274a2e",
+   "text": "¡Adiós al Estadio Azteca: dos finales del Mundial y tres partidos inaugurales!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s7_08_MEX",
+   "voice": "b0689631-eee7-4a6c-bb86-195f1d267c2e",
+   "text": "Si me vas a echar de menos… ¡deja un taco en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_01_NLD",
+   "voice": "95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+   "text": "¡Sin las reglas de mil ochocientos sesenta y tres! ¡Y sin el primer partido internacional de la historia!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s8_08_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "Si me vas a echar de menos… ¡deja una taza de té en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_01_BOL",
+   "voice": "e9f0368b-3662-4a01-b037-e13ca5203c74",
+   "text": "¡Dos Mundiales, quince Copas América y dos oros olímpicos… con solo tres millones y medio de habitantes!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_05_GHA",
+   "voice": "e3087ad8-7018-4154-9a87-11577f916cd4",
+   "text": "¡Y yo habría podido llegar a semifinales en dos mil diez, sin la mano de Suárez!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s9_08_URY",
+   "voice": "06cce9d4-865f-4ebc-ae1d-c72b0ab7f646",
+   "text": "Si me vas a echar de menos… ¡deja un mate en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_01_NLD",
+   "voice": "95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+   "text": "¡Sin la Eurocopa de dos mil dieciséis y sin sus dos Ligas de Naciones!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_07_GRC",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¡Y la final de la Euro dos mil cuatro en Lisboa… la gané yo!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s10_08_PRT",
+   "voice": "6a360542-a117-4ed5-9e09-e8bf9b05eabb",
+   "text": "Si me vas a echar de menos… ¡deja un pastel de nata en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  }
+ ]
+}
