@@ -47,7 +47,7 @@ export const TX: React.FC<{size: number; c?: string; sw?: number; children: Reac
 );
 const Title: React.FC<{rows: [string, string?][][]}> = ({rows}) => (
 	<div style={{position: 'absolute', top: 236, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
-		{rows.map((r, i) => <div key={i} style={{display: 'flex', gap: 16}}>{r.map(([t, c], j) => <TX key={j} size={c ? 118 : t.length > 18 ? 62 : 70} c={c ? YL : '#fff'}>{t}</TX>)}</div>)}
+		{rows.map((r, i) => <div key={i} style={{display: 'flex', gap: 16}}>{r.map(([t, c], j) => <TX key={j} size={c ? 118 : Math.min(70, 1640 / t.length)} c={c ? YL : '#fff'}>{t}</TX>)}</div>)}
 	</div>
 );
 type Chunk = {words: Word[]; s: number};
@@ -312,7 +312,8 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const s = scs[j];
 		if (!s.k) continue;
 		if (j === 0 && (gone || false)) continue;
-		if (j > 0 && s.k === def.k) continue;
+		if (j > 0 && s.k === def.k && j !== i) continue;
+		const gh = j > 0 && s.k === def.k ? 1 : 0;
 		const [ax, ay] = anchorOf(s, j);
 		const p = toScr(cam, ax, ay);
 		const cur = j === i;
@@ -328,7 +329,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const breath = 1 + Math.sin(f / 26 + j) * 0.012;
 		const mood: RMood = cur || f < arrive(j + 1) ? moodOf(j, f) : 'neutral';
 		balls.push(<div key={'b' + j} style={{position: 'absolute', left: p.x - sz / 2 + tr, top: p.y - sz / 2, transform: `scale(${Math.max(0, pp) * preB * breath})`, transformOrigin: '50% 60%'}}>
-			<BallR k={s.k} d={sz} mood={mood} talk={cur ? talkNow : 0} f={f + j * 31} acc={s.acc} label={cur || f < arrive(j + 1)} look={j === 0 && f > crack0 ? [0, -0.2] : [Math.sin(f / 90 + j) * 0.15, 0.05]} />
+			<BallR k={s.k} d={sz} mood={mood} talk={cur ? talkNow : 0} f={f + j * 31} acc={s.acc} ghost={gh} label={!gh && (cur || f < arrive(j + 1))} look={j === 0 && f > crack0 ? [0, -0.2] : [Math.sin(f / 90 + j) * 0.15, 0.05]} />
 		</div>);
 	}
 	// ojos de vecinos (hook y escenas que lo pidan)
