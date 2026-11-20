@@ -230,3 +230,12 @@ export const LV1: React.FC = () => {
   </AbsoluteFill>
   );
 };
+
+// 1440p master: the 1920x1080 layout scaled up 4/3 so YouTube serves its higher-bitrate 1440p stream
+export const LV1HQ: React.FC = () => (
+  <AbsoluteFill style={{background: '#000'}}>
+    <div style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, transform: 'scale(1.3333333333)', transformOrigin: '0 0'}}>
+      <LV1 />
+    </div>
+  </AbsoluteFill>
+);
