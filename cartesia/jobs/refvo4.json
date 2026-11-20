@@ -1,0 +1,25 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s4_01_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "¡Cuatro estrellas… y tres Mundiales seguidos sin ir: dos mil dieciocho, dos mil veintidós y dos mil veintiséis!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s4_08_ITA",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "Si quieres que vuelva al Mundial… ¡deja una pizza en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  }
+ ]
+}
