@@ -232,7 +232,7 @@ const HeartsR: React.FC<{f: number}> = ({f}) => {
 
 // ---------------- engine ----------------
 const BY = 860;            // centro de la bola en pantalla
-const D0 = 290;            // diámetro de la bola del que habla
+const D0 = 320;            // diámetro de la bola del que habla
 const FLY = 36;            // duración del vuelo (60 fps)
 const LEAD = 14;           // el país empieza a hablar 14 f después de llegar la cámara
 export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
@@ -243,7 +243,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 	const keys: Cam[] = scs.map((s, j) => {
 		if (s.cam) return s.cam;
 		const k = s.k ?? def.k, c = center(k);
-		const z = s.z ?? Math.max(1.3, Math.min(9, 700 / Math.max(c.w, c.h * 0.9)));
+		const z = s.z ?? (k === def.k ? Math.max(1.3, Math.min(12, 760 / c.h, 900 / c.w)) : Math.max(1.3, Math.min(9, 700 / Math.max(c.w, c.h * 0.9))));
 		const [ax, ay] = anchorOf(s, j);
 		return {x: ax, y: ay + (H / 2 - BY) / z, z};
 	});
@@ -316,17 +316,19 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const [ax, ay] = anchorOf(s, j);
 		const p = toScr(cam, ax, ay);
 		const cur = j === i;
-		const sz = (s.d ?? D0) * (cam.z / keys[j].z) * (cur ? 1 : 0.5);
+		const shr = cur ? 1 : interpolate(f, [arrive(j + 1) - 2, arrive(j + 1) + 10], [1, 0], {...clamp, easing: Easing.in(Easing.cubic)});
+		if (shr <= 0.01) continue;
+		const sz = (s.d ?? D0) * (cam.z / keys[j].z) * shr;
 		if (sz < 18 || p.x < -sz || p.x > W + sz || p.y < -sz || p.y > H + sz) continue;
-		if (!cur) { const q = toScr(cam, ...anchorOf(sc, i)); if (sc.k && Math.hypot(q.x - p.x, q.y - p.y) < (D0 * 0.5 + sz * 0.5) * 1.05) continue; }
+		if (!cur && f >= arrive(i)) { const q = toScr(cam, ...anchorOf(sc, i)); if (sc.k && Math.hypot(q.x - p.x, q.y - p.y) < (D0 * 0.5 + sz * 0.5) * 1.05) continue; }
 		const popT = j === 0 ? 30 : f - (arrive(j) - 4);
-		const pp = spring({frame: popT, fps: FPS, config: {damping: 9, stiffness: 300, mass: 0.6}});
+		const pp = spring({frame: popT, fps: FPS, config: {damping: 12, stiffness: 260, mass: 0.6}});
 		const preB = j === 0 ? interpolate(f, [boom - 6, boom], [1, 1.18], clamp) : 1;
 		const tr = j === 0 && f > crack0 ? Math.sin(f * 2.7) * interpolate(f, [crack0, boom], [0, 5], clamp) : 0;
 		const breath = 1 + Math.sin(f / 26 + j) * 0.012;
-		const mood: RMood = cur ? moodOf(j, f) : (j === 0 ? 'cry' : 'neutral');
+		const mood: RMood = cur || f < arrive(j + 1) ? moodOf(j, f) : 'neutral';
 		balls.push(<div key={'b' + j} style={{position: 'absolute', left: p.x - sz / 2 + tr, top: p.y - sz / 2, transform: `scale(${Math.max(0, pp) * preB * breath})`, transformOrigin: '50% 60%'}}>
-			<BallR k={s.k} d={sz} mood={mood} talk={cur ? talkNow : 0} f={f + j * 31} acc={s.acc} label={cur} look={j === 0 && f > crack0 ? [0, -0.2] : [Math.sin(f / 90 + j) * 0.15, 0.05]} />
+			<BallR k={s.k} d={sz} mood={mood} talk={cur ? talkNow : 0} f={f + j * 31} acc={s.acc} label={cur || f < arrive(j + 1)} look={j === 0 && f > crack0 ? [0, -0.2] : [Math.sin(f / 90 + j) * 0.15, 0.05]} />
 		</div>);
 	}
 	// ojos de vecinos (hook y escenas que lo pidan)
@@ -342,11 +344,11 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 			<Fonts />
 			<FlagPreload flags={ALL.map((c) => FL[c]).filter(Boolean)} />
 			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.06} cullPad={5000} />
-			{!looping && f >= crack0 && f < boom && <Cracks x={vp.x} y={vp.y} w={vc.w * cam.z} h={vc.h * cam.z} p={(f - crack0) / 44} seed={11} />}
+			{!looping && f >= crack0 && f < boom && <Cracks x={vp.x} y={vp.y} w={Math.max(520, vc.w * cam.z)} h={Math.max(700, vc.h * cam.z)} p={(f - crack0) / 44} seed={11} />}
 			{gone && <Burst x={vp.x} y={vp.y} w={vc.w * cam.z * 0.9} h={vc.h * cam.z * 0.9} t={f - boom} cols={PAL[def.k] ?? ['#ccc', '#999']} />}
 			{gone && f - boom < 34 && (() => { const u = (f - boom) / 34; const r = 120 + eOut3(u) * 700; return <svg width={W} height={H} style={{position: 'absolute', inset: 0}}><circle cx={vp.x} cy={vp.y} r={r} fill="none" stroke="#fff" strokeWidth={8 - 5 * u} opacity={0.9 * (1 - u)} /></svg>; })()}
 			{gone && f >= boom + 14 && tombP.y > -400 && tombP.y < H + 400 && <div style={{position: 'absolute', left: tombP.x - tombS / 2 + (last ? 150 * cl(ctaT / 20) : 0), top: tombP.y - tombS * 0.75, transform: `scale(${Math.max(0, tombPop)})`, transformOrigin: '50% 100%', opacity: last ? 1 : 1}}><Tomb name={NAMES[def.k] ?? def.k} years={def.years} s={tombS} /></div>}
-			{eyes.map((k) => { const c = center(k); const p = toScr(cam, c.x, c.y); return <Peek key={k} x={p.x} y={p.y} s={52} f={f} tx={vp.x} ty={vp.y} scared={f > crack0} />; })}
+			{eyes.map((k) => { const c = center(k); const p = toScr(cam, c.x, c.y); if (p.x < 60 || p.x > W - 60 || p.y < 560 || p.y > H - 200) return null; return <Peek key={k} x={p.x} y={p.y} s={52} f={f} tx={vp.x} ty={vp.y} scared={f > crack0} />; })}
 			{balls}
 			{sc.props && !looping && <div style={{position: 'absolute', inset: 0, opacity: propK, transform: `scale(${0.9 + 0.1 * propK})`, transformOrigin: '50% 50%'}}>{sc.props(t, len, f)}</div>}
 			{last && <>
@@ -373,9 +375,10 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 
 // ---------------- kit de props estilo referencia ----------------
 const popS = (t: number, d: number) => spring({frame: t - d, fps: FPS, config: {damping: 9, stiffness: 300, mass: 0.6}});
-export const At: React.FC<{x: number; y: number; children: React.ReactNode; t: number; d: number; rot?: number}> = ({x, y, children, t, d, rot = 0}) => {
-	const p = popS(t, d);
+export const At: React.FC<{x: number; y: number; children: React.ReactNode; t: number; d: number; rot?: number; out?: number}> = ({x, y, children, t, d, rot = 0, out}) => {
+	let p = popS(t, d);
 	if (t < d) return null;
+	if (out !== undefined) { if (t >= out + 8) return null; if (t >= out) p *= 1 - (t - out) / 8; }
 	return <div style={{position: 'absolute', left: x, top: y, transform: `translate(-50%, -50%) scale(${Math.max(0, p)}) rotate(${rot}deg)`}}>{children}</div>;
 };
 // fila de iconos que aparecen uno a uno; los de índice >= darkFrom se apagan en darkAt
@@ -400,12 +403,17 @@ export const Bubble2: React.FC<{t: number; d: number; x: number; y: number; text
 	</div></At>
 );
 // marcador compacto (bandera bola pequeña + resultado) estilo cartel crema
-export const Score: React.FC<{t: number; d: number; y: number; a: string; b: string; sc: string; label: string; greyA?: boolean; greyB?: boolean}> = ({t, d, y, a, b, sc, label, greyA, greyB}) => {
+export const Score: React.FC<{t: number; d: number; y: number; a: string; b: string; sc: string; label: string; greyA?: boolean; greyB?: boolean; out?: number}> = ({t, d, y, a, b, sc, label, greyA, greyB, out}) => {
 	const fl = (k: string, g?: boolean) => <div style={{width: 74, height: 74, borderRadius: '50%', overflow: 'hidden', boxShadow: `0 0 0 4px ${CREAM}, 0 0 0 8px ${INK}`, filter: g ? 'grayscale(1) brightness(0.55)' : undefined}}><img src={staticFile(`flags/${FL[k] ?? k.toLowerCase()}.svg`)} style={{width: '100%', height: '100%', objectFit: 'cover'}} /></div>;
-	return <At x={540} y={y} t={t} d={d}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
+	return <At x={540} y={y} t={t} d={d} out={out}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, transform: 'scale(1.3)'}}>
 		<div style={{background: INK, borderRadius: 12, padding: '4px 14px'}}><span style={{fontFamily: LILITA, fontSize: 30, color: '#fff', whiteSpace: 'nowrap', letterSpacing: 1}}>{label}</span></div>
 		<div style={{display: 'flex', alignItems: 'center', gap: 18, background: CREAM, border: `6px solid ${INK}`, borderRadius: 22, padding: '8px 22px', boxShadow: `0 7px 0 ${INK}`}}>
 			{fl(a, greyA)}<span style={{fontFamily: LILITA, fontSize: 70, color: INK}}>{sc}</span>{fl(b, greyB)}
 		</div>
 	</div></At>;
 };
+
+// icono al lado de la bola (derecha) y texto pequeño bajo un icono
+export const Side: React.FC<{t: number; d: number; children: React.ReactNode; left?: boolean; y?: number}> = ({t, d, children, left, y = 830}) => <At x={left ? 210 : 870} y={y} t={t} d={d} rot={left ? -8 : 8}>{children}</At>;
+export const Cap: React.FC<{children: React.ReactNode; size?: number; c?: string}> = ({children, size = 40, c = '#fff'}) => <span style={{fontFamily: LILITA, fontSize: size, color: c, WebkitTextStroke: `${size * 0.26}px ${INK}`, paintOrder: 'stroke fill', whiteSpace: 'nowrap'}}>{children}</span>;
+export const Col: React.FC<{children: React.ReactNode}> = ({children}) => <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4}}>{children}</div>;

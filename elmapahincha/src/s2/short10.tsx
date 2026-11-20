@@ -17,10 +17,10 @@ export const DEF10: RDef = {
 	scenes: [
 		{k: 'PRT', mood: 'cry', moods: [['desapare', 'shock']], eyes: ['ESP', 'MAR']},
 		{k: 'NLD', mood: 'shock', moods: [['ligas', 'worried']], props: (t) => <>
-			<IconRow t={t} d={W(1, 'eurocopa') - 4} n={1} y={1170} icon={() => <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Euro s={150} />{yr('2016')}</div>} />
+			<IconRow t={t} d={W(1, 'eurocopa') - 4} n={1} y={1170} icon={() => <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Euro s={230} />{yr('2016')}</div>} />
 		</>},
 		{k: 'FRA', acc: 'beret', mood: 'happy', moods: [['perdí', 'sad']], props: (t) => <>
-			<At x={870} y={840} t={t} d={W(2, 'euro') - 4} rot={8}><Euro s={160} /></At>
+			<At x={870} y={840} t={t} d={W(2, 'euro') - 4} rot={8}><Euro s={220} /></At>
 			<Score t={t} d={W(2, 'perdí') - 4} y={1180} a="PRT" b="FRA" sc="1-0" label="FINAL EURO 2016 · PARÍS" greyA />
 		</>},
 		{k: 'ESP', mood: 'angry', moods: [['penaltis', 'sad']], props: (t) => <>
@@ -34,8 +34,8 @@ export const DEF10: RDef = {
 			<Bubble2 t={t} d={W(4, 'portugués') - 2} x={850} y={1060} text="¿¡OLÁ!?" size={40} />
 		</>},
 		{k: 'ENG', acc: 'tophat', mood: 'angry', props: (t) => <>
-			<At x={300} y={1150} t={t} d={W(5, 'cuatro') - 4} rot={-6}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Goal s={170} f={t} />{yr('EURO 2004')}</div></At>
-			<At x={780} y={1150} t={t} d={W(5, 'seis') - 4} rot={6}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Goal s={170} f={t} />{yr('MUNDIAL 2006')}</div></At>
+			<At x={300} y={1150} t={t} d={W(5, 'cuatro') - 4} rot={-6}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Goal s={250} f={t} />{yr('EURO 2004')}</div></At>
+			<At x={780} y={1150} t={t} d={W(5, 'seis') - 4} rot={6}><div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}><Goal s={250} f={t} />{yr('MUNDIAL 2006')}</div></At>
 			<Tag t={t} d={W(5, 'penaltis') - 4} x={540} y={640} text="PENALTIS" size={70} />
 		</>},
 		{k: 'MAR', mood: 'happy', moods: [['semifinales', 'love']], props: (t) => <>
@@ -43,7 +43,7 @@ export const DEF10: RDef = {
 			<Score t={t} d={W(6, 'catar') - 4} y={1180} a="MAR" b="PRT" sc="1-0" label="CUARTOS · MUNDIAL 2022" greyB />
 		</>},
 		{k: 'GRC', mood: 'smug', moods: [['gané', 'laugh']], props: (t) => <>
-			<At x={870} y={840} t={t} d={W(7, 'euro') - 4} rot={8}><Euro s={160} /></At>
+			<At x={870} y={840} t={t} d={W(7, 'euro') - 4} rot={8}><Euro s={220} /></At>
 			<Score t={t} d={W(7, 'lisboa') - 4} y={1180} a="PRT" b="GRC" sc="0-1" label="FINAL EURO 2004 · LISBOA" greyA />
 		</>},
 		{k: 'PRT', mood: 'peace'},
