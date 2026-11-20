@@ -13,7 +13,7 @@ export const S3END = Math.round((W[W.length - 1].e + 0.4) * 100) / 100;
 
 const T = {
   climbed: A('climbed'), tower: A('tower'), seven: A('seven'), minutes: A('minutes'), rockstar: A('rockstar'), rewarded: A('rewarded'),
-  player: A('player'), tallest: A('tallest'), leonida: A('leonida'), climbing: A('climbing'), ladder: A('ladder'), up: A('up'), seven2: A('seven', 2), minutes2: A('minutes', 2),
+  player: A('player'), tallest: A('tallest'), leonida: A('leonida'), climbing: A('climbing'), started: A('started'), all: A('all'), ladder: A('ladder'), up: A('up'), seven2: A('seven', 2), minutes2: A('minutes', 2),
   at: A('at'), top: A('top'), nest: A('nest'), giant: A('giant'), colorful: A('colorful'), literally: A('literally'), easter: A('easter'),
   he: A('he'), picked: A('picked'), threw: A('threw'), road: A('road'), secret: A('secret'), cutscene: A('cutscene'),
   egg: A('egg'), spins: A('spins'), football: A('football'), splatters: A('splatters'), car: A('car'), driver: A('driver'), guy: A('guy'),
@@ -23,14 +23,21 @@ const T = {
 };
 
 const SHOTS: Shot[] = [
-  {src: 'sky1', a: 0, b: T.player - 0.14, dim: 0.5},
-  {src: 'roof', a: T.player - 0.14, b: T.at, dim: 0.4},
-  {src: 'sky1', a: T.at, b: T.he, off: 3, dim: 0.4},
-  {src: 'road', a: T.he, b: T.egg - 0.24, dim: 0.45},
-  {src: 'drive2', a: T.egg - 0.24, b: T.driver, dim: 0.5},
-  {src: 'seat', a: T.driver, b: T.its, dim: 0.5},
+  {src: 'tw_up', a: 0, b: T.player - 0.14, dim: 0.5},
+  {src: 'tw_walk', a: T.player - 0.14, b: T.started, dim: 0.5},
+  {src: 'tw_ladder', a: T.started, b: T.all, dim: 0.5},
+  {src: 'tw_ladder2', a: T.all, b: T.at, dim: 0.5},
+  {src: 'tw_top', a: T.at, b: T.nest, dim: 0.5, topCover: true},
+  {src: 'tw_nest', a: T.nest, b: T.he, dim: 0.5, topCover: true},
+  {src: 'tw_pick', a: T.he, b: T.threw, dim: 0.5, topCover: true},
+  {src: 'tw_throw', a: T.threw, b: T.cutscene, dim: 0.55},
+  {src: 'tw_fly', a: T.cutscene, b: T.splatters, dim: 0.6},
+  {src: 'tw_splat', a: T.splatters, b: T.driver, dim: 0.6, cover: true},
+  {src: 'tw_driver', a: T.driver, b: T.driver + 4, dim: 0.55, cover: true},
+  {src: 'tw_after', a: T.driver + 4, b: T.its, dim: 0.55, cover: true},
   {src: 'vcity', a: T.its, b: T.exact - 0.2, dim: 0.45},
-  {src: 'roof', a: T.exact - 0.2, b: T.would, off: 3, dim: 0.42},
+  {src: 'tw_aerial', a: T.exact - 0.2, b: T.exact + 2.9, dim: 0.45},
+  {src: 'tw_ladder2', a: T.exact + 2.9, b: T.would, off: 6, dim: 0.42},
   {src: 'outro', a: T.would, b: S3END, dim: 0.5},
 ];
 
@@ -69,7 +76,6 @@ const Hook: React.FC = () => {
   const mm = Math.round(lerp(f, F(T.seven), F(T.minutes) + 20, 0, 7, IO));
   return (
     <>
-      <Pop a={T.tower} b={T.rewarded - 0.05} from="up" style={{...C, top: 560}}><TowerArt h={720} /></Pop>
       <Pop a={T.seven} b={T.player - 0.2} from="down" style={{...C, top: 300}}><Digits text={`0${mm}:00`} c={YEL} size={150} /></Pop>
       <Pop a={T.minutes} b={T.player - 0.2} style={{...C, top: 500}}><Tag c={YEL}>minutes of climbing</Tag></Pop>
       <Pop a={T.rewarded} b={T.player - 0.2} from="zoom" style={{...C, top: 640}}>
@@ -93,7 +99,7 @@ const Climb: React.FC = () => {
     <>
       <Pop a={T.tallest} b={T.at - 0.08} from="down" style={{...C, top: 270}}><Tag>tallest communication tower</Tag></Pop>
       <Pop a={T.player} b={T.at - 0.08} from="left" style={{left: 70, top: 380}}>
-        <TowerArt h={960} climber={c} showClimber={f >= F(T.climbing)} />
+        <TowerArt h={640} climber={c} showClimber={f >= F(T.climbing)} />
       </Pop>
       <Pop a={T.leonida} b={T.at - 0.08} from="right" style={{right: 70, top: 420}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 12, padding: '14px 26px', ...panel()}}>{IPin(54)}<Lab c="#fff" size={24}>leonida</Lab></div>
@@ -121,18 +127,15 @@ const Nest: React.FC = () => {
   return (
     <>
       <Pop a={T.top} b={T.he - 0.08} from="down" style={{...C, top: 290}}><Tag c={YEL}>at the top</Tag></Pop>
-      <Pop a={T.nest} b={T.he - 0.08} from="zoom" style={{...C, top: 520}}>
-        <div style={{position: 'relative', width: 820, height: 560, display: 'flex', justifyContent: 'center'}}>
-          <div style={{position: 'absolute', bottom: 40, display: 'flex', gap: 0, alignItems: 'flex-end'}}>
+      <Pop a={T.nest} b={T.he - 0.08} from="zoom" style={{...C, top: 400}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, padding: '22px 40px', ...panel(YEL)}}>
+          <Lab c={YEL}>bird's nest</Lab>
+          <div style={{display: 'flex', gap: 18, height: 120, alignItems: 'flex-end'}}>
             {EGGC.map((c, i) => {
               const p = lerp(f, F(T.giant) + i * 5, F(T.giant) + i * 5 + 14, 0, 1);
-              return <div key={i} style={{margin: '0 -6px', opacity: p, transform: `translateY(${(1 - p) * 60}px) scale(${0.7 + 0.3 * p})`}}><Egg c={c} s={170} rot={[-12, 6, -4, 10][i]} /></div>;
+              return <div key={i} style={{opacity: p, transform: `translateY(${(1 - p) * 40}px)`}}><Egg c={c} s={84} rot={[-12, 6, -4, 10][i]} /></div>;
             })}
           </div>
-          <svg width="820" height="260" viewBox="0 0 820 260" style={{position: 'absolute', bottom: -40}}>
-            <ellipse cx="410" cy="150" rx="380" ry="90" fill="#5a3a1c" />
-            {Array.from({length: 26}).map((_, i) => <path key={i} d={`M${40 + i * 29} ${110 + (i % 3) * 18} Q${410} ${210 + (i % 4) * 10} ${780 - i * 27} ${100 + (i % 5) * 16}`} stroke={i % 2 ? '#8a5a2c' : '#3e2612'} strokeWidth="9" fill="none" />)}
-          </svg>
         </div>
       </Pop>
       <Pop a={T.easter} b={T.he - 0.08} from="zoom" style={{...C, top: 1150}}><Big size={92} c={YEL} glow={YEL}>EASTER EGGS</Big></Pop>
@@ -154,34 +157,11 @@ const Throw: React.FC = () => {
   const shake = f >= F(T.splatters) && f < F(T.splatters) + 10 ? (((f * 37) % 9) - 4) * 2 : 0;
   return (
     <>
-      <Pop a={T.picked} b={T.threw - 0.02} from="zoom" style={{...C, top: 520}}>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20}}><Egg c={EGGC[0]} s={260} rot={-8} /><Tag>picked one up</Tag></div>
-      </Pop>
-      <Pop a={T.threw} b={T.egg - 0.05} style={{left: 0, right: 0, top: 0, height: 1400}}>
-        <svg width="1080" height="1400">
-          <path d="M180 260 Q 420 40 560 1090" stroke={PINK} strokeWidth="8" strokeDasharray="20 18" fill="none" pathLength={1} style={{strokeDasharray: `${arc} 1`}} />
-          <circle cx="560" cy="1090" r={30 + 10 * Math.sin(f * 0.3)} stroke={YEL} strokeWidth="6" fill="none" opacity={arc} />
-        </svg>
-        <div style={{position: 'absolute', left: 120, top: 180}}><Egg c={EGGC[0]} s={110} rot={-20} /></div>
-        <div style={{position: 'absolute', left: 600, top: 1060, opacity: arc}}><Tag c={YEL} size={24}>the road</Tag></div>
-      </Pop>
-      {flying && (
-        <div style={{position: 'absolute', left: ex - 60, top: ey - 75}}>
-          <Egg c={EGGC[0]} s={120} rot={(f - F(T.egg)) * 22} />
-        </div>
-      )}
-      {flying && f >= F(T.football) && <Pop a={T.football} b={T.splatters - 0.05} style={{...C, top: 300}}><Tag c={CYAN}>spins like a football</Tag></Pop>}
-      <Pop a={T.splatters} b={T.driver - 0.05} from="zoom" style={{left: 0, right: 0, top: 820}}>
-        <div style={{position: 'relative', display: 'flex', justifyContent: 'center', transform: `translateX(${shake}px)`}}>
-          <svg width="520" height="360" viewBox="0 0 520 360">
-            <g transform={`translate(260 180) scale(${0.3 + 0.7 * splat})`}>
-              <path d="M-150 -20 C-170 -80 -90 -120 -40 -100 C0 -150 80 -130 100 -90 C170 -100 190 -20 150 10 C200 60 130 120 70 100 C30 150 -60 140 -80 100 C-160 120 -200 40 -150 -20 Z" fill="#fff6dc" />
-              <circle cx="10" cy="0" r="62" fill={YEL} />
-              {[[-200, -60, 16], [190, -70, 12], [210, 70, 18], [-190, 90, 12], [40, -170, 14]].map(([x, y, r], i) => <circle key={i} cx={x} cy={y} r={r} fill="#fff6dc" />)}
-            </g>
-          </svg>
-          <div style={{position: 'absolute', bottom: -10}}><Big size={96} c={YEL} glow={YEL}>SPLAT!</Big></div>
-        </div>
+      <Pop a={T.picked} b={T.threw - 0.02} style={{...C, top: 300}}><Tag>picked one up</Tag></Pop>
+      <Pop a={T.threw} b={T.cutscene - 0.05} style={{...C, top: 300}}><Tag c={YEL}>toward the road</Tag></Pop>
+      <Pop a={T.football} b={T.splatters - 0.05} style={{...C, top: 300}}><Tag c={CYAN}>spins like a football</Tag></Pop>
+      <Pop a={T.splatters} b={T.driver - 0.05} from="zoom" style={{...C, top: 1120}}>
+        <div style={{transform: `translateX(${shake}px)`}}><Big size={110} c={YEL} glow={YEL}>SPLAT!</Big></div>
       </Pop>
       {bars > 0 && (
         <AbsoluteFill style={{pointerEvents: 'none'}}>

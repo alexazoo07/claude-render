@@ -25,7 +25,7 @@ export const H1 = "'Rubik', 'Inter Display', sans-serif";
 export const LB = "'Inter', sans-serif";
 
 export type Wd = {w: string; t: number; e: number};
-export type Shot = {src: string; a: number; b: number; off?: number; dim?: number; cover?: boolean};
+export type Shot = {src: string; a: number; b: number; off?: number; dim?: number; cover?: boolean; topCover?: boolean};
 export type Sfx = {t: number; s: string; v?: number; peak?: number};
 
 // time of the n-th occurrence (1-based) of a word in the voice
@@ -54,6 +54,7 @@ export const ShotLayer: React.FC<{s: Shot}> = ({s}) => {
       </AbsoluteFill>
       <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(40,6,60,0.55) 0%, rgba(70,10,80,0.25) 45%, rgba(10,4,20,0.75) 100%)', mixBlendMode: 'multiply'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(8,2,16,0.75) 100%)'}} />
+      {s.topCover && <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 300, background: 'linear-gradient(180deg, #07030c 0%, rgba(7,3,12,0.92) 55%, rgba(7,3,12,0) 100%)'}} />}
       {s.cover && <div style={{position: 'absolute', left: 0, right: 0, top: 1560, bottom: 0, background: 'linear-gradient(180deg, rgba(7,3,12,0) 0%, rgba(7,3,12,0.97) 30%, #07030c 100%)'}} />}
     </AbsoluteFill>
   );
