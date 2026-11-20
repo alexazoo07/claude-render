@@ -1,5 +1,7 @@
 import {continueRender, delayRender, staticFile} from 'remotion';
 const faces: [string, string, string][] = [
+  ['Rubik', 'fonts/rubik900.ttf', '900'],
+  ['Montserrat', 'fonts/montserrat900.ttf', '900'],
   ['Inter Display', 'fonts/InterDisplay-Black.otf', '900'],
   ['Inter Display', 'fonts/InterDisplay-ExtraBold.otf', '800'],
   ['Inter', 'fonts/Inter-Black.otf', '900'],
