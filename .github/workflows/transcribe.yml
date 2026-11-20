@@ -15,11 +15,12 @@ jobs:
         run: |
           mkdir -p /tmp/tr
           python3 - <<'P'
-          import glob, json, os
+          import glob, json, os, subprocess, numpy as np
           from faster_whisper import WhisperModel
           m = WhisperModel('medium', device='cpu', compute_type='int8')
           for f in sorted(glob.glob('${{ inputs.dir }}/*.mp3')):
-              segs, info = m.transcribe(f, language='es', word_timestamps=True, vad_filter=False)
+              a = np.frombuffer(subprocess.run(['ffmpeg','-loglevel','error','-i',f,'-f','f32le','-ac','1','-ar','16000','-'],capture_output=True,check=True).stdout, dtype=np.float32)
+              segs, info = m.transcribe(a, language='es', word_timestamps=True, vad_filter=False)
               out = []
               for s in segs:
                   out.append({'start': s.start, 'end': s.end, 'text': s.text, 'words': [{'w': w.word, 's': w.start, 'e': w.end} for w in (s.words or [])]})
