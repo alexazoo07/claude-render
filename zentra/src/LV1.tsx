@@ -3,9 +3,12 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import SH from './lvshots.json';
-import {F, lerp, IO, cl, PINK, PINK2, Big, Lab, panel, SfxLayer, Sfx} from './ShortKit';
+import WORDS from './lvwords.json';
+import {F, lerp, IO, cl, PINK, PINK2, YEL, GRN, RED, CYAN, Big, Lab, Tag, panel, Digits, IUfo, Pop, C, SfxLayer, Sfx, Wd, at, glitchK, GlitchDefs, rnd} from './ShortKit';
 
-type S = {t: number; src: string; in: number; dur: number};
+type S = {t: number; src: string; in: number; dur: number; sp?: number};
+const W = WORDS as Wd[];
+const A = (w: string, n = 1) => at(W, w, n);
 const SHOTS = (SH as {end: number; shots: S[]}).shots;
 export const LV1END = (SH as {end: number}).end;
 
@@ -19,7 +22,7 @@ const INTRO_END = 31.58;
 
 const Clip: React.FC<{s: S; idx: number}> = ({s, idx}) => {
   const f = useCurrentFrame();
-  const len = Math.round(s.dur * 60) + 18;
+  const len = Math.round(s.dur * 60) + 15;
   const sec = isSection(s.t) || s.t === 0;
   const fast = s.t < INTRO_END && !sec; // intro montage: crisp cuts
   const fade = fast ? 1 : lerp(f, 0, 12, 0, 1, IO);
@@ -86,13 +89,18 @@ const MapScene: React.FC<{kind: string; len: number; fade: number}> = ({kind, le
 // ---------- small overlays (minimal text) ----------
 const Badge: React.FC<{at: number; n: string}> = ({at: t, n}) => {
   const f = useCurrentFrame();
-  const a = F(t) + 10, b = a + 150;
+  const a = F(t) + 8, b = a + 160;
   if (f < a || f > b + 16) return null;
   const p = lerp(f, a, a + 18, 0, 1);
   const q = lerp(f, b, b + 16, 0, 1, IO);
+  const ring = lerp(f, a, a + 34, 0.7, 1.6);
+  const ro = lerp(f, a, a + 34, 0.9, 0);
   return (
-    <div style={{position: 'absolute', left: 70, bottom: 70, opacity: p * (1 - q), transform: `translateX(${(1 - p) * -40}px)`}}>
-      <div style={{width: 120, height: 120, borderRadius: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', ...panel()}}><Big size={64}>{n}</Big></div>
+    <div style={{position: 'absolute', left: 70, bottom: 70, opacity: p * (1 - q), transform: `translateX(${(1 - p) * -60}px) scale(${0.9 + 0.1 * p})`}}>
+      <div style={{position: 'relative', width: 150, height: 150, borderRadius: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', ...panel()}}>
+        <div style={{position: 'absolute', inset: -8, borderRadius: 42, border: `4px solid ${PINK}`, transform: `scale(${ring})`, opacity: ro}} />
+        <Big size={84}>{n}</Big>
+      </div>
     </div>
   );
 };
@@ -135,7 +143,9 @@ const WH = ['wh1', 'wh2', 'fsw', 'ssw'];
 const SFX: Sfx[] = [
   {t: 0, s: 'sub1', v: 0.6}, {t: 0.02, s: 'imp', v: 0.5},
   ...SHOTS.filter((s) => s.t > 0.5 && s.t < INTRO_END - 1).map((s, i) => ({t: s.t, s: i % 2 ? 'whip' : 'swish', v: 0.45})),
-  {t: 11.68, s: 'appear', v: 0.4},
+  {t: 11.68, s: 'appear', v: 0.4}, {t: 10.59, s: 'glx', v: 0.45}, {t: 20.87, s: 'glx2', v: 0.45}, {t: 20.87, s: 'imp', v: 0.5}, {t: 54.95, s: 'glx', v: 0.35},
+  ...SECTIONS.map(([t]) => ({t, s: 'glx2', v: 0.3})),
+  {t: 4.03, s: 'pop2', v: 0.5}, {t: 5.16, s: 'pop2', v: 0.5}, {t: 7.88, s: 'pop2', v: 0.5}, {t: 15.6, s: 'pop1', v: 0.5}, {t: 17.2, s: 'pop1', v: 0.5}, {t: 18.47, s: 'pop1', v: 0.5}, {t: 26.7, s: 'notif', v: 0.4},
   ...SECTIONS.map(([t], i) => ({t, s: WH[i % WH.length], v: 0.6})),
   ...SECTIONS.map(([t]) => ({t: t + 0.18, s: 'pop1', v: 0.4})),
   {t: 202.5, s: 'imp', v: 0.45}, {t: 226.71, s: 'imp', v: 0.45}, {t: 175.52, s: 'sdl', v: 0.5},
@@ -144,13 +154,71 @@ const SFX: Sfx[] = [
   {t: 369.79, s: 'appear', v: 0.4}, {t: 377.5, s: 'pop2', v: 0.5}, {t: 378.67, s: 'c1', v: 0.8}, {t: 378.8, s: 'notif', v: 0.45},
 ];
 
-export const LV1: React.FC = () => (
+const GLITCHES = [10.59, 20.87, 54.95, 350.66, ...SECTIONS.map(([t]) => t)];
+
+const Intro: React.FC = () => {
+  const f = useCurrentFrame();
+  const lab = (a: number, b: number, text: string, c: string) => (
+    <Pop a={a} b={b} from="zoom" style={{...C, top: 760}}>
+      <div style={{padding: '18px 54px', ...panel(c), borderRadius: 30}}><Big size={96} c="#fff" glow={c}>{text}</Big></div>
+    </Pop>
+  );
+  const dim = interpolate(f, [F(20.87) - 4, F(20.87) + 10, F(26.5), F(26.7)], [0, 0.55, 0.55, 0], cl);
+  return (
+    <>
+      <Pop a={0} b={2.55} from="zoom" style={{...C, top: 300}}>
+        <Img src={staticFile('gtavi_logo.png')} style={{width: 330, filter: `drop-shadow(0 0 40px ${PINK})`}} />
+      </Pop>
+      <Pop a={A('few')} b={2.55} style={{...C, top: 690}}><Tag c={YEL} size={40}>only a few days in</Tag></Pop>
+      <Pop a={2.7} b={3.95} from="down" style={{...C, top: 120}}><Big size={84}>PLAYERS ALREADY FOUND...</Big></Pop>
+      {lab(4.03, 5.1, 'SEA MONSTER', CYAN)}
+      {lab(5.16, 7.8, 'GIANT CRAB', RED)}
+      {lab(7.88, 10.5, 'JET SKI DOG', YEL)}
+      {lab(10.59, 11.6, 'ALIENS', GRN)}
+      <Pop a={A('secrets')} b={15.45} from="zoom" style={{...C, top: 330}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, padding: '30px 60px', ...panel()}}>
+          <Digits text="14" size={170} />
+          <Lab c={PINK2} size={34}>insane secrets</Lab>
+        </div>
+      </Pop>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 820, display: 'flex', justifyContent: 'center', gap: 26}}>
+        {([[15.6, 'FUNNY', YEL], [17.2, 'CREEPY', RED], [18.47, 'GTA 5 LINKS', CYAN]] as [number, string, string][]).map(([t, l, c], i) => {
+          const p = lerp(f, F(t), F(t) + 14, 0, 1);
+          const q = lerp(f, F(20.7), F(20.95), 0, 1, IO);
+          if (f < F(t) - 1 || q >= 1) return null;
+          return <div key={i} style={{opacity: p * (1 - q), transform: `translateY(${(1 - p) * 40}px)`, padding: '14px 40px', ...panel(c), borderRadius: 999}}><Big size={60} glow={c}>{l}</Big></div>;
+        })}
+      </div>
+      {dim > 0 && <AbsoluteFill style={{background: `rgba(8,2,16,${dim})`}} />}
+      <Pop a={A('every')} b={26.4} from="zoom" style={{...C, top: 300}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
+          <Big size={150}>EVERY</Big>
+          <Big size={170} c={PINK2}>INSANE SECRET</Big>
+        </div>
+      </Pop>
+      <Pop a={A('first')} b={26.4} style={{...C, top: 720}}><Tag size={40}>gta 6 · first days</Tag></Pop>
+      <Pop a={A('stay')} b={31.4} from="down" style={{...C, top: 760}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 22, padding: '20px 46px', ...panel(GRN), borderRadius: 999}}>{IUfo(80, GRN)}<Big size={64} glow={GRN}>STAY UNTIL THE END</Big></div>
+      </Pop>
+    </>
+  );
+};
+
+export const LV1: React.FC = () => {
+  const f = useCurrentFrame();
+  const gk = glitchK(f, GLITCHES);
+  const wrap: React.CSSProperties = gk > 0.02 ? {filter: 'url(#lvglx)', transform: `scale(${1 + 0.03 * gk}) translateX(${(rnd(Math.floor(f / 2)) - 0.5) * 16 * gk}px)`} : {};
+  return (
   <AbsoluteFill style={{background: '#000'}}>
+    <GlitchDefs k={gk} seed={Math.floor(f / 2) % 97} id="lvglx" />
+    <AbsoluteFill style={wrap}>
     {SHOTS.map((s, i) => (
-      <Sequence key={i} from={F(s.t)} durationInFrames={Math.round(s.dur * 60) + 18}>
+      <Sequence key={i} from={F(s.t)} durationInFrames={Math.round(s.dur * 60) + 15}>
         <Clip s={s} idx={i} />
       </Sequence>
     ))}
+    </AbsoluteFill>
+    <Intro />
     <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%)', pointerEvents: 'none'}} />
     {SHOTS.filter((s) => s.t > 0.5 && s.t < INTRO_END).map((s) => <Flash key={'f' + s.t} at={s.t} />)}
     {SECTIONS.map(([t]) => <Streak key={'s' + t} at={t} />)}
@@ -160,4 +228,5 @@ export const LV1: React.FC = () => (
     <Audio src={staticFile('music/bed.mp3')} volume={(fr) => interpolate(fr, [0, 30, F(LV1END) - 60, F(LV1END)], [0, 0.07, 0.07, 0], cl)} />
     <SfxLayer list={SFX} />
   </AbsoluteFill>
-);
+  );
+};
