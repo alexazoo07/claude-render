@@ -272,7 +272,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		return B;
 	};
 	// loop: los últimos fotogramas vuelven al estado del primero
-	const loopAt = tl.total - 16;
+	const loopAt = tl.total - 34;
 	const looping = f >= loopAt;
 	let cam = looping ? keys[0] : camAt(f);
 	// temblor durante las grietas y en la explosión
@@ -318,7 +318,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const cur = j === i;
 		const shr = cur ? 1 : interpolate(f, [arrive(j + 1) - 2, arrive(j + 1) + 10], [1, 0], {...clamp, easing: Easing.in(Easing.cubic)});
 		if (shr <= 0.01) continue;
-		const sz = (s.d ?? D0) * (cam.z / keys[j].z) * shr;
+		const sz = (s.d ?? D0) * Math.min(cur ? 9 : 1, cam.z / keys[j].z) * shr;
 		if (sz < 18 || p.x < -sz || p.x > W + sz || p.y < -sz || p.y > H + sz) continue;
 		if (!cur && f >= arrive(i)) { const q = toScr(cam, ...anchorOf(sc, i)); if (sc.k && Math.hypot(q.x - p.x, q.y - p.y) < (D0 * 0.5 + sz * 0.5) * 1.05) continue; }
 		const popT = j === 0 ? 30 : f - (arrive(j) - 4);
