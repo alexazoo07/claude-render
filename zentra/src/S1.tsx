@@ -1,11 +1,30 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Easing, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import WORDS from './s1words.json';
+import WORDS_OLD from './s1words_old.json';
 import GAINS from './s1gains.json';
 
 export const S1FPS = 60;
-export const S1END = 59.6;
-const F = (s: number) => Math.round(s * S1FPS);
+const S1END_OLD = 59.6;
+// map times authored on the first voice (old) onto the faster voice (new), word by word
+const _O = (WORDS_OLD as {t: number}[]).map((w) => w.t);
+const _N = (WORDS as {t: number; e: number}[]).map((w) => w.t);
+export const S1END = Math.round(((WORDS as {e: number}[])[(WORDS as unknown[]).length - 1].e + 0.35) * 100) / 100;
+const KO = [..._O, S1END_OLD];
+const KN = [..._N, S1END];
+const M = (t: number) => {
+  if (t <= KO[0]) return t;
+  for (let i = 0; i < KO.length - 1; i++) {
+    if (t <= KO[i + 1]) {
+      const a = KO[i], b = KO[i + 1];
+      if (b - a < 1e-6) return KN[i + 1];
+      return KN[i] + ((t - a) / (b - a)) * (KN[i + 1] - KN[i]);
+    }
+  }
+  return KN[KN.length - 1] + (t - KO[KO.length - 1]);
+};
+const FR = (s: number) => Math.round(s * S1FPS); // raw seconds -> frames
+const F = (s: number) => Math.round(M(s) * S1FPS); // authored (old) seconds -> frames
 const EO = Easing.bezier(0.16, 1, 0.3, 1); // smooth expo-out, no overshoot
 const IO = Easing.bezier(0.65, 0, 0.35, 1);
 const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
@@ -41,12 +60,12 @@ const SHOTS: Shot[] = [
   {src: 'back', a: 39.76, b: 43.88, dim: 0.42},
   {src: 'boat', a: 43.88, b: 51.0, dim: 0.55},
   {src: 'gps', a: 51.0, b: 55.6, dim: 0.42},
-  {src: 'outro', a: 55.6, b: S1END, dim: 0.5},
+  {src: 'outro', a: 55.6, b: S1END_OLD, dim: 0.5},
 ];
 
 const ShotLayer: React.FC<{s: Shot}> = ({s}) => {
   const f = useCurrentFrame();
-  const len = F(s.b - s.a);
+  const len = F(s.b) - F(s.a);
   const zin = lerp(f, 0, 16, 1.22, 1.0);
   const push = interpolate(f, [0, len], [1.06, 1.14], cl);
   const blur = lerp(f, 0, 14, 16, 0);
@@ -54,7 +73,7 @@ const ShotLayer: React.FC<{s: Shot}> = ({s}) => {
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `scale(${zin * push})`, filter: `blur(${blur}px) saturate(1.15) contrast(1.06) brightness(${0.4 + d})`}}>
-        <OffthreadVideo src={staticFile(`s1/v/${s.src}.mp4`)} muted startFrom={F(s.off ?? 0)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+        <OffthreadVideo src={staticFile(`s1/v/${s.src}.mp4`)} muted startFrom={FR(s.off ?? 0)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
       </AbsoluteFill>
       {/* purple neon grade */}
       <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(40,6,60,0.55) 0%, rgba(70,10,80,0.25) 45%, rgba(10,4,20,0.75) 100%)', mixBlendMode: 'multiply'}} />
@@ -192,12 +211,13 @@ const Timeline: React.FC = () => {
   const f = useCurrentFrame();
   const a = 8.77, b = 13.6;
   // player dot travels along the track
-  const x = interpolate(f, [F(9.88), F(13.3)], [0, 1], {...cl, easing: Easing.bezier(0.45, 0, 0.55, 1)});
   const nodes = [
     {p: 0.18, label: 'MISSION', ok: true, t: 10.88},
     {p: 0.5, label: 'CHECKPOINT', ok: true, t: 12.15},
     {p: 0.86, label: 'EXPLORING', ok: false, t: 12.98},
   ];
+  // the dot arrives at the exact centre of each node on the frame its tick/cross appears
+  const x = interpolate(f, [F(9.9), ...nodes.map((n) => F(n.t))], [0, ...nodes.map((n) => n.p)], {...cl, easing: Easing.bezier(0.45, 0, 0.55, 1)});
   const Wd = 860;
   return (
     <>
@@ -206,20 +226,21 @@ const Timeline: React.FC = () => {
         <div style={{position: 'relative', width: Wd + 80, height: 430, ...panel(), padding: 40}}>
           <div style={{position: 'absolute', left: 40, right: 40, top: 200, height: 10, borderRadius: 6, background: 'rgba(255,255,255,0.15)'}} />
           <div style={{position: 'absolute', left: 40, top: 200, height: 10, borderRadius: 6, width: Wd * x, background: `linear-gradient(90deg, ${PINK}, ${PINK2})`, boxShadow: `0 0 16px ${PINK}`}} />
+          <div style={{position: 'absolute', left: 40 + Wd * x - 22, top: 183, width: 44, height: 44, borderRadius: 999, background: '#fff', boxShadow: `0 0 24px #fff, 0 0 40px ${PINK}`}} />
           {nodes.map((n, i) => {
-            const on = lerp(f, F(n.t), F(n.t) + 14, 0, 1);
+            const on = lerp(f, F(n.t), F(n.t) + 8, 0, 1);
+            const hit = f >= F(n.t);
             const c = n.ok ? GRN : RED;
             return (
               <div key={i} style={{position: 'absolute', left: 40 + Wd * n.p - 50, top: 155, width: 100, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <div style={{width: 100, height: 100, borderRadius: 999, background: PANEL, border: `4px solid ${on > 0.5 ? c : 'rgba(255,255,255,0.3)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: on > 0.5 ? `0 0 26px ${c}` : 'none'}}>
-                  <div style={{opacity: on, transform: `scale(${0.6 + 0.4 * on})`}}>{n.ok ? ICheck(56) : IX(56)}</div>
+                <div style={{width: 100, height: 100, borderRadius: 999, background: hit ? '#150a22' : 'transparent', border: `4px solid ${hit ? c : 'rgba(255,255,255,0.3)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: hit ? `0 0 ${26 + 30 * (1 - on)}px ${c}` : 'none', transform: `scale(${hit ? 1 + 0.12 * (1 - on) : 1})`}}>
+                  <div style={{opacity: hit ? 1 : 0, transform: `scale(${0.55 + 0.45 * on})`}}>{n.ok ? ICheck(56) : IX(56)}</div>
                 </div>
                 <div style={{marginTop: 22, opacity: 0.4 + 0.6 * on, whiteSpace: 'nowrap'}}><Lab c="#fff" size={22}>{n.label}</Lab></div>
                 <div style={{marginTop: 8, opacity: on, whiteSpace: 'nowrap'}}><Lab c={c} size={20}>{n.ok ? 'saved' : 'not saved'}</Lab></div>
               </div>
             );
           })}
-          <div style={{position: 'absolute', left: 40 + Wd * x - 22, top: 183, width: 44, height: 44, borderRadius: 999, background: '#fff', boxShadow: `0 0 24px #fff, 0 0 40px ${PINK}`}} />
         </div>
       </Pop>
     </>
@@ -573,21 +594,38 @@ const rnd = (n: number) => {
   const x = Math.sin(n * 127.1) * 43758.5453;
   return x - Math.floor(x);
 };
-const Glitch: React.FC<{at: number; len?: number}> = ({at, len = 12}) => {
-  const f = useCurrentFrame();
-  const a = F(at) - 4;
-  if (f < a || f > a + len) return null;
-  const bars = Array.from({length: 7}).map((_, i) => {
-    const r = rnd(f * 13 + i * 7);
-    return {y: r * 1920, h: 20 + rnd(f + i * 3) * 120, x: (rnd(f * 5 + i) - 0.5) * 160, c: i % 2 ? `${PINK}cc` : 'rgba(80,255,170,0.7)'};
-  });
-  return (
-    <AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen'}}>
-      {bars.map((b, i) => <div key={i} style={{position: 'absolute', left: b.x, top: b.y, width: 1080, height: b.h, background: b.c, opacity: 0.55}} />)}
-      <AbsoluteFill style={{background: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 6px)'}} />
-    </AbsoluteFill>
-  );
+// clean digital glitch: horizontal slice tearing + RGB split, applied to the picture itself (no overlay)
+const glitchK = (f: number) => {
+  let k = 0;
+  for (const g of GLITCHES) {
+    const d = f - F(g);
+    if (d < -3 || d > 11) continue;
+    const env = d < 0 ? (d + 3) / 3 : d < 3 ? 1 : 1 - (d - 3) / 8;
+    const step = Math.floor(f / 2); // change slices every 2 frames for a stepped, digital feel
+    k = Math.max(k, env * (0.55 + 0.45 * rnd(step * 3.1 + g)));
+  }
+  return k;
 };
+const GlitchDefs: React.FC<{k: number; seed: number}> = ({k, seed}) => (
+  <svg width="0" height="0" style={{position: 'absolute'}}>
+    <defs>
+      <filter id="s1glx" x="0%" y="0%" width="100%" height="100%" colorInterpolationFilters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.022" numOctaves={1} seed={seed} result="n" />
+        <feComponentTransfer in="n" result="q">
+          <feFuncR type="discrete" tableValues="0.5 0.5 0.15 0.5 0.85 0.5 0.5 0.3 0.5 0.7 0.5" />
+          <feFuncG type="discrete" tableValues="0.5" />
+          <feFuncA type="discrete" tableValues="1" />
+        </feComponentTransfer>
+        <feDisplacementMap in="SourceGraphic" in2="q" scale={90 * k} xChannelSelector="R" yChannelSelector="G" result="d" />
+        <feColorMatrix in="d" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r" />
+        <feOffset in="r" dx={16 * k} result="ro" />
+        <feColorMatrix in="d" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gb" />
+        <feOffset in="gb" dx={-16 * k} result="gbo" />
+        <feBlend in="ro" in2="gbo" mode="screen" />
+      </filter>
+    </defs>
+  </svg>
+);
 const Flash: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const a = F(at);
@@ -632,7 +670,7 @@ const Subs: React.FC = () => {
   return (
     <div style={{position: 'absolute', left: 60, right: 60, top: 1400, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0 22px'}}>
       {ch.idx.map((i) => {
-        const fa = F(W[i].t);
+        const fa = FR(W[i].t);
         const p = lerp(f, fa - 2, fa + 9, 0, 1);
         if (f < fa - 2) return <span key={i} style={{opacity: 0, fontFamily: H1, fontWeight: 900, fontSize: 84}}>{W[i].w}</span>;
         const c = HL[i] ?? '#fff';
@@ -655,22 +693,22 @@ const SFX: Sfx[] = [
   {t: 5.52, s: 'riserimp', v: 0.7}, {t: 5.52, s: 'sdl', v: 0.55}, {t: 5.64, s: 'mpop', v: 0.6}, {t: 7.4, s: 'whip', v: 0.6}, {t: 7.4, s: 'hud2', v: 0.5},
   {t: 7.75, s: 'wrong', v: 0.7},
   {t: 8.77, s: 'wh2', v: 0.6}, {t: 9.55, s: 'hud1', v: 0.45}, {t: 10.88, s: 'confirm', v: 0.5}, {t: 12.15, s: 'confirm', v: 0.4}, {t: 12.98, s: 'wrong', v: 0.6},
-  {t: 13.72, s: 'fsw', v: 0.6}, {t: 14.03, s: 'notif', v: 0.5}, {t: 14.55, s: 'pop2', v: 0.6}, {t: 14.83, s: 'btn', v: 0.8}, {t: 15.21, s: 'g12', v: 0.6}, {t: 15.25, s: 'sub1', v: 0.5},
-  {t: 16.17, s: 'gt1', v: 0.6}, {t: 16.55, s: 'bips', v: 0.2}, {t: 17.11, s: 'imp', v: 0.6}, {t: 17.54, s: 'rrise', v: 0.35, peak: 0.3},
+  {t: 13.72, s: 'fsw', v: 0.6}, {t: 14.03, s: 'notif', v: 0.5}, {t: 14.55, s: 'pop2', v: 0.6}, {t: 14.83, s: 'btn', v: 0.8}, {t: 15.21, s: 'glx2', v: 0.55}, {t: 15.25, s: 'sub1', v: 0.5},
+  {t: 16.17, s: 'glx', v: 0.5}, {t: 16.55, s: 'bips', v: 0.2}, {t: 17.11, s: 'imp', v: 0.6}, {t: 17.54, s: 'rrise', v: 0.35, peak: 0.3},
   // menu
   {t: 18.32, s: 'whip', v: 0.6}, {t: 18.32, s: 'pop1', v: 0.6}, {t: 19.69, s: 'hud2', v: 0.6}, {t: 19.69, s: 'c1', v: 0.6}, {t: 20.77, s: 'c3', v: 0.7},
   {t: 21.19, s: 'c1', v: 0.8}, {t: 21.61, s: 'sel', v: 0.5}, {t: 22.08, s: 'c5', v: 0.8}, {t: 22.43, s: 'right', v: 0.4},
   // 02
   {t: 23.08, s: 'metal', v: 0.6}, {t: 23.08, s: 'sdl', v: 0.55}, {t: 23.2, s: 'mpop', v: 0.6}, {t: 25.43, s: 'whip', v: 0.6}, {t: 25.6, s: 'c3', v: 0.8}, {t: 26.4, s: 'wrong', v: 0.5}, {t: 27.2, s: 'imp', v: 0.5},
-  {t: 28.16, s: 'gt3', v: 0.7}, {t: 28.48, s: 'notif', v: 0.5}, {t: 29.64, s: 'g3', v: 0.6}, {t: 29.64, s: 'typing', v: 0.35},
+  {t: 28.16, s: 'glx', v: 0.6}, {t: 28.16, s: 'ssw', v: 0.5}, {t: 28.48, s: 'notif', v: 0.5}, {t: 29.64, s: 'glx2', v: 0.5}, {t: 29.64, s: 'typing', v: 0.35},
   {t: 30.32, s: 'wh1', v: 0.6}, {t: 30.32, s: 'kb', v: 0.25}, {t: 32.01, s: 'pop2', v: 0.6}, {t: 33.32, s: 'whip', v: 0.5}, {t: 33.32, s: 'pop2', v: 0.6},
   {t: 34.54, s: 'pop2', v: 0.6}, {t: 34.6, s: 'c3', v: 0.6}, {t: 34.78, s: 'c5', v: 0.6}, {t: 34.95, s: 'c3', v: 0.6}, {t: 35.12, s: 'c5', v: 0.6}, {t: 35.3, s: 'c3', v: 0.6}, {t: 35.47, s: 'c5', v: 0.6},
   {t: 35.96, s: 'fsw', v: 0.6}, {t: 36.36, s: 'hud1', v: 0.6}, {t: 38.39, s: 'confirm', v: 0.5},
-  {t: 39.76, s: 'g1', v: 0.4}, {t: 39.76, s: 'wh2', v: 0.5}, {t: 40.55, s: 'wrong', v: 0.6}, {t: 41.8, s: 'whip', v: 0.5}, {t: 42.39, s: 'uityp', v: 0.25}, {t: 43.03, s: 'right', v: 0.35},
+  {t: 39.76, s: 'glx2', v: 0.5}, {t: 39.76, s: 'wh2', v: 0.5}, {t: 40.55, s: 'wrong', v: 0.6}, {t: 41.8, s: 'whip', v: 0.5}, {t: 42.39, s: 'uityp', v: 0.25}, {t: 43.03, s: 'right', v: 0.35},
   // 03
   {t: 43.88, s: 'riserimp', v: 0.7}, {t: 43.88, s: 'sdl', v: 0.55}, {t: 44.0, s: 'mpop', v: 0.6}, {t: 45.56, s: 'fwhip', v: 0.5}, {t: 45.6, s: 'pop1', v: 0.6}, {t: 46.23, s: 'dtype', v: 0.25}, {t: 46.6, s: 'pop2', v: 0.6}, {t: 47.59, s: 'imp', v: 0.5},
   {t: 48.44, s: 'wh1', v: 0.5}, {t: 48.95, s: 'swish', v: 0.6}, {t: 49.23, s: 'swish', v: 0.6}, {t: 50.15, s: 'pings', v: 0.5},
-  {t: 51.0, s: 'fsw', v: 0.6}, {t: 51.7, s: 'hud1', v: 0.6}, {t: 52.55, s: 'wrong', v: 0.6}, {t: 54.12, s: 'g12', v: 0.7}, {t: 54.12, s: 'riser1', v: 0.4}, {t: 54.71, s: 'right', v: 0.4},
+  {t: 51.0, s: 'fsw', v: 0.6}, {t: 51.7, s: 'hud1', v: 0.6}, {t: 52.55, s: 'wrong', v: 0.6}, {t: 54.12, s: 'glx', v: 0.55}, {t: 54.12, s: 'riser1', v: 0.4}, {t: 54.71, s: 'right', v: 0.4},
   // outro
   {t: 55.6, s: 'wh2', v: 0.6}, {t: 56.1, s: 'c3', v: 0.6}, {t: 56.35, s: 'c3', v: 0.6}, {t: 56.6, s: 'c3', v: 0.6}, {t: 57.28, s: 'riserimp', v: 0.5}, {t: 57.6, s: 'c1', v: 0.9}, {t: 57.7, s: 'notif', v: 0.5},
 ];
@@ -679,10 +717,10 @@ const SfxLayer: React.FC = () => (
   <>
     {SFX.map((x, i) => {
       const pk = x.peak ?? (['riserimp', 'riser1', 'metal', 'rrise'].includes(x.s) ? PEAK[x.s] : 0);
-      const st = F(x.t - pk);
+      const st = F(x.t) - FR(pk);
       return (
         <Sequence key={i} from={Math.max(0, st)} layout="none">
-          <Audio src={staticFile(`s1/sfx/${x.s}.wav`)} volume={Math.min(1, (x.v ?? 0.6) * (G[x.s] ?? 1) * 0.36)} startFrom={st < 0 ? -st : 0} />
+          <Audio src={staticFile(`s1/sfx/${x.s}.wav`)} volume={Math.min(1, (x.v ?? 0.6) * (G[x.s] ?? 1) * 0.26)} startFrom={st < 0 ? -st : 0} />
         </Sequence>
       );
     })}
@@ -695,10 +733,12 @@ const GLITCHES = [15.21, 16.17, 28.16, 29.64, 39.76, 54.12];
 
 export const S1: React.FC = () => {
   const f = useCurrentFrame();
-  const shake = GLITCHES.some((g) => f >= F(g) - 4 && f < F(g) + 8) ? `translate(${(rnd(f) - 0.5) * 18}px, ${(rnd(f + 9) - 0.5) * 8}px)` : 'none';
+  const gk = glitchK(f);
+  const wrap: React.CSSProperties = gk > 0.02 ? {filter: 'url(#s1glx)', transform: `scale(${1 + 0.035 * gk}) translateX(${(rnd(Math.floor(f / 2)) - 0.5) * 14 * gk}px)`} : {};
   return (
     <AbsoluteFill style={{background: '#07030c'}}>
-      <AbsoluteFill style={{transform: shake}}>
+      <GlitchDefs k={gk} seed={Math.floor(f / 2) % 97} />
+      <AbsoluteFill style={wrap}>
         {SHOTS.map((s, i) => (
           <Sequence key={i} from={F(s.a)} durationInFrames={F(s.b) - F(s.a)}>
             <ShotLayer s={s} />
@@ -721,10 +761,9 @@ export const S1: React.FC = () => {
       </AbsoluteFill>
       {CUTS.map((c) => <Flash key={'f' + c} at={c} />)}
       {STREAKS.map((c) => <Streak key={'s' + c} at={c} />)}
-      {GLITCHES.map((c) => <Glitch key={'g' + c} at={c} />)}
       <Subs />
       <Audio src={staticFile('s1/voice.wav')} volume={1} />
-      <Audio src={staticFile('music/bed.mp3')} volume={(fr) => interpolate(fr, [0, 20, F(S1END) - 40, F(S1END)], [0, 0.1, 0.1, 0], cl)} />
+      <Audio src={staticFile('music/bed.mp3')} volume={(fr) => interpolate(fr, [0, 20, FR(S1END) - 40, FR(S1END)], [0, 0.1, 0.1, 0], cl)} />
       <SfxLayer />
     </AbsoluteFill>
   );
