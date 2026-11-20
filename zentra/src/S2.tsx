@@ -34,7 +34,7 @@ const SHOTS: Shot[] = [
 ];
 
 // the mysterious photo: suburban house, palms, UFO
-const HouseArt: React.FC<{palms: number; ufo: number; t: number}> = ({palms, ufo, t}) => (
+export const HouseArt: React.FC<{palms: number; ufo: number; t: number}> = ({palms, ufo, t}) => (
   <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
     <defs>
       <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#1b2a5a" /><stop offset="0.6" stopColor="#c2689a" /><stop offset="1" stopColor="#f2b38a" /></linearGradient>
