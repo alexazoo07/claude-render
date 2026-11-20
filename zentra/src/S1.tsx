@@ -720,7 +720,7 @@ const SfxLayer: React.FC = () => (
       const st = F(x.t) - FR(pk);
       return (
         <Sequence key={i} from={Math.max(0, st)} layout="none">
-          <Audio src={staticFile(`s1/sfx/${x.s}.wav`)} volume={Math.min(1, (x.v ?? 0.6) * (G[x.s] ?? 1) * 0.26)} startFrom={st < 0 ? -st : 0} />
+          <Audio src={staticFile(`s1/sfx/${x.s}.wav`)} volume={Math.min(1, (x.v ?? 0.6) * (G[x.s] ?? 1) * 0.18)} startFrom={st < 0 ? -st : 0} />
         </Sequence>
       );
     })}
@@ -763,7 +763,7 @@ export const S1: React.FC = () => {
       {STREAKS.map((c) => <Streak key={'s' + c} at={c} />)}
       <Subs />
       <Audio src={staticFile('s1/voice.wav')} volume={1} />
-      <Audio src={staticFile('music/bed.mp3')} volume={(fr) => interpolate(fr, [0, 20, FR(S1END) - 40, FR(S1END)], [0, 0.1, 0.1, 0], cl)} />
+      <Audio src={staticFile('music/bed.mp3')} volume={(fr) => interpolate(fr, [0, 20, FR(S1END) - 40, FR(S1END)], [0, 0.08, 0.08, 0], cl)} />
       <SfxLayer />
     </AbsoluteFill>
   );
