@@ -9,7 +9,7 @@ import {S1, S1FPS, S1END} from './S1';
 import {S2, S2END} from './S2';
 import {S3, S3END} from './S3';
 import {S4, S4END} from './S4';
-import {Thumb1, Thumb2, Thumb3} from './Thumbs';
+import {Thumb1, Thumb2, Thumb3, Thumb4} from './Thumbs';
 import {LV1HQ, LV1END} from './LV1';
 export const RemotionRoot: React.FC = () => (
   <>
@@ -22,6 +22,7 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="Thumb1" component={Thumb1} durationInFrames={1} fps={60} width={1080} height={1920} />
     <Composition id="Thumb2" component={Thumb2} durationInFrames={1} fps={60} width={1080} height={1920} />
     <Composition id="Thumb3" component={Thumb3} durationInFrames={1} fps={60} width={1080} height={1920} />
+    <Composition id="Thumb4" component={Thumb4} durationInFrames={1} fps={60} width={1080} height={1920} />
     <Composition id="LV1" component={LV1HQ} durationInFrames={Math.round(LV1END * 60)} fps={60} width={2560} height={1440} />
   </>
 );

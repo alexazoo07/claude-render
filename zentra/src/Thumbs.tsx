@@ -3,6 +3,7 @@ import React from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {PINK, PINK2, YEL, GRN, RED, CYAN, panel, Tag, Big, Lab, Digits, ICheck, IX} from './ShortKit';
 import {HouseArt} from './S2';
+import {Ring} from './S4';
 
 const Bg: React.FC<{src: string; scale?: number; bright?: number}> = ({src, scale = 1.06, bright = 0.85}) => (
   <AbsoluteFill style={{overflow: 'hidden', background: '#07030c'}}>
@@ -64,5 +65,18 @@ export const Thumb3: React.FC = () => (
       </div>
     </div>
     <Title top={1440} lines={[['FOR THIS?', '#fff']]} size={160} />
+  </AbsoluteFill>
+);
+
+export const Thumb4: React.FC = () => (
+  <AbsoluteFill>
+    <Bg src="thumbs/t4.jpg" scale={1.04} bright={0.85} />
+    <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 420, background: 'linear-gradient(180deg, #07030c 0%, rgba(7,3,12,0.85) 45%, rgba(7,3,12,0) 100%)'}} />
+    <Logo top={90} />
+    <div style={{position: 'absolute', left: 0, right: 0, top: 430, display: 'flex', justifyContent: 'center'}}>
+      <div style={{padding: 18, ...panel(YEL), borderRadius: 999}}><Ring s={430} spin={20} c={YEL} car={0.15} /></div>
+    </div>
+    <Title top={1030} lines={[['GTA 5', '#fff'], ['NEVER HAD', '#fff'], ['THIS', YEL]]} size={150} />
+    <div style={{position: 'absolute', left: 0, right: 0, top: 1560, display: 'flex', justifyContent: 'center'}}><Tag c={PINK} size={42}>new in gta 6</Tag></div>
   </AbsoluteFill>
 );

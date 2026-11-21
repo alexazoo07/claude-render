@@ -34,7 +34,7 @@ const SHOTS: Shot[] = [
 ];
 
 // animated roundabout pictogram; car = progress around the ring (0..1), -1 hides it
-const Ring: React.FC<{s?: number; spin?: number; car?: number; crossed?: number; c?: string}> = ({s = 420, spin = 0, car = -1, crossed = 0, c = PINK}) => {
+export const Ring: React.FC<{s?: number; spin?: number; car?: number; crossed?: number; c?: string}> = ({s = 420, spin = 0, car = -1, crossed = 0, c = PINK}) => {
   const R = 150;
   const ang = (car * 360 - 90) * (Math.PI / 180);
   return (
