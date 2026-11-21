@@ -1,0 +1,13 @@
+{"k": "HRV", "music": "Wallpaper.wav",
+ "scenes": [
+  {"k": "HRV", "mood": "cry", "moods": [["desapare", "shock"]], "eyes": ["SVN", "BIH", "HUN", "SRB"]},
+  {"k": "DEU", "mood": "shock", "moods": [["millones", "worried"], ["metió", "angry"]], "sfx": [["tres", "clink", -8], ["millones", "spop", -8], ["metió", "bonk", -6]]},
+  {"k": "FRA", "acc": "beret", "mood": "happy", "moods": [["cuatro", "laugh"]], "sfx": [["final", "twinkle", -8], ["cuatro", "bonk", -6]]},
+  {"k": "ENG", "acc": "tophat", "mood": "angry", "moods": [["croacia", "sad"], ["casa", "love"]], "sfx": [["semifinal", "bonk", -6], ["casa", "discovery", -9]]},
+  {"k": "BRA", "mood": "sad", "moods": [["sin", "worried"], ["sexta", "love"]], "sfx": [["penaltis", "bonk", -6], ["sexta", "twinkle", -6]]},
+  {"k": "JPN", "mood": "sad", "moods": [["fallamos", "cry"]], "sfx": [["penaltis", "bonk", -6], ["fallamos", "wrong", -7], ["cuatro", "trumpet", -11]]},
+  {"k": "ARG", "mood": "angry", "moods": [["catar", "smug"], ["devolví", "laugh"]], "sfx": [["rusia", "bonk", -6], ["devolví", "bamboo", -6]]},
+  {"k": "MAR", "mood": "happy", "moods": [["mío", "love"]], "sfx": [["tercer", "clink", -8], ["puesto", "bonk", -7]]},
+  {"k": "ESP", "mood": "happy", "moods": [["penaltis", "cool"]], "sfx": [["liga", "twinkle", -8], ["final", "bonk", -7]]},
+  {"k": "HRV", "mood": "peace"}
+ ]}

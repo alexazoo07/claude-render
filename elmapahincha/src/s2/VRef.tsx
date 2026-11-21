@@ -34,11 +34,13 @@ export type RScene = {
 	mood?: RMood; moods?: [string, RMood][]; acc?: Acc; d?: number;
 	props?: (t: number, len: number, f: number) => React.ReactNode;
 	eyes?: string[];            // países que miran con ojos (sin bola)
+	sfx?: [string, string, number?][]; // [palabra, sonido, dB] (también marcan golpes de cámara en modo plus)
 };
 export type RDef = {
 	k: string; years: string; title: [string, string?][][];
 	scenes: RScene[];           // una por línea de audio; la 0 es el hook, la última el cierre
 	cta: [string, string]; ctaIcon?: React.ReactNode; orbit?: React.ReactNode[];
+	plus?: boolean;             // más movimiento: empujes de cámara, golpes, saltos, emotes, desenfoque
 };
 
 // ---------------- text ----------------
@@ -230,6 +232,26 @@ const HeartsR: React.FC<{f: number}> = ({f}) => {
 	})}</>;
 };
 
+// ---------------- plus: líneas de velocidad y emotes ----------------
+export const PlusCtx = React.createContext(false);
+const SpeedLines: React.FC<{f: number; k: number}> = ({f, k}) => {
+	const R = rnd(77 + Math.floor(f / 2));
+	return <svg width={W} height={H} style={{position: 'absolute', inset: 0, opacity: 0.55 * k}}>{Array.from({length: 22}, (_, q) => { const a = R() * Math.PI * 2, r0 = 420 + R() * 260, r1 = r0 + 180 + R() * 380 * k; return <line key={q} x1={540 + Math.cos(a) * r0} y1={960 + Math.sin(a) * r0} x2={540 + Math.cos(a) * r1} y2={960 + Math.sin(a) * r1} stroke="#fff" strokeWidth={3 + R() * 5} strokeLinecap="round" />; })}</svg>;
+};
+const Emote: React.FC<{mood: RMood; t: number; d: number}> = ({mood, t, d}) => {
+	const p = spring({frame: t, fps: FPS, config: {damping: 10, stiffness: 260, mass: 0.6}});
+	const op = interpolate(t, [44, 60], [1, 0], clamp);
+	const s = d / 300;
+	const box = (x: number, y: number, el: React.ReactNode, rot = 0) => <div style={{position: 'absolute', left: x * s, top: y * s, transform: `scale(${p * s}) rotate(${rot}deg)`, transformOrigin: '0 0', opacity: op}}>{el}</div>;
+	if (mood === 'angry') { const pu = 1 + 0.12 * Math.sin(t / 3); return box(230, -10, <svg width={90} height={90} viewBox="-45 -45 90 90" style={{transform: `scale(${pu})`}}>{[0, 90, 180, 270].map((a) => <path key={a} transform={`rotate(${a})`} d="M8 -34 Q10 -12 34 -8" fill="none" stroke="#E8262E" strokeWidth={11} strokeLinecap="round" />)}</svg>); }
+	if (mood === 'shock') return box(40, -95, <svg width={220} height={90} viewBox="0 0 220 90">{[[20, 70, -30], [110, 60, 0], [200, 70, 30]].map(([x, y, r], q) => <path key={q} transform={`rotate(${r} ${x} ${y})`} d={`M${x} ${y - 10} L${x} ${y - 55}`} stroke={INK} strokeWidth={10} strokeLinecap="round" />)}</svg>);
+	if (mood === 'sad' || mood === 'cry') return box(40, -70, <svg width={220} height={80} viewBox="0 0 220 80">{[30, 70, 110, 150, 190].map((x, q) => <path key={q} d={`M${x} 5 V${45 + (q % 2) * 18}`} stroke="#4A6FB5" strokeWidth={8} strokeLinecap="round" strokeDasharray="14 10" />)}</svg>);
+	if (mood === 'worried') return box(250, 30 + Math.min(40, t * 1.2), <svg width={50} height={70} viewBox="0 0 50 70"><path d="M25 4 C34 22 44 34 44 46 A19 19 0 0 1 6 46 C6 34 16 22 25 4 Z" fill="#9ADBFF" stroke={INK} strokeWidth={5} /></svg>);
+	if (mood === 'love') return <>{[0, 1, 2].map((q) => box(40 + q * 90, -40 - ((t * 2 + q * 20) % 80), <svg width={60} height={60} viewBox="0 0 100 100"><path d="M50 88 C10 60 0 38 14 22 C28 6 46 14 50 28 C54 14 72 6 86 22 C100 38 90 60 50 88 Z" fill="#FF4F8B" stroke={INK} strokeWidth={8} /></svg>))}</>;
+	// happy, laugh, smug, cool, neutral: destellos
+	return <>{[[-20, 10], [250, -20], [270, 160]].map(([x, y], q) => box(x, y, <svg width={70} height={70} viewBox="-35 -35 70 70" style={{transform: `rotate(${t * 4 + q * 30}deg) scale(${0.8 + 0.3 * Math.sin(t / 4 + q)})`}}><path d="M0 -32 Q5 -5 32 0 Q5 5 0 32 Q-5 5 -32 0 Q-5 -5 0 -32 Z" fill={YL} stroke={INK} strokeWidth={4} /></svg>))}</>;
+};
+
 // ---------------- engine ----------------
 const BY = 860;            // centro de la bola en pantalla
 const D0 = 320;            // diámetro de la bola del que habla
@@ -251,13 +273,27 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 	const crack0 = boom - 48;
 	const arrive = (j: number) => (j === 0 ? 0 : L[j].start - LEAD);
 	const fly0 = (j: number) => arrive(j) - FLY;
+	const PL = !!def.plus;
+	const wAt = (j: number, pre: string) => L[j].words.find((w) => w.w.toLowerCase().replace(/[¡!¿?,.…:;]/g, '').startsWith(pre));
+	const beats: number[][] = scs.map((s, j) => (s.sfx ?? []).map(([w]) => (wAt(j, w)?.s ?? -1e9) - 3).filter((b) => b > 0));
+	const holdEnd = (j: number) => (j + 1 < N ? fly0(j + 1) : tl.total);
+	// modo plus: empuje lento durante la escena + golpes de zoom en cada elemento
+	const holdCam = (j: number, fr: number): Cam => {
+		const B = keys[j];
+		if (!PL) return B;
+		let m: number;
+		if (j === 0) m = fr < boom ? 1 + 0.14 * cl(fr / boom) ** 2 : 1.14 - 0.2 * eOut3((fr - boom) / 26);
+		else { const a = arrive(j); m = 1 + 0.07 * cl((fr - a) / Math.max(60, holdEnd(j) - a)); for (const b of beats[j]) m *= 1 + 0.045 * eOut3((fr - b) / 10); }
+		const dy = j === 0 ? 0 : Math.sin((fr - arrive(j)) / 70) * 6 / B.z;
+		return {x: B.x, y: B.y + dy, z: B.z * m};
+	};
 	// cámara: quieta en cada escena; vuelo con zoom-out acelerando y zoom-in frenando
 	const camAt = (fr: number): Cam => {
 		let j = 0;
 		while (j + 1 < N && fr >= fly0(j + 1)) j++;
 		const B = keys[j];
 		if (j > 0 && fr < arrive(j)) {
-			const A = keys[j - 1], u = (fr - fly0(j)) / FLY;
+			const A = holdCam(j - 1, fly0(j)), u = (fr - fly0(j)) / FLY;
 			const dist = Math.hypot(B.x - A.x, B.y - A.y);
 			const zFit = 820 / Math.max(1, dist);
 			const zMid = Math.min(A.z, B.z, zFit);
@@ -269,7 +305,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 			} else lz = Math.log(A.z) + (Math.log(B.z) - Math.log(A.z)) * p;
 			return {x: A.x + (B.x - A.x) * p, y: A.y + (B.y - A.y) * p, z: Math.exp(lz)};
 		}
-		return B;
+		return holdCam(j, fr);
 	};
 	// loop: los últimos fotogramas vuelven al estado del primero
 	const loopAt = tl.total - 34;
@@ -278,6 +314,9 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 	// temblor durante las grietas y en la explosión
 	const shake = f < boom ? interpolate(f, [crack0, boom], [0, 5], clamp) : interpolate(f - boom, [0, 2, 26], [0, 14, 0], clamp);
 	cam = {...cam, x: cam.x + (Math.sin(f * 1.9) * shake) / cam.z, y: cam.y + (Math.cos(f * 2.3) * shake) / cam.z};
+	const c1 = looping ? cam : camAt(f - 1);
+	const spd = Math.hypot((cam.x - c1.x) * cam.z, (cam.y - c1.y) * cam.z) + Math.abs(Math.log(cam.z / c1.z)) * 1400;
+	const mblur = PL ? Math.min(6, Math.max(0, spd - 10) * 0.08) : 0;
 	let i = 0;
 	while (i + 1 < N && f >= fly0(i + 1)) i++;
 	const sc = scs[i];
@@ -299,6 +338,7 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 	const ampS = ln.amp ? [0, 1, 2].reduce((a, k) => a + (ln.amp![Math.max(0, Math.min(ln.amp!.length - 1, ai - k))] ?? 0), 0) / 3 : 0;
 	const talkNow = ai >= 0 && ai < len ? Math.min(1, ampS * 1.7) : 0;
 	const wordAt = (j: number, pre: string) => L[j].words.find((w) => w.w.toLowerCase().replace(/[¡!¿?,.…:;]/g, '').startsWith(pre));
+	const moodChanges = (j: number) => { const out: {f: number; m: RMood}[] = j > 0 ? [{f: arrive(j) + 4, m: scs[j].mood ?? 'neutral'}] : []; for (const [pre, mm] of scs[j].moods ?? []) { const w = wordAt(j, pre); if (w) out.push({f: w.s - 4, m: mm}); } return out.sort((a, b) => a.f - b.f); };
 	const moodOf = (j: number, fr: number): RMood => {
 		const s = scs[j]; let m: RMood = s.mood ?? 'neutral';
 		for (const [pre, mm] of s.moods ?? []) { const w = wordAt(j, pre); if (w && fr >= w.s - 4) m = mm; }
@@ -328,8 +368,17 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const tr = j === 0 && f > crack0 ? Math.sin(f * 2.7) * interpolate(f, [crack0, boom], [0, 5], clamp) : 0;
 		const breath = 1 + Math.sin(f / 26 + j) * 0.012;
 		const mood: RMood = cur || f < arrive(j + 1) ? moodOf(j, f) : 'neutral';
-		balls.push(<div key={'b' + j} style={{position: 'absolute', left: p.x - sz / 2 + tr, top: p.y - sz / 2, transform: `scale(${Math.max(0, pp) * preB * breath})`, transformOrigin: '50% 60%'}}>
+		// plus: bote al hablar, salto en cada cambio de cara, temblor si se enfada o se asusta
+		let by = 0, sq = 1, bx = 0;
+		if (PL && cur) {
+			const tk = talkNow;
+			by -= tk * 12; sq = 1 + tk * 0.035;
+			for (const mc of moodChanges(j)) { const u = (f - mc.f) / 16; if (u >= 0 && u <= 1) { by -= Math.sin(Math.PI * u) * 46; sq *= 1 + (u > 0.85 ? (1 - u) * 0.5 : -0.06 * Math.sin(Math.PI * u)); } if (u > 1 && u < 1.6) sq *= 1 + 0.08 * Math.sin((u - 1) / 0.6 * Math.PI); }
+			if (mood === 'angry' || mood === 'shock') bx = Math.sin(f * 2.1) * 3.5;
+		}
+		balls.push(<div key={'b' + j} style={{position: 'absolute', left: p.x - sz / 2 + tr + bx, top: p.y - sz / 2 + by, transform: `scale(${Math.max(0, pp) * preB * breath}) scaleY(${sq}) scaleX(${2 - sq})`, transformOrigin: '50% 90%'}}>
 			<BallR k={s.k} d={sz} mood={mood} talk={cur ? talkNow : 0} f={f + j * 31} acc={s.acc} ghost={gh} label={!gh && (cur || f < arrive(j + 1))} look={j === 0 && f > crack0 ? [0, -0.2] : [Math.sin(f / 90 + j) * 0.15, 0.05]} />
+		{PL && cur && (() => { const mc = moodChanges(j).filter((m) => f >= m.f).pop(); return mc && f - mc.f < 60 ? <Emote mood={mc.m} t={f - mc.f} d={sz} /> : null; })()}
 		</div>);
 	}
 	// ojos de vecinos (hook y escenas que lo pidan)
@@ -344,14 +393,15 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		<AbsoluteFill style={{background: '#2C6CA8', overflow: 'hidden'}}>
 			<Fonts />
 			<FlagPreload flags={ALL.map((c) => FL[c]).filter(Boolean)} />
-			<Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.06} cullPad={5000} />
+			<AbsoluteFill style={{filter: mblur > 0.4 ? `blur(${mblur.toFixed(1)}px)` : undefined}}><Atlas21 cam={cam} fills={fills} faces={{}} W={W} H={H} dark={0.06} cullPad={5000} /></AbsoluteFill>
+			{PL && spd > 25 && <SpeedLines f={f} k={Math.min(1, (spd - 25) / 80)} />}
 			{!looping && f >= crack0 && f < boom && <Cracks x={vp.x} y={vp.y} w={Math.max(520, vc.w * cam.z)} h={Math.max(700, vc.h * cam.z)} p={(f - crack0) / 44} seed={11} />}
 			{gone && <Burst x={vp.x} y={vp.y} w={vc.w * cam.z * 0.9} h={vc.h * cam.z * 0.9} t={f - boom} cols={PAL[def.k] ?? ['#ccc', '#999']} />}
 			{gone && f - boom < 34 && (() => { const u = (f - boom) / 34; const r = 120 + eOut3(u) * 700; return <svg width={W} height={H} style={{position: 'absolute', inset: 0}}><circle cx={vp.x} cy={vp.y} r={r} fill="none" stroke="#fff" strokeWidth={8 - 5 * u} opacity={0.9 * (1 - u)} /></svg>; })()}
 			{gone && f >= boom + 14 && tombP.y > -400 && tombP.y < H + 400 && <div style={{position: 'absolute', left: tombP.x - tombS / 2 + (last ? 150 * cl(ctaT / 20) : 0), top: tombP.y - tombS * 0.75, transform: `scale(${Math.max(0, tombPop)})`, transformOrigin: '50% 100%', opacity: last ? 1 : 1}}><Tomb name={NAMES[def.k] ?? def.k} years={def.years} s={tombS} /></div>}
 			{eyes.map((k) => { const c = center(k); const p = toScr(cam, c.x, c.y); if (p.x < 60 || p.x > W - 60 || p.y < 560 || p.y > H - 200) return null; return <Peek key={k} x={p.x} y={p.y} s={52} f={f} tx={vp.x} ty={vp.y} scared={f > crack0} />; })}
 			{balls}
-			{sc.props && !looping && <div style={{position: 'absolute', inset: 0, opacity: propK, transform: `scale(${0.9 + 0.1 * propK})`, transformOrigin: '50% 50%'}}>{sc.props(t, len, f)}</div>}
+			{sc.props && !looping && <PlusCtx.Provider value={PL}><div style={{position: 'absolute', inset: 0, opacity: propK, transform: `scale(${0.9 + 0.1 * propK})`, transformOrigin: '50% 50%'}}>{sc.props(t, len, f)}</div></PlusCtx.Provider>}
 			{last && <>
 				<HeartsR f={ctaT} />
 				{(() => { const p = toScr(cam, vc.x, vc.y); const gp = spring({frame: ctaT, fps: FPS, config: {damping: 12, stiffness: 140}}); const gy = Math.max(560, p.y - 330) + Math.sin(ctaT / 22) * 16; return <div style={{position: 'absolute', left: p.x - 300, top: gy, transform: `scale(${gp})`, opacity: Math.min(1, gp * 1.4)}}>
@@ -377,9 +427,11 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 // ---------------- kit de props estilo referencia ----------------
 const popS = (t: number, d: number) => spring({frame: t - d, fps: FPS, config: {damping: 9, stiffness: 300, mass: 0.6}});
 export const At: React.FC<{x: number; y: number; children: React.ReactNode; t: number; d: number; rot?: number; out?: number}> = ({x, y, children, t, d, rot = 0, out}) => {
+	const plus = React.useContext(PlusCtx);
 	let p = popS(t, d);
 	if (t < d) return null;
 	if (out !== undefined) { if (t >= out + 8) return null; if (t >= out) p *= 1 - (t - out) / 8; }
+	if (plus) { const ph = (x + y) / 37; rot += Math.sin((t - d) / 18 + ph) * 3.5; y += Math.sin((t - d) / 24 + ph) * 7; p *= 1 + 0.18 * Math.max(0, 1 - (t - d) / 9) * Math.sin(cl((t - d) / 9) * Math.PI); }
 	return <div style={{position: 'absolute', left: x, top: y, transform: `translate(-50%, -50%) scale(${Math.max(0, p)}) rotate(${rot}deg)`}}>{children}</div>;
 };
 // fila de iconos que aparecen uno a uno; los de índice >= darkFrom se apagan en darkAt
