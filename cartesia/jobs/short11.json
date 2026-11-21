@@ -1,0 +1,105 @@
+{
+ "model": "sonic-3",
+ "lines": [
+  {
+   "id": "s11_00_HRV",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "¿Y si yo, la de los cuadros rojos y blancos… desapareciera del fútbol?",
+   "language": "es",
+   "emotion": [
+    "scared"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_01_DEU",
+   "voice": "4ad22058-7cb6-402c-a115-196cbfc25dce",
+   "text": "¡Tres podios en el Mundial con menos de cuatro millones de habitantes! ¡Y a mí me metió tres en el noventa y ocho!",
+   "language": "es",
+   "emotion": [
+    "surprised"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_02_FRA",
+   "voice": "d9f4af15-c402-4f50-bbda-d8823d028d6a",
+   "text": "¡La final de dos mil dieciocho la gané yo! Cuatro a dos en Moscú.",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_03_ENG",
+   "voice": "34d923aa-c3b5-4f21-aac7-2c1f12730d4b",
+   "text": "¡Me echó en la semifinal de dos mil dieciocho! Sin Croacia… ¡el fútbol habría vuelto a casa!",
+   "language": "es",
+   "emotion": [
+    "angry"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_04_BRA",
+   "voice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "text": "¡En Catar me eliminó en los penaltis! Sin ella… ¡a lo mejor ya tendría la sexta estrella!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_05_JPN",
+   "voice": "9436e723-612d-4114-aeb0-fa00d4d639bf",
+   "text": "¡A mí también me ganó en los penaltis! Fallamos tres de cuatro…",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_06_ARG",
+   "voice": "27b45b29-7194-49a6-ac2d-3766a18b1452",
+   "text": "¡En Rusia me metió tres! Pero en Catar… ¡yo le devolví los tres en la semifinal!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_07_MAR",
+   "voice": "e3087ad8-7018-4154-9a87-11577f916cd4",
+   "text": "¡Y el tercer puesto de dos mil veintidós sería mío!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_08_ESP",
+   "voice": "d813d699-27f0-4231-83b4-6bd1bce106ba",
+   "text": "¡Bueno, yo le gané la final de la Liga de Naciones en los penaltis!",
+   "language": "es",
+   "emotion": [
+    "happy"
+   ],
+   "speed": 1.12
+  },
+  {
+   "id": "s11_09_HRV",
+   "voice": "79693aee-1207-4771-a01e-20c393c89e6f",
+   "text": "Si me vas a echar de menos… ¡deja un tablero de ajedrez en los comentarios!",
+   "language": "es",
+   "emotion": [
+    "sad"
+   ],
+   "speed": 1.12
+  }
+ ]
+}
