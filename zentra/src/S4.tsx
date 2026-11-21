@@ -21,12 +21,12 @@ const T = {
 };
 
 const SHOTS: Shot[] = [
-  {src: 'rb_app', a: 0, b: T.rb, dim: 0.5, topCover: true},
-  {src: 'rb_all', a: T.rb, b: T.in5, off: 4.0, dim: 0.5, topCover: true},
+  {src: 'rb_app', a: 0, b: T.rb, dim: 0.42, topCover: true},
+  {src: 'rb_round', a: T.rb, b: T.in5, off: 6.8, dim: 0.5, fit: true},
   {src: 'rb_gray', a: T.in5, b: T.but, off: 0.5, dim: 0.18},
-  {src: 'rb_all', a: T.but, b: T.loop, off: 1.0, dim: 0.5, topCover: true},
-  {src: 'rb_all', a: T.loop, b: T.ai, off: 6.2, dim: 0.5, topCover: true},
-  {src: 'rb_all', a: T.ai, b: T.it2, off: 10.6, dim: 0.5, topCover: true},
+  {src: 'rb_round', a: T.but, b: T.loop, off: 0.0, dim: 0.5, fit: true},
+  {src: 'rb_round', a: T.loop, b: T.ai, off: 2.5, dim: 0.5, fit: true},
+  {src: 'rb_round', a: T.ai, b: T.it2, off: 4.5, dim: 0.5, fit: true},
   {src: 'rb_all', a: T.it2, b: T.detail, off: 15.0, dim: 0.5, topCover: true},
   {src: 'rb_city', a: T.detail, b: T.and3, dim: 0.5},
   {src: 'rb_city2', a: T.and3, b: T.have, dim: 0.3},
@@ -62,16 +62,44 @@ export const Ring: React.FC<{s?: number; spin?: number; car?: number; crossed?: 
   );
 };
 
+// logo slam: huge -> fits, white flash, shockwave rings, shake, then docks to the top
+const LogoSlam: React.FC = () => {
+  const f = useCurrentFrame();
+  const end = F(T.never);
+  if (f > end + 16) return null;
+  const sc = interpolate(f, [0, 10], [3.4, 1], {...cl, easing: EO});
+  const bump = f >= 10 && f < 22 ? 1 + 0.06 * Math.sin(((f - 10) / 12) * Math.PI) : 1;
+  const breathe = 1 + 0.025 * Math.sin(f / 7);
+  const dock = lerp(f, end - 4, end + 12, 0, 1, IO);
+  const shake = f >= 9 && f < 24 ? (((f * 53) % 11) - 5) * (1 - (f - 9) / 15) * 3 : 0;
+  const blur = lerp(f, 0, 10, 24, 0);
+  const flash = interpolate(f, [9, 11, 24], [0, 0.5, 0], cl);
+  const rays = lerp(f, 10, 40, 0, 1);
+  return (
+    <AbsoluteFill style={{pointerEvents: 'none'}}>
+      <AbsoluteFill style={{background: `radial-gradient(circle at 50% 42%, ${PINK}55 0%, rgba(7,3,12,0) 55%)`, opacity: 1 - dock}} />
+      {[0, 1, 2].map((i) => {
+        const p = lerp(f, 10 + i * 6, 46 + i * 6, 0, 1);
+        if (f < 10 + i * 6) return null;
+        return <div key={i} style={{position: 'absolute', left: 540 - 200, top: 800 - 200, width: 400, height: 400, borderRadius: 999, border: `${10 - i * 3}px solid ${i === 1 ? YEL : PINK}`, transform: `scale(${0.6 + p * 2.6})`, opacity: (1 - p) * (1 - dock)}} />;
+      })}
+      <div style={{position: 'absolute', left: 0, right: 0, top: 800 - 260 - dock * 420, display: 'flex', justifyContent: 'center', transform: `translateX(${shake}px)`}}>
+        <div style={{position: 'relative', transform: `scale(${sc * bump * breathe * (1 - dock * 0.55)})`, filter: `blur(${blur}px)`, opacity: 1 - dock * 0.9}}>
+          <div style={{position: 'absolute', inset: -120, background: `conic-gradient(from ${f * 2}deg, transparent 0deg, ${PINK}55 20deg, transparent 40deg, transparent 90deg, ${YEL}44 110deg, transparent 130deg, transparent 180deg, ${PINK}55 200deg, transparent 220deg, transparent 270deg, ${CYAN}44 290deg, transparent 310deg)`, borderRadius: 999, opacity: rays, filter: 'blur(6px)'}} />
+          <Img src={staticFile('gtavi_logo.png')} style={{position: 'relative', width: 560, filter: `drop-shadow(0 0 ${30 + 20 * Math.sin(f / 6)}px ${PINK}) drop-shadow(0 20px 40px rgba(0,0,0,0.8))`}} />
+        </div>
+      </div>
+      <Pop a={T.added} b={T.never - 0.06} from="zoom" style={{...C, top: 1180}}><Tag c={GRN} size={40}>just added</Tag></Pop>
+      <AbsoluteFill style={{background: '#fff', opacity: flash}} />
+    </AbsoluteFill>
+  );
+};
+
 const Hook: React.FC = () => {
   const f = useCurrentFrame();
   return (
     <>
-      <Pop a={T.added} b={T.never - 0.06} from="zoom" style={{...C, top: 330}}>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, padding: '34px 56px', ...panel()}}>
-          <Img src={staticFile('gtavi_logo.png')} style={{width: 230, filter: `drop-shadow(0 0 20px ${PINK})`}} />
-          <Tag c={GRN}>just added</Tag>
-        </div>
-      </Pop>
+      <LogoSlam />
       <Pop a={T.never} b={T.rb - 0.06} from="down" style={{...C, top: 300}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 18, padding: '20px 40px', ...panel(RED)}}>{IX(64)}<Big size={70}>NEVER IN GTA 5</Big></div>
       </Pop>
@@ -81,13 +109,13 @@ const Hook: React.FC = () => {
           <Lab c={YEL}>years</Lab>
         </div>
       </Pop>
-      <Pop a={T.rb} b={T.in5 - 0.06} from="zoom" style={{...C, top: 280}}>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
-          <Ring s={520} spin={lerp(f, F(T.rb), F(T.in5), 0, 240, IO)} c={YEL} />
-          <Big size={110} c={YEL} glow={YEL}>ROUNDABOUT</Big>
+      <Pop a={T.rb} b={T.in5 - 0.06} from="zoom" style={{...C, top: 290}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 20, padding: '14px 34px 14px 14px', ...panel(YEL), borderRadius: 999}}>
+          <Ring s={130} spin={lerp(f, F(T.rb), F(T.in5), 0, 240, IO)} c={YEL} />
+          <Big size={84} c={YEL} glow={YEL}>ROUNDABOUT</Big>
         </div>
       </Pop>
-      <Pop a={T.really} b={T.in5 - 0.06} style={{...C, top: 960}}><Tag c={PINK}>yes, really</Tag></Pop>
+      <Pop a={T.really} b={T.in5 - 0.06} style={{...C, top: 470}}><Tag c={PINK} size={36}>yes, really</Tag></Pop>
     </>
   );
 };
@@ -153,21 +181,21 @@ const Vice: React.FC = () => {
   const car = f < F(T.drive) ? -1 : interpolate(f, [F(T.drive), F(T.loop), F(T.middle) + 20], [0.5, 0.72, 1.55], {...cl, easing: IO});
   return (
     <>
-      <Pop a={T.vice} b={T.small - 0.06} from="down" style={{...C, top: 250}}><Tag c={PINK}>gta 6 · vice city</Tag></Pop>
-      <Pop a={T.drive} b={T.ai - 0.06} from="right" style={{right: 60, top: 380}}>
-        <div style={{padding: '18px 18px 10px', ...panel(YEL), display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <Ring s={360} spin={lerp(f, F(T.drive), F(T.ai), 0, 180, IO)} car={car % 1} c={YEL} />
-          <div style={{paddingBottom: 10}}><Lab c={YEL} size={24}>{f >= F(T.loop) ? 'loop around' : 'drive in'}</Lab></div>
+      <Pop a={T.vice} b={T.it2 - 0.06} from="down" style={{...C, top: 190}}><Tag c={PINK}>gta 6 · vice city</Tag></Pop>
+      <Pop a={T.drive} b={T.ai - 0.06} from="zoom" style={{...C, top: 300}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, padding: '10px 32px 10px 10px', ...panel(YEL), borderRadius: 999}}>
+          <Ring s={130} spin={lerp(f, F(T.drive), F(T.ai), 0, 180, IO)} car={car % 1} c={YEL} />
+          <Big size={64} c={YEL} glow={YEL}>{f >= F(T.loop) ? 'LOOP AROUND' : 'DRIVE IN'}</Big>
         </div>
       </Pop>
-      <Pop a={T.ai} b={T.it2 - 0.06} from="left" style={{left: 60, top: 400}}>
-        <div style={{display: 'flex', alignItems: 'center', gap: 22, padding: '26px 38px', ...panel(CYAN)}}>
-          {ICar(90, CYAN)}
+      <Pop a={T.ai} b={T.it2 - 0.06} from="zoom" style={{...C, top: 300}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 22, padding: '18px 34px', ...panel(CYAN)}}>
+          {ICar(76, CYAN)}
           <div>
-            <Lab c={CYAN} size={24}>ai traffic</Lab>
-            <Big size={68} c={f >= F(T.follows) ? GRN : '#fff'} glow={f >= F(T.follows) ? GRN : CYAN}>FOLLOWS IT</Big>
+            <Lab c={CYAN} size={22}>ai traffic</Lab>
+            <Big size={60} c={f >= F(T.follows) ? GRN : '#fff'} glow={f >= F(T.follows) ? GRN : CYAN}>FOLLOWS IT</Big>
           </div>
-          {f >= F(T.follows) && <div style={{opacity: lerp(f, F(T.follows), F(T.follows) + 10, 0, 1)}}>{ICheck(76)}</div>}
+          {f >= F(T.follows) && <div style={{opacity: lerp(f, F(T.follows), F(T.follows) + 10, 0, 1)}}>{ICheck(66)}</div>}
         </div>
       </Pop>
     </>
@@ -245,7 +273,7 @@ const Outro: React.FC = () => {
 };
 
 const SFX: Sfx[] = [
-  {t: 0, s: 'imp', v: 0.8}, {t: 0.05, s: 'sub1', v: 0.6}, {t: T.added, s: 'appear', v: 0.5}, {t: T.never, s: 'wrong', v: 0.45}, {t: T.ten, s: 'clock', v: 0.3},
+  {t: 0, s: 'wh2', v: 0.7}, {t: 0.15, s: 'imp', v: 0.9}, {t: 0.15, s: 'sub1', v: 0.8}, {t: 0.17, s: 'glx2', v: 0.3}, {t: T.added, s: 'pop2', v: 0.5}, {t: T.never, s: 'wrong', v: 0.45}, {t: T.ten, s: 'clock', v: 0.3},
   {t: T.rb - 0.12, s: 'riserimp', v: 0.55}, {t: T.rb, s: 'mpop', v: 0.6}, {t: T.really, s: 'pop2', v: 0.5},
   {t: T.in5, s: 'glx', v: 0.5}, {t: T.in5, s: 'ssw', v: 0.5}, {t: T.gta5, s: 'pop1', v: 0.5}, {t: T.map, s: 'hud2', v: 0.45},
   {t: T.traffic, s: 'pop2', v: 0.55}, {t: T.traffic + 0.1, s: 'bips', v: 0.3}, {t: T.straight, s: 'pop2', v: 0.55}, {t: T.highways, s: 'swish', v: 0.55},
@@ -264,7 +292,7 @@ const Subs = makeSubs(W, S4END, {
 });
 
 export const S4: React.FC = () => (
-  <ShortFrame id="s4glx" shots={SHOTS} end={S4END} voice="s4/voice.wav" sfx={SFX} Subs={Subs} streaks={[T.rb - 0.12, T.it2, T.and3]} glitches={[T.in5, T.but]}>
+  <ShortFrame id="s4glx" shots={SHOTS} end={S4END} voice="s4/voice.wav" sfx={SFX} Subs={Subs} streaks={[T.rb - 0.12, T.it2, T.and3]} glitches={[0.16, T.in5, T.but]}>
     <Hook />
     <Gta5 />
     <Vice />

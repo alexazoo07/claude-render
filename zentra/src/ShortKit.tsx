@@ -25,7 +25,7 @@ export const H1 = "'Rubik', 'Inter Display', sans-serif";
 export const LB = "'Inter', sans-serif";
 
 export type Wd = {w: string; t: number; e: number};
-export type Shot = {src: string; a: number; b: number; off?: number; dim?: number; cover?: boolean; topCover?: boolean};
+export type Shot = {src: string; a: number; b: number; off?: number; dim?: number; cover?: boolean; topCover?: boolean; fit?: boolean; fitTop?: number};
 export type Sfx = {t: number; s: string; v?: number; peak?: number};
 
 // time of the n-th occurrence (1-based) of a word in the voice
@@ -47,6 +47,21 @@ export const ShotLayer: React.FC<{s: Shot}> = ({s}) => {
   const push = interpolate(f, [0, len], [1.06, 1.14], cl);
   const blur = lerp(f, 0, 14, 16, 0);
   const d = s.dim ?? 0.5;
+  if (s.fit) {
+    const vsrc = staticFile(`s1/v/${s.src}.mp4`);
+    const vw = 1720, vh = vw * 9 / 16, top = s.fitTop ?? 960 - vh / 2;
+    return (
+      <AbsoluteFill style={{overflow: 'hidden', background: '#07030c'}}>
+        <AbsoluteFill style={{transform: `scale(${1.25 * push})`, filter: `blur(38px) saturate(1.3) brightness(${0.25 + d * 0.4})`}}>
+          <OffthreadVideo src={vsrc} muted startFrom={F(s.off ?? 0)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+        </AbsoluteFill>
+        <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(40,6,60,0.6) 0%, rgba(10,4,20,0.2) 45%, rgba(10,4,20,0.8) 100%)'}} />
+        <div style={{position: 'absolute', left: (1080 - vw) / 2, width: vw, top, height: vh, overflow: 'hidden', borderTop: `3px solid ${'#ff4fa3'}`, borderBottom: `3px solid ${'#ff4fa3'}`, boxShadow: '0 0 50px #ff4fa388', transform: `scale(${zin})`, filter: `blur(${blur}px)`}}>
+          <OffthreadVideo src={vsrc} muted startFrom={F(s.off ?? 0)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${push})`, filter: 'saturate(1.15) contrast(1.06)'}} />
+        </div>
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `scale(${zin * push})`, filter: `blur(${blur}px) saturate(1.15) contrast(1.06) brightness(${0.4 + d})`}}>
