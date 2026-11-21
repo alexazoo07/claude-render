@@ -359,7 +359,8 @@ export const VRef: React.FC<{tl: Timeline; def: RDef}> = ({tl, def}) => {
 		const cur = j === i;
 		const shr = cur ? 1 : interpolate(f, [arrive(j + 1) - 2, arrive(j + 1) + 10], [1, 0], {...clamp, easing: Easing.in(Easing.cubic)});
 		if (shr <= 0.01) continue;
-		const sz = (s.d ?? D0) * Math.min(cur ? 9 : 1, cam.z / keys[j].z) * shr;
+		const pm = PL && (cur || f < fly0(j + 1)) && f >= arrive(j) ? holdCam(j, Math.min(f, holdEnd(j))).z / keys[j].z : 1;
+		const sz = (s.d ?? D0) * Math.min(cur ? 9 : 1, cam.z / keys[j].z / pm) * shr;
 		if (sz < 18 || p.x < -sz || p.x > W + sz || p.y < -sz || p.y > H + sz) continue;
 		if (!cur && f >= arrive(i)) { const q = toScr(cam, ...anchorOf(sc, i)); if (sc.k && Math.hypot(q.x - p.x, q.y - p.y) < (D0 * 0.5 + sz * 0.5) * 1.05) continue; }
 		const popT = j === 0 ? 30 : f - (arrive(j) - 4);
