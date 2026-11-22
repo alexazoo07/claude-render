@@ -80,3 +80,13 @@ export const Thumb4: React.FC = () => (
     <div style={{position: 'absolute', left: 0, right: 0, top: 1560, display: 'flex', justifyContent: 'center'}}><Tag c={PINK} size={42}>new in gta 6</Tag></div>
   </AbsoluteFill>
 );
+
+export const Thumb5: React.FC = () => (
+  <AbsoluteFill>
+    <Bg src="thumbs/t5.jpg" scale={1.04} bright={1.05} />
+    <AbsoluteFill style={{background: `radial-gradient(circle at 20% 40%, ${CYAN}33 0%, rgba(0,0,0,0) 45%)`}} />
+    <Logo top={110} />
+    <Title top={470} lines={[['THIS IS', '#fff'], ['GTA 6?!', CYAN]]} size={170} />
+    <div style={{position: 'absolute', left: 0, right: 0, top: 860, display: 'flex', justifyContent: 'center'}}><Tag c={YEL} size={44}>not need for speed</Tag></div>
+  </AbsoluteFill>
+);
