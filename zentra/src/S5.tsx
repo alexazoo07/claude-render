@@ -21,9 +21,12 @@ const T = {
 };
 
 const SHOTS: Shot[] = [
-  {src: 'tn1', a: 0, b: T.look, off: 0.4, dim: 0.55},
+  {src: 'tn1', a: 0, b: T.tunnels, off: 0.4, dim: 0.55},
+  {src: 'tn1', a: T.tunnels, b: A('through'), off: 31.0, dim: 0.7},
+  {src: 'tn1', a: A('through'), b: T.completely, off: 33.0, dim: 0.7},
+  {src: 'tn1', a: T.completely, b: T.look, off: 5.6, dim: 0.7},
   {src: 'tn1', a: T.look, b: T.with, off: 8.5, dim: 0.7},
-  {src: 'tn1', a: T.with, b: T.you, off: 26.5, dim: 0.7},
+  {src: 'tn1', a: T.with, b: T.you, off: 27.1, dim: 0.7},
   {src: 'tn1', a: T.you, b: T.pull, off: 15.5, dim: 0.7},
   {src: 'tn_jack', a: T.pull, b: A('and', 3), off: 0, dim: 0.75},
   {src: 'tn1', a: A('and', 3), b: T.but, off: 25.2, dim: 0.75},
@@ -111,17 +114,56 @@ const Hook: React.FC = () => (
   </>
 );
 
+// racing-game HUD: 3-2-1-GO on "look at this", then timer, position and tunnel progress
+const RaceHUD: React.FC = () => {
+  const f = useCurrentFrame();
+  const go = F(T.long) - 8, a = F(T.look), end = F(T.you);
+  if (f < a || f > end + 12) return null;
+  const out = lerp(f, end - 6, end + 10, 0, 1, IO);
+  const cd = [a, a + (go - a) / 3, a + (2 * (go - a)) / 3];
+  const n = f < cd[1] ? '3' : f < cd[2] ? '2' : f < go ? '1' : 'GO!';
+  const since = f < go ? f - cd[n === '3' ? 0 : n === '2' ? 1 : 2] : f - go;
+  const pop = interpolate(since, [0, 6, 12], [1.8, 0.95, 1], {...cl, easing: EO});
+  const cdo = f < go + 20 ? (n === 'GO!' ? 1 - lerp(f, go + 10, go + 20, 0, 1) : 1) : 0;
+  const hin = lerp(f, go, go + 12, 0, 1, EO);
+  const t = Math.max(0, (f - go) / 60);
+  const mm = Math.floor(t / 60), ss = Math.floor(t % 60), cs = Math.floor((t * 100) % 100);
+  const prog = lerp(f, go, end, 0.04, 0.46, (x) => x);
+  const kmh = Math.round(lerp(f, go, go + 50, 0, 212, EO) + Math.sin(f / 3) * 3 * hin);
+  return (
+    <AbsoluteFill style={{pointerEvents: 'none', opacity: 1 - out}}>
+      {cdo > 0 && (
+        <div style={{position: 'absolute', left: 0, right: 0, top: 560, display: 'flex', justifyContent: 'center', opacity: cdo}}>
+          <div style={{transform: `scale(${pop})`}}><Big size={n === 'GO!' ? 230 : 260} c={n === 'GO!' ? GRN : '#fff'} glow={n === 'GO!' ? GRN : PINK}>{n}</Big></div>
+        </div>
+      )}
+      <div style={{position: 'absolute', left: 50, top: 190, transform: `translateX(${(1 - hin) * -300}px)`, opacity: hin, padding: '14px 26px', ...panel(PINK)}}>
+        <Lab c={PINK} size={20}>time</Lab>
+        <div style={{fontFamily: 'Rubik', fontWeight: 900, fontSize: 52, color: '#fff', fontVariantNumeric: 'tabular-nums'}}>{`${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}.${String(cs).padStart(2, '0')}`}</div>
+      </div>
+      <div style={{position: 'absolute', right: 50, top: 190, transform: `translateX(${(1 - hin) * 300}px)`, opacity: hin, padding: '10px 30px', ...panel(YEL), display: 'flex', alignItems: 'baseline', gap: 4}}>
+        <Big size={92} c={YEL} glow={YEL}>1</Big><Big size={44} c={YEL}>ST</Big>
+      </div>
+      <div style={{position: 'absolute', right: 50, top: 340, transform: `translateX(${(1 - hin) * 300}px)`, opacity: hin, padding: '10px 26px', ...panel(CYAN), textAlign: 'right'}}>
+        <div style={{fontFamily: 'Rubik', fontWeight: 900, fontSize: 56, color: '#fff', fontVariantNumeric: 'tabular-nums'}}>{kmh}</div>
+        <Lab c={CYAN} size={20}>km/h</Lab>
+      </div>
+      <div style={{position: 'absolute', left: 90, right: 90, top: 1250, opacity: hin}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: 10}}><Lab c="#fff" size={22}>tunnel</Lab><Lab c={GRN} size={22}>{`${Math.round(prog * 100)}%`}</Lab></div>
+        <div style={{height: 22, borderRadius: 99, background: '#1a1222', border: '3px solid #ffffff33', overflow: 'hidden'}}>
+          <div style={{width: `${prog * 100}%`, height: '100%', borderRadius: 99, background: `linear-gradient(90deg, ${CYAN}, ${GRN})`, boxShadow: `0 0 20px ${GRN}`}} />
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const Tunnel: React.FC = () => {
   const f = useCurrentFrame();
   return (
     <>
-      <Pop a={T.look} b={T.long - 0.06} from="down" style={{...C, top: 360}}><Tag c={PINK} size={44}>look at this 👀</Tag></Pop>
-      <Pop a={T.long} b={T.with - 0.06} from="zoom" style={{...C, top: 300}}>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '24px 46px', ...panel(CYAN)}}>
-          <Big size={78} glow={CYAN}>{f >= F(T.highway) ? 'HIGHWAY TUNNEL' : 'LONG...'}</Big>
-        </div>
-      </Pop>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 1060, display: 'flex', justifyContent: 'center', gap: 18}}>
+      <RaceHUD />
+      <div style={{position: 'absolute', left: 0, right: 0, top: 1100, display: 'flex', justifyContent: 'center', gap: 18}}>
         {[{t: T.lights, l: 'LIGHTS'}, {t: T.reflecting, l: 'REFLECTIONS'}].map((ch, i) => {
           const p = lerp(f, F(ch.t), F(ch.t) + 12, 0, 1);
           const q = lerp(f, F(T.you) - 8, F(T.you), 0, 1);
@@ -259,8 +301,8 @@ const Outro: React.FC = () => {
 
 const SFX: Sfx[] = [
   {t: 0, s: 'imp', v: 0.7}, {t: 0.02, s: 'sub1', v: 0.6},
-  {t: T.completely - 0.1, s: 'whip', v: 0.5}, {t: T.completely, s: 'mpop', v: 0.55},
-  {t: T.look, s: 'glx', v: 0.4}, {t: T.look, s: 'ssw', v: 0.5}, {t: T.long, s: 'rrise', v: 0.4}, {t: T.highway, s: 'pop1', v: 0.5},
+  {t: T.completely + 0.02, s: 'mpop', v: 0.55},
+  {t: T.look, s: 'btn', v: 0.6}, {t: T.look + (T.long - 0.133 - T.look) / 3, s: 'btn', v: 0.6}, {t: T.look + 2 * (T.long - 0.133 - T.look) / 3, s: 'btn', v: 0.6}, {t: T.long - 0.133, s: 'confirm', v: 0.6}, {t: T.long - 0.12, s: 'wh2', v: 0.5}, {t: T.tunnels, s: 'ssw', v: 0.45}, {t: A('through'), s: 'swish', v: 0.45}, {t: T.completely, s: 'whip', v: 0.4},
   {t: T.with, s: 'fsw', v: 0.5}, {t: T.lights, s: 'right', v: 0.45}, {t: T.reflecting, s: 'right', v: 0.45},
   {t: T.stop, s: 'snap', v: 0.6}, {t: T.pull - 0.1, s: 'whip', v: 0.6}, {t: T.pull + 0.1, s: 'imp', v: 0.6}, {t: T.pull + 0.12, s: 'metal', v: 0.4},
   {t: A('and', 3), s: 'swish', v: 0.5}, {t: T.but, s: 'glx2', v: 0.35}, {t: T.but, s: 'wh2', v: 0.5}, {t: T.best, s: 'mpop', v: 0.55}, {t: T.exit, s: 'pop2', v: 0.5},
@@ -276,7 +318,7 @@ const Subs = makeSubs(W, S5END, {
 });
 
 export const S5: React.FC = () => (
-  <ShortFrame id="s5glx" shots={SHOTS} end={S5END} voice="s5/voice.wav" sfx={SFX} Subs={Subs} streaks={[A('and', 3), T.honestly]} glitches={[T.look, T.but]}>
+  <ShortFrame id="s5glx" shots={SHOTS} end={S5END} voice="s5/voice.wav" sfx={SFX} Subs={Subs} streaks={[A('and', 3), T.honestly]} glitches={[T.but]}>
     <Hook />
     <Tunnel />
     <Jack />
