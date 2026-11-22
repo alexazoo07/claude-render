@@ -21,7 +21,7 @@ const T = {
 };
 
 const SHOTS: Shot[] = [
-  {src: 'tn1', a: 0, b: T.tunnels, off: 0.4, dim: 0.55},
+  {src: 'tn1', a: 0, b: T.tunnels, off: 0.4, dim: 0.95},
   {src: 'tn1', a: T.tunnels, b: A('through'), off: 31.0, dim: 0.7},
   {src: 'tn1', a: A('through'), b: T.completely, off: 33.0, dim: 0.7},
   {src: 'tn1', a: T.completely, b: T.look, off: 5.6, dim: 0.7},
@@ -103,14 +103,71 @@ const LightRush: React.FC = () => {
   );
 };
 
+// title card: "GTA 6" letters drop in, "HAS TUNNELS" wipes in, check stamp
+const TitleCard: React.FC = () => {
+  const f = useCurrentFrame();
+  const end = F(T.and1);
+  if (f > end + 10) return null;
+  const outP = lerp(f, end - 2, end + 10, 0, 1, IO);
+  const wipe = lerp(f, F(T.tunnels) - 4, F(T.tunnels) + 10, 0, 1, EO);
+  const stamp = interpolate(f, [F(T.tunnels) + 8, F(T.tunnels) + 16], [2.4, 1], {...cl, easing: EO});
+  const pin = lerp(f, 0, 12, 0, 1, EO);
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, top: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, opacity: 1 - outP, transform: `translateY(${-outP * 120}px) scale(${1 - outP * 0.1})`}}>
+      <div style={{display: 'flex', gap: 8}}>
+        {'GTA 6'.split('').map((ch, i) => {
+          const p = interpolate(f, [i * 3, i * 3 + 10], [0, 1], {...cl, easing: EO});
+          return <div key={i} style={{opacity: p, transform: `translateY(${(1 - p) * -160}px) rotate(${(1 - p) * (i % 2 ? 18 : -18)}deg) scale(${0.6 + p * 0.4})`}}><Big size={190} c={PINK2} glow={PINK}>{ch === ' ' ? '\u00a0' : ch}</Big></div>;
+        })}
+      </div>
+      <div style={{position: 'relative', width: 760, height: 120, transform: `scale(${0.9 + pin * 0.1})`}}>
+        <div style={{position: 'absolute', inset: 0, clipPath: `inset(0 ${(1 - wipe) * 100}% 0 0)`, display: 'flex', justifyContent: 'center', alignItems: 'center', ...panel(YEL), borderRadius: 24}}>
+          <Big size={84} c={YEL} glow={YEL}>HAS TUNNELS</Big>
+        </div>
+        <div style={{position: 'absolute', left: `${wipe * 100}%`, top: -10, bottom: -10, width: 10, marginLeft: -5, borderRadius: 9, background: '#fff', boxShadow: `0 0 30px ${YEL}`, opacity: wipe > 0 && wipe < 1 ? 1 : 0}} />
+        {f >= F(T.tunnels) + 8 && <div style={{position: 'absolute', right: -50, top: -50, transform: `scale(${stamp}) rotate(-12deg)`}}>{ICheck(110)}</div>}
+      </div>
+    </div>
+  );
+};
+
+// genre slot machine: spins through genres and lands on RACING on "completely"
+const GENRES = ['OPEN WORLD', 'SHOOTER', 'HEIST', 'RPG', 'STEALTH', 'SIMULATOR', 'OPEN WORLD', 'ACTION', 'RACING'];
+const Slot: React.FC = () => {
+  const f = useCurrentFrame();
+  const a = F(T.and1), land = F(T.completely), end = F(T.look);
+  if (f < a - 4 || f > end + 8) return null;
+  const inP = lerp(f, a - 4, a + 8, 0, 1, EO);
+  const outP = lerp(f, end - 4, end + 8, 0, 1, IO);
+  const H = 140;
+  const p = interpolate(f, [a, land], [0, 1], {...cl, easing: (x) => 1 - Math.pow(1 - x, 2)});
+  const y = p * (GENRES.length - 1) * H;
+  const landed = f >= land;
+  const bounce = landed ? interpolate(f, [land, land + 6, land + 14], [1.12, 0.97, 1], cl) : 1;
+  const flash = interpolate(f, [land, land + 3, land + 14], [0, 0.7, 0], cl);
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, top: 360, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, opacity: inP * (1 - outP), transform: `translateY(${(1 - inP) * 80}px) scale(${bounce})`}}>
+      <Lab c={landed ? YEL : '#fff'} size={30}>{landed ? 'feels like a different game' : 'gta 6 genre'}</Lab>
+      <div style={{position: 'relative', width: 820, height: H, overflow: 'hidden', borderRadius: 28, ...panel(landed ? GRN : PINK)}}>
+        <div style={{position: 'absolute', left: 0, right: 0, top: -y, filter: `blur(${landed ? 0 : Math.min(8, (1 - p) * 14)}px)`}}>
+          {GENRES.map((g, i) => (
+            <div key={i} style={{height: H, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Big size={96} c={i === GENRES.length - 1 ? GRN : '#fff'} glow={i === GENRES.length - 1 ? GRN : PINK}>{g}</Big>
+            </div>
+          ))}
+        </div>
+        <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(7,3,12,0.85) 0%, rgba(7,3,12,0) 30%, rgba(7,3,12,0) 70%, rgba(7,3,12,0.85) 100%)'}} />
+        <div style={{position: 'absolute', inset: 0, background: '#fff', opacity: flash}} />
+      </div>
+      {landed && <div style={{opacity: lerp(f, land + 4, land + 14, 0, 1), transform: `translateY(${(1 - lerp(f, land + 4, land + 14, 0, 1)) * 20}px)`}}><Tag c={GRN} size={40}>not gta... racing?</Tag></div>}
+    </div>
+  );
+};
+
 const Hook: React.FC = () => (
   <>
-    <Pop a={T.completely} b={T.look - 0.06} from="zoom" style={{...C, top: 340}}>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
-        <Lab c={YEL}>feels like</Lab>
-        <Big size={96} c={YEL} glow={YEL}>A DIFFERENT GAME</Big>
-      </div>
-    </Pop>
+    <TitleCard />
+    <Slot />
   </>
 );
 
@@ -300,8 +357,8 @@ const Outro: React.FC = () => {
 };
 
 const SFX: Sfx[] = [
-  {t: 0, s: 'imp', v: 0.7}, {t: 0.02, s: 'sub1', v: 0.6},
-  {t: T.completely + 0.02, s: 'mpop', v: 0.55},
+  {t: 0, s: 'imp', v: 0.7}, {t: 0.02, s: 'sub1', v: 0.6}, {t: 0.05, s: 'pop1', v: 0.4}, {t: 0.1, s: 'pop1', v: 0.4}, {t: 0.15, s: 'pop2', v: 0.4}, {t: T.tunnels - 0.05, s: 'fsw', v: 0.5}, {t: T.tunnels + 0.15, s: 'mpop', v: 0.6}, {t: T.and1 - 0.05, s: 'whip', v: 0.45}, {t: T.and1, s: 'kb', v: 0.3}, {t: T.and1 + 0.4, s: 'clock', v: 0.35}, {t: T.completely, s: 'confirm', v: 0.6}, {t: T.completely, s: 'imp', v: 0.45},
+  
   {t: T.look, s: 'btn', v: 0.6}, {t: T.look + (T.long - 0.133 - T.look) / 3, s: 'btn', v: 0.6}, {t: T.look + 2 * (T.long - 0.133 - T.look) / 3, s: 'btn', v: 0.6}, {t: T.long - 0.133, s: 'confirm', v: 0.6}, {t: T.long - 0.12, s: 'wh2', v: 0.5}, {t: T.tunnels, s: 'ssw', v: 0.45}, {t: A('through'), s: 'swish', v: 0.45}, {t: T.completely, s: 'whip', v: 0.4},
   {t: T.with, s: 'fsw', v: 0.5}, {t: T.lights, s: 'right', v: 0.45}, {t: T.reflecting, s: 'right', v: 0.45},
   {t: T.stop, s: 'snap', v: 0.6}, {t: T.pull - 0.1, s: 'whip', v: 0.6}, {t: T.pull + 0.1, s: 'imp', v: 0.6}, {t: T.pull + 0.12, s: 'metal', v: 0.4},
