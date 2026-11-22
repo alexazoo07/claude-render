@@ -102,7 +102,6 @@ const LightRush: React.FC = () => {
 
 const Hook: React.FC = () => (
   <>
-    <LogoSlam end={T.completely} tag="in gta 6" tagAt={0.63} />
     <Pop a={T.completely} b={T.look - 0.06} from="zoom" style={{...C, top: 340}}>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
         <Lab c={YEL}>feels like</Lab>
@@ -119,11 +118,9 @@ const Tunnel: React.FC = () => {
       <Pop a={T.look} b={T.long - 0.06} from="down" style={{...C, top: 360}}><Tag c={PINK} size={44}>look at this 👀</Tag></Pop>
       <Pop a={T.long} b={T.with - 0.06} from="zoom" style={{...C, top: 300}}>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '24px 46px', ...panel(CYAN)}}>
-          <TunnelIcon s={190} speed={1.4} />
           <Big size={78} glow={CYAN}>{f >= F(T.highway) ? 'HIGHWAY TUNNEL' : 'LONG...'}</Big>
         </div>
       </Pop>
-      <LightRush />
       <div style={{position: 'absolute', left: 0, right: 0, top: 1060, display: 'flex', justifyContent: 'center', gap: 18}}>
         {[{t: T.lights, l: 'LIGHTS'}, {t: T.reflecting, l: 'REFLECTIONS'}].map((ch, i) => {
           const p = lerp(f, F(ch.t), F(ch.t) + 12, 0, 1);
@@ -261,7 +258,7 @@ const Outro: React.FC = () => {
 };
 
 const SFX: Sfx[] = [
-  {t: 0, s: 'wh2', v: 0.7}, {t: 0.15, s: 'imp', v: 0.9}, {t: 0.15, s: 'sub1', v: 0.8}, {t: 0.17, s: 'glx2', v: 0.3}, {t: T.tunnels, s: 'pop2', v: 0.5},
+  {t: 0, s: 'imp', v: 0.7}, {t: 0.02, s: 'sub1', v: 0.6},
   {t: T.completely - 0.1, s: 'whip', v: 0.5}, {t: T.completely, s: 'mpop', v: 0.55},
   {t: T.look, s: 'glx', v: 0.4}, {t: T.look, s: 'ssw', v: 0.5}, {t: T.long, s: 'rrise', v: 0.4}, {t: T.highway, s: 'pop1', v: 0.5},
   {t: T.with, s: 'fsw', v: 0.5}, {t: T.lights, s: 'right', v: 0.45}, {t: T.reflecting, s: 'right', v: 0.45},
@@ -279,7 +276,7 @@ const Subs = makeSubs(W, S5END, {
 });
 
 export const S5: React.FC = () => (
-  <ShortFrame id="s5glx" shots={SHOTS} end={S5END} voice="s5/voice.wav" sfx={SFX} Subs={Subs} streaks={[T.with, A('and', 3), T.honestly]} glitches={[0.16, T.look, T.but]}>
+  <ShortFrame id="s5glx" shots={SHOTS} end={S5END} voice="s5/voice.wav" sfx={SFX} Subs={Subs} streaks={[A('and', 3), T.honestly]} glitches={[T.look, T.but]}>
     <Hook />
     <Tunnel />
     <Jack />
