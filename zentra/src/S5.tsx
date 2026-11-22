@@ -48,7 +48,7 @@ const LogoSlam: React.FC<{end: number; tag: string; tagAt: number}> = ({end: end
   const rays = lerp(f, 10, 40, 0, 1);
   return (
     <AbsoluteFill style={{pointerEvents: 'none'}}>
-      <AbsoluteFill style={{background: `radial-gradient(circle at 50% 42%, ${PINK}55 0%, rgba(7,3,12,0) 55%)`, opacity: 1 - dock}} />
+      <AbsoluteFill style={{background: `radial-gradient(circle at 50% 38%, ${CYAN}33 0%, rgba(7,3,12,0) 50%)`, opacity: 1 - dock}} />
       {[0, 1, 2].map((i) => {
         const p = lerp(f, 10 + i * 6, 46 + i * 6, 0, 1);
         if (f < 10 + i * 6) return null;
@@ -56,11 +56,13 @@ const LogoSlam: React.FC<{end: number; tag: string; tagAt: number}> = ({end: end
       })}
       <div style={{position: 'absolute', left: 0, right: 0, top: 540 - dock * 420, display: 'flex', justifyContent: 'center', transform: `translateX(${shake}px)`}}>
         <div style={{position: 'relative', transform: `scale(${sc * bump * breathe * (1 - dock * 0.55)})`, filter: `blur(${blur}px)`, opacity: 1 - dock * 0.9}}>
-          <div style={{position: 'absolute', inset: -120, background: `conic-gradient(from ${f * 2}deg, transparent 0deg, ${PINK}55 20deg, transparent 40deg, transparent 90deg, ${YEL}44 110deg, transparent 130deg, transparent 180deg, ${PINK}55 200deg, transparent 220deg, transparent 270deg, ${CYAN}44 290deg, transparent 310deg)`, borderRadius: 999, opacity: rays, filter: 'blur(6px)'}} />
-          <Img src={staticFile('gtavi_logo.png')} style={{position: 'relative', width: 560, filter: `drop-shadow(0 0 ${30 + 20 * Math.sin(f / 6)}px ${PINK}) drop-shadow(0 20px 40px rgba(0,0,0,0.8))`}} />
+          <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
+            <TunnelIcon s={230} speed={1.6} />
+            <Big size={150} c={CYAN} glow={CYAN}>TUNNELS</Big>
+          </div>
         </div>
       </div>
-      <Pop a={tagAt} b={endS - 0.06} from="zoom" style={{...C, top: 1180}}><Tag c={YEL} size={44}>{tag}</Tag></Pop>
+      <Pop a={tagAt} b={endS - 0.06} from="zoom" style={{...C, top: 960}}><Tag c={YEL} size={44}>{tag}</Tag></Pop>
       <AbsoluteFill style={{background: '#fff', opacity: flash}} />
     </AbsoluteFill>
   );
@@ -100,7 +102,7 @@ const LightRush: React.FC = () => {
 
 const Hook: React.FC = () => (
   <>
-    <LogoSlam end={T.completely} tag="has tunnels" tagAt={T.tunnels} />
+    <LogoSlam end={T.completely} tag="in gta 6" tagAt={0.63} />
     <Pop a={T.completely} b={T.look - 0.06} from="zoom" style={{...C, top: 340}}>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
         <Lab c={YEL}>feels like</Lab>
