@@ -18,6 +18,7 @@ jobs:
       matrix: ${{ steps.m.outputs.matrix }}
       comp: ${{ steps.m.outputs.comp }}
       scale: ${{ steps.m.outputs.scale }}
+      crf: ${{ steps.m.outputs.crf }}
     steps:
       - uses: actions/checkout@v4
         with: { sparse-checkout: zentra/render.json }
@@ -33,6 +34,7 @@ jobs:
               f.write('matrix=' + json.dumps({'include': inc}) + '\n')
               f.write('comp=' + c['comp'] + '\n')
               f.write('scale=' + str(c.get('scale', 1)) + '\n')
+              f.write('crf=' + str(c.get('crf', 10)) + '\n')
           PY
 
   render:
@@ -54,7 +56,7 @@ jobs:
         run: |
           for t in 1 2 3; do
             npx remotion render build "${{ needs.plan.outputs.comp }}" part.mp4 --frames=${{ matrix.s }}-${{ matrix.e }} \
-              --codec=h264 --crf=10 --x264-preset=slower --pixel-format=yuv420p --color-space=bt709 --image-format=png \
+              --codec=h264 --crf=${{ needs.plan.outputs.crf }} --x264-preset=slower --pixel-format=yuv420p --color-space=bt709 --image-format=png \
               --scale=${{ needs.plan.outputs.scale }} --muted --concurrency=$(nproc) \
               --offthreadvideo-cache-size-in-bytes=1500000000 --timeout=180000 --log=error && exit 0
             echo "intento $t fallido"; rm -f part.mp4

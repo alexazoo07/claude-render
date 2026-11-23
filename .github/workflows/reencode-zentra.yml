@@ -1,0 +1,48 @@
+# Re-encode a finished render artifact to a smaller file and publish it in 90 MB parts.
+# Trigger: push to branch zentra-re; settings in zentra/reencode.json {"run": <run id>, "out": "<branch suffix>", "crf": 17}
+name: reencode-zentra
+on:
+  push:
+    branches: [zentra-re]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  re:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: zentra/reencode.json }
+      - id: c
+        run: |
+          echo "run=$(jq -r .run zentra/reencode.json)" >> $GITHUB_OUTPUT
+          echo "out=$(jq -r .out zentra/reencode.json)" >> $GITHUB_OUTPUT
+          echo "crf=$(jq -r '.crf // 17' zentra/reencode.json)" >> $GITHUB_OUTPUT
+      - uses: actions/download-artifact@v4
+        with: { name: final, run-id: '${{ steps.c.outputs.run }}', github-token: '${{ secrets.GITHUB_TOKEN }}', path: in }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - name: Re-encode
+        run: |
+          ffmpeg -v error -y -i in/final.mp4 -map 0 -c:v libx264 -preset slow -crf ${{ steps.c.outputs.crf }} -pix_fmt yuv420p \
+            -color_primaries bt709 -color_trc bt709 -colorspace bt709 -movflags +faststart -c:a copy out.mp4
+          ffprobe -v error -show_entries format=duration,size -of compact out.mp4
+      - name: Publish parts (several pushes, each < 1.5 GB)
+        run: |
+          B="out-zentra-${{ steps.c.outputs.out }}"
+          mkdir -p /tmp/o && cd /tmp/o && git init -q && git checkout -q -b "$B"
+          split -b 90M -d -a 3 "$GITHUB_WORKSPACE/out.mp4" part_
+          md5sum "$GITHUB_WORKSPACE/out.mp4" | cut -d' ' -f1 > md5
+          R="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          files=$(ls part_* | sort); n=0; batch=""
+          git add md5
+          for f in $files; do
+            git add "$f"; n=$((n+1))
+            if [ $n -ge 14 ]; then
+              git -c user.name=render -c user.email=render@users.noreply.github.com commit -q -m "$B $f"
+              for t in 1 2 3; do git push -f "$R" "$B" && break; sleep 20; done
+              n=0
+            fi
+          done
+          git -c user.name=render -c user.email=render@users.noreply.github.com commit -q -m "$B end" || true
+          for t in 1 2 3; do git push -f "$R" "$B" && break; sleep 20; done
