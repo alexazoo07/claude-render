@@ -28,9 +28,10 @@ export type El =
 	| {t: 'confetti'; at?: number};
 export type Scene = {
 	dur: number; label?: string; cam?: string[] | WCam; camBox?: [number, number, number, number]; fills?: Record<string, Fill>; pop?: string[]; popStep?: number;
-	faces?: Record<string, FaceSpec>; talk?: string[]; map?: (t: number, dur: number) => React.ReactNode; els: El[]; dark?: number; music?: string; sfx?: [number, string, number][];
+	level?: [number, number, number, number]; faces?: Record<string, FaceSpec>; talk?: string[]; map?: (t: number, dur: number) => React.ReactNode; els: El[]; dark?: number; music?: string; sfx?: [number, string, number][];
 };
-export type StoryCfg = {scenes: Scene[]; source: string; region?: string; endAsk: string};
+export type StoryCfg = {scenes: Scene[]; source: string; region?: string; endAsk: string; flood?: {layers: {href: string; box: {x: number; y: number; w: number; h: number}}[]; max: number}};
+export const levelAt = (s: Scene, u: number) => (s.level ? s.level[0] + (s.level[1] - s.level[0]) * easeInOut((u - s.level[2]) / Math.max(1, s.level[3] - s.level[2])) : null);
 
 // ---------------------------------------------------------------- helpers
 const T: React.FC<{children: React.ReactNode; size: number; color?: string; stroke?: number; shadow?: number; style?: React.CSSProperties}> = ({children, size, color = '#fff', stroke, shadow, style}) => (
@@ -258,11 +259,33 @@ export function makeStory(C: StoryCfg) {
 			const talking = (s.talk ?? []).includes(k) || s.els.some((e) => e.t === 'bubble' && e.k === k && u >= (e.at ?? 0) && u < (e.at ?? 0) + (e.dur ?? 150));
 			faces[k] = {...v, pop: (v.pop ?? 1) * elastic(g / FPS), blink: ph < 8 ? Math.sin((ph / 8) * Math.PI) : 0, talk: talking ? Math.abs(Math.sin(f / 3.2)) : 0};
 		}
+		const lvl = levelAt(s, u);
 		const elU = (e: El) => u - ('at' in e && e.at ? e.at : 0);
 		return (
 			<AbsoluteFill style={{background: '#2A72BA'}}>
 				<Fonts />
-				<Atlas cam={cam} fills={fills} faces={faces} dark={s.dark ?? 0}>{s.map ? s.map(u, s.dur) : null}</Atlas>
+				<Atlas cam={cam} fills={fills} faces={faces} dark={s.dark ?? 0}>
+					{C.flood && lvl !== null && (() => {
+						const t = Math.sqrt(Math.max(0, lvl) / C.flood.max);
+						const K = 70;
+						return (
+							<g>
+								<defs><filter id="flood" x="0" y="0" width="1" height="1" colorInterpolationFilters="sRGB"><feColorMatrix type="matrix" values={`0 0 0 0 0.16  0 0 0 0 0.44  0 0 0 0 0.74  ${-K} 0 0 0 ${(K * (t + 0.5 / 255)).toFixed(4)}`} /></filter></defs>
+								{C.flood.layers.map((L, li) => <image key={li} href={staticFile(L.href)} x={L.box.x} y={L.box.y} width={L.box.w} height={L.box.h} preserveAspectRatio="none" filter="url(#flood)" opacity={0.9} />)}
+							</g>
+						);
+					})()}
+					{s.map ? s.map(u, s.dur) : null}
+				</Atlas>
+				{lvl !== null && (
+					<div style={{position: 'absolute', left: 24, top: 70, display: 'flex', alignItems: 'center', gap: 14, padding: '10px 20px', borderRadius: 18, background: 'rgba(14,40,80,0.92)', border: '4px solid #fff', boxShadow: '0 6px 0 rgba(0,0,0,0.35)'}}>
+						<svg width={44} height={44} viewBox="0 0 24 24"><path d="M12 2 C12 2 5 10 5 15 A7 7 0 0 0 19 15 C19 10 12 2 12 2Z" fill="#4FB3FF" stroke="#fff" strokeWidth={1.5} /></svg>
+						<div style={{display: 'flex', flexDirection: 'column'}}>
+							<span style={{fontFamily: RUBIK, fontWeight: 800, fontSize: 18, color: 'rgba(255,255,255,0.75)'}}>NIVEL DEL MAR</span>
+							<span style={{fontFamily: LILITA, fontSize: 54, color: '#fff', lineHeight: 1}}>+{fmt(Math.round(lvl))} m</span>
+						</div>
+					</div>
+				)}
 				{s.label && (
 					<div style={{position: 'absolute', left: 24, top: 22, display: 'flex', alignItems: 'center', gap: 8, padding: '6px 16px', borderRadius: 12, background: '#1B1D26', border: '3px solid #fff', opacity: clamp01(u / 10), boxShadow: '0 4px 0 rgba(0,0,0,0.35)'}}>
 						<span style={{width: 14, height: 14, borderRadius: 7, background: GOLD}} />
