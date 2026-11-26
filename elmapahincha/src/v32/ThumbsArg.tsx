@@ -180,11 +180,11 @@ const S: React.FC<{k: string; w: number; x: number; y: number; m: XM; look?: [nu
 const BgG: React.FC<{cam: {x: number; y: number; z: number}; grey?: string[]; mood?: any; dark?: number}> = ({cam, grey = [], mood = 'shock', dark = 0.25}) => (
 	<div style={{position: 'absolute', inset: 0, filter: 'saturate(1.15)'}}><Map cam={cam} mood={mood} dark={dark} grey={(k) => grey.includes(k)} /></div>
 );
-const T1 = () => <TT parts={[['TU SELECCIÓN'], ['DESAPARECE', RED]]} size={104} sw={SW} style={{top: 20}} />;
+const T1: React.FC<{t?: string}> = ({t = 'TU SELECCIÓN'}) => <TT parts={[[t], ['DESAPARECE', RED]]} size={104} sw={SW} style={{top: 20}} />;
 const T2: React.FC<{t?: string; c?: string}> = ({t = 'SI NUNCA HA...', c = YEL}) => <TT parts={[[t, c]]} size={130} sw={SW} style={{top: 915}} />;
 const EUc = {x: 1990, y: 560, z: 1.55};
 // split genérico: izquierda mapa del mundo con la selección "viva", derecha tormenta morada con su fantasma
-const Split: React.FC<{k: string; cam: {x: number; y: number; z: number}; wL: number; wR: number; mL: XM; mR: XM; glowL?: string; tagL?: string; tagR?: string; faceS?: number; dust?: boolean; ty?: number}> = ({k, cam, wL, wR, mL, mR, glowL = '#FFD23F', tagL, tagR, faceS, dust = true, ty = 800}) => (
+const Split: React.FC<{k: string; cam: {x: number; y: number; z: number}; wL: number; wR: number; mL: XM; mR: XM; glowL?: string; tagL?: string; tagR?: string; faceS?: number; dust?: boolean; ty?: number; t1?: string; t2?: string}> = ({k, cam, wL, wR, mL, mR, glowL = '#FFD23F', tagL, tagR, faceS, dust = true, ty = 800, t1, t2}) => (
 	<Base>
 		<BgG cam={cam} mood="happy" dark={0.18} />
 		<RightClip><BgG cam={cam} grey={[k]} mood="shock" dark={0.45} /><Storm /></RightClip>
@@ -194,7 +194,7 @@ const Split: React.FC<{k: string; cam: {x: number; y: number; z: number}; wL: nu
 		{dust && <Dust x={1480} y={590} w={wR} h={460} seed={6} n={110} />}
 		{tagL && <Tag text={tagL} x={470} y={ty} size={52} rot={-4} bg="#7CFF8A" />}
 		{tagR && <Tag text={tagR} x={1450} y={ty} size={52} rot={4} bg="#FF4D5E" c="#fff" />}
-		<T1 /><T2 />
+		<T1 t={t1} /><T2 t={t2} />
 	</Base>
 );
 export const TN1: React.FC = () => <Split k="BRA" cam={{x: 1300, y: 1050, z: 1.0}} wL={640} wR={640} mL="evil" mR="cry" tagL="5 MUNDIALES" tagR="0 EUROCOPAS" dust={false} ty={830} />;
@@ -240,5 +240,44 @@ export const TN7: React.FC = () => (
 		<Dust x={1480} y={590} w={500} h={420} seed={8} n={110} />
 		<VsX x={960} y={560} d={190} />
 		<T1 /><T2 t="SI NUNCA HA..." />
+	</Base>
+);
+
+// ================= V36 · "Tu país desaparece si su bandera tiene…"
+const FB = 'SI SU BANDERA TIENE...';
+export const TF1: React.FC = () => <Split k="BRA" cam={{x: 1300, y: 1050, z: 1.0}} wL={640} wR={640} mL="evil" mR="cry" tagL="27 ESTRELLAS" tagR="¿ELIMINADA?" dust={false} ty={830} t1="TU PAÍS" t2={FB} />;
+export const TF2: React.FC = () => <Split k="MEX" cam={{x: 820, y: 860, z: 1.6}} wL={720} wR={720} mL="evil" mR="terror" tagL="EL ÁGUILA" tagR="¿FUERA?" dust={false} ty={840} t1="TU PAÍS" t2={FB} />;
+export const TF3: React.FC = () => (
+	<Base>
+		<BgG cam={WORLD} grey={['USA', 'BRA', 'MEX', 'ARG', 'ESP', 'CHN']} mood="shock" dark={0.3} />
+		<Vig o={0.55} />
+		<S k="USA" w={470} x={330} y={430} m="cry" ghost rot={-5} />
+		<S k="BRA" w={380} x={720} y={650} m="terror" ghost rot={4} />
+		<S k="ESP" w={300} x={1180} y={420} m="cry" ghost rot={-4} />
+		<S k="CHN" w={440} x={1600} y={560} m="terror" ghost rot={5} />
+		<Tag text="195 PAÍSES" x={1180} y={800} size={64} rot={-4} />
+		<T1 t="TU PAÍS" />
+		<T2 t="¿CUÁL SOBREVIVE?" c={YEL} />
+	</Base>
+);
+export const TF4: React.FC = () => (
+	<Base>
+		<BgG cam={{x: 1960, y: 470, z: 2.0}} grey={['ESP']} mood="happy" dark={0.25} />
+		<Vig o={0.5} />
+		<S k="ESP" w={820} x={760} y={540} m="cry" ghost look={[0.4, -0.2]} />
+		<Tag text="¿POR UN LEÓN?!" x={1420} y={320} size={70} rot={6} bg="#FF4D5E" c="#fff" />
+		<T1 t="TU PAÍS" /><T2 t={FB} />
+	</Base>
+);
+export const TF5: React.FC = () => (
+	<Base>
+		<BgG cam={SA} mood="shock" dark={0.2} />
+		<RightClip><BgG cam={SA} grey={['ARG', 'URY']} mood="shock" dark={0.45} /><Storm /></RightClip>
+		<SplitBolt x={960} />
+		<S k="ARG" w={320} x={470} y={540} m="evil" glow="#FFD23F" look={[0.5, 0]} face={1.6} />
+		<S k="URY" w={560} x={1450} y={540} m="terror" ghost look={[-0.5, -0.2]} />
+		<Tag text="SOL DE MAYO" x={470} y={840} size={56} rot={-4} bg="#7CFF8A" />
+		<Tag text="¿ADIÓS?" x={1450} y={840} size={56} rot={4} bg="#FF4D5E" c="#fff" />
+		<T1 t="TU PAÍS" /><T2 t={FB} />
 	</Base>
 );
