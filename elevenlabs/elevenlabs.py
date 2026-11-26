@@ -23,6 +23,9 @@ def list_voices():
     for acc in ['mexican', 'argentine', 'colombian', 'chilean', 'peninsular', 'latin american', 'caribbean', 'venezuelan', 'peruvian', 'cuban']:
         try: shared['voices'] += [dict(v, _q=acc) for v in req('GET', '/v1/shared-voices?page_size=60&language=es&gender=male&accent=' + acc.replace(' ', '%20')).get('voices', [])]
         except Exception as e: print('shared err', acc, e)
+    for lang, acc in [('pt', 'brazilian'), ('es', 'bolivian'), ('es', 'paraguayan'), ('es', 'ecuadorian'), ('es', 'uruguayan'), ('es', 'guatemalan'), ('es', 'central american'), ('en', 'american'), ('en', 'southern american')]:
+        try: shared['voices'] += [dict(v, _q=acc) for v in req('GET', f"/v1/shared-voices?page_size=40&language={lang}&gender=male&accent=" + acc.replace(' ', '%20')).get('voices', [])]
+        except Exception as e: print('shared err', acc, e)
     json.dump({'mine': mine, 'shared_es': shared}, open(f'{OUT}/voices.json', 'w'), ensure_ascii=False, indent=1)
     print('mine', len(mine.get('voices', [])), 'shared_es', len(shared.get('voices', [])))
     try:
