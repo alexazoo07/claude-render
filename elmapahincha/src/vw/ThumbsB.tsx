@@ -102,6 +102,7 @@ type NCfg = {k: string; up: string; n: number; rivals: string[]; nem: string; re
 const NUN: Record<string, NCfg> = {
 	COL: {k: 'COL', up: 'COLOMBIA', n: 13, rivals: ['ENG', 'PRT', 'NLD', 'HRV', 'SWE', 'TUR'], nem: 'ENG', region: ['COL', 'VEN', 'ECU', 'PER', 'BRA'], z: 1.5, heroMW: 640, heroMH: 700},
 	CHL: {k: 'CHL', up: 'CHILE', n: 18, rivals: ['PRT', 'NLD', 'BEL', 'SCT', 'GRC', 'MAR'], nem: 'PRT', region: ['CHL', 'ARG', 'PER', 'BOL'], z: 1.15, heroMW: 640, heroMH: 980},
+	ECU: {k: 'ECU', up: 'ECUADOR', n: 22, rivals: ['ESP', 'FRA', 'ITA', 'ENG', 'NLD', 'JPN'], nem: 'BRA', region: ['ECU', 'COL', 'PER'], z: 1.6, heroMW: 820, heroMH: 760},
 	USA: {k: 'USA', up: 'ESTADOS UNIDOS', n: 12, rivals: ['FRA', 'HRV', 'DNK', 'SRB', 'UKR', 'GRC'], nem: 'FRA', region: ['USA', 'MEX', 'CAN'], z: 0.95, heroMW: 820, heroMH: 560},
 };
 const NunBase: React.FC<{c: NCfg; children: React.ReactNode; dz?: number; dx?: number}> = ({c, children, dz = 1, dx = 0}) => (
@@ -164,6 +165,7 @@ const mk = (k: string) => [NunA, NunB, NunC, NunD, NunE].map((C) => () => <C c={
 export const [T29a, T29b, T29c, T29d, T29e] = mk('COL');
 export const [T30a, T30b, T30c, T30d, T30e] = mk('CHL');
 export const [T31a, T31b, T31c, T31d, T31e] = mk('USA');
+export const [T37a, T37b, T37c, T37d, T37e] = mk('ECU');
 
 // ======================= 32 · SI ARGENTINA DESAPARECIERA
 const SAM: Cam = camOn(['ARG', 'BRA', 'CHL', 'URY'], 1.15, 0, 0);
