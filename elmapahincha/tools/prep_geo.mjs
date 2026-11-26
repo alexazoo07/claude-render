@@ -9,6 +9,7 @@ const path = geoPath(proj);
 const r = (d) => (d || '').replace(/(\.\d)\d+/g, '$1');
 const adm = JSON.parse(fs.readFileSync('/home/claude/geo/adm1.geojson'));
 const ex = extra ? extra.split(',') : [];
+const SKIP = (process.env.SKIP || '').split(',');
 const states = {};
 const put = (key, f, o) => {
 	const c = proj(geoCentroid(f));
@@ -17,7 +18,7 @@ const put = (key, f, o) => {
 };
 for (const f of adm.features) {
 	const a3 = f.properties.adm0_a3; const n = f.properties.name || (a3 === 'MEX' ? 'Ciudad de México' : '?');
-	if (a3 === hero) put(n, f, hero);
+	if (a3 === hero) { if (!SKIP.includes(n)) put(n, f, hero); }
 	else if (ex.includes(`${a3}:${n}`)) put(`${a3}:${n}`, f, a3);
 }
 const w = JSON.parse(fs.readFileSync('node_modules/world-atlas/countries-50m.json'));

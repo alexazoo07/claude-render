@@ -1,0 +1,134 @@
+{
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "id": "intro",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[orgulloso] Che, soy el país de habla hispana más grande del mundo. ¡A mí no me rompe nadie!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "fin",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[llorando] Sin capital, sin cataratas y sin Patagonia… [suspira] ¿Quién sigue, che?",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "ba_0",
+   "voice": "O9HwbX9rbQPRXs00ekmd",
+   "text": "[arrogante] Me voy, che. Tengo el puerto, la plata y el mejor asado. ¡No te necesito!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "36337420d21a576ac4f7c96bb24263e6032edb5cc64bd354044f958d65c3214e"
+  },
+  {
+   "id": "ba_1",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[gritando] ¡¿Buenos Aires?! ¡Si sos mi capital!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "ba_2",
+   "voice": "O9HwbX9rbQPRXs00ekmd",
+   "text": "[burlón] Ya lo hice nueve años, de 1852 a 1861. ¡Chau!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "36337420d21a576ac4f7c96bb24263e6032edb5cc64bd354044f958d65c3214e"
+  },
+  {
+   "id": "er_0",
+   "voice": "CzkPDbeaChfMe9viILX7",
+   "text": "[orgulloso] ¡República de Entre Ríos! Ramírez nos hizo país en 1820.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "cf38f4a2989fae92b998f23d0dafebf22c14a38b4ae9a1090c3ff048388e4e89"
+  },
+  {
+   "id": "er_1",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[desesperado] ¡Y encima te llevás Corrientes!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "er_2",
+   "voice": "CzkPDbeaChfMe9viILX7",
+   "text": "[riendo] ¡Y el chamamé también, che!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "cf38f4a2989fae92b998f23d0dafebf22c14a38b4ae9a1090c3ff048388e4e89"
+  },
+  {
+   "id": "tu_0",
+   "voice": "Ne5lkCOR0C6ZYz9ulbrG",
+   "text": "[emocionado] ¡Tucumán, Catamarca y Santiago del Estero! ¡República de Tucumán!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3c7aa31cd668277bae0b10a3f60279ec40470da180b109b56994bcb5c9451d4b"
+  },
+  {
+   "id": "tu_1",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[indignado] ¡Pero si en Tucumán declaramos la independencia!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "tu_2",
+   "voice": "Ne5lkCOR0C6ZYz9ulbrG",
+   "text": "[burlón] Justamente. ¡Ahora la declaro de vos!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3c7aa31cd668277bae0b10a3f60279ec40470da180b109b56994bcb5c9451d4b"
+  },
+  {
+   "id": "mi_0",
+   "voice": "0tWO78FqrLTPX0qcRxQg",
+   "text": "[alegre] ¡Misiones es mía! La ocupé en 1838, ¿te acordás?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "467a48ecb5e13e3b39d67fb6e8e13f8af9c12fa9686f4c984f28b48678c52b0b"
+  },
+  {
+   "id": "mi_1",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[furioso] ¡Las Cataratas del Iguazú no te las llevás!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "mi_2",
+   "voice": "0tWO78FqrLTPX0qcRxQg",
+   "text": "[riendo] Ya me las llevé, ¡jajá!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "467a48ecb5e13e3b39d67fb6e8e13f8af9c12fa9686f4c984f28b48678c52b0b"
+  },
+  {
+   "id": "pa_0",
+   "voice": "Lnsq2I8TzeNpjACvFQ3h",
+   "text": "[solemne] Ahora soy un reino. Y mi rey… es un abogado francés.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "896974c1805ef6535fc6d98d8a1ef56f2443922be771db8c79ed5f2d9d0a9a42"
+  },
+  {
+   "id": "pa_1",
+   "voice": "D09EpJbk4um1HKSpeTSc",
+   "text": "[incrédulo] ¿Un francés? ¡¿Rey de la Patagonia?! ¡Esto es un chiste!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "pa_2",
+   "voice": "Lnsq2I8TzeNpjACvFQ3h",
+   "text": "[serio] Orélie-Antoine Primero, 1860. Totalmente real.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "896974c1805ef6535fc6d98d8a1ef56f2443922be771db8c79ed5f2d9d0a9a42"
+  }
+ ]
+}

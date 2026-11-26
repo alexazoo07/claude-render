@@ -1,0 +1,141 @@
+{
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "id": "intro",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[orgulloso] ¡Olá! Soy Brasil, el país más grande de Sudamérica… [nervioso] ¿por qué me tiemblan los estados?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "fin",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[suspira] Bueno… sigo siendo enorme. [preocupado] ¿Quién más se quiere ir?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "rs_0",
+   "voice": "SY4mLSy0fcJtGLQQ7CWp",
+   "text": "[orgulloso] ¡Bah, tchê! ¡Me voy con mi mate y mi churrasco! ¡República Riograndense!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "44bc884429cf8c0e5a4986e149c82f52b7460e2364fe856bf5aa3ea0ea6853fe"
+  },
+  {
+   "id": "rs_1",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[gritando] ¡¿Otra vez?! ¡Ya te escapaste casi diez años!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "rs_2",
+   "voice": "SY4mLSy0fcJtGLQQ7CWp",
+   "text": "[burlón] Y lo volvería a hacer, ¡bah!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "44bc884429cf8c0e5a4986e149c82f52b7460e2364fe856bf5aa3ea0ea6853fe"
+  },
+  {
+   "id": "sc_0",
+   "voice": "O4zHchxaTYyyLhoM3tNt",
+   "text": "[emocionado] ¡Yo también! ¡Garibaldi me liberó en 1839! ¡República Juliana!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "5680f027a1815f1edeb98488e2bbbe535404caf6ea07c2a2f6b6b9bf97392160"
+  },
+  {
+   "id": "sc_1",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[incrédulo] ¿Un italiano? ¡¿Me robó un estado un italiano?!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "sc_2",
+   "voice": "O4zHchxaTYyyLhoM3tNt",
+   "text": "[riendo] Duré cuatro meses, ¡pero qué meses!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "5680f027a1815f1edeb98488e2bbbe535404caf6ea07c2a2f6b6b9bf97392160"
+  },
+  {
+   "id": "ne_0",
+   "voice": "aNO16hzVi4q4QlUswT5o",
+   "text": "[gritando] ¡Pernambuco, Ceará, Paraíba y Rio Grande do Norte! ¡Nos vamos juntos, oxente!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3b382579a13c308534bf77470d2d8c8f15137d648d22c3af93494be25a8a2921"
+  },
+  {
+   "id": "ne_1",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[desesperado] ¡Cuatro de golpe no! ¡Que me quedo sin playas!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "ne_2",
+   "voice": "aNO16hzVi4q4QlUswT5o",
+   "text": "[orgulloso] Confederación del Ecuador, 1824. ¡Búscalo!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3b382579a13c308534bf77470d2d8c8f15137d648d22c3af93494be25a8a2921"
+  },
+  {
+   "id": "ba_0",
+   "voice": "IdgdGfA5Cc6vhJIKIp5r",
+   "text": "[relajado] Bahia también se va, meu rei… República Bahiense, como en 1837.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "795b80cc2dd42defb944d14488b881b97235b5dd8b3f662fba41650a573d8995"
+  },
+  {
+   "id": "ba_1",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[llorando] ¡Bahia no! ¡¿Quién me va a hacer el acarajé?!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "ba_2",
+   "voice": "IdgdGfA5Cc6vhJIKIp5r",
+   "text": "[riendo] Tranquilo, solo duré cuatro meses.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "795b80cc2dd42defb944d14488b881b97235b5dd8b3f662fba41650a573d8995"
+  },
+  {
+   "id": "ac_0",
+   "voice": "rBBreftLiIVO1pgMzKel",
+   "text": "[emocionado] ¡República de Acre! ¡Y mi primer presidente fue un español!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3e56a7b663324a0c31606b01883db33f2e1b194eb937ee6b8bc133414d5be72f"
+  },
+  {
+   "id": "ac_1",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[furioso] ¡Un momento! ¡Acre era mío hasta 1903!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "ac_2",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[nervioso] Eh… te lo compré, ¿te acuerdas? ¡Tratado de Petrópolis!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  }
+ ]
+}

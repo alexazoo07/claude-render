@@ -1,0 +1,117 @@
+{
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "id": "intro",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[asustado] ¡Causa, causa! ¿Es en serio? ¡¿Me estoy partiendo en vivo?!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "fin",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[suspira] Bueno… al menos me queda Lima y el ceviche. [preocupado] ¿Quién sigue, causa?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "tum_0",
+   "voice": "DZksvRcjbVkbnIwYVMEQ",
+   "text": "[alegre] ¡Ñaño! Tumbes siempre me gustó, ¿me lo das?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "7bfb6450ca508904ca6d99c2666cc47011f9ae3ae02a3b661c39f156536322e8"
+  },
+  {
+   "id": "tum_1",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[gritando] ¡Ni hablar! ¡Eso lo cerramos en 1998!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "tum_2",
+   "voice": "DZksvRcjbVkbnIwYVMEQ",
+   "text": "[decepcionado] Ya, ya… pero me llevo un cevichito.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "7bfb6450ca508904ca6d99c2666cc47011f9ae3ae02a3b661c39f156536322e8"
+  },
+  {
+   "id": "lor_0",
+   "voice": "RHlA3DlsD11QtFWhg5zs",
+   "text": "[emocionado] ¡Desde Iquitos, Estado Federal de Loreto! Como en 1896… ¡y en 1921!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "9bd18c4c6f4995bb04127dfe6d75581fa3f4081f8c835660062caf640c9d93d3"
+  },
+  {
+   "id": "lor_1",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[desesperado] ¡Loreto es casi un tercio de mi territorio!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "lor_2",
+   "voice": "RHlA3DlsD11QtFWhg5zs",
+   "text": "[burlón] Por eso mismo, ¡bye bye!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "9bd18c4c6f4995bb04127dfe6d75581fa3f4081f8c835660062caf640c9d93d3"
+  },
+  {
+   "id": "tac_0",
+   "voice": "y80tTbaJlZYGD1zrIR8w",
+   "text": "[pícaro] Oye, Tacna fue mía casi cincuenta años, po. ¡Me la vuelvo a llevar!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3fe1207b8e3b8f596d761d2558399b3911b464065a9b845991fdf00c2d379f8e"
+  },
+  {
+   "id": "tac_1",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[furioso] ¡Ni lo sueñes! ¡Tacna volvió a casa en 1929!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "tac_2",
+   "voice": "y80tTbaJlZYGD1zrIR8w",
+   "text": "[riendo] Ya, ya, era broma, po… ¿o no?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3fe1207b8e3b8f596d761d2558399b3911b464065a9b845991fdf00c2d379f8e"
+  },
+  {
+   "id": "sur_0",
+   "voice": "evwyep6WFBR6cxuA8l40",
+   "text": "[orgulloso] ¡Arequipa, Cusco, Puno y Ayacucho! ¡Somos el Estado Sud-Peruano otra vez!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "33d4aad792b60cf7b8774610e4bbeb58858fd557a15dc35f0080e4660fed633f"
+  },
+  {
+   "id": "sur_1",
+   "voice": "g2r3nlq655aINr7FvwvE",
+   "text": "[llorando] ¡¿Y Machu Picchu?! ¡¿Y el lago Titicaca?!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81b29a70fc641c5e6b4f054927c673468f78fea386f52655e94f4924b84b7fc0"
+  },
+  {
+   "id": "sur_2",
+   "voice": "evwyep6WFBR6cxuA8l40",
+   "text": "[burlón] Todo nuestro, ¡como en 1836!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "33d4aad792b60cf7b8774610e4bbeb58858fd557a15dc35f0080e4660fed633f"
+  }
+ ]
+}

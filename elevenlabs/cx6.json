@@ -1,0 +1,93 @@
+{
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "id": "intro",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[decidido] Ya está bien. Hoy recupero todo lo que me quitaron… ¡empezando por mi mar!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "fin",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[eufórico] ¡Ahora sí! ¡Bolivia gigante! [preocupado] ¿Y ahora qué hago con tanto mar?",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "lit_0",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[emocionado] ¡Mi mar! ¡Mi puerto de Antofagasta! ¡Vuelve a casa!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "lit_1",
+   "voice": "y80tTbaJlZYGD1zrIR8w",
+   "text": "[furioso] ¡Oye, no po! ¡Eso lo firmamos en 1904!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "3fe1207b8e3b8f596d761d2558399b3911b464065a9b845991fdf00c2d379f8e"
+  },
+  {
+   "id": "lit_2",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[feliz] Pues yo ahora firmo esto: ¡devuélvemelo!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "acr_0",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[alegre] ¡Acre, hermano! ¡Tú también vuelves!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "acr_1",
+   "voice": "BECjFqjKpX1jVslC0trK",
+   "text": "[nervioso] ¡Pero yo te pagué dos millones de libras!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "007e76dca27d7a1c13d1cf19cbda367f6ac2d7c3a07637f35a839873195c5bc4"
+  },
+  {
+   "id": "acr_2",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[pícaro] Te los devuelvo… en cuotas.",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "cha_0",
+   "voice": "0tWO78FqrLTPX0qcRxQg",
+   "text": "[furioso] ¡Ni se te ocurra! ¡El Chaco lo gané en la guerra!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "467a48ecb5e13e3b39d67fb6e8e13f8af9c12fa9686f4c984f28b48678c52b0b"
+  },
+  {
+   "id": "cha_1",
+   "voice": "K4Q6RaeeKiVh8QMF7EGz",
+   "text": "[decidido] Y yo lo quiero de vuelta. ¡Es más de la mitad de tu país!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "ec1d93cb4ac9b7bc8488209601448ac3a19064942a313bc194f7de142e3b98d1"
+  },
+  {
+   "id": "cha_2",
+   "voice": "0tWO78FqrLTPX0qcRxQg",
+   "text": "[desesperado] ¡Justamente por eso!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "467a48ecb5e13e3b39d67fb6e8e13f8af9c12fa9686f4c984f28b48678c52b0b"
+  }
+ ]
+}

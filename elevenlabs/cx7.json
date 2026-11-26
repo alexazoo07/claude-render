@@ -1,0 +1,104 @@
+{
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "id": "intro",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[seguro] Soy Estados Unidos, la gran potencia mundial. Nadie se atrevería a… [sorprendido] ¿eh? ¿Qué hacen esos cuatro?",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "fin",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[asustado] ¡Sin California, sin Texas y sin el Sur! [preocupado] ¿Quién sigue? ¿Nueva York?",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "ver_0",
+   "voice": "bIHbv24MWmeRgasZH58o",
+   "text": "[tranquilo] Vermont se va. Fui república catorce años, con mi propia moneda.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "ver_1",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[confundido] ¿Vermont? ¿Pero tú no eras solo… jarabe de arce?",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "ver_2",
+   "voice": "bIHbv24MWmeRgasZH58o",
+   "text": "[ofendido] ¡Oye! El mejor jarabe de arce del país, gracias.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "cal_0",
+   "voice": "CwhRBWXzGAHq8TQ4Fs17",
+   "text": "[relajado] Dude… California se independiza. Me llevo Hollywood, Silicon Valley y las playas.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "cal_1",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[gritando] ¡No! ¡Tu república duró veinticinco días!",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "cal_2",
+   "voice": "CwhRBWXzGAHq8TQ4Fs17",
+   "text": "[riendo] Pero qué veinticinco días, bro.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "tex_0",
+   "voice": "SOYHLrjzK2X1ezoPC6cr",
+   "text": "[orgulloso] ¡Yeehaw! ¡República de Texas otra vez! Como de 1836 a 1845.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "tex_1",
+   "voice": "qKiF0EEU7wtRm1G2mLMh",
+   "text": "[furioso] ¡Ah, no! Si Texas se va, ¡que vuelva conmigo, que era mío!",
+   "stability": 0.0,
+   "language": "es",
+   "owner": "81ba1bc0f6e0ed99866fc4182f1987e8f9723635f2ea3e80446ad3bbefbcec00"
+  },
+  {
+   "id": "tex_2",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[nervioso] Bueno… técnicamente sí era tuyo.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "sur_0",
+   "voice": "nPczCjzI2devNBz1zQrb",
+   "text": "[desafiante] Y el Sur se separa. Como en 1861.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "sur_1",
+   "voice": "pNInz6obpgDQGcFmaJgB",
+   "text": "[serio] Eso ya terminó en guerra civil. Y la perdiste.",
+   "stability": 0.0,
+   "language": "es"
+  },
+  {
+   "id": "sur_2",
+   "voice": "nPczCjzI2devNBz1zQrb",
+   "text": "[nervioso] Eh… era solo una idea.",
+   "stability": 0.0,
+   "language": "es"
+  }
+ ]
+}
