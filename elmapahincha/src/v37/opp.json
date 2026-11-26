@@ -1,0 +1,1172 @@
+{
+"BOL": {
+"n": "Bolivia",
+"flag": "bo",
+"p": 39,
+"ow": 6,
+"d": 12,
+"ol": 21,
+"gf": 73,
+"ga": 39,
+"first": "1938",
+"last": [
+2,
+0,
+"Friendly",
+"2026-11-17"
+],
+"cat": "SIN"
+},
+"COL": {
+"n": "Colombia",
+"flag": "co",
+"p": 50,
+"ow": 23,
+"d": 13,
+"ol": 14,
+"gf": 45,
+"ga": 54,
+"first": "1938",
+"last": [
+1,
+0,
+"FIFA World Cup qualification",
+"2024-11-19"
+],
+"cat": "MIE"
+},
+"PER": {
+"n": "Peru",
+"flag": "pe",
+"p": 54,
+"ow": 21,
+"d": 16,
+"ol": 17,
+"gf": 69,
+"ga": 81,
+"first": "1938",
+"last": [
+0,
+0,
+"FIFA World Cup qualification",
+"2025-06-10"
+],
+"cat": "MIE"
+},
+"VEN": {
+"n": "Venezuela",
+"flag": "ve",
+"p": 33,
+"ow": 11,
+"d": 6,
+"ol": 16,
+"gf": 59,
+"ga": 35,
+"first": "1938",
+"last": [
+2,
+1,
+"FIFA World Cup qualification",
+"2025-03-21"
+],
+"cat": "SIN"
+},
+"URY": {
+"n": "Uruguay",
+"flag": "uy",
+"p": 50,
+"ow": 31,
+"d": 11,
+"ol": 8,
+"gf": 46,
+"ga": 115,
+"first": "1939",
+"last": [
+0,
+0,
+"FIFA World Cup qualification",
+"2024-10-15"
+],
+"cat": "MIE"
+},
+"CHL": {
+"n": "Chile",
+"flag": "cl",
+"p": 54,
+"ow": 29,
+"d": 13,
+"ol": 12,
+"gf": 54,
+"ga": 99,
+"first": "1939",
+"last": [
+0,
+0,
+"FIFA World Cup qualification",
+"2025-03-25"
+],
+"cat": "MIE"
+},
+"PRY": {
+"n": "Paraguay",
+"flag": "py",
+"p": 42,
+"ow": 22,
+"d": 8,
+"ol": 12,
+"gf": 52,
+"ga": 72,
+"first": "1939",
+"last": [
+0,
+0,
+"FIFA World Cup qualification",
+"2025-09-04"
+],
+"cat": "MIE"
+},
+"ARG": {
+"n": "Argentina",
+"flag": "ar",
+"p": 42,
+"ow": 24,
+"d": 12,
+"ol": 6,
+"gf": 37,
+"ga": 99,
+"first": "1941",
+"last": [
+1,
+0,
+"FIFA World Cup qualification",
+"2025-09-09"
+],
+"cat": "MIE"
+},
+"BRA": {
+"n": "Brazil",
+"flag": "br",
+"p": 36,
+"ow": 27,
+"d": 7,
+"ol": 2,
+"gf": 24,
+"ga": 98,
+"first": "1942",
+"last": [
+0,
+0,
+"FIFA World Cup qualification",
+"2025-06-05"
+],
+"cat": "MIE"
+},
+"MEX": {
+"n": "Mexico",
+"flag": "mx",
+"p": 27,
+"ow": 15,
+"d": 8,
+"ol": 4,
+"gf": 27,
+"ga": 45,
+"first": "1970",
+"last": [
+0,
+2,
+"FIFA World Cup",
+"2026-06-30"
+],
+"cat": "MIE"
+},
+"ENG": {
+"n": "England",
+"flag": "gb-eng",
+"p": 3,
+"ow": 2,
+"d": 1,
+"ol": 0,
+"gf": 2,
+"ga": 5,
+"first": "1970",
+"last": [
+2,
+2,
+"Friendly",
+"2014-06-04"
+],
+"cat": "PAN"
+},
+"PRT": {
+"n": "Portugal",
+"flag": "pt",
+"p": 2,
+"ow": 1,
+"d": 0,
+"ol": 1,
+"gf": 3,
+"ga": 5,
+"first": "1972",
+"last": [
+3,
+2,
+"Friendly",
+"2013-02-06"
+],
+"cat": "RES"
+},
+"IRL": {
+"n": "Republic of Ireland",
+"flag": "ie",
+"p": 2,
+"ow": 1,
+"d": 1,
+"ol": 0,
+"gf": 3,
+"ga": 4,
+"first": "1972",
+"last": [
+1,
+1,
+"Friendly",
+"2007-05-23"
+],
+"cat": "PAN"
+},
+"IRN": {
+"n": "Iran",
+"flag": "ir",
+"p": 3,
+"ow": 0,
+"d": 2,
+"ol": 1,
+"gf": 3,
+"ga": 2,
+"first": "1972",
+"last": [
+1,
+0,
+"Friendly",
+"2008-12-17"
+],
+"cat": "SIN"
+},
+"HTI": {
+"n": "Haiti",
+"flag": "ht",
+"p": 5,
+"ow": 2,
+"d": 0,
+"ol": 3,
+"gf": 9,
+"ga": 5,
+"first": "1973",
+"last": [
+4,
+0,
+"Copa América",
+"2016-06-12"
+],
+"cat": "SIN"
+},
+"BGR": {
+"n": "Bulgaria",
+"flag": "bg",
+"p": 2,
+"ow": 1,
+"d": 0,
+"ol": 1,
+"gf": 4,
+"ga": 3,
+"first": "1981",
+"last": [
+3,
+0,
+"Friendly",
+"2002-03-27"
+],
+"cat": "RES"
+},
+"USA": {
+"n": "United States",
+"flag": "us",
+"p": 14,
+"ow": 4,
+"d": 5,
+"ol": 5,
+"gf": 12,
+"ga": 10,
+"first": "1984",
+"last": [
+1,
+1,
+"Friendly",
+"2025-10-10"
+],
+"cat": "SIN"
+},
+"HND": {
+"n": "Honduras",
+"flag": "hn",
+"p": 16,
+"ow": 2,
+"d": 7,
+"ol": 7,
+"gf": 21,
+"ga": 14,
+"first": "1984",
+"last": [
+2,
+1,
+"Friendly",
+"2024-06-16"
+],
+"cat": "SIN"
+},
+"GTM": {
+"n": "Guatemala",
+"flag": "gt",
+"p": 9,
+"ow": 1,
+"d": 2,
+"ol": 6,
+"gf": 14,
+"ga": 3,
+"first": "1984",
+"last": [
+3,
+0,
+"Friendly",
+"2026-06-07"
+],
+"cat": "SIN"
+},
+"SLV": {
+"n": "El Salvador",
+"flag": "sv",
+"p": 8,
+"ow": 1,
+"d": 2,
+"ol": 5,
+"gf": 18,
+"ga": 5,
+"first": "1984",
+"last": [
+1,
+1,
+"Friendly",
+"2021-12-04"
+],
+"cat": "SIN"
+},
+"FIN": {
+"n": "Finland",
+"flag": "fi",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 3,
+"ga": 1,
+"first": "1985",
+"last": [
+3,
+1,
+"Friendly",
+"1985-02-17"
+],
+"cat": "SIN"
+},
+"CUB": {
+"n": "Cuba",
+"flag": "cu",
+"p": 2,
+"ow": 1,
+"d": 1,
+"ol": 0,
+"gf": 0,
+"ga": 1,
+"first": "1987",
+"last": [
+0,
+0,
+"Friendly",
+"1987-04-02"
+],
+"cat": "PAN"
+},
+"CRI": {
+"n": "Costa Rica",
+"flag": "cr",
+"p": 13,
+"ow": 1,
+"d": 5,
+"ol": 7,
+"gf": 24,
+"ga": 10,
+"first": "1992",
+"last": [
+2,
+0,
+"Friendly",
+"2026-11-13"
+],
+"cat": "SIN"
+},
+"BLR": {
+"n": "Belarus",
+"flag": "by",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 1,
+"ga": 1,
+"first": "1993",
+"last": [
+1,
+1,
+"Friendly",
+"1993-01-27"
+],
+"cat": "PAN"
+},
+"ROU": {
+"n": "Romania",
+"flag": "ro",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 3,
+"ga": 0,
+"first": "1993",
+"last": [
+3,
+0,
+"Friendly",
+"1993-01-31"
+],
+"cat": "SIN"
+},
+"KOR": {
+"n": "South Korea",
+"flag": "kr",
+"p": 3,
+"ow": 2,
+"d": 0,
+"ol": 1,
+"gf": 2,
+"ga": 6,
+"first": "1994",
+"last": [
+0,
+3,
+"Friendly",
+"2026-09-24"
+],
+"cat": "MIE"
+},
+"SCT": {
+"n": "Scotland",
+"flag": "gb-sct",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 1,
+"ga": 2,
+"first": "1995",
+"last": [
+1,
+2,
+"Kirin Cup",
+"1995-05-24"
+],
+"cat": "PAN"
+},
+"JPN": {
+"n": "Japan",
+"flag": "jp",
+"p": 5,
+"ow": 2,
+"d": 3,
+"ol": 0,
+"gf": 1,
+"ga": 5,
+"first": "1995",
+"last": [
+0,
+0,
+"Kirin Cup",
+"2026-10-01"
+],
+"cat": "PAN"
+},
+"ZMB": {
+"n": "Zambia",
+"flag": "zm",
+"p": 2,
+"ow": 0,
+"d": 0,
+"ol": 2,
+"gf": 5,
+"ga": 1,
+"first": "1995",
+"last": [
+1,
+0,
+"Korea Cup",
+"1995-06-12"
+],
+"cat": "SIN"
+},
+"LBN": {
+"n": "Lebanon",
+"flag": "lb",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 0,
+"ga": 1,
+"first": "1996",
+"last": [
+0,
+1,
+"Friendly",
+"1996-02-11"
+],
+"cat": "PAN"
+},
+"OMN": {
+"n": "Oman",
+"flag": "om",
+"p": 3,
+"ow": 1,
+"d": 1,
+"ol": 1,
+"gf": 2,
+"ga": 2,
+"first": "1996",
+"last": [
+0,
+0,
+"Friendly",
+"2018-10-16"
+],
+"cat": "RES"
+},
+"QAT": {
+"n": "Qatar",
+"flag": "qa",
+"p": 4,
+"ow": 1,
+"d": 1,
+"ol": 2,
+"gf": 8,
+"ga": 6,
+"first": "1996",
+"last": [
+2,
+0,
+"FIFA World Cup",
+"2022-11-20"
+],
+"cat": "SIN"
+},
+"KWT": {
+"n": "Kuwait",
+"flag": "kw",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 3,
+"ga": 0,
+"first": "1996",
+"last": [
+3,
+0,
+"Friendly",
+"1996-02-23"
+],
+"cat": "SIN"
+},
+"ARM": {
+"n": "Armenia",
+"flag": "am",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 3,
+"ga": 0,
+"first": "1996",
+"last": [
+3,
+0,
+"Friendly",
+"1996-06-30"
+],
+"cat": "SIN"
+},
+"JAM": {
+"n": "Jamaica",
+"flag": "jm",
+"p": 5,
+"ow": 0,
+"d": 1,
+"ol": 4,
+"gf": 12,
+"ga": 4,
+"first": "1996",
+"last": [
+3,
+1,
+"Copa América",
+"2024-06-26"
+],
+"cat": "SIN"
+},
+"CAN": {
+"n": "Canada",
+"flag": "ca",
+"p": 4,
+"ow": 0,
+"d": 2,
+"ol": 2,
+"gf": 6,
+"ga": 3,
+"first": "1999",
+"last": [
+0,
+0,
+"Friendly",
+"2025-11-13"
+],
+"cat": "SIN"
+},
+"PAN": {
+"n": "Panama",
+"flag": "pa",
+"p": 8,
+"ow": 0,
+"d": 3,
+"ol": 5,
+"gf": 17,
+"ga": 3,
+"first": "2000",
+"last": [
+1,
+1,
+"Kirin Cup",
+"2026-10-05"
+],
+"cat": "SIN"
+},
+"TUR": {
+"n": "Turkey",
+"flag": "tr",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 1,
+"ga": 0,
+"first": "2002",
+"last": [
+1,
+0,
+"Friendly",
+"2002-02-12"
+],
+"cat": "SIN"
+},
+"ZAF": {
+"n": "South Africa",
+"flag": "za",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 0,
+"ga": 0,
+"first": "2002",
+"last": [
+0,
+0,
+"Friendly",
+"2002-04-17"
+],
+"cat": "PAN"
+},
+"SRB": {
+"n": "Serbia",
+"flag": "rs",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 1,
+"ga": 0,
+"first": "2002",
+"last": [
+1,
+0,
+"Friendly",
+"2002-05-08"
+],
+"cat": "SIN"
+},
+"SEN": {
+"n": "Senegal",
+"flag": "sn",
+"p": 3,
+"ow": 3,
+"d": 0,
+"ol": 0,
+"gf": 2,
+"ga": 5,
+"first": "2002",
+"last": [
+1,
+2,
+"FIFA World Cup",
+"2022-11-29"
+],
+"cat": "PAN"
+},
+"ITA": {
+"n": "Italy",
+"flag": "it",
+"p": 3,
+"ow": 2,
+"d": 1,
+"ol": 0,
+"gf": 1,
+"ga": 5,
+"first": "2002",
+"last": [
+0,
+2,
+"Friendly",
+"2024-03-24"
+],
+"cat": "PAN"
+},
+"HRV": {
+"n": "Croatia",
+"flag": "hr",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 1,
+"ga": 0,
+"first": "2002",
+"last": [
+1,
+0,
+"FIFA World Cup",
+"2002-06-13"
+],
+"cat": "SIN"
+},
+"EST": {
+"n": "Estonia",
+"flag": "ee",
+"p": 2,
+"ow": 0,
+"d": 0,
+"ol": 2,
+"gf": 3,
+"ga": 1,
+"first": "2003",
+"last": [
+2,
+1,
+"Friendly",
+"2003-02-12"
+],
+"cat": "SIN"
+},
+"ESP": {
+"n": "Spain",
+"flag": "es",
+"p": 2,
+"ow": 2,
+"d": 0,
+"ol": 0,
+"gf": 0,
+"ga": 6,
+"first": "2003",
+"last": [
+0,
+2,
+"Friendly",
+"2013-08-14"
+],
+"cat": "PAN"
+},
+"JOR": {
+"n": "Jordan",
+"flag": "jo",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 0,
+"ga": 3,
+"first": "2004",
+"last": [
+0,
+3,
+"LG Cup",
+"2004-10-20"
+],
+"cat": "PAN"
+},
+"NGA": {
+"n": "Nigeria",
+"flag": "ng",
+"p": 2,
+"ow": 0,
+"d": 1,
+"ol": 1,
+"gf": 3,
+"ga": 2,
+"first": "2004",
+"last": [
+1,
+0,
+"Friendly",
+"2022-06-02"
+],
+"cat": "SIN"
+},
+"POL": {
+"n": "Poland",
+"flag": "pl",
+"p": 3,
+"ow": 1,
+"d": 1,
+"ol": 1,
+"gf": 4,
+"ga": 5,
+"first": "2005",
+"last": [
+2,
+2,
+"Friendly",
+"2010-10-12"
+],
+"cat": "RES"
+},
+"UGA": {
+"n": "Uganda",
+"flag": "ug",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 1,
+"ga": 2,
+"first": "2005",
+"last": [
+1,
+2,
+"LG Cup",
+"2005-12-29"
+],
+"cat": "PAN"
+},
+"NLD": {
+"n": "Netherlands",
+"flag": "nl",
+"p": 4,
+"ow": 1,
+"d": 3,
+"ol": 0,
+"gf": 3,
+"ga": 4,
+"first": "2006",
+"last": [
+1,
+1,
+"Friendly",
+"2026-03-31"
+],
+"cat": "PAN"
+},
+"MKD": {
+"n": "North Macedonia",
+"flag": "mk",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 1,
+"ga": 2,
+"first": "2006",
+"last": [
+1,
+2,
+"Friendly",
+"2006-05-28"
+],
+"cat": "PAN"
+},
+"DEU": {
+"n": "Germany",
+"flag": "de",
+"p": 3,
+"ow": 2,
+"d": 0,
+"ol": 1,
+"gf": 4,
+"ga": 8,
+"first": "2006",
+"last": [
+2,
+1,
+"FIFA World Cup",
+"2026-06-25"
+],
+"cat": "MIE"
+},
+"SWE": {
+"n": "Sweden",
+"flag": "se",
+"p": 2,
+"ow": 0,
+"d": 1,
+"ol": 1,
+"gf": 3,
+"ga": 2,
+"first": "2007",
+"last": [
+1,
+1,
+"Friendly",
+"2007-01-21"
+],
+"cat": "SIN"
+},
+"FRA": {
+"n": "France",
+"flag": "fr",
+"p": 2,
+"ow": 1,
+"d": 1,
+"ol": 0,
+"gf": 0,
+"ga": 2,
+"first": "2008",
+"last": [
+0,
+0,
+"FIFA World Cup",
+"2014-06-25"
+],
+"cat": "PAN"
+},
+"GRC": {
+"n": "Greece",
+"flag": "gr",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 1,
+"ga": 1,
+"first": "2011",
+"last": [
+1,
+1,
+"Friendly",
+"2011-06-07"
+],
+"cat": "PAN"
+},
+"AUS": {
+"n": "Australia",
+"flag": "au",
+"p": 3,
+"ow": 1,
+"d": 0,
+"ol": 2,
+"gf": 7,
+"ga": 7,
+"first": "2014",
+"last": [
+2,
+1,
+"Friendly",
+"2023-03-28"
+],
+"cat": "SIN"
+},
+"CHE": {
+"n": "Switzerland",
+"flag": "ch",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 1,
+"ga": 2,
+"first": "2014",
+"last": [
+1,
+2,
+"FIFA World Cup",
+"2014-06-15"
+],
+"cat": "PAN"
+},
+"TTO": {
+"n": "Trinidad and Tobago",
+"flag": "tt",
+"p": 2,
+"ow": 0,
+"d": 0,
+"ol": 2,
+"gf": 6,
+"ga": 1,
+"first": "2017",
+"last": [
+3,
+0,
+"Friendly",
+"2019-11-14"
+],
+"cat": "SIN"
+},
+"CPV": {
+"n": "Cape Verde",
+"flag": "cv",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 1,
+"ga": 0,
+"first": "2022",
+"last": [
+1,
+0,
+"Friendly",
+"2022-06-11"
+],
+"cat": "SIN"
+},
+"SAU": {
+"n": "Saudi Arabia",
+"flag": "sa",
+"p": 2,
+"ow": 0,
+"d": 1,
+"ol": 1,
+"gf": 2,
+"ga": 1,
+"first": "2022",
+"last": [
+2,
+1,
+"Friendly",
+"2026-05-30"
+],
+"cat": "SIN"
+},
+"IRQ": {
+"n": "Iraq",
+"flag": "iq",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 0,
+"ga": 0,
+"first": "2022",
+"last": [
+0,
+0,
+"Friendly",
+"2022-11-12"
+],
+"cat": "PAN"
+},
+"NZL": {
+"n": "New Zealand",
+"flag": "nz",
+"p": 1,
+"ow": 0,
+"d": 0,
+"ol": 1,
+"gf": 2,
+"ga": 0,
+"first": "2025",
+"last": [
+2,
+0,
+"Friendly",
+"2025-11-18"
+],
+"cat": "SIN"
+},
+"MAR": {
+"n": "Morocco",
+"flag": "ma",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 1,
+"ga": 1,
+"first": "2026",
+"last": [
+1,
+1,
+"Friendly",
+"2026-03-27"
+],
+"cat": "PAN"
+},
+"CIV": {
+"n": "Ivory Coast",
+"flag": "ci",
+"p": 1,
+"ow": 1,
+"d": 0,
+"ol": 0,
+"gf": 0,
+"ga": 1,
+"first": "2026",
+"last": [
+0,
+1,
+"FIFA World Cup",
+"2026-06-14"
+],
+"cat": "PAN"
+},
+"CUW": {
+"n": "Curaçao",
+"flag": "cw",
+"p": 1,
+"ow": 0,
+"d": 1,
+"ol": 0,
+"gf": 0,
+"ga": 0,
+"first": "2026",
+"last": [
+0,
+0,
+"FIFA World Cup",
+"2026-06-20"
+],
+"cat": "PAN"
+}
+}
