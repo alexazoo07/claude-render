@@ -166,7 +166,7 @@ SHORTS.append(dict(mod='Short7', tag='cx7', comp='CX7', geo='us', a3='USA', coun
 	finale=['¿UNOS NUEVOS', 'EE.UU.?', '¿QUIÉN SIGUE?', 'COMENTA ABAJO ↓'],
 	regions=[
 		dict(id='ver', states=['Vermont'], flag='x/vermont', label='VERMONT', name='VERMONT', verb='SE INDEPENDIZA', verbCol='#4BE07A', pill='REPÚBLICA DE VERMONT (1777-1791)', lines=[
-			('r', 'will', '[tranquilo] Vermont se va. Fui república catorce años, con mi propia moneda.', [I('🍁', 'vermont'), I('🪙', 'moneda')]),
+			('r', 'will', '[tranquilo] Vermont se va. Fui república catorce años, con mi propia moneda.', [I('🌲', 'vermont'), I('🪙', 'moneda')]),
 			('h', 'adam', '[confundido] ¿Vermont? ¿Pero tú no eras solo… jarabe de arce?', [I('🥞', 'jarabe')]),
 			('r', 'will', '[ofendido] ¡Oye! El mejor jarabe de arce del país, gracias.', [I('🍯', 'mejor')])]),
 		dict(id='cal', states=['California'], flag='x/california', label='CALIFORNIA', name='CALIFORNIA', verb='SE INDEPENDIZA', verbCol='#FFD23F', pill='REPÚBLICA DE CALIFORNIA (1846)', lines=[

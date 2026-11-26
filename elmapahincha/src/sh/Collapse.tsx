@@ -89,17 +89,17 @@ export const Ball: React.FC<{flag: string; size: number; mood: Mood; t: number; 
 
 // ---------------------------------------------------------------- text helpers
 const tx = (size: number, color: string, sw = 0.16): React.CSSProperties => ({fontFamily: LILITA, fontSize: size, color, lineHeight: 1, WebkitTextStroke: `${size * sw}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${size * 0.08}px 0 ${INK}`, whiteSpace: 'nowrap', letterSpacing: 1});
-const Bubble: React.FC<{text: string; x: number; y: number; p: number; side?: 'l' | 'r'}> = ({text, x, y, p, side = 'r'}) => {
+const Bubble: React.FC<{text: string; x: number; y: number; p: number; side?: 'l' | 'r'; below?: boolean}> = ({text, x, y, p, side = 'r', below = false}) => {
 	const fs = text.length > 26 ? 34 : 40;
 	const w = Math.min(text.length * fs * 0.56 + 54, 600);
 	let left = side === 'r' ? x - w * 0.12 : x - w * 0.88;
 	left = Math.max(24, Math.min(W - 24 - w, left));
 	const tail = Math.max(14, Math.min(w - 54, x - left - 20));
 	return (
-		<div style={{position: 'absolute', left, top: y, width: w, transform: `translateY(-100%) scale(${p})`, transformOrigin: `${tail + 20}px 100%`, opacity: clamp01(p * 3)}}>
+		<div style={{position: 'absolute', left, top: y, width: w, transform: `${below ? '' : 'translateY(-100%) '}scale(${p})`, transformOrigin: `${tail + 20}px ${below ? '0%' : '100%'}`, opacity: clamp01(p * 3)}}>
 			<div style={{position: 'relative', padding: '10px 16px', textAlign: 'center', borderRadius: 18, background: '#fff', border: `5px solid ${INK}`, fontFamily: LILITA, fontSize: fs, lineHeight: 1.1, color: INK, boxShadow: '0 5px 0 rgba(0,0,0,0.3)'}}>
 				{text}
-				<svg width={40} height={26} style={{position: 'absolute', left: tail, bottom: -23}}><path d={side === 'r' ? 'M2 0 L6 24 L30 0' : 'M38 0 L34 24 L10 0'} fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" /><rect x={4} y={-6} width={32} height={8} fill="#fff" /></svg>
+				<svg width={40} height={26} style={{position: 'absolute', left: tail, ...(below ? {top: -23, transform: 'scaleY(-1)'} : {bottom: -23})}}><path d={side === 'r' ? 'M2 0 L6 24 L30 0' : 'M38 0 L34 24 L10 0'} fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" /><rect x={4} y={-6} width={32} height={8} fill="#fff" /></svg>
 			</div>
 		</div>
 	);
@@ -176,8 +176,8 @@ export function makeCollapse(C: CollapseCfg) {
 		if (r.hero) hp = r.hero;
 		else {
 			const cands = heroNames.filter((n) => !goneSoFar.has(n)).map((n) => G.states[n].c as P2).map((c) => ({c, ds: Math.hypot(c[0] - rc[0], c[1] - rc[1]) * z0}));
-			const ok = cands.filter((x) => x.ds >= 330).sort((a, b) => a.ds - b.ds);
-			const pick = ok[0] ?? cands.sort((a, b) => b.ds - a.ds)[0];
+			const sc = (x: {c: P2; ds: number}) => Math.abs(x.c[1] - rc[1]) * z0 * 1.4 + Math.abs(x.ds - 470) + (x.ds < 380 ? 2000 : 0);
+			const pick = [...cands].sort((a, b) => sc(a) - sc(b))[0];
 			hp = pick ? pick.c : [rc[0] + 400 / z0, rc[1]];
 			const ds = Math.hypot(hp[0] - rc[0], hp[1] - rc[1]) * z0;
 			if (ds > 520) { const k = 470 / ds; hp = [rc[0] + (hp[0] - rc[0]) * k, rc[1] + (hp[1] - rc[1]) * k]; }
@@ -354,6 +354,47 @@ export function makeCollapse(C: CollapseCfg) {
 					</svg>
 				</div>
 				{seg >= 0 && u >= 20 && u < 70 && (() => { const [sx, sy] = toS(...regC[seg]); const p = easeOut((u - 20) / 50); return <div style={{position: 'absolute', left: sx - 600 * p, top: sy - 600 * p, width: 1200 * p, height: 1200 * p, borderRadius: '50%', border: `${8 * (1 - p) + 2}px solid rgba(255,255,255,${0.9 * (1 - p)})`}} />; })()}
+				{/* icons */}
+				{IC.map((x, k) => {
+					const t = f - x.g;
+					if (t < 0 || f > x.end + 16) return null;
+					if (x.fx === 'big') {
+						if (t > 52) return null;
+						const sc = (t < 10 ? 2.4 - 1.4 * easeOut(t / 10) : 1) * (1 - easeInOut((t - 40) / 12)) * 0.82;
+						return (
+							<div key={k} style={{position: 'absolute', left: W / 2 - 230, top: 150, width: 460, height: 460, transform: `scale(${sc}) rotate(${Math.sin(t / 3) * 8}deg)`}}>
+								<svg width={460} height={460} style={{position: 'absolute', left: 0, top: 0, transform: `rotate(${t * 2}deg)`}}>{Array.from({length: 14}, (_, q) => { const a = (q / 14) * Math.PI * 2; return <path key={q} d={`M230 230 L${230 + Math.cos(a - 0.12) * 230} ${230 + Math.sin(a - 0.12) * 230} L${230 + Math.cos(a + 0.12) * 230} ${230 + Math.sin(a + 0.12) * 230}Z`} fill={q % 2 ? '#FFD23F' : '#FF8A3D'} opacity={0.85} />; })}</svg>
+								<img src={emojiSrc(x.e)} style={{position: 'absolute', left: 80, top: 80, width: 300, height: 300, filter: 'drop-shadow(0 10px 0 rgba(0,0,0,0.35))'}} />
+							</div>
+						);
+					}
+					if (x.fx === 'rain') {
+						if (t > 130) return null;
+						return <React.Fragment key={k}>{Array.from({length: x.n}, (_, q) => { const sx = ((q * 397 + 113) % 1000) / 1000 * (W - 100) + 50; const y0 = -160 - (q % 4) * 140; const y = y0 + t * 15 * (0.8 + (q % 5) * 0.1); const s = 90 + (q % 3) * 30; return <img key={q} src={emojiSrc(x.e)} style={{position: 'absolute', left: sx - s / 2, top: y, width: s, height: s, transform: `rotate(${t * 4 * (q % 2 ? 1 : -1) + q * 30}deg)`, filter: 'drop-shadow(0 6px 0 rgba(0,0,0,0.3))'}} />; })}</React.Fragment>;
+					}
+					const [ax, ay] = anchor(x.from);
+					const base = ax < W / 2 ? 55 : 125;
+					const ang = ((base + (x.slot - (x.ns - 1) / 2) * 42) * Math.PI) / 180;
+					const R = 235;
+					const txx = Math.max(90, Math.min(W - 90, ax + Math.cos(ang) * R)), tyy = Math.max(300, Math.min(1300, ay + Math.sin(ang) * R));
+					const p = easeOut(t / 14);
+					let X = ax + (txx - ax) * p, Y = ay + (tyy - ay) * p - Math.sin(p * Math.PI) * 60;
+					let sc = backOut(t / 14);
+					if (x.to) {
+						if (t > 62) return null;
+						const tt = clamp01((t - 40) / 20);
+						if (tt > 0) { const [bx, byy] = anchor(x.to); const e2 = easeInOut(tt); X = X + (bx - X) * e2; Y = Y + (byy - Y) * e2 - Math.sin(e2 * Math.PI) * 140; sc *= 1 - 0.65 * e2; }
+					} else sc *= 1 - easeInOut((f - x.end) / 14);
+					Y += Math.sin(f / 8 + x.slot) * 8;
+					const S = 170;
+					return (
+						<div key={k} style={{position: 'absolute', left: X - S / 2, top: Y - S / 2, width: S, height: S, transform: `scale(${sc}) rotate(${Math.sin(f / 13 + x.slot * 2) * 12}deg)`}}>
+							{t < 14 && <svg width={S * 2} height={S * 2} style={{position: 'absolute', left: -S / 2, top: -S / 2, overflow: 'visible'}}>{Array.from({length: 8}, (_, q) => { const a = (q / 8) * Math.PI * 2; const r0 = S * (0.5 + 0.5 * easeOut(t / 14)), r1 = r0 + 26 * (1 - t / 14); return <line key={q} x1={S + Math.cos(a) * r0} y1={S + Math.sin(a) * r0} x2={S + Math.cos(a) * r1} y2={S + Math.sin(a) * r1} stroke="#fff" strokeWidth={7} strokeLinecap="round" />; })}</svg>}
+							<div style={{position: 'absolute', inset: 6, borderRadius: '50%', background: '#fff', border: `6px solid ${INK}`, boxShadow: '0 8px 0 rgba(0,0,0,0.3)'}} />
+							<img src={emojiSrc(x.e)} style={{position: 'absolute', left: 26, top: 26, width: S - 52, height: S - 52}} />
+						</div>
+					);
+				})}
 				{/* region labels + balls */}
 				{C.regions.map((r, i) => {
 					if (!goneIdx.includes(i)) return null;
@@ -411,51 +452,10 @@ export function makeCollapse(C: CollapseCfg) {
 							<div style={{position: 'absolute', left: sx - size / 2 + shake, top: sy - size / 2 + jump, transform: `scale(${show}) ${bob(f, 0, talk)}`, transformOrigin: '50% 90%'}}><Ball flag={C.heroFlag} size={size} mood={mood} t={f} id="hero" talk={talk} /></div>
 							{alarm > 0 && <div style={{position: 'absolute', left: sx - 40, top: sy - size * 0.95, fontFamily: LILITA, fontSize: 90, color: '#E0202A', WebkitTextStroke: `10px ${INK}`, paintOrder: 'stroke fill', transform: `scale(${backOut((u - 30) / 8)}) rotate(-8deg)`}}>!!</div>}
 							{alarm > 0 && <svg width={size * 1.8} height={size * 1.8} style={{position: 'absolute', left: sx - size * 0.9, top: sy - size * 0.9, overflow: 'visible', opacity: 0.85}}>{Array.from({length: 10}, (_, k) => { const a = (k / 10) * Math.PI * 2 + 0.3; const r0 = size * 0.62, r1 = size * (0.72 + 0.06 * Math.sin(f / 3 + k)); return <line key={k} x1={size * 0.9 + Math.cos(a) * r0} y1={size * 0.9 + Math.sin(a) * r0} x2={size * 0.9 + Math.cos(a) * r1} y2={size * 0.9 + Math.sin(a) * r1} stroke="#fff" strokeWidth={6} strokeLinecap="round" />; })}</svg>}
-							{bub && (() => { const rx = seg >= 0 ? toS(...regC[seg])[0] : W / 2; const right = seg >= 0 ? sx > rx : sx < W / 2 + 60; return <Bubble text={bub} x={right ? sx + size * 0.25 : sx - size * 0.25} y={sy - size * 0.48} p={bp} side={right ? 'r' : 'l'} />; })()}
+							{bub && (() => { const rx = seg >= 0 ? toS(...regC[seg])[0] : W / 2; const right = seg >= 0 ? sx > rx : sx < W / 2 + 60; const below = f < INTRO && HK.type === 'count'; return <Bubble text={bub} x={right ? sx + size * 0.25 : sx - size * 0.25} y={below ? sy + size * 0.62 : sy - size * 0.48} p={bp} side={right ? 'r' : 'l'} below={below} />; })()}
 						</>
 					);
 				})()}
-				{/* icons */}
-				{IC.map((x, k) => {
-					const t = f - x.g;
-					if (t < 0 || f > x.end + 16) return null;
-					if (x.fx === 'big') {
-						if (t > 70) return null;
-						const sc = (t < 10 ? 2.4 - 1.4 * easeOut(t / 10) : 1) * (1 - easeInOut((t - 56) / 14));
-						return (
-							<div key={k} style={{position: 'absolute', left: W / 2 - 230, top: 520, width: 460, height: 460, transform: `scale(${sc}) rotate(${Math.sin(t / 3) * 8}deg)`}}>
-								<svg width={460} height={460} style={{position: 'absolute', left: 0, top: 0, transform: `rotate(${t * 2}deg)`}}>{Array.from({length: 14}, (_, q) => { const a = (q / 14) * Math.PI * 2; return <path key={q} d={`M230 230 L${230 + Math.cos(a - 0.12) * 230} ${230 + Math.sin(a - 0.12) * 230} L${230 + Math.cos(a + 0.12) * 230} ${230 + Math.sin(a + 0.12) * 230}Z`} fill={q % 2 ? '#FFD23F' : '#FF8A3D'} opacity={0.85} />; })}</svg>
-								<img src={emojiSrc(x.e)} style={{position: 'absolute', left: 80, top: 80, width: 300, height: 300, filter: 'drop-shadow(0 10px 0 rgba(0,0,0,0.35))'}} />
-							</div>
-						);
-					}
-					if (x.fx === 'rain') {
-						if (t > 130) return null;
-						return <React.Fragment key={k}>{Array.from({length: x.n}, (_, q) => { const sx = ((q * 397 + 113) % 1000) / 1000 * (W - 100) + 50; const y0 = -160 - (q % 4) * 140; const y = y0 + t * 15 * (0.8 + (q % 5) * 0.1); const s = 90 + (q % 3) * 30; return <img key={q} src={emojiSrc(x.e)} style={{position: 'absolute', left: sx - s / 2, top: y, width: s, height: s, transform: `rotate(${t * 4 * (q % 2 ? 1 : -1) + q * 30}deg)`, filter: 'drop-shadow(0 6px 0 rgba(0,0,0,0.3))'}} />; })}</React.Fragment>;
-					}
-					const [ax, ay] = anchor(x.from);
-					const base = ax < W / 2 ? 55 : 125;
-					const ang = ((base + (x.slot - (x.ns - 1) / 2) * 42) * Math.PI) / 180;
-					const R = 235;
-					const txx = Math.max(90, Math.min(W - 90, ax + Math.cos(ang) * R)), tyy = Math.max(300, Math.min(1300, ay + Math.sin(ang) * R));
-					const p = easeOut(t / 14);
-					let X = ax + (txx - ax) * p, Y = ay + (tyy - ay) * p - Math.sin(p * Math.PI) * 60;
-					let sc = backOut(t / 14);
-					if (x.to) {
-						if (t > 62) return null;
-						const tt = clamp01((t - 40) / 20);
-						if (tt > 0) { const [bx, byy] = anchor(x.to); const e2 = easeInOut(tt); X = X + (bx - X) * e2; Y = Y + (byy - Y) * e2 - Math.sin(e2 * Math.PI) * 140; sc *= 1 - 0.65 * e2; }
-					} else sc *= 1 - easeInOut((f - x.end) / 14);
-					Y += Math.sin(f / 8 + x.slot) * 8;
-					const S = 170;
-					return (
-						<div key={k} style={{position: 'absolute', left: X - S / 2, top: Y - S / 2, width: S, height: S, transform: `scale(${sc}) rotate(${Math.sin(f / 13 + x.slot * 2) * 12}deg)`}}>
-							{t < 14 && <svg width={S * 2} height={S * 2} style={{position: 'absolute', left: -S / 2, top: -S / 2, overflow: 'visible'}}>{Array.from({length: 8}, (_, q) => { const a = (q / 8) * Math.PI * 2; const r0 = S * (0.5 + 0.5 * easeOut(t / 14)), r1 = r0 + 26 * (1 - t / 14); return <line key={q} x1={S + Math.cos(a) * r0} y1={S + Math.sin(a) * r0} x2={S + Math.cos(a) * r1} y2={S + Math.sin(a) * r1} stroke="#fff" strokeWidth={7} strokeLinecap="round" />; })}</svg>}
-							<div style={{position: 'absolute', inset: 6, borderRadius: '50%', background: '#fff', border: `6px solid ${INK}`, boxShadow: '0 8px 0 rgba(0,0,0,0.3)'}} />
-							<img src={emojiSrc(x.e)} style={{position: 'absolute', left: 26, top: 26, width: S - 52, height: S - 52}} />
-						</div>
-					);
-				})}
 				{(flash > 0.01 || hookFlash > 0.01) && <AbsoluteFill style={{background: '#FFFDF5', opacity: Math.max(flash, hookFlash)}} />}
 				{/* ---------------- hooks */}
 				{HK.type === 'title' && f < INTRO + 20 && (() => {

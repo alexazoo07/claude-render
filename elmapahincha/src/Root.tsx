@@ -37,6 +37,12 @@ import {Video40, V40_TOTAL} from './v40/Video40';
 import {Video41, V41_TOTAL} from './v41/Video41';
 import {Video42, V42_TOTAL} from './v42/Video42';
 import {Short1 as CXShort1, SH1_TOTAL} from './sh/Short1';
+import {Short2V, Short2_TOTAL} from './sh/Short2';
+import {Short3V, Short3_TOTAL} from './sh/Short3';
+import {Short4V, Short4_TOTAL} from './sh/Short4';
+import {Short5V, Short5_TOTAL} from './sh/Short5';
+import {Short6V, Short6_TOTAL} from './sh/Short6';
+import {Short7V, Short7_TOTAL} from './sh/Short7';
 import {T42a, T42b, T42c, T42d, T42e} from './v42/Thumbs42';
 import {T41a, T41b, T41c, T41d, T41e} from './v41/Thumbs41';
 import {T40a, T40b, T40c, T40d, T40e} from './v40/Thumbs40';
@@ -202,6 +208,12 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 			<Composition id="V41" component={Video41} durationInFrames={V41_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V42" component={Video42} durationInFrames={V42_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="CX1" component={CXShort1} durationInFrames={SH1_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX2" component={Short2V} durationInFrames={Short2_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX3" component={Short3V} durationInFrames={Short3_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX4" component={Short4V} durationInFrames={Short4_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX5" component={Short5V} durationInFrames={Short5_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX6" component={Short6V} durationInFrames={Short6_TOTAL} fps={60} width={1080} height={1920} />
+			<Composition id="CX7" component={Short7V} durationInFrames={Short7_TOTAL} fps={60} width={1080} height={1920} />
 			<Composition id="V12" component={Video12} durationInFrames={V12_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V11" component={Video11} durationInFrames={V11_TOTAL} fps={60} width={1920} height={1080} />
 			<Composition id="V10" component={Video10} durationInFrames={V10_TOTAL} fps={60} width={1920} height={1080} />
