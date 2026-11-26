@@ -16,6 +16,7 @@ export type WCfg = {
 	hookEnd: {big: string; mid: string; hint: string}; rules: string[]; duel: string[]; subRound: number; midRound: number;
 	final: {t1: string; t2: string; badge: string; facts: string[]; ask: string};
 	timing?: {CARD: number; C_BUB: number; C_STAMP: number; C_DATO: number};
+	hookKeys?: string[]; ifText?: string; link?: Record<string, string[]>;
 };
 export function makeWheel(C: WCfg) {
 const {ALL, NAME, FL, ROUNDS, SLICES, ELIMS, WINNER} = C;
@@ -349,6 +350,7 @@ const Video24: React.FC = () => {
 		if (poofU !== null) { const bb = bboxOf(k); tops.push(<Poof key={'p' + k} x={cx} y={cy} r={Math.max(Math.max(bb.w, bb.h) * 0.28, 26 / cam.z)} u={poofU} />); }
 		if (isTiny(k) || bboxOf(k).w * cam.z < 26) tops.push(<circle key={'m' + k} cx={cx} cy={cy} r={(30 + 4 * Math.sin(f / 5)) / cam.z} fill="none" stroke="#fff" strokeWidth={6 / cam.z} />);
 	};
+	if (C.link) for (const [k0, arr] of Object.entries(C.link)) for (const m of arr) if (fills[k0]) fills[m] = fills[k0];
 	if (hc) focus(hc.k, ht, hc.card, f >= hc.at + HP ? f - hc.at - HP : null);
 	if (step) focus(step.k, t, step.card, step.poof !== null && f >= step.poof ? f - step.poof : null);
 	if (f >= FIN0) {
@@ -400,7 +402,7 @@ const Video24: React.FC = () => {
 };
 
 // ---------------------------------------------------------------- hook text
-const JORDER = ALL.slice().sort((a, b) => cen(a)[0] - cen(b)[0]);
+const JORDER = (C.hookKeys ?? ALL).slice().sort((a, b) => cen(a)[0] - cen(b)[0]);
 const HookOverlay: React.FC<{f: number}> = ({f}) => {
 	const o1 = 1 - easeInOut((f - H_FRA + 10) / 14);
 	const u = f - H_END3;
@@ -480,7 +482,7 @@ const SpinOverlay: React.FC<{r: Rnd; f: number}> = ({r, f}) => {
 			)}
 			{ban >= 0 && (
 				<div style={{position: 'absolute', left: 60, right: 760, top: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, opacity: 1 - easeInOut((u - SPIN + 40) / 20)}}>
-					<div style={{transform: `scale(${backOut(ban / 12)}) rotate(-2deg)`}}><T size={64}>SI TU SELECCIÓN...</T></div>
+					<div style={{transform: `scale(${backOut(ban / 12)}) rotate(-2deg)`}}><T size={64}>{C.ifText ?? 'SI TU SELECCIÓN...'}</T></div>
 					<div style={{transform: `scale(${backOut((ban - 12) / 12)}) rotate(-2deg)`, padding: '18px 34px', borderRadius: 24, background: SLICES[R.slice].col, border: `7px solid ${INK}`, boxShadow: '0 10px 0 rgba(0,0,0,0.4)', textAlign: 'center'}}><T size={72}>{R.cond}</T></div>
 					<div style={{transform: `scale(${backOut((ban - 40) / 12)})`, padding: '8px 22px', borderRadius: 30, background: '#fff', border: `4px solid ${INK}`, fontFamily: RUBIK, fontWeight: 800, fontSize: 32, color: INK}}>{ELIMS[R.id].length === 1 ? 'Solo cae una...' : `Caen ${ELIMS[R.id].length} selecciones`}</div>
 				</div>

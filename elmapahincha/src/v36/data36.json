@@ -1,0 +1,1603 @@
+{
+"ALL": [
+"AFG",
+"AGO",
+"ALB",
+"AND",
+"ARE",
+"ARG",
+"ARM",
+"ATG",
+"AUS",
+"AUT",
+"AZE",
+"BDI",
+"BEL",
+"BEN",
+"BFA",
+"BGD",
+"BGR",
+"BHR",
+"BHS",
+"BIH",
+"BLR",
+"BLZ",
+"BOL",
+"BRA",
+"BRB",
+"BRN",
+"BTN",
+"BWA",
+"CAF",
+"CAN",
+"CHE",
+"CHL",
+"CHN",
+"CIV",
+"CMR",
+"COD",
+"COG",
+"COL",
+"COM",
+"CPV",
+"CRI",
+"CUB",
+"CYP",
+"CZE",
+"DEU",
+"DJI",
+"DMA",
+"DNK",
+"DOM",
+"DZA",
+"ECU",
+"EGY",
+"ENG",
+"ERI",
+"ESP",
+"EST",
+"ETH",
+"FIN",
+"FJI",
+"FRA",
+"FSM",
+"GAB",
+"GEO",
+"GHA",
+"GIN",
+"GMB",
+"GNB",
+"GNQ",
+"GRC",
+"GRD",
+"GTM",
+"GUY",
+"HND",
+"HRV",
+"HTI",
+"HUN",
+"IDN",
+"IND",
+"IRL",
+"IRN",
+"IRQ",
+"ISL",
+"ISR",
+"ITA",
+"JAM",
+"JOR",
+"JPN",
+"KAZ",
+"KEN",
+"KGZ",
+"KHM",
+"KIR",
+"KNA",
+"KOR",
+"KWT",
+"LAO",
+"LBN",
+"LBR",
+"LBY",
+"LCA",
+"LIE",
+"LKA",
+"LSO",
+"LTU",
+"LUX",
+"LVA",
+"MAR",
+"MCO",
+"MDA",
+"MDG",
+"MDV",
+"MEX",
+"MHL",
+"MKD",
+"MLI",
+"MLT",
+"MMR",
+"MNE",
+"MNG",
+"MOZ",
+"MRT",
+"MUS",
+"MWI",
+"MYS",
+"NAM",
+"NER",
+"NGA",
+"NIC",
+"NLD",
+"NOR",
+"NPL",
+"NRU",
+"NZL",
+"OMN",
+"PAK",
+"PAN",
+"PER",
+"PHL",
+"PLW",
+"PNG",
+"POL",
+"PRK",
+"PRT",
+"PRY",
+"PSX",
+"QAT",
+"ROU",
+"RUS",
+"RWA",
+"SAU",
+"SDN",
+"SDS",
+"SEN",
+"SGP",
+"SLB",
+"SLE",
+"SLV",
+"SMR",
+"SOM",
+"SRB",
+"STP",
+"SUR",
+"SVK",
+"SVN",
+"SWE",
+"SWZ",
+"SYC",
+"SYR",
+"TCD",
+"TGO",
+"THA",
+"TJK",
+"TKM",
+"TLS",
+"TON",
+"TTO",
+"TUN",
+"TUR",
+"TUV",
+"TZA",
+"UGA",
+"UKR",
+"URY",
+"USA",
+"UZB",
+"VAT",
+"VCT",
+"VEN",
+"VNM",
+"VUT",
+"WSM",
+"YEM",
+"ZAF",
+"ZMB",
+"ZWE"
+],
+"NAME": {
+"AFG": "Afganistán",
+"AGO": "Angola",
+"ALB": "Albania",
+"AND": "Andorra",
+"ARE": "Emiratos Árabes",
+"ARG": "Argentina",
+"ARM": "Armenia",
+"ATG": "Antigua y Barbuda",
+"AUS": "Australia",
+"AUT": "Austria",
+"AZE": "Azerbaiyán",
+"BDI": "Burundi",
+"BEL": "Bélgica",
+"BEN": "Benín",
+"BFA": "Burkina Faso",
+"BGD": "Bangladés",
+"BGR": "Bulgaria",
+"BHR": "Baréin",
+"BHS": "Bahamas",
+"BIH": "Bosnia",
+"BLR": "Bielorrusia",
+"BLZ": "Belice",
+"BOL": "Bolivia",
+"BRA": "Brasil",
+"BRB": "Barbados",
+"BRN": "Brunéi",
+"BTN": "Bután",
+"BWA": "Botsuana",
+"CAF": "R. Centroafricana",
+"CAN": "Canadá",
+"CHE": "Suiza",
+"CHL": "Chile",
+"CHN": "China",
+"CIV": "Costa de Marfil",
+"CMR": "Camerún",
+"COD": "RD Congo",
+"COG": "Congo",
+"COL": "Colombia",
+"COM": "Comoras",
+"CPV": "Cabo Verde",
+"CRI": "Costa Rica",
+"CUB": "Cuba",
+"CYP": "Chipre",
+"CZE": "Chequia",
+"DEU": "Alemania",
+"DJI": "Yibuti",
+"DMA": "Dominica",
+"DNK": "Dinamarca",
+"DOM": "R. Dominicana",
+"DZA": "Argelia",
+"ECU": "Ecuador",
+"EGY": "Egipto",
+"ENG": "Reino Unido",
+"ERI": "Eritrea",
+"ESP": "España",
+"EST": "Estonia",
+"ETH": "Etiopía",
+"FIN": "Finlandia",
+"FJI": "Fiyi",
+"FRA": "Francia",
+"FSM": "Micronesia",
+"GAB": "Gabón",
+"GEO": "Georgia",
+"GHA": "Ghana",
+"GIN": "Guinea",
+"GMB": "Gambia",
+"GNB": "Guinea-Bisáu",
+"GNQ": "Guinea Ecuatorial",
+"GRC": "Grecia",
+"GRD": "Granada",
+"GTM": "Guatemala",
+"GUY": "Guyana",
+"HND": "Honduras",
+"HRV": "Croacia",
+"HTI": "Haití",
+"HUN": "Hungría",
+"IDN": "Indonesia",
+"IND": "India",
+"IRL": "Irlanda",
+"IRN": "Irán",
+"IRQ": "Irak",
+"ISL": "Islandia",
+"ISR": "Israel",
+"ITA": "Italia",
+"JAM": "Jamaica",
+"JOR": "Jordania",
+"JPN": "Japón",
+"KAZ": "Kazajistán",
+"KEN": "Kenia",
+"KGZ": "Kirguistán",
+"KHM": "Camboya",
+"KIR": "Kiribati",
+"KNA": "San Cristóbal y Nieves",
+"KOR": "Corea del Sur",
+"KWT": "Kuwait",
+"LAO": "Laos",
+"LBN": "Líbano",
+"LBR": "Liberia",
+"LBY": "Libia",
+"LCA": "Santa Lucía",
+"LIE": "Liechtenstein",
+"LKA": "Sri Lanka",
+"LSO": "Lesoto",
+"LTU": "Lituania",
+"LUX": "Luxemburgo",
+"LVA": "Letonia",
+"MAR": "Marruecos",
+"MCO": "Mónaco",
+"MDA": "Moldavia",
+"MDG": "Madagascar",
+"MDV": "Maldivas",
+"MEX": "México",
+"MHL": "Islas Marshall",
+"MKD": "Macedonia del Norte",
+"MLI": "Malí",
+"MLT": "Malta",
+"MMR": "Myanmar",
+"MNE": "Montenegro",
+"MNG": "Mongolia",
+"MOZ": "Mozambique",
+"MRT": "Mauritania",
+"MUS": "Mauricio",
+"MWI": "Malaui",
+"MYS": "Malasia",
+"NAM": "Namibia",
+"NER": "Níger",
+"NGA": "Nigeria",
+"NIC": "Nicaragua",
+"NLD": "Países Bajos",
+"NOR": "Noruega",
+"NPL": "Nepal",
+"NRU": "Nauru",
+"NZL": "Nueva Zelanda",
+"OMN": "Omán",
+"PAK": "Pakistán",
+"PAN": "Panamá",
+"PER": "Perú",
+"PHL": "Filipinas",
+"PLW": "Palaos",
+"PNG": "Papúa N. Guinea",
+"POL": "Polonia",
+"PRK": "Corea del Norte",
+"PRT": "Portugal",
+"PRY": "Paraguay",
+"PSX": "Palestina",
+"QAT": "Catar",
+"ROU": "Rumanía",
+"RUS": "Rusia",
+"RWA": "Ruanda",
+"SAU": "Arabia Saudí",
+"SDN": "Sudán",
+"SDS": "Sudán del Sur",
+"SEN": "Senegal",
+"SGP": "Singapur",
+"SLB": "Islas Salomón",
+"SLE": "Sierra Leona",
+"SLV": "El Salvador",
+"SMR": "San Marino",
+"SOM": "Somalia",
+"SRB": "Serbia",
+"STP": "Santo Tomé y Príncipe",
+"SUR": "Surinam",
+"SVK": "Eslovaquia",
+"SVN": "Eslovenia",
+"SWE": "Suecia",
+"SWZ": "Esuatini",
+"SYC": "Seychelles",
+"SYR": "Siria",
+"TCD": "Chad",
+"TGO": "Togo",
+"THA": "Tailandia",
+"TJK": "Tayikistán",
+"TKM": "Turkmenistán",
+"TLS": "Timor Oriental",
+"TON": "Tonga",
+"TTO": "Trinidad y Tobago",
+"TUN": "Túnez",
+"TUR": "Turquía",
+"TUV": "Tuvalu",
+"TZA": "Tanzania",
+"UGA": "Uganda",
+"UKR": "Ucrania",
+"URY": "Uruguay",
+"USA": "Estados Unidos",
+"UZB": "Uzbekistán",
+"VAT": "Vaticano",
+"VCT": "San Vicente y las Granadinas",
+"VEN": "Venezuela",
+"VNM": "Vietnam",
+"VUT": "Vanuatu",
+"WSM": "Samoa",
+"YEM": "Yemen",
+"ZAF": "Sudáfrica",
+"ZMB": "Zambia",
+"ZWE": "Zimbabue"
+},
+"SLICES": [
+{
+"label": "ANIMAL",
+"col": "#16A34A"
+},
+{
+"label": "ESTRELLA",
+"col": "#F4C20D"
+},
+{
+"label": "SOL O LUNA",
+"col": "#F47B20"
+},
+{
+"label": "ESCUDO O ARMA",
+"col": "#1D4ED8"
+},
+{
+"label": "CRUZ",
+"col": "#D3202B"
+},
+{
+"label": "FIGURA",
+"col": "#7C3AED"
+},
+{
+"label": "BLANCO",
+"col": "#E9E4D6"
+},
+{
+"label": "NEGRO",
+"col": "#2B2D35"
+},
+{
+"label": "VERDE",
+"col": "#22C55E"
+},
+{
+"label": "VERTICALES",
+"col": "#6CB4EE"
+},
+{
+"label": "2 COLORES",
+"col": "#F15BB5"
+},
+{
+"label": "NARANJA",
+"col": "#FF8A1F"
+}
+],
+"ROUNDS": [
+{
+"id": "R1",
+"slice": 0,
+"cond": "¡SU BANDERA TIENE UN ANIMAL!",
+"short": "ANIMAL",
+"step": 34,
+"cards": [
+{
+"k": "MEX",
+"title": "EL ÁGUILA Y LA SERPIENTE",
+"line": "Un águila devorando una serpiente sobre un nopal: la leyenda de Tenochtitlan",
+"bubble": "¡Mi águila no se rinde!"
+},
+{
+"k": "GTM",
+"title": "EL QUETZAL",
+"line": "El ave nacional, que además da nombre a su moneda",
+"bubble": "¡Mi pájaro vale dinero!"
+},
+{
+"k": "ECU",
+"title": "EL CÓNDOR ANDINO",
+"line": "Un cóndor con las alas abiertas corona el escudo de Ecuador",
+"bubble": "¡Mi cóndor sale volando!"
+},
+{
+"k": "BOL",
+"title": "CÓNDOR... ¡Y ALPACA!",
+"line": "Su bandera oficial lleva el escudo con un cóndor y una alpaca",
+"bubble": "¡Dos animales, doble castigo!"
+},
+{
+"k": "ESP",
+"title": "¿ESPAÑA? ¡HAY UN LEÓN!",
+"line": "En su escudo está el león del antiguo Reino de León",
+"bubble": "¡Pero si casi no se ve!"
+},
+{
+"k": "BTN",
+"title": "EL DRAGÓN DEL TRUENO",
+"line": "Bután significa «tierra del dragón del trueno»",
+"bubble": "¡Soy un dragón, respétame!"
+}
+],
+"elim": [
+[
+"KIR",
+"Fragata (ave)"
+],
+[
+"MEX",
+""
+],
+[
+"GTM",
+""
+],
+[
+"ECU",
+""
+],
+[
+"BOL",
+""
+],
+[
+"DMA",
+"Loro"
+],
+[
+"ESP",
+""
+],
+[
+"AND",
+"Vacas del escudo"
+],
+[
+"MNE",
+"Águila"
+],
+[
+"ALB",
+"Águila bicéfala"
+],
+[
+"SRB",
+"Águila bicéfala"
+],
+[
+"MDA",
+"Águila"
+],
+[
+"ZMB",
+"Águila"
+],
+[
+"EGY",
+"Águila de Saladino"
+],
+[
+"ZWE",
+"Pájaro de Zimbabue"
+],
+[
+"UGA",
+"Grulla"
+],
+[
+"KAZ",
+"Águila"
+],
+[
+"LKA",
+"León"
+],
+[
+"BTN",
+""
+],
+[
+"PNG",
+"Ave del paraíso"
+],
+[
+"FJI",
+"León del escudo"
+]
+]
+},
+{
+"id": "R2",
+"slice": 1,
+"cond": "¡SU BANDERA TIENE UNA ESTRELLA!",
+"short": "ESTRELLA",
+"step": 34,
+"cards": [
+{
+"k": "USA",
+"title": "50 ESTRELLAS",
+"line": "Una estrella por cada uno de sus 50 estados",
+"bubble": "¡50 motivos para caer!"
+},
+{
+"k": "HND",
+"title": "5 ESTRELLAS",
+"line": "Las cinco naciones de la antigua Centroamérica unida",
+"bubble": "¡Cinco veces fuera!"
+},
+{
+"k": "CHL",
+"title": "LA ESTRELLA SOLITARIA",
+"line": "Una sola estrella blanca sobre el cuadro azul",
+"bubble": "¡Con una sola bastaba!"
+},
+{
+"k": "VEN",
+"title": "8 ESTRELLAS",
+"line": "Tenía 7 y en 2006 se le añadió la octava",
+"bubble": "¡La octava me ha condenado!"
+},
+{
+"k": "PRY",
+"title": "¡LA DE DOS CARAS!",
+"line": "Su bandera tiene un escudo distinto por cada lado, y uno lleva una estrella",
+"bubble": "¡Por el lado de la estrella no!"
+},
+{
+"k": "BRA",
+"title": "27 ESTRELLAS",
+"line": "Una por cada estado más el Distrito Federal, como el cielo de Río la mañana del 15 de noviembre de 1889",
+"bubble": "¡Mi cielo entero, fuera!"
+}
+],
+"elim": [
+[
+"WSM",
+"Estrellas"
+],
+[
+"USA",
+""
+],
+[
+"HND",
+""
+],
+[
+"PAN",
+"Estrellas"
+],
+[
+"CUB",
+"Estrella"
+],
+[
+"CHL",
+""
+],
+[
+"VEN",
+""
+],
+[
+"KNA",
+"Estrellas"
+],
+[
+"GRD",
+"Estrellas"
+],
+[
+"PRY",
+""
+],
+[
+"SUR",
+"Estrella"
+],
+[
+"BRA",
+""
+],
+[
+"CPV",
+"Estrellas"
+],
+[
+"GNB",
+"Estrella"
+],
+[
+"SEN",
+"Estrella"
+],
+[
+"MRT",
+"Estrella"
+],
+[
+"LBR",
+"Estrella"
+],
+[
+"MAR",
+"Estrella"
+],
+[
+"BFA",
+"Estrella"
+],
+[
+"GHA",
+"Estrella negra"
+],
+[
+"TGO",
+"Estrella"
+],
+[
+"DZA",
+"Estrella"
+],
+[
+"STP",
+"Estrellas"
+],
+[
+"TUN",
+"Estrella"
+],
+[
+"GNQ",
+"Estrellas"
+],
+[
+"CMR",
+"Estrella"
+],
+[
+"SVN",
+"Estrellas del escudo"
+],
+[
+"BIH",
+"Estrellas"
+],
+[
+"AGO",
+"Estrella"
+],
+[
+"LBY",
+"Estrella"
+],
+[
+"CAF",
+"Estrella"
+],
+[
+"COD",
+"Estrella"
+],
+[
+"BDI",
+"Estrellas"
+],
+[
+"SDS",
+"Estrella"
+],
+[
+"TUR",
+"Estrella"
+],
+[
+"ISR",
+"Estrella de David"
+],
+[
+"JOR",
+"Estrella"
+],
+[
+"MOZ",
+"Estrella"
+],
+[
+"SYR",
+"Estrellas"
+],
+[
+"ETH",
+"Estrella"
+],
+[
+"DJI",
+"Estrella"
+],
+[
+"COM",
+"Estrellas"
+],
+[
+"AZE",
+"Estrella"
+],
+[
+"SOM",
+"Estrella"
+],
+[
+"TKM",
+"Estrellas"
+],
+[
+"UZB",
+"Estrellas"
+],
+[
+"TJK",
+"Estrellas"
+],
+[
+"PAK",
+"Estrella"
+],
+[
+"MMR",
+"Estrella"
+],
+[
+"CHN",
+"Estrellas"
+],
+[
+"SGP",
+"Estrellas"
+],
+[
+"VNM",
+"Estrella"
+],
+[
+"MYS",
+"Estrella"
+],
+[
+"PRK",
+"Estrella"
+],
+[
+"PHL",
+"Estrellas"
+],
+[
+"TLS",
+"Estrella"
+],
+[
+"AUS",
+"Estrellas"
+],
+[
+"NZL",
+"Estrellas"
+],
+[
+"FSM",
+"Estrellas"
+],
+[
+"SLB",
+"Estrellas"
+],
+[
+"NRU",
+"Estrella"
+],
+[
+"MHL",
+"Estrella"
+],
+[
+"TUV",
+"Estrellas"
+]
+]
+},
+{
+"id": "R3",
+"slice": 2,
+"cond": "¡SU BANDERA TIENE UN SOL O UNA LUNA!",
+"short": "SOL O LUNA",
+"step": 34,
+"cards": [
+{
+"k": "ARG",
+"title": "EL SOL DE MAYO",
+"line": "El sol con cara que recuerda la Revolución de Mayo de 1810",
+"bubble": "¡Mi sol me ha traicionado!"
+},
+{
+"k": "URY",
+"title": "EL SOL DE MAYO",
+"line": "Uruguay también lleva el Sol de Mayo, con 16 rayos",
+"bubble": "¡Hasta en esto como Argentina!"
+},
+{
+"k": "NPL",
+"title": "NO ES UN RECTÁNGULO",
+"line": "Nepal tiene la única bandera nacional que no es rectangular... y lleva sol y luna",
+"bubble": "¡Ni con dos picos me salvo!"
+}
+],
+"elim": [
+[
+"ARG",
+""
+],
+[
+"ATG",
+"Sol naciente"
+],
+[
+"URY",
+""
+],
+[
+"NAM",
+"Sol"
+],
+[
+"MKD",
+"Sol"
+],
+[
+"RWA",
+"Sol"
+],
+[
+"MWI",
+"Sol naciente"
+],
+[
+"IRN",
+"Medias lunas del emblema"
+],
+[
+"AFG",
+"Sol del emblema"
+],
+[
+"KGZ",
+"Sol"
+],
+[
+"MDV",
+"Media luna"
+],
+[
+"NPL",
+""
+],
+[
+"MNG",
+"Sol y luna"
+],
+[
+"BRN",
+"Media luna"
+]
+]
+},
+{
+"id": "R4",
+"slice": 3,
+"cond": "¡SU BANDERA TIENE ESCUDO, ARMA O CORONA!",
+"short": "ESCUDO",
+"step": 34,
+"cards": [
+{
+"k": "SLV",
+"title": "EL ESCUDO DE EL SALVADOR",
+"line": "Un triángulo con cinco volcanes en el centro de la bandera",
+"bubble": "¡Cinco volcanes y aun así caigo!"
+},
+{
+"k": "DOM",
+"title": "UNA BIBLIA EN LA BANDERA",
+"line": "En su escudo hay una Biblia abierta y una cruz",
+"bubble": "¡Que alguien rece por mí!"
+},
+{
+"k": "BRB",
+"title": "EL TRIDENTE ROTO",
+"line": "El tridente de Neptuno, roto: la ruptura con el pasado colonial",
+"bubble": "¡Mi tridente no sirve de nada!"
+},
+{
+"k": "PRT",
+"title": "LA ESFERA ARMILAR",
+"line": "El escudo de Portugal sobre la esfera de los navegantes",
+"bubble": "¡Navegué por todo el mundo para esto!"
+},
+{
+"k": "SAU",
+"title": "LA ESPADA",
+"line": "Una espada bajo la profesión de fe islámica",
+"bubble": "¡Mi espada me corta el paso!"
+}
+],
+"elim": [
+[
+"SLV",
+""
+],
+[
+"BLZ",
+"Escudo"
+],
+[
+"NIC",
+"Escudo"
+],
+[
+"HTI",
+"Cañones del escudo"
+],
+[
+"DOM",
+""
+],
+[
+"BRB",
+""
+],
+[
+"PRT",
+""
+],
+[
+"LIE",
+"Corona"
+],
+[
+"SMR",
+"Escudo y corona"
+],
+[
+"VAT",
+"Tiara y llaves"
+],
+[
+"HRV",
+"Escudo"
+],
+[
+"SVK",
+"Escudo"
+],
+[
+"SWZ",
+"Escudo y lanzas"
+],
+[
+"KEN",
+"Escudo y lanzas"
+],
+[
+"SAU",
+""
+],
+[
+"OMN",
+"Espadas"
+]
+]
+},
+{
+"id": "R5",
+"slice": 4,
+"cond": "¡SU BANDERA TIENE UNA CRUZ!",
+"short": "CRUZ",
+"step": 34,
+"cards": [
+{
+"k": "JAM",
+"title": "¿UN ASPA CUENTA?",
+"line": "La única bandera sin rojo, blanco ni azul... pero con aspa",
+"bubble": "¡Una cruz tumbada sigue siendo cruz!"
+},
+{
+"k": "ENG",
+"title": "LA UNION JACK",
+"line": "Reino Unido junta las cruces de Inglaterra, Escocia e Irlanda",
+"bubble": "¡Tres cruces, ninguna salvación!"
+},
+{
+"k": "CHE",
+"title": "BANDERA CUADRADA",
+"line": "Suiza y el Vaticano tienen las únicas banderas cuadradas",
+"bubble": "¡Neutral... pero fuera!"
+},
+{
+"k": "DNK",
+"title": "LA MÁS ANTIGUA",
+"line": "Se considera la bandera nacional más antigua todavía en uso",
+"bubble": "¡800 años y ahora caigo!"
+}
+],
+"elim": [
+[
+"TON",
+"Cruz"
+],
+[
+"JAM",
+""
+],
+[
+"ISL",
+"Cruz"
+],
+[
+"ENG",
+""
+],
+[
+"CHE",
+""
+],
+[
+"DNK",
+""
+],
+[
+"NOR",
+"Cruz"
+],
+[
+"SWE",
+"Cruz"
+],
+[
+"MLT",
+"Cruz de San Jorge"
+],
+[
+"FIN",
+"Cruz"
+],
+[
+"GRC",
+"Cruz"
+],
+[
+"GEO",
+"Cruces"
+]
+]
+},
+{
+"id": "R6",
+"slice": 5,
+"cond": "¡SU BANDERA TIENE UN TRIÁNGULO O UN CÍRCULO!",
+"short": "FIGURA",
+"step": 34,
+"cards": [
+{
+"k": "CZE",
+"title": "EL TRIÁNGULO AZUL",
+"line": "Al separarse de Eslovaquia en 1993, Chequia se quedó la bandera",
+"bubble": "¡Me la quedé para nada!"
+},
+{
+"k": "BGD",
+"title": "UN CÍRCULO DESCENTRADO",
+"line": "El círculo está movido hacia el mástil para que parezca centrado al ondear",
+"bubble": "¡Ni con truco me salvo!"
+},
+{
+"k": "JPN",
+"title": "EL SOL NACIENTE",
+"line": "Hinomaru: el sol rojo... dibujado como un círculo",
+"bubble": "¡No es un sol, es un círculo!"
+}
+],
+"elim": [
+[
+"BHS",
+"Triángulo"
+],
+[
+"LCA",
+"Triángulos"
+],
+[
+"GUY",
+"Triángulos"
+],
+[
+"NER",
+"Círculo"
+],
+[
+"CZE",
+""
+],
+[
+"ZAF",
+"Triángulo"
+],
+[
+"SDN",
+"Triángulo"
+],
+[
+"PSX",
+"Triángulo"
+],
+[
+"ERI",
+"Triángulo"
+],
+[
+"IND",
+"Círculo (rueda)"
+],
+[
+"BGD",
+""
+],
+[
+"LAO",
+"Círculo"
+],
+[
+"KOR",
+"Círculo"
+],
+[
+"JPN",
+""
+],
+[
+"PLW",
+"Círculo"
+],
+[
+"VUT",
+"Triángulo"
+]
+]
+},
+{
+"id": "R7",
+"slice": 6,
+"cond": "¡SU BANDERA TIENE BLANCO!",
+"short": "BLANCO",
+"step": 34,
+"cards": [
+{
+"k": "CRI",
+"title": "BLANCO, AZUL Y ROJO",
+"line": "La bandera que ves en el mapa es la civil, sin escudo",
+"bubble": "¡Me salvé del escudo... no del blanco!"
+},
+{
+"k": "CAN",
+"title": "LA HOJA DE ARCE",
+"line": "Ni animal ni estrella: lo que la elimina es el fondo blanco",
+"bubble": "¡Era la hoja, no el blanco!"
+},
+{
+"k": "PER",
+"title": "ROJO Y BLANCO",
+"line": "Cuenta la leyenda que San Martín se inspiró en unos flamencos",
+"bubble": "¡Mis flamencos eran blancos!"
+},
+{
+"k": "FRA",
+"title": "LA TRICOLOR",
+"line": "Azul, blanco y rojo: el blanco la condena",
+"bubble": "¡Sacrebleu!"
+},
+{
+"k": "IDN",
+"title": "¿INDONESIA O MÓNACO?",
+"line": "Las dos son roja y blanca: solo cambia la proporción",
+"bubble": "¡Y nos vamos juntos!"
+}
+],
+"elim": [
+[
+"CRI",
+""
+],
+[
+"CAN",
+""
+],
+[
+"PER",
+""
+],
+[
+"TTO",
+"Blanco"
+],
+[
+"GMB",
+"Blanco"
+],
+[
+"SLE",
+"Blanco"
+],
+[
+"IRL",
+"Blanco"
+],
+[
+"CIV",
+"Blanco"
+],
+[
+"FRA",
+""
+],
+[
+"NLD",
+"Blanco"
+],
+[
+"LUX",
+"Blanco"
+],
+[
+"MCO",
+"Blanco"
+],
+[
+"NGA",
+"Blanco"
+],
+[
+"ITA",
+"Blanco"
+],
+[
+"AUT",
+"Blanco"
+],
+[
+"POL",
+"Blanco"
+],
+[
+"HUN",
+"Blanco"
+],
+[
+"LVA",
+"Blanco"
+],
+[
+"EST",
+"Blanco"
+],
+[
+"BGR",
+"Blanco"
+],
+[
+"BWA",
+"Blanco"
+],
+[
+"BLR",
+"Blanco"
+],
+[
+"LSO",
+"Blanco"
+],
+[
+"CYP",
+"Blanco"
+],
+[
+"LBN",
+"Blanco"
+],
+[
+"IRQ",
+"Blanco"
+],
+[
+"KWT",
+"Blanco"
+],
+[
+"MDG",
+"Blanco"
+],
+[
+"YEM",
+"Blanco"
+],
+[
+"BHR",
+"Blanco"
+],
+[
+"QAT",
+"Blanco"
+],
+[
+"ARE",
+"Blanco"
+],
+[
+"SYC",
+"Blanco"
+],
+[
+"RUS",
+"Blanco"
+],
+[
+"THA",
+"Blanco"
+],
+[
+"KHM",
+"Blanco"
+],
+[
+"IDN",
+""
+]
+]
+},
+{
+"id": "R8",
+"slice": 7,
+"cond": "¡SU BANDERA TIENE NEGRO!",
+"short": "NEGRO",
+"step": 34,
+"cards": [
+{
+"k": "BEL",
+"title": "NEGRO, AMARILLO Y ROJO",
+"line": "Como Alemania, pero en vertical",
+"bubble": "¡Otra vez detrás de Alemania!"
+},
+{
+"k": "DEU",
+"title": "NEGRO, ROJO Y ORO",
+"line": "Tres franjas horizontales y ningún símbolo... pero negro",
+"bubble": "¡Llegué lejos, por lo menos!"
+}
+],
+"elim": [
+[
+"BEL",
+""
+],
+[
+"DEU",
+""
+],
+[
+"TZA",
+"Negro"
+]
+]
+},
+{
+"id": "R9",
+"slice": 8,
+"cond": "¡SU BANDERA TIENE VERDE!",
+"short": "VERDE",
+"step": 34,
+"cards": [
+{
+"k": "MLI",
+"title": "MALÍ Y GUINEA",
+"line": "Los mismos colores... en orden inverso",
+"bubble": "¡Nos vamos los dos!"
+},
+{
+"k": "LTU",
+"title": "AMARILLO, VERDE Y ROJO",
+"line": "Sin símbolos y sin blanco, pero con verde",
+"bubble": "¡Tan cerca del final!"
+}
+],
+"elim": [
+[
+"VCT",
+"Verde"
+],
+[
+"GIN",
+"Verde"
+],
+[
+"MLI",
+""
+],
+[
+"BEN",
+"Verde"
+],
+[
+"GAB",
+"Verde"
+],
+[
+"COG",
+"Verde"
+],
+[
+"LTU",
+""
+],
+[
+"MUS",
+"Verde"
+]
+]
+},
+{
+"id": "R10",
+"slice": 9,
+"cond": "¡SU BANDERA TIENE FRANJAS VERTICALES!",
+"short": "VERTICALES",
+"step": 34,
+"cards": [
+{
+"k": "TCD",
+"title": "CHAD",
+"line": "Azul, amarillo y rojo en vertical, como Rumanía",
+"bubble": "¡Ni siquiera fue culpa mía!"
+},
+{
+"k": "ROU",
+"title": "RUMANÍA Y CHAD",
+"line": "Son casi idénticas: solo cambia el tono del azul",
+"bubble": "¡Me he copiado... y me han pillado!"
+}
+],
+"elim": [
+[
+"TCD",
+""
+],
+[
+"ROU",
+""
+]
+]
+},
+{
+"id": "R11",
+"slice": 10,
+"cond": "¡SU BANDERA SOLO TIENE 2 COLORES!",
+"short": "2 COLORES",
+"step": 34,
+"cards": [
+{
+"k": "UKR",
+"title": "AZUL Y AMARILLO",
+"line": "El cielo azul sobre los campos de trigo: solo dos colores",
+"bubble": "¡Me faltó un color!"
+}
+],
+"elim": [
+[
+"UKR",
+""
+]
+]
+},
+{
+"id": "R12",
+"slice": 11,
+"cond": "¡SU BANDERA TIENE NARANJA!",
+"short": "NARANJA",
+"step": 34,
+"cards": [
+{
+"k": "ARM",
+"title": "ROJO, AZUL Y NARANJA",
+"line": "Armenia llegó al duelo final... pero tiene naranja",
+"bubble": "¡A un paso de la gloria!"
+},
+{
+"k": "COL",
+"title": "¿Y COLOMBIA?",
+"line": "Amarillo, azul y rojo... ¡y nada de naranja!",
+"bubble": "¡Sigo en pie!",
+"safe": true
+}
+],
+"elim": [
+[
+"ARM",
+""
+]
+]
+}
+]
+}
