@@ -36,6 +36,7 @@ import {Video39, V39_TOTAL} from './v39/Video39';
 import {Video40, V40_TOTAL} from './v40/Video40';
 import {Video41, V41_TOTAL} from './v41/Video41';
 import {Video42, V42_TOTAL} from './v42/Video42';
+import {T42a, T42b, T42c, T42d, T42e} from './v42/Thumbs42';
 import {T41a, T41b, T41c, T41d, T41e} from './v41/Thumbs41';
 import {T40a, T40b, T40c, T40d, T40e} from './v40/Thumbs40';
 import {T39a, T39b, T39c, T39d, T39e} from './v39/Thumbs39';
@@ -216,6 +217,7 @@ t	<Composition id="V23" component={Video23} durationInFrames={V23_TOTAL} fps={60
 		{[T29f, T29g, T29h, T29i, T29j].map((C, i) => <Still key={'t29n' + i} id={`T29N-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T29a, T29b, T29c, T29d, T29e].map((C, i) => <Still key={'tb29' + i} id={`TB29-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T30a, T30b, T30c, T30d, T30e].map((C, i) => <Still key={'tb30' + i} id={`TB30-${i + 1}`} component={C} width={1920} height={1080} />)}
+		{[T42a, T42b, T42c, T42d, T42e].map((C, i) => <Still key={'tb42' + i} id={`TB42-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T41a, T41b, T41c, T41d, T41e].map((C, i) => <Still key={'tb41' + i} id={`TB41-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T40a, T40b, T40c, T40d, T40e].map((C, i) => <Still key={'tb40' + i} id={`TB40-${i + 1}`} component={C} width={1920} height={1080} />)}
 		{[T39a, T39b, T39c, T39d, T39e].map((C, i) => <Still key={'tb39' + i} id={`TB39-${i + 1}`} component={C} width={1920} height={1080} />)}

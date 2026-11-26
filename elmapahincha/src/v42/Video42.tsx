@@ -15,7 +15,7 @@ const OWN: Record<string, string> = {TEXAS: 'MEX', CESION: 'MEX', LITORAL: 'BOL'
 const LAND = ['CHL', 'BOL', 'PER', 'BRA', 'PRY', 'ARG', 'ECU', 'GUY', 'VEN', 'COL', 'USA'];
 const geo = (k: string) => (k in LOST ? (LOST as any)[k] : {d: WORLD[k].d, c: WORLD[k].c, b: WORLD[k].b});
 // overlay: lost territories painted with the claimant's flag (appear at t0, staggered)
-const Lost: React.FC<{keys: string[]; t: number; at?: number; step?: number}> = ({keys, t, at = 60, step = 40}) => (
+export const Lost: React.FC<{keys: string[]; t: number; at?: number; step?: number}> = ({keys, t, at = 60, step = 40}) => (
 	<g>
 		<defs>
 			<clipPath id="lland">{LAND.map((k) => <path key={k} d={WORLD[k].d} />)}</clipPath>
