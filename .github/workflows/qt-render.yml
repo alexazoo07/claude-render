@@ -1,0 +1,57 @@
+name: qt-render
+on:
+  workflow_dispatch:
+    inputs:
+      tag: {description: 'output branch suffix', required: true, default: 'p1'}
+permissions:
+  contents: write
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: quetiene}
+      - id: c
+        uses: actions/cache/restore@v4
+        with: {path: qtdata, key: 'qt-data-${{ hashFiles(''quetiene/prep.py'') }}', lookup-only: true}
+      - if: steps.c.outputs.cache-hit != 'true'
+        run: |
+          pip install -q numpy opencv-python-headless tifffile imagecodecs shapely
+          mkdir -p qtdata /tmp/dl
+          curl -sL -o /tmp/dl/ne1.tif https://raw.githubusercontent.com/nvkelso/natural-earth-raster/master/10m_rasters/NE1_HR_LC_SR_W/NE1_HR_LC_SR_W.tif
+          curl -sL -o /tmp/dl/c.geojson https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
+          ls -la /tmp/dl
+          python3 quetiene/prep.py qtdata /tmp/dl/ne1.tif /tmp/dl/c.geojson
+          rm -f qtdata/cid.npy
+      - if: steps.c.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with: {path: qtdata, key: 'qt-data-${{ hashFiles(''quetiene/prep.py'') }}'}
+  render:
+    needs: data
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: quetiene}
+      - uses: actions/cache/restore@v4
+        with: {path: qtdata, key: 'qt-data-${{ hashFiles(''quetiene/prep.py'') }}', fail-on-cache-miss: true}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && pip install -q numpy opencv-python-headless pillow shapely
+      - run: python3 quetiene/render.py qtdata part_${{ matrix.job }}.mp4 ${{ matrix.job }} 20
+      - uses: actions/upload-artifact@v4
+        with: {name: 'part_${{ matrix.job }}', path: 'part_${{ matrix.job }}.mp4', retention-days: 2}
+  merge:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {path: parts, merge-multiple: true}
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          for i in $(seq 0 19); do echo "file 'parts/part_$i.mp4'" >> list.txt; done
+          ffmpeg -loglevel error -f concat -safe 0 -i list.txt -c copy video.mp4
+          ffprobe -v error -count_packets -show_entries stream=nb_read_packets,r_frame_rate -of csv video.mp4
+          mkdir -p /tmp/o && md5sum video.mp4 > /tmp/o/video.md5 && split -b 90M -d video.mp4 /tmp/o/video.mp4.part
+          cd /tmp/o && git init -q && git checkout -q -b out-qt-${{ inputs.tag }} && git add . && git -c user.name=bot -c user.email=bot@x commit -q -m out
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" out-qt-${{ inputs.tag }}
