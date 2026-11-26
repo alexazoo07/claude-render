@@ -17,7 +17,8 @@ def req(method, path, body=None):
     except urllib.error.HTTPError as e:
         print('HTTP', e.code, path, e.read()[:800].decode('utf8', 'replace')); raise
 def list_voices():
-    mine = req('GET', '/v2/voices?page_size=100')
+    try: mine = req('GET', '/v2/voices?page_size=100')
+    except Exception: mine = {}
     shared = {'voices': []}
     for acc in ['mexican', 'argentine', 'colombian', 'chilean', 'peninsular', 'latin american', 'caribbean', 'venezuelan', 'peruvian', 'cuban']:
         try: shared['voices'] += [dict(v, _q=acc) for v in req('GET', '/v1/shared-voices?page_size=60&language=es&gender=male&accent=' + acc.replace(' ', '%20')).get('voices', [])]
