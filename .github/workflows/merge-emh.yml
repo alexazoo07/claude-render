@@ -1,0 +1,37 @@
+name: merge-emh
+run-name: merge ${{ inputs.comp }} (run ${{ inputs.run_id }}, tramo 00 de rama ${{ inputs.c0 }})
+on:
+  workflow_dispatch:
+    inputs:
+      comp: {required: true}
+      run_id: {required: true}
+      audio: {required: true}
+      c0: {required: true}
+permissions: { contents: write, actions: read }
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: elmapahincha/audio }
+      - uses: actions/checkout@v4
+        with: { ref: '${{ inputs.c0 }}', path: c0 }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'part_*', path: elmapahincha/parts, run-id: '${{ inputs.run_id }}', github-token: '${{ github.token }}' }
+      - name: Unir tramos + audio
+        working-directory: elmapahincha
+        run: |
+          mkdir -p parts/part_00 && cat $GITHUB_WORKSPACE/c0/c_* > parts/part_00/part.mp4
+          ls parts
+          for d in $(ls -d parts/part_* | sort); do echo "file '$PWD/$d/part.mp4'"; done > list.txt
+          ffmpeg -v error -y -f concat -safe 0 -i list.txt -i "audio/${{ inputs.audio }}" -map 0:v -map 1:a -c:v copy -c:a copy -shortest -movflags +faststart final.mp4
+          ffprobe -v error -count_packets -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_read_packets -show_entries format=duration,size -of compact final.mp4
+      - name: Subir a la rama out-<comp>
+        run: |
+          B="out-${{ inputs.comp }}"
+          mkdir -p /tmp/o && cd /tmp/o && git init -q && git checkout -q -b "$B"
+          split -b 90M -d -a 3 "$GITHUB_WORKSPACE/elmapahincha/final.mp4" part_
+          md5sum "$GITHUB_WORKSPACE/elmapahincha/final.mp4" | cut -d' ' -f1 > md5
+          git add . && git -c user.name=render -c user.email=render@users.noreply.github.com commit -q -m "$B"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "$B"
