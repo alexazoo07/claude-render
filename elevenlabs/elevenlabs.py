@@ -18,9 +18,15 @@ def req(method, path, body=None):
         print('HTTP', e.code, path, e.read()[:800].decode('utf8', 'replace')); raise
 def list_voices():
     mine = req('GET', '/v2/voices?page_size=100')
-    shared = req('GET', '/v1/shared-voices?page_size=100&language=es')
+    shared = {'voices': []}
+    for acc in ['mexican', 'argentine', 'colombian', 'chilean', 'peninsular', 'latin american', 'caribbean', 'venezuelan', 'peruvian', 'cuban']:
+        try: shared['voices'] += [dict(v, _q=acc) for v in req('GET', '/v1/shared-voices?page_size=60&language=es&gender=male&accent=' + acc.replace(' ', '%20')).get('voices', [])]
+        except Exception as e: print('shared err', acc, e)
     json.dump({'mine': mine, 'shared_es': shared}, open(f'{OUT}/voices.json', 'w'), ensure_ascii=False, indent=1)
     print('mine', len(mine.get('voices', [])), 'shared_es', len(shared.get('voices', [])))
+    try:
+        m = req('GET', '/v1/models'); json.dump(m, open(f'{OUT}/models.json', 'w'), indent=1); print('models', [x.get('model_id') for x in m])
+    except Exception as e: print('models err', e)
     try: print('subscription', req('GET', '/v1/user/subscription').get('tier'))
     except Exception: pass
 def tts(job_path):
