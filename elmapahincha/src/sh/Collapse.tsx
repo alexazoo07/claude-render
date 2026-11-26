@@ -17,12 +17,12 @@ export type Geo = {states: Record<string, {d: string; c: number[]; b: number[]}>
 export type Region = {
 	id: string; states: string[]; flag: string; name: string; verb: string; verbCol: string; pill: string; label: string;
 	bubble: string; heroBubble: string; heroMood?: Mood; hero: [number, number]; joiner?: {flag: string; pos: [number, number]; bubble: string};
-	pct: number; dur?: number;
+	pct: number; dur?: number; lines?: {who: 'r' | 'j' | 'h'; text: string}[];
 };
 export type CollapseCfg = {
 	geo: Geo; country: string; heroFlag: string; hud: string; title: [string, string, string]; based: string; help: string;
 	regions: Region[]; finale: [string, string, string, string]; pct0?: number; start: [number, number];
-	vo?: Record<string, number>; voPrefix?: string;
+	vo?: Record<string, number>; voPrefix?: string; introText?: string; finText?: string;
 };
 
 // ---------------------------------------------------------------- countryball
@@ -76,13 +76,14 @@ export const Ball: React.FC<{flag: string; size: number; mood: Mood; t: number; 
 // ---------------------------------------------------------------- text helpers
 const tx = (size: number, color: string, sw = 0.16): React.CSSProperties => ({fontFamily: LILITA, fontSize: size, color, lineHeight: 1, WebkitTextStroke: `${size * sw}px ${INK}`, paintOrder: 'stroke fill', textShadow: `0 ${size * 0.08}px 0 ${INK}`, whiteSpace: 'nowrap', letterSpacing: 1});
 const Bubble: React.FC<{text: string; x: number; y: number; p: number; side?: 'l' | 'r'}> = ({text, x, y, p, side = 'r'}) => {
-	const w = text.length * 23 + 54;
+	const fs = text.length > 26 ? 34 : 40;
+	const w = Math.min(text.length * fs * 0.56 + 54, 600);
 	let left = side === 'r' ? x - w * 0.12 : x - w * 0.88;
 	left = Math.max(24, Math.min(W - 24 - w, left));
 	const tail = Math.max(14, Math.min(w - 54, x - left - 20));
 	return (
 		<div style={{position: 'absolute', left, top: y, width: w, transform: `translateY(-100%) scale(${p})`, transformOrigin: `${tail + 20}px 100%`, opacity: clamp01(p * 3)}}>
-			<div style={{position: 'relative', padding: '10px 0', textAlign: 'center', borderRadius: 18, background: '#fff', border: `5px solid ${INK}`, fontFamily: LILITA, fontSize: 40, color: INK, whiteSpace: 'nowrap', boxShadow: '0 5px 0 rgba(0,0,0,0.3)'}}>
+			<div style={{position: 'relative', padding: '10px 16px', textAlign: 'center', borderRadius: 18, background: '#fff', border: `5px solid ${INK}`, fontFamily: LILITA, fontSize: fs, lineHeight: 1.1, color: INK, boxShadow: '0 5px 0 rgba(0,0,0,0.3)'}}>
 				{text}
 				<svg width={40} height={26} style={{position: 'absolute', left: tail, bottom: -23}}><path d={side === 'r' ? 'M2 0 L6 24 L30 0' : 'M38 0 L34 24 L10 0'} fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" /><rect x={4} y={-6} width={32} height={8} fill="#fff" /></svg>
 			</div>
@@ -98,13 +99,17 @@ const Pill: React.FC<{text: string; p: number; y: number; bg?: string; size?: nu
 // ---------------------------------------------------------------- engine
 type Cam = {x: number; y: number; z: number};
 export function makeCollapse(C: CollapseCfg) {
-	const INTRO = 200, FIN = 420, SEG = 280;
+	const SEG = 280;
 	const VO = C.vo ?? {};
 	const d = (k: string) => Math.round((VO[k] ?? 0.9) * FPS);
 	// per-segment voice timings (frames from segment start): region line, joiner line, hero line
-	const TM = C.regions.map((r) => { const tR = 64; const tJ = r.joiner ? tR + d('r_' + r.id) + 6 : -1; const tH = (r.joiner ? tJ + d('j_' + r.id) : tR + d('r_' + r.id)) + 8; return {tR, tJ, tH, eR: tR + d('r_' + r.id), eJ: r.joiner ? tJ + d('j_' + r.id) : -1, eH: tH + d('h_' + r.id)}; });
-	const segs = C.regions.map((r, i) => r.dur ?? Math.max(SEG, TM[i].eH + 70));
-	const HELP0 = 92, HELPE = HELP0 + d('h_intro'), FINV = 140;
+	type Ln = {who: 'r' | 'j' | 'h'; text: string; a: number; e: number; key: string};
+	const LN: Ln[][] = C.regions.map((r) => { let t = 30; return (r.lines ?? []).map((l, k) => { const key = `${r.id}_${k}`; const a = t; const e = a + d(key); t = e + 2; return {...l, a, e, key}; }); });
+	const segs = C.regions.map((r, i) => r.dur ?? Math.max(SEG, (LN[i].length ? LN[i][LN[i].length - 1].e : 200) + 26));
+	const HELP0 = 40, HELPE = HELP0 + d('intro'), FINV = 80;
+	const INTRO = Math.max(200, HELPE + 20), FIN = Math.max(330, FINV + d('fin') + 70);
+	const lineAt = (i: number, who: string, u: number) => { const ls = LN[i].filter((l) => l.who === who); for (let k = ls.length - 1; k >= 0; k--) { const l = ls[k]; const nxt = ls[k + 1]; if (u >= l.a && u < (nxt ? nxt.a : l.e + 40)) return l; } return null; };
+	const talkOf = (i: number, who: string, u: number) => { const l = LN[i].find((x) => x.who === who && u >= x.a && u < x.e); return l ? talkAt(u, l.a, l.e) : 0; };
 	const S0: number[] = [];
 	let t0 = INTRO;
 	segs.forEach((d) => { S0.push(t0); t0 += d; });
@@ -157,19 +162,18 @@ export function makeCollapse(C: CollapseCfg) {
 			S(s - 4, `whoosh_${(i % 4) + 1}`, 0.5); S(s + 14, 'glitch', 0.25); S(s + 22, 'boom', 0.45); S(s + 26, 'pop_2', 0.45);
 			S(s + 40, 'slap', 0.35); S(s + 52, 'pop_4', 0.3); S(s + 62, 'select', 0.3);
 			for (let k = 0; k < 6; k++) S(s + 34 + k * 7, 'tick', 0.15);
-			S(s + 70, 'pop_1', 0.35); S(s + 105, 'pop_3', 0.35); S(s + 150, 'error', 0.25);
-			if (r.joiner) S(s + 80, 'pop_2', 0.4);
+			if (r.joiner) S(s + 60, 'pop_2', 0.4);
 		});
 		const P = C.voPrefix ?? 'vo';
-		S(HELP0, `${P}_h_intro`, 1.0);
-		C.regions.forEach((r, i) => { const s = S0[i]; S(s + TM[i].tR, `${P}_r_${r.id}`, 1.0); if (r.joiner) S(s + TM[i].tJ, `${P}_j_${r.id}`, 1.0); S(s + TM[i].tH, `${P}_h_${r.id}`, 1.0); });
-		S(F0 + FINV, `${P}_h_fin`, 1.0);
+		S(HELP0, `${P}_intro`, 1.0);
+		C.regions.forEach((r, i) => LN[i].forEach((l) => S(S0[i] + l.a, `${P}_${l.key}`, 1.0)));
+		S(F0 + FINV, `${P}_fin`, 1.0);
 		S(F0 - 4, 'whoosh_4', 0.5); S(F0 + 30, 'boom', 0.4); S(F0 + 40, 'slap', 0.4); S(F0 + 56, 'slap', 0.4); S(F0 + 150, 'confirm', 0.35); S(F0 + 180, 'pop_1', 0.35);
 		return o.sort((a, b) => a.f - b.f);
 	};
 	const music = () => `m_tense:0:${(TOTAL / FPS).toFixed(2)}`;
 
-	const talkAt = (f: number, a: number, e: number) => (f >= a && f < e ? 0.35 + 0.65 * Math.abs(Math.sin((f - a) / 3.3)) * (0.6 + 0.4 * Math.sin((f - a) / 7.1)) : 0);
+	function talkAt(f: number, a: number, e: number) { return f >= a && f < e ? 0.35 + 0.65 * Math.abs(Math.sin((f - a) / 3.3)) * (0.6 + 0.4 * Math.sin((f - a) / 7.1)) : 0; }
 	const bob = (f: number, ph: number, talking: number) => `translateY(${Math.sin(f / 9 + ph) * 7 - talking * 8}px) rotate(${Math.sin(f / 23 + ph) * 3}deg) scale(${1 + 0.025 * Math.sin(f / 9 + ph) + talking * 0.05}, ${1 - 0.025 * Math.sin(f / 9 + ph) + talking * 0.06})`;
 	const Video: React.FC = () => {
 		const f = useCurrentFrame();
@@ -246,29 +250,29 @@ export function makeCollapse(C: CollapseCfg) {
 					const by = sy - bs * 0.5;
 					return (
 						<React.Fragment key={r.id}>
-							<div style={{position: 'absolute', left: sx - bs / 2, top: by - bs * 0.06, transform: `scale(${pop}) ${bob(f, i * 1.7, cur ? talkAt(uu, TM[i].tR, TM[i].eR) : 0)}`, transformOrigin: '50% 90%'}}><Ball flag={r.flag} size={bs} mood={cur && uu > 60 ? 'happy' : 'smug'} t={f + i * 40} id={'r' + r.id} talk={cur ? talkAt(uu, TM[i].tR, TM[i].eR) : 0} /></div>
+							<div style={{position: 'absolute', left: sx - bs / 2, top: by - bs * 0.06, transform: `scale(${pop}) ${bob(f, i * 1.7, cur ? talkOf(i, 'r', uu) : 0)}`, transformOrigin: '50% 90%'}}><Ball flag={r.flag} size={bs} mood={cur && uu > 60 ? 'happy' : 'smug'} t={f + i * 40} id={'r' + r.id} talk={cur ? talkOf(i, 'r', uu) : 0} /></div>
 							{(cur || fin) && <div style={{position: 'absolute', left: sx - 300, width: 600, top: by - (small ? 52 : 70), display: 'flex', justifyContent: 'center', transform: `scale(${backOut((uu - 30) / 12)})`}}><span style={tx(small ? 32 : 44, '#FFD43B', 0.18)}>{r.label}</span></div>}
-							{cur && uu > TM[i].tR && uu < segs[i] - 16 && (() => { const hx = toS(...r.hero)[0]; const right = hx < sx; return <Bubble text={r.bubble} x={right ? sx + bs * 0.3 : sx - bs * 0.3} y={by - 76} p={backOut((uu - TM[i].tR) / 10)} side={right ? 'r' : 'l'} />; })()}
+							{cur && uu < segs[i] - 14 && (() => { const l = lineAt(i, 'r', uu); if (!l) return null; const hx = toS(...r.hero)[0]; const right = hx < sx; return <Bubble key={l.key} text={l.text} x={right ? sx + bs * 0.3 : sx - bs * 0.3} y={by - 76} p={backOut((uu - l.a) / 8)} side={right ? 'r' : 'l'} />; })()}
 						</React.Fragment>
 					);
 				})}
 				{/* joiner ball (e.g. neighbour that absorbs the region) */}
-				{seg >= 0 && C.regions[seg].joiner && (() => { const j = C.regions[seg].joiner!; const [sx, sy] = toS(...j.pos); const tm = TM[seg]; const tk = talkAt(u, tm.tJ, tm.eJ); const p = elastic((u - tm.tJ + 30) / 40); return <><div style={{position: 'absolute', left: sx - 90, top: sy - 100, transform: `scale(${p}) ${bob(f, 2.2, tk)}`, transformOrigin: '50% 90%'}}><Ball flag={j.flag} size={180} mood="happy" t={f} id="jn" talk={tk} /></div>{u > tm.tJ && u < segs[seg] - 16 && <Bubble text={j.bubble} x={sx + 50} y={sy - 90} p={backOut((u - tm.tJ) / 10)} />}</>; })()}
+				{seg >= 0 && C.regions[seg].joiner && (() => { const j = C.regions[seg].joiner!; const [sx, sy] = toS(...j.pos); const jl = LN[seg].find((l) => l.who === 'j'); const tJ = jl ? jl.a : 60; const tk = talkOf(seg, 'j', u); const p = elastic((u - Math.min(60, tJ - 10)) / 40); return <><div style={{position: 'absolute', left: sx - 90, top: sy - 100, transform: `scale(${p}) ${bob(f, 2.2, tk)}`, transformOrigin: '50% 90%'}}><Ball flag={j.flag} size={180} mood="happy" t={f} id="jn" talk={tk} /></div>{(() => { const l = lineAt(seg, 'j', u); return l && u < segs[seg] - 14 ? <Bubble text={l.text} x={sx + 50} y={sy - 90} p={backOut((u - l.a) / 8)} /> : null; })()}</>; })()}
 				{/* hero ball */}
 				{(() => {
 					let pos: [number, number] = C.start, mood: Mood = 'worried', bub: string | null = null, bp = 0, size = 260, alarm = 0, talk = 0;
-					if (f < INTRO) { size = 320 - 60 * easeInOut(f / 110); talk = talkAt(f, HELP0, HELPE); if (f > HELP0) { bub = C.help; bp = backOut((f - HELP0) / 10); } }
+					if (f < INTRO) { size = 320 - 60 * easeInOut(f / 110); talk = talkAt(f, HELP0, HELPE); if (f > HELP0 && f < HELPE + 40) { bub = C.introText ?? C.help; bp = backOut((f - HELP0) / 10); } }
 					else if (seg >= 0) {
 						const r = C.regions[seg]; const prevPos = seg === 0 ? C.start : C.regions[seg - 1].hero;
 						const t = easeInOut(u / 26);
 						pos = [prevPos[0] + (r.hero[0] - prevPos[0]) * t, prevPos[1] + (r.hero[1] - prevPos[1]) * t];
-						const tm = TM[seg];
-						mood = u < 30 ? 'worried' : u < tm.tH ? (r.heroMood ?? 'shock') : u < tm.eH + 10 ? (r.heroMood === 'angry' ? 'angry' : 'shock') : 'cry';
-						alarm = u >= 30 && u < tm.eH && (r.heroMood ?? 'shock') === 'shock' ? 1 : 0;
-						talk = talkAt(u, tm.tH, tm.eH);
-						if (u > tm.tH && u < segs[seg] - 16) { bub = r.heroBubble; bp = backOut((u - tm.tH) / 10); }
+						const hl = LN[seg].filter((l) => l.who === 'h'); const lastH = hl.length ? hl[hl.length - 1].e : 120;
+						mood = u < 30 ? 'worried' : u < lastH + 6 ? (r.heroMood ?? 'shock') : 'cry';
+						alarm = u >= 30 && u < (hl.length ? hl[0].a : 120) && (r.heroMood ?? 'shock') === 'shock' ? 1 : 0;
+						talk = talkOf(seg, 'h', u);
+						const l = lineAt(seg, 'h', u); if (l && u < segs[seg] - 14) { bub = l.text; bp = backOut((u - l.a) / 8); }
 						size = 230;
-					} else { const last = C.regions[C.regions.length - 1].hero; const t = easeInOut((f - F0) / 30); pos = [last[0] + (C.start[0] - last[0]) * t, last[1] + (C.start[1] - last[1]) * t]; mood = f - F0 > 60 ? 'smug' : 'cry'; size = 210; talk = talkAt(f - F0, FINV, FINV + d('h_fin')); }
+					} else { const last = C.regions[C.regions.length - 1].hero; const t = easeInOut((f - F0) / 30); pos = [last[0] + (C.start[0] - last[0]) * t, last[1] + (C.start[1] - last[1]) * t]; mood = f - F0 > 60 ? 'smug' : 'cry'; size = 210; talk = talkAt(f - F0, FINV, FINV + d('fin')); if (f - F0 > FINV && f - F0 < FINV + d('fin') + 40 && C.finText) { bub = C.finText; bp = backOut((f - F0 - FINV) / 8); } }
 					const [sx, sy] = toS(...pos);
 					const jump = seg >= 0 && u >= 30 && u < 44 ? -Math.sin(((u - 30) / 14) * Math.PI) * 30 : 0;
 					const shake = mood === 'shock' || mood === 'angry' ? Math.sin(f * 1.7) * 3 : 0;
