@@ -1,0 +1,34 @@
+name: qt-stt
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  stt:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        k: [0, 1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: quetiene/stt}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && pip install -q faster-whisper
+      - name: transcribe
+        run: |
+          mkdir -p /tmp/tr
+          python3 - <<'P'
+          import json, subprocess, numpy as np
+          from faster_whisper import WhisperModel
+          k = ${{ matrix.k }}
+          f = 'quetiene/stt/c%d.mp3' % k
+          m = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4)
+          a = np.frombuffer(subprocess.run(['ffmpeg','-loglevel','error','-i',f,'-f','f32le','-ac','1','-ar','16000','-'],capture_output=True,check=True).stdout, dtype=np.float32)
+          segs, info = m.transcribe(a, language='es', word_timestamps=True, vad_filter=False, beam_size=5)
+          out = [{'start': s.start, 'end': s.end, 'text': s.text, 'words': [{'w': w.word, 's': w.start, 'e': w.end} for w in (s.words or [])]} for s in segs]
+          json.dump(out, open('/tmp/tr/c%d.json' % k, 'w'), ensure_ascii=False, indent=1)
+          print(len(out))
+          P
+      - name: push
+        run: |
+          cd /tmp/tr && git init -q && git checkout -q -b out-qt-stt-${{ matrix.k }} && git add . && git -c user.name=bot -c user.email=bot@x commit -q -m stt
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" out-qt-stt-${{ matrix.k }}
