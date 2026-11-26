@@ -1,0 +1,103 @@
+{
+"model": "eleven_v4",
+"lines": [
+{
+"id": "intro",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[nervioso] Uf… algo no va bien. ¡Siento que me estoy desmoronando!",
+"stability": 0.0
+},
+{
+"id": "yuc_0",
+"voice": "MWqKtvxRYrsfKFZfU1He",
+"text": "[riendo] ¡Me voy, México! Me llevo mis playas, mis cenotes y mis ruinas mayas.",
+"stability": 0.0,
+"owner": "b21fa122e5fc688b48987a3d3057cc929c759706785504cd8f62880ac050e95c",
+"name": "Lalo"
+},
+{
+"id": "yuc_1",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[gritando] ¡¿Qué?! ¡Yucatán, no me hagas esto!",
+"stability": 0.0
+},
+{
+"id": "yuc_2",
+"voice": "MWqKtvxRYrsfKFZfU1He",
+"text": "[burlón] Ya lo hice en 1841, ¿no te acuerdas?",
+"stability": 0.0,
+"owner": "b21fa122e5fc688b48987a3d3057cc929c759706785504cd8f62880ac050e95c",
+"name": "Lalo"
+},
+{
+"id": "rgr_0",
+"voice": "gncXGfeB8V1Weu7l6QUg",
+"text": "[emocionado] ¡Órale! ¡El norte también se va! ¡Viva la República del Río Grande!",
+"stability": 0.0,
+"owner": "83b3bda245fd2a899d9f9d55cafdf4323e548221d609babb19dd2984166ece5e",
+"name": "Mario Boot"
+},
+{
+"id": "rgr_1",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[desesperado] ¡No, no, no! ¡Otra vez no!",
+"stability": 0.0
+},
+{
+"id": "chp_0",
+"voice": "lLu7VwiNjffLb7HZ3LFW",
+"text": "[alegre] ¡Yo me regreso con mi hermano Guatemala!",
+"stability": 0.0,
+"owner": "b21fa122e5fc688b48987a3d3057cc929c759706785504cd8f62880ac050e95c",
+"name": "Silverio"
+},
+{
+"id": "chp_1",
+"voice": "JIfdwGbJNfJKbPNRYqP2",
+"text": "[feliz] ¡Bienvenido a casa, Chiapas! ¡Te extrañé desde 1824!",
+"stability": 0.0,
+"owner": "5b70ecc6c53f11af105295f40d2709064e3462d3e558e1052bd858f0764c4b6d",
+"name": "Isaak"
+},
+{
+"id": "chp_2",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[furioso] ¡¿Guatemala?! ¡Eso es mío!",
+"stability": 0.0
+},
+{
+"id": "baj_0",
+"voice": "7QXA3lh7d25G1SzsIJdv",
+"text": "[relajado] Baja California y Sonora nos vamos a la playa… para siempre.",
+"stability": 0.0,
+"owner": "cbcfb5395dbff2a982b4d1ed63f45da97e768a704f853bbdd12238ed08a24ebb",
+"name": "Daniel Virgen"
+},
+{
+"id": "baj_1",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[llorando] ¡Mis playas! ¡Mi Cancún! Ah, no… ese ya se fue con Yucatán.",
+"stability": 0.0
+},
+{
+"id": "jal_0",
+"voice": "y49lIAGrsmQl8dzq2W93",
+"text": "[riendo] ¡Jalisco libre y soberano! ¡Y el tequila y el mariachi se vienen conmigo!",
+"stability": 0.0,
+"owner": "eb6436584a2bd487276906b71998e5baa1cebc6528b31f3c722b53858dda4957",
+"name": "Rayito"
+},
+{
+"id": "jal_1",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[sollozando] ¡Mi tequila no! ¡Sin mariachi no soy nadie!",
+"stability": 0.0
+},
+{
+"id": "fin",
+"voice": "qKiF0EEU7wtRm1G2mLMh",
+"text": "[suspira] Bueno… al menos me queda la capital. [preocupado] ¿Quién sigue?",
+"stability": 0.0
+}
+]
+}

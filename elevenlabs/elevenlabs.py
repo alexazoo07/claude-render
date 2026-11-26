@@ -34,13 +34,23 @@ def tts(job_path):
     job = json.load(open(job_path)); model = job.get('model', 'eleven_v3')
     for ln in job['lines']:
         vs = {'stability': ln.get('stability', 0.4), 'similarity_boost': ln.get('similarity', 0.8), 'style': ln.get('style', 0.6), 'use_speaker_boost': True}
-        if model == 'eleven_v3': vs = {'stability': ln.get('stability', 0.5)}
+        if model.startswith('eleven_v3') or model.startswith('eleven_v4'): vs = {'stability': ln.get('stability', 0.5)}
         body = {'text': ln['text'], 'model_id': ln.get('model', model), 'voice_settings': vs, 'language_code': ln.get('language', 'es')}
         if model != 'eleven_v3' and 'speed' in ln: body['voice_settings']['speed'] = ln['speed']
-        try:
-            d = req('POST', f"/v1/text-to-speech/{ln['voice']}/with-timestamps?output_format=mp3_44100_192", body)
-        except Exception:
-            body.pop('language_code', None); d = req('POST', f"/v1/text-to-speech/{ln['voice']}/with-timestamps?output_format=mp3_44100_192", body)
+        if ln.get('owner'):
+            try: req('POST', f"/v1/voices/add/{ln['owner']}/{ln['voice']}", {'new_name': ln.get('name', ln['voice'])[:40]})
+            except Exception as e: print('add voice (maybe already added)', ln['voice'])
+        d = None
+        for m in [body['model_id'], 'eleven_v3', 'eleven_multilingual_v2']:
+            body['model_id'] = m
+            if m == 'eleven_multilingual_v2': body['voice_settings'] = {'stability': 0.35, 'similarity_boost': 0.8, 'style': 0.7, 'use_speaker_boost': True}; body['text'] = __import__('re').sub(r'\[[^\]]*\]\s*', '', body['text'])
+            try:
+                d = req('POST', f"/v1/text-to-speech/{ln['voice']}/with-timestamps?output_format=mp3_44100_192", body); break
+            except Exception:
+                try:
+                    b2 = dict(body); b2.pop('language_code', None); d = req('POST', f"/v1/text-to-speech/{ln['voice']}/with-timestamps?output_format=mp3_44100_192", b2); break
+                except Exception: print('model failed', m)
+        print(ln['id'], 'model', body['model_id'])
         open(f"{OUT}/{ln['id']}.mp3", 'wb').write(base64.b64decode(d['audio_base64']))
         al = d.get('normalized_alignment') or d.get('alignment') or {}
         json.dump({'id': ln['id'], 'text': ln['text'], 'chars': al.get('characters', []), 'start': al.get('character_start_times_seconds', []), 'end': al.get('character_end_times_seconds', [])}, open(f"{OUT}/{ln['id']}.json", 'w'), ensure_ascii=False)
