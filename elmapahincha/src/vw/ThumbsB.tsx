@@ -419,3 +419,58 @@ export const T35e: React.FC = () => (
 		<DTop /><DBot t="SI SU APODO TIENE..." />
 	</Base>
 );
+
+// ======================= 38 · ELIMINANDO PAÍSES DE LATINOAMÉRICA (geografía)
+const PTop: React.FC<{t?: string}> = ({t = 'ELIMINANDO PAÍSES'}) => <TT parts={[[t]]} size={118} sw={SW} style={{top: 18}} />;
+export const T38a: React.FC = () => (
+	<LatBase gone={['BOL', 'PRY', 'CUB', 'DOM', 'HTI', 'ECU', 'COL']}>
+		<Hero k="BRA" x={1400} y={520} mw={600} mh={560} m="terror" />
+		<Hero k="MEX" x={520} y={520} mw={600} mh={440} m="shock" rot={-6} />
+		<PTop /><LatBot t="DE LATINOAMÉRICA" />
+	</LatBase>
+);
+export const T38b: React.FC = () => (
+	<LatBase gone={[]}>
+		<Ball k="MEX" d={230} x={260} y={330} mood="panic" look={[0.6, 0]} />
+		<Ball k="BRA" d={260} x={300} y={700} mood="scared" look={[0.6, 0]} />
+		<Ball k="ARG" d={250} x={1650} y={350} mood="panic" look={[-0.6, 0]} />
+		<Ball k="CUB" d={220} x={1660} y={720} mood="scared" look={[-0.6, 0]} />
+		<div style={{position: 'absolute', left: 960 - 290, top: 270, width: 580, height: 580, borderRadius: '50%', background: '#1B1D26', border: `12px solid ${INK}`, boxShadow: '0 0 0 14px #FFD23F, 0 18px 0 14px rgba(0,0,0,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+			<TT parts={[['1', YEL]]} size={420} sw={SW} style={{position: 'relative', top: 0}} />
+		</div>
+		<TT parts={[['SOLO QUEDARÁ']]} size={124} sw={SW} style={{top: 18}} />
+		<LatBot t="UN PAÍS" />
+	</LatBase>
+);
+export const T38c: React.FC = () => (
+	<LatBase>
+		<div style={{position: 'absolute', left: 230, top: 240, display: 'grid', gridTemplateColumns: 'repeat(5, 270px)', gap: 18}}>
+			{LAT.map((k, i) => {
+				const out = ['BOL', 'PRY', 'CUB', 'DOM', 'HTI', 'ECU', 'COL', 'MEX', 'GTM', 'HND', 'NIC', 'CRI', 'PAN'].includes(k);
+				return (
+					<div key={k} style={{position: 'relative', width: 270, height: 140}}>
+						<img src={staticFile(`flags/${FLG(k)}.svg`)} style={{width: 210, height: 140, objectFit: 'cover', borderRadius: 14, border: `6px solid ${INK}`, filter: out ? 'grayscale(1) brightness(0.6)' : 'none', boxShadow: '0 8px 0 rgba(0,0,0,0.4)', transform: `rotate(${((i * 7) % 5) - 2}deg)`}} />
+						{out && <svg width={210} height={140} style={{position: 'absolute', left: 0, top: 0}}><path d="M30 20 L180 120 M180 20 L30 120" stroke={INK} strokeWidth={24} strokeLinecap="round" /><path d="M30 20 L180 120 M180 20 L30 120" stroke="#E8394A" strokeWidth={14} strokeLinecap="round" /></svg>}
+					</div>
+				);
+			})}
+		</div>
+		<PTop /><LatBot t="HASTA QUE QUEDE 1" />
+	</LatBase>
+);
+export const T38d: React.FC = () => (
+	<LatBase cam={camOn(['BOL', 'PRY', 'PER', 'CHL'], 1.6, 0, 0)} gone={['BOL']}>
+		<Hero k="BOL" x={560} y={560} mw={620} mh={620} m="cry" rot={-5} ghost />
+		<div style={{position: 'absolute', left: 1080, top: 380, width: 760, transform: 'rotate(-4deg)', padding: '18px 26px', borderRadius: 26, background: YEL, border: `10px solid ${INK}`, boxShadow: '0 12px 0 rgba(0,0,0,0.4)', fontFamily: LILITA, fontSize: 104, lineHeight: 1, color: INK, textAlign: 'center'}}>¿POR NO TENER MAR?</div>
+		<PTop t="TU PAÍS DESAPARECE" /><LatBot t="LATINOAMÉRICA" />
+	</LatBase>
+);
+export const T38e: React.FC = () => (
+	<LatBase cam={camOn(['MEX', 'GTM', 'CUB', 'PAN'], 1.3, 0, 0)} gone={['CUB', 'DOM', 'HTI']}>
+		<Hero k="MEX" x={560} y={540} mw={720} mh={520} m="terror" rot={-4} />
+		<VS x={1080} y={560} />
+		<Hero k="CUB" x={1500} y={560} mw={560} mh={300} m="rage" rot={5} />
+		<TT parts={[['SOLO 1 SOBREVIVE']]} size={124} sw={SW} style={{top: 18}} />
+		<LatBot t="LATINOAMÉRICA" />
+	</LatBase>
+);
