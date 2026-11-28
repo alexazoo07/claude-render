@@ -1,0 +1,63 @@
+name: whw-render
+on:
+  workflow_dispatch:
+    inputs:
+      vids: {description: 'JSON list of video folders under whw/v', required: true, default: '["beer"]'}
+permissions:
+  contents: write
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: whw/tools}
+      - id: c
+        uses: actions/cache/restore@v4
+        with: {path: whwdata, key: 'whw-data-${{ hashFiles(''whw/tools/recolor.py'', ''whw/tools/geo.py'') }}', lookup-only: true}
+      - if: steps.c.outputs.cache-hit != 'true'
+        run: |
+          pip install -q numpy opencv-python-headless tifffile imagecodecs
+          mkdir -p whwdata /tmp/dl
+          curl -sL -o /tmp/dl/ne1.tif https://raw.githubusercontent.com/nvkelso/natural-earth-raster/master/10m_rasters/NE1_HR_LC_SR_W/NE1_HR_LC_SR_W.tif
+          curl -sL -o /tmp/dl/c.geojson https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
+          curl -sL -o /tmp/dl/m.geojson https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_map_units.geojson
+          python3 -c "import tifffile,numpy as np; np.save('whwdata/ne1.npy', tifffile.imread('/tmp/dl/ne1.tif'))"
+          python3 whw/tools/recolor.py whwdata
+          rm whwdata/ne1.npy
+          python3 whw/tools/geo.py /tmp/dl/c.geojson /tmp/dl/m.geojson whwdata/countries.geojson
+          ls -la whwdata
+      - if: steps.c.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with: {path: whwdata, key: 'whw-data-${{ hashFiles(''whw/tools/recolor.py'', ''whw/tools/geo.py'') }}'}
+  render:
+    needs: data
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        vid: ${{ fromJSON(inputs.vids) }}
+        job: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: whw}
+      - uses: actions/cache/restore@v4
+        with: {path: whwdata, key: 'whw-data-${{ hashFiles(''whw/tools/recolor.py'', ''whw/tools/geo.py'') }}', fail-on-cache-miss: true}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && pip install -q numpy opencv-python-headless pillow scipy
+      - run: WHW_PROJ=$PWD/whw/v/${{ matrix.vid }} WHW_DATA=$PWD/whwdata python3 whw/tools/render.py part part_${{ matrix.vid }}_${{ matrix.job }}.mp4 ${{ matrix.job }} 6
+      - uses: actions/upload-artifact@v4
+        with: {name: 'part_${{ matrix.vid }}_${{ matrix.job }}', path: 'part_${{ matrix.vid }}_${{ matrix.job }}.mp4', retention-days: 2}
+  merge:
+    needs: render
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        vid: ${{ fromJSON(inputs.vids) }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {path: parts, pattern: 'part_${{ matrix.vid }}_*', merge-multiple: true}
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          for i in 0 1 2 3 4 5; do echo "file 'parts/part_${{ matrix.vid }}_$i.mp4'" >> list.txt; done
+          ffmpeg -loglevel error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p /tmp/o && md5sum video.mp4 > /tmp/o/video.md5 && split -b 90M -d video.mp4 /tmp/o/video.mp4.part
+          cd /tmp/o && git init -q && git checkout -q -b out-whw-${{ matrix.vid }} && git add . && git -c user.name=bot -c user.email=bot@x commit -q -m out
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" out-whw-${{ matrix.vid }}
