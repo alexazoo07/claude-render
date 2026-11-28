@@ -1,0 +1,599 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.44,
+  "text": " The United States has Inter, Miami and LA Galaxy.",
+  "words": [
+   {
+    "w": " The",
+    "s": 0.0,
+    "e": 0.26
+   },
+   {
+    "w": " United",
+    "s": 0.26,
+    "e": 0.58
+   },
+   {
+    "w": " States",
+    "s": 0.58,
+    "e": 1.04
+   },
+   {
+    "w": " has",
+    "s": 1.04,
+    "e": 1.28
+   },
+   {
+    "w": " Inter,",
+    "s": 1.28,
+    "e": 1.66
+   },
+   {
+    "w": " Miami",
+    "s": 1.78,
+    "e": 2.22
+   },
+   {
+    "w": " and",
+    "s": 2.22,
+    "e": 2.54
+   },
+   {
+    "w": " LA",
+    "s": 2.54,
+    "e": 2.84
+   },
+   {
+    "w": " Galaxy.",
+    "s": 2.84,
+    "e": 3.44
+   }
+  ]
+ },
+ {
+  "start": 4.0,
+  "end": 7.46,
+  "text": " England has Manchester United, Liverpool and Manchester City.",
+  "words": [
+   {
+    "w": " England",
+    "s": 4.0,
+    "e": 4.3
+   },
+   {
+    "w": " has",
+    "s": 4.3,
+    "e": 4.54
+   },
+   {
+    "w": " Manchester",
+    "s": 4.54,
+    "e": 5.0
+   },
+   {
+    "w": " United,",
+    "s": 5.0,
+    "e": 5.6
+   },
+   {
+    "w": " Liverpool",
+    "s": 5.82,
+    "e": 6.24
+   },
+   {
+    "w": " and",
+    "s": 6.24,
+    "e": 6.46
+   },
+   {
+    "w": " Manchester",
+    "s": 6.46,
+    "e": 6.98
+   },
+   {
+    "w": " City.",
+    "s": 6.98,
+    "e": 7.46
+   }
+  ]
+ },
+ {
+  "start": 7.96,
+  "end": 9.62,
+  "text": " Scotland has Celtic and Rangers.",
+  "words": [
+   {
+    "w": " Scotland",
+    "s": 7.96,
+    "e": 8.34
+   },
+   {
+    "w": " has",
+    "s": 8.34,
+    "e": 8.64
+   },
+   {
+    "w": " Celtic",
+    "s": 8.64,
+    "e": 9.06
+   },
+   {
+    "w": " and",
+    "s": 9.06,
+    "e": 9.24
+   },
+   {
+    "w": " Rangers.",
+    "s": 9.24,
+    "e": 9.62
+   }
+  ]
+ },
+ {
+  "start": 10.24,
+  "end": 12.6,
+  "text": " Wales has Cardiff City and Swansea.",
+  "words": [
+   {
+    "w": " Wales",
+    "s": 10.24,
+    "e": 10.64
+   },
+   {
+    "w": " has",
+    "s": 10.64,
+    "e": 10.94
+   },
+   {
+    "w": " Cardiff",
+    "s": 10.94,
+    "e": 11.28
+   },
+   {
+    "w": " City",
+    "s": 11.28,
+    "e": 11.62
+   },
+   {
+    "w": " and",
+    "s": 11.62,
+    "e": 11.88
+   },
+   {
+    "w": " Swansea.",
+    "s": 11.88,
+    "e": 12.6
+   }
+  ]
+ },
+ {
+  "start": 12.96,
+  "end": 14.54,
+  "text": " Ireland has Shamrock Rovers.",
+  "words": [
+   {
+    "w": " Ireland",
+    "s": 12.96,
+    "e": 13.28
+   },
+   {
+    "w": " has",
+    "s": 13.28,
+    "e": 13.6
+   },
+   {
+    "w": " Shamrock",
+    "s": 13.6,
+    "e": 14.04
+   },
+   {
+    "w": " Rovers.",
+    "s": 14.04,
+    "e": 14.54
+   }
+  ]
+ },
+ {
+  "start": 15.02,
+  "end": 17.08,
+  "text": " Spain has Real Madrid and Barcelona.",
+  "words": [
+   {
+    "w": " Spain",
+    "s": 15.02,
+    "e": 15.34
+   },
+   {
+    "w": " has",
+    "s": 15.34,
+    "e": 15.62
+   },
+   {
+    "w": " Real",
+    "s": 15.62,
+    "e": 15.88
+   },
+   {
+    "w": " Madrid",
+    "s": 15.88,
+    "e": 16.22
+   },
+   {
+    "w": " and",
+    "s": 16.22,
+    "e": 16.5
+   },
+   {
+    "w": " Barcelona.",
+    "s": 16.5,
+    "e": 17.08
+   }
+  ]
+ },
+ {
+  "start": 17.64,
+  "end": 20.56,
+  "text": " Portugal has Benfica, Porto and Sporting.",
+  "words": [
+   {
+    "w": " Portugal",
+    "s": 17.64,
+    "e": 18.06
+   },
+   {
+    "w": " has",
+    "s": 18.06,
+    "e": 18.34
+   },
+   {
+    "w": " Benfica,",
+    "s": 18.34,
+    "e": 19.08
+   },
+   {
+    "w": " Porto",
+    "s": 19.32,
+    "e": 19.74
+   },
+   {
+    "w": " and",
+    "s": 19.74,
+    "e": 20.02
+   },
+   {
+    "w": " Sporting.",
+    "s": 20.02,
+    "e": 20.56
+   }
+  ]
+ },
+ {
+  "start": 21.0,
+  "end": 23.18,
+  "text": " France has PSG and Marseille.",
+  "words": [
+   {
+    "w": " France",
+    "s": 21.0,
+    "e": 21.34
+   },
+   {
+    "w": " has",
+    "s": 21.34,
+    "e": 21.68
+   },
+   {
+    "w": " PSG",
+    "s": 21.68,
+    "e": 22.2
+   },
+   {
+    "w": " and",
+    "s": 22.2,
+    "e": 22.4
+   },
+   {
+    "w": " Marseille.",
+    "s": 22.4,
+    "e": 23.18
+   }
+  ]
+ },
+ {
+  "start": 23.46,
+  "end": 25.66,
+  "text": " Belgium has Club Bruges and Anderlecht.",
+  "words": [
+   {
+    "w": " Belgium",
+    "s": 23.46,
+    "e": 23.76
+   },
+   {
+    "w": " has",
+    "s": 23.76,
+    "e": 24.08
+   },
+   {
+    "w": " Club",
+    "s": 24.08,
+    "e": 24.32
+   },
+   {
+    "w": " Bruges",
+    "s": 24.32,
+    "e": 24.7
+   },
+   {
+    "w": " and",
+    "s": 24.7,
+    "e": 25.12
+   },
+   {
+    "w": " Anderlecht.",
+    "s": 25.12,
+    "e": 25.66
+   }
+  ]
+ },
+ {
+  "start": 26.0,
+  "end": 29.56,
+  "text": " The Netherlands has Ajax, PSV and Feyenoord.",
+  "words": [
+   {
+    "w": " The",
+    "s": 26.0,
+    "e": 26.16
+   },
+   {
+    "w": " Netherlands",
+    "s": 26.16,
+    "e": 26.58
+   },
+   {
+    "w": " has",
+    "s": 26.58,
+    "e": 27.0
+   },
+   {
+    "w": " Ajax,",
+    "s": 27.0,
+    "e": 27.52
+   },
+   {
+    "w": " PSV",
+    "s": 27.7,
+    "e": 28.36
+   },
+   {
+    "w": " and",
+    "s": 28.36,
+    "e": 28.6
+   },
+   {
+    "w": " Feyenoord.",
+    "s": 28.6,
+    "e": 29.56
+   }
+  ]
+ },
+ {
+  "start": 29.56,
+  "end": 32.44,
+  "text": " Germany has Bayern Munich and Borussia Dortmund.",
+  "words": [
+   {
+    "w": " Germany",
+    "s": 29.56,
+    "e": 30.14
+   },
+   {
+    "w": " has",
+    "s": 30.14,
+    "e": 30.5
+   },
+   {
+    "w": " Bayern",
+    "s": 30.5,
+    "e": 30.78
+   },
+   {
+    "w": " Munich",
+    "s": 30.78,
+    "e": 31.1
+   },
+   {
+    "w": " and",
+    "s": 31.1,
+    "e": 31.34
+   },
+   {
+    "w": " Borussia",
+    "s": 31.34,
+    "e": 31.64
+   },
+   {
+    "w": " Dortmund.",
+    "s": 31.64,
+    "e": 32.44
+   }
+  ]
+ },
+ {
+  "start": 32.98,
+  "end": 35.5,
+  "text": " Italy has Juventus, AC Milan and Inter.",
+  "words": [
+   {
+    "w": " Italy",
+    "s": 32.98,
+    "e": 33.08
+   },
+   {
+    "w": " has",
+    "s": 33.08,
+    "e": 33.38
+   },
+   {
+    "w": " Juventus,",
+    "s": 33.38,
+    "e": 34.06
+   },
+   {
+    "w": " AC",
+    "s": 34.38,
+    "e": 34.5
+   },
+   {
+    "w": " Milan",
+    "s": 34.5,
+    "e": 34.84
+   },
+   {
+    "w": " and",
+    "s": 34.84,
+    "e": 35.1
+   },
+   {
+    "w": " Inter.",
+    "s": 35.1,
+    "e": 35.5
+   }
+  ]
+ },
+ {
+  "start": 36.12,
+  "end": 38.66,
+  "text": " Greece has Olympiakos and Panathinaikos.",
+  "words": [
+   {
+    "w": " Greece",
+    "s": 36.12,
+    "e": 36.4
+   },
+   {
+    "w": " has",
+    "s": 36.4,
+    "e": 36.68
+   },
+   {
+    "w": " Olympiakos",
+    "s": 36.68,
+    "e": 37.44
+   },
+   {
+    "w": " and",
+    "s": 37.44,
+    "e": 37.66
+   },
+   {
+    "w": " Panathinaikos.",
+    "s": 37.66,
+    "e": 38.66
+   }
+  ]
+ },
+ {
+  "start": 39.2,
+  "end": 41.4,
+  "text": " Turkey has Galatasaray and Fenerbahce.",
+  "words": [
+   {
+    "w": " Turkey",
+    "s": 39.2,
+    "e": 39.46
+   },
+   {
+    "w": " has",
+    "s": 39.46,
+    "e": 39.74
+   },
+   {
+    "w": " Galatasaray",
+    "s": 39.74,
+    "e": 40.54
+   },
+   {
+    "w": " and",
+    "s": 40.54,
+    "e": 40.74
+   },
+   {
+    "w": " Fenerbahce.",
+    "s": 40.74,
+    "e": 41.4
+   }
+  ]
+ },
+ {
+  "start": 41.94,
+  "end": 43.12,
+  "text": " Brazil has Flamengo.",
+  "words": [
+   {
+    "w": " Brazil",
+    "s": 41.94,
+    "e": 42.28
+   },
+   {
+    "w": " has",
+    "s": 42.28,
+    "e": 42.58
+   },
+   {
+    "w": " Flamengo.",
+    "s": 42.58,
+    "e": 43.12
+   }
+  ]
+ },
+ {
+  "start": 43.64,
+  "end": 46.18,
+  "text": " And Argentina has Boca Juniors and River Plate.",
+  "words": [
+   {
+    "w": " And",
+    "s": 43.64,
+    "e": 43.78
+   },
+   {
+    "w": " Argentina",
+    "s": 43.78,
+    "e": 44.22
+   },
+   {
+    "w": " has",
+    "s": 44.22,
+    "e": 44.56
+   },
+   {
+    "w": " Boca",
+    "s": 44.56,
+    "e": 44.86
+   },
+   {
+    "w": " Juniors",
+    "s": 44.86,
+    "e": 45.32
+   },
+   {
+    "w": " and",
+    "s": 45.32,
+    "e": 45.68
+   },
+   {
+    "w": " River",
+    "s": 45.68,
+    "e": 45.98
+   },
+   {
+    "w": " Plate.",
+    "s": 45.98,
+    "e": 46.18
+   }
+  ]
+ }
+]
