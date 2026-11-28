@@ -1,0 +1,658 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.18,
+  "text": " The United States has Budweiser, Coors and Miller.",
+  "words": [
+   {
+    "w": " The",
+    "s": 0.0,
+    "e": 0.24
+   },
+   {
+    "w": " United",
+    "s": 0.24,
+    "e": 0.6
+   },
+   {
+    "w": " States",
+    "s": 0.6,
+    "e": 1.0
+   },
+   {
+    "w": " has",
+    "s": 1.0,
+    "e": 1.28
+   },
+   {
+    "w": " Budweiser,",
+    "s": 1.28,
+    "e": 2.02
+   },
+   {
+    "w": " Coors",
+    "s": 2.36,
+    "e": 2.62
+   },
+   {
+    "w": " and",
+    "s": 2.62,
+    "e": 2.9
+   },
+   {
+    "w": " Miller.",
+    "s": 2.9,
+    "e": 3.18
+   }
+  ]
+ },
+ {
+  "start": 3.68,
+  "end": 5.48,
+  "text": " Canada has Molson and Labatt.",
+  "words": [
+   {
+    "w": " Canada",
+    "s": 3.68,
+    "e": 4.06
+   },
+   {
+    "w": " has",
+    "s": 4.06,
+    "e": 4.4
+   },
+   {
+    "w": " Molson",
+    "s": 4.4,
+    "e": 4.84
+   },
+   {
+    "w": " and",
+    "s": 4.84,
+    "e": 5.06
+   },
+   {
+    "w": " Labatt.",
+    "s": 5.06,
+    "e": 5.48
+   }
+  ]
+ },
+ {
+  "start": 5.8,
+  "end": 7.68,
+  "text": " Mexico has Corona and Modelo.",
+  "words": [
+   {
+    "w": " Mexico",
+    "s": 5.8,
+    "e": 6.28
+   },
+   {
+    "w": " has",
+    "s": 6.28,
+    "e": 6.68
+   },
+   {
+    "w": " Corona",
+    "s": 6.68,
+    "e": 7.02
+   },
+   {
+    "w": " and",
+    "s": 7.02,
+    "e": 7.28
+   },
+   {
+    "w": " Modelo.",
+    "s": 7.28,
+    "e": 7.68
+   }
+  ]
+ },
+ {
+  "start": 8.32,
+  "end": 10.12,
+  "text": " Ireland has Guinness and Smithwicks.",
+  "words": [
+   {
+    "w": " Ireland",
+    "s": 8.32,
+    "e": 8.6
+   },
+   {
+    "w": " has",
+    "s": 8.6,
+    "e": 8.92
+   },
+   {
+    "w": " Guinness",
+    "s": 8.92,
+    "e": 9.3
+   },
+   {
+    "w": " and",
+    "s": 9.3,
+    "e": 9.56
+   },
+   {
+    "w": " Smithwicks.",
+    "s": 9.56,
+    "e": 10.12
+   }
+  ]
+ },
+ {
+  "start": 10.64,
+  "end": 14.76,
+  "text": " The United Kingdom has Brewdog, Newcastle, Brown Ale and Boddingtons.",
+  "words": [
+   {
+    "w": " The",
+    "s": 10.64,
+    "e": 10.76
+   },
+   {
+    "w": " United",
+    "s": 10.76,
+    "e": 11.1
+   },
+   {
+    "w": " Kingdom",
+    "s": 11.1,
+    "e": 11.46
+   },
+   {
+    "w": " has",
+    "s": 11.46,
+    "e": 11.8
+   },
+   {
+    "w": " Brewdog,",
+    "s": 11.8,
+    "e": 12.3
+   },
+   {
+    "w": " Newcastle,",
+    "s": 12.6,
+    "e": 13.28
+   },
+   {
+    "w": " Brown",
+    "s": 13.5,
+    "e": 13.72
+   },
+   {
+    "w": " Ale",
+    "s": 13.72,
+    "e": 13.94
+   },
+   {
+    "w": " and",
+    "s": 13.94,
+    "e": 14.16
+   },
+   {
+    "w": " Boddingtons.",
+    "s": 14.16,
+    "e": 14.76
+   }
+  ]
+ },
+ {
+  "start": 15.32,
+  "end": 18.12,
+  "text": " The Netherlands has Heineken, Amstel and Grolsch.",
+  "words": [
+   {
+    "w": " The",
+    "s": 15.32,
+    "e": 15.48
+   },
+   {
+    "w": " Netherlands",
+    "s": 15.48,
+    "e": 15.84
+   },
+   {
+    "w": " has",
+    "s": 15.84,
+    "e": 16.18
+   },
+   {
+    "w": " Heineken,",
+    "s": 16.18,
+    "e": 16.7
+   },
+   {
+    "w": " Amstel",
+    "s": 17.02,
+    "e": 17.36
+   },
+   {
+    "w": " and",
+    "s": 17.36,
+    "e": 17.64
+   },
+   {
+    "w": " Grolsch.",
+    "s": 17.64,
+    "e": 18.12
+   }
+  ]
+ },
+ {
+  "start": 18.68,
+  "end": 21.66,
+  "text": " Belgium has Stella, Artois, Leff and Duvel.",
+  "words": [
+   {
+    "w": " Belgium",
+    "s": 18.68,
+    "e": 18.94
+   },
+   {
+    "w": " has",
+    "s": 18.94,
+    "e": 19.32
+   },
+   {
+    "w": " Stella,",
+    "s": 19.32,
+    "e": 19.64
+   },
+   {
+    "w": " Artois,",
+    "s": 19.98,
+    "e": 20.5
+   },
+   {
+    "w": " Leff",
+    "s": 20.8,
+    "e": 21.04
+   },
+   {
+    "w": " and",
+    "s": 21.04,
+    "e": 21.24
+   },
+   {
+    "w": " Duvel.",
+    "s": 21.24,
+    "e": 21.66
+   }
+  ]
+ },
+ {
+  "start": 22.22,
+  "end": 23.44,
+  "text": " France has Kronenburg.",
+  "words": [
+   {
+    "w": " France",
+    "s": 22.22,
+    "e": 22.54
+   },
+   {
+    "w": " has",
+    "s": 22.54,
+    "e": 22.84
+   },
+   {
+    "w": " Kronenburg.",
+    "s": 22.84,
+    "e": 23.44
+   }
+  ]
+ },
+ {
+  "start": 23.82,
+  "end": 26.66,
+  "text": " Germany has Becks, Paulana and Warsteiner.",
+  "words": [
+   {
+    "w": " Germany",
+    "s": 23.82,
+    "e": 24.24
+   },
+   {
+    "w": " has",
+    "s": 24.24,
+    "e": 24.62
+   },
+   {
+    "w": " Becks,",
+    "s": 24.62,
+    "e": 25.0
+   },
+   {
+    "w": " Paulana",
+    "s": 25.34,
+    "e": 25.74
+   },
+   {
+    "w": " and",
+    "s": 25.74,
+    "e": 26.08
+   },
+   {
+    "w": " Warsteiner.",
+    "s": 26.08,
+    "e": 26.66
+   }
+  ]
+ },
+ {
+  "start": 27.0,
+  "end": 28.98,
+  "text": " Denmark has Carlsberg and Tuborg.",
+  "words": [
+   {
+    "w": " Denmark",
+    "s": 27.0,
+    "e": 27.48
+   },
+   {
+    "w": " has",
+    "s": 27.48,
+    "e": 27.8
+   },
+   {
+    "w": " Carlsberg",
+    "s": 27.8,
+    "e": 28.34
+   },
+   {
+    "w": " and",
+    "s": 28.34,
+    "e": 28.58
+   },
+   {
+    "w": " Tuborg.",
+    "s": 28.58,
+    "e": 28.98
+   }
+  ]
+ },
+ {
+  "start": 28.98,
+  "end": 31.3,
+  "text": " Poland has Tiske and Juwijk.",
+  "words": [
+   {
+    "w": " Poland",
+    "s": 28.98,
+    "e": 29.8
+   },
+   {
+    "w": " has",
+    "s": 29.8,
+    "e": 30.16
+   },
+   {
+    "w": " Tiske",
+    "s": 30.16,
+    "e": 30.54
+   },
+   {
+    "w": " and",
+    "s": 30.54,
+    "e": 30.78
+   },
+   {
+    "w": " Juwijk.",
+    "s": 30.78,
+    "e": 31.3
+   }
+  ]
+ },
+ {
+  "start": 31.62,
+  "end": 34.46,
+  "text": " The Czech Republic has Pilsner, Urquell and Budva.",
+  "words": [
+   {
+    "w": " The",
+    "s": 31.62,
+    "e": 31.7
+   },
+   {
+    "w": " Czech",
+    "s": 31.7,
+    "e": 31.92
+   },
+   {
+    "w": " Republic",
+    "s": 31.92,
+    "e": 32.38
+   },
+   {
+    "w": " has",
+    "s": 32.38,
+    "e": 32.72
+   },
+   {
+    "w": " Pilsner,",
+    "s": 32.72,
+    "e": 33.22
+   },
+   {
+    "w": " Urquell",
+    "s": 33.5,
+    "e": 33.82
+   },
+   {
+    "w": " and",
+    "s": 33.82,
+    "e": 34.04
+   },
+   {
+    "w": " Budva.",
+    "s": 34.04,
+    "e": 34.46
+   }
+  ]
+ },
+ {
+  "start": 35.0,
+  "end": 37.04,
+  "text": " Italy has Peroni and Moretti.",
+  "words": [
+   {
+    "w": " Italy",
+    "s": 35.0,
+    "e": 35.36
+   },
+   {
+    "w": " has",
+    "s": 35.36,
+    "e": 35.7
+   },
+   {
+    "w": " Peroni",
+    "s": 35.7,
+    "e": 36.12
+   },
+   {
+    "w": " and",
+    "s": 36.12,
+    "e": 36.3
+   },
+   {
+    "w": " Moretti.",
+    "s": 36.3,
+    "e": 37.04
+   }
+  ]
+ },
+ {
+  "start": 37.28,
+  "end": 39.38,
+  "text": " Spain has Estrella Dam and Mahu.",
+  "words": [
+   {
+    "w": " Spain",
+    "s": 37.28,
+    "e": 37.56
+   },
+   {
+    "w": " has",
+    "s": 37.56,
+    "e": 37.9
+   },
+   {
+    "w": " Estrella",
+    "s": 37.9,
+    "e": 38.3
+   },
+   {
+    "w": " Dam",
+    "s": 38.3,
+    "e": 38.54
+   },
+   {
+    "w": " and",
+    "s": 38.54,
+    "e": 38.8
+   },
+   {
+    "w": " Mahu.",
+    "s": 38.8,
+    "e": 39.38
+   }
+  ]
+ },
+ {
+  "start": 39.86,
+  "end": 41.74,
+  "text": " Portugal has Superbok and Sagres.",
+  "words": [
+   {
+    "w": " Portugal",
+    "s": 39.86,
+    "e": 40.16
+   },
+   {
+    "w": " has",
+    "s": 40.16,
+    "e": 40.44
+   },
+   {
+    "w": " Superbok",
+    "s": 40.44,
+    "e": 40.92
+   },
+   {
+    "w": " and",
+    "s": 40.92,
+    "e": 41.22
+   },
+   {
+    "w": " Sagres.",
+    "s": 41.22,
+    "e": 41.74
+   }
+  ]
+ },
+ {
+  "start": 42.22,
+  "end": 43.68,
+  "text": " Jamaica has Red Stripe.",
+  "words": [
+   {
+    "w": " Jamaica",
+    "s": 42.22,
+    "e": 42.5
+   },
+   {
+    "w": " has",
+    "s": 42.5,
+    "e": 42.8
+   },
+   {
+    "w": " Red",
+    "s": 42.8,
+    "e": 43.06
+   },
+   {
+    "w": " Stripe.",
+    "s": 43.06,
+    "e": 43.68
+   }
+  ]
+ },
+ {
+  "start": 43.98,
+  "end": 47.56,
+  "text": " Australia has Foster's, Victoria Bitter and XXXX.",
+  "words": [
+   {
+    "w": " Australia",
+    "s": 43.98,
+    "e": 44.28
+   },
+   {
+    "w": " has",
+    "s": 44.28,
+    "e": 44.6
+   },
+   {
+    "w": " Foster's,",
+    "s": 44.6,
+    "e": 45.16
+   },
+   {
+    "w": " Victoria",
+    "s": 45.4,
+    "e": 45.76
+   },
+   {
+    "w": " Bitter",
+    "s": 45.76,
+    "e": 46.1
+   },
+   {
+    "w": " and",
+    "s": 46.1,
+    "e": 46.5
+   },
+   {
+    "w": " XXXX.",
+    "s": 46.5,
+    "e": 47.56
+   }
+  ]
+ },
+ {
+  "start": 47.94,
+  "end": 49.34,
+  "text": " And New Zealand has Steinlager.",
+  "words": [
+   {
+    "w": " And",
+    "s": 47.94,
+    "e": 48.08
+   },
+   {
+    "w": " New",
+    "s": 48.08,
+    "e": 48.24
+   },
+   {
+    "w": " Zealand",
+    "s": 48.24,
+    "e": 48.52
+   },
+   {
+    "w": " has",
+    "s": 48.52,
+    "e": 48.84
+   },
+   {
+    "w": " Steinlager.",
+    "s": 48.84,
+    "e": 49.34
+   }
+  ]
+ }
+]
