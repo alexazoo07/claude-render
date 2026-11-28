@@ -33,6 +33,7 @@ jobs:
     needs: data
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         vid: ${{ fromJSON(inputs.vids) }}
         job: [0, 1, 2, 3, 4, 5]
